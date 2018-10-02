@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SchemaMeta xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/net/sourceforge/schemaspy/model/xml/SchemaMeta.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * This file is a part of the SchemaSpy project (<a href="http://schemaspy.sourceforge.net)." target="alexandria_uri">http://schemaspy.sourceforge.net).</a></em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * SchemaSpy is free software; you can redistribute it and/or</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * modify it under the terms of the GNU Lesser General Public</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * License as published by the Free Software Foundation; either</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * version 2.1 of the License, or (at your option) any later version.</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * SchemaSpy is distributed in the hope that it will be useful,</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * Lesser General Public License for more details.</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU Lesser General Public</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * License along with this library; if not, write to the Free Software</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">package</strong> net.sourceforge.schemaspy.model.xml;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.io.InputStream;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> java.util.logging.Logger;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> javax.xml.XMLConstants;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> javax.xml.parsers.DocumentBuilder;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> javax.xml.parsers.DocumentBuilderFactory;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> javax.xml.parsers.ParserConfigurationException;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> javax.xml.transform.dom.DOMSource;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> javax.xml.transform.stream.StreamSource;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> javax.xml.validation.Schema;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> javax.xml.validation.SchemaFactory;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> javax.xml.validation.Validator;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> net.sourceforge.schemaspy.Config;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> net.sourceforge.schemaspy.model.InvalidConfigurationException;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">import</strong> org.w3c.dom.Document;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">import</strong> org.w3c.dom.Element;
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <strong class="jxr_keyword">import</strong> org.w3c.dom.Node;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">import</strong> org.w3c.dom.NodeList;
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">import</strong> org.xml.sax.SAXException;
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment"> * Additional metadata about a schema as expressed in XML instead of from</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment"> * the database.</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment"> * @author John Currier</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="SchemaMeta" href="../../../../../net/sourceforge/schemaspy/model/xml/SchemaMeta.html#SchemaMeta">SchemaMeta</a> {
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> List&lt;TableMeta&gt; tables = <strong class="jxr_keyword">new</strong> ArrayList&lt;TableMeta&gt;();
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> String comments;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> File metaFile;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Logger logger = Logger.getLogger(getClass().getName());
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <a name="SchemaMeta" href="../../../../../net/sourceforge/schemaspy/model/xml/SchemaMeta.html#SchemaMeta">SchemaMeta</a>(String xmlMeta, String dbName, String schema) <strong class="jxr_keyword">throws</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a> {
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          File meta = <strong class="jxr_keyword">new</strong> File(xmlMeta);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">if</strong> (meta.isDirectory()) {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>              String filename = (schema == <strong class="jxr_keyword">null</strong> ? dbName : schema) + <span class="jxr_string">".meta.xml"</span>;
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>              meta = <strong class="jxr_keyword">new</strong> File(meta, filename);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>              <strong class="jxr_keyword">if</strong> (!meta.exists()) {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>                  <strong class="jxr_keyword">if</strong> (Config.getInstance().isOneOfMultipleSchemas()) {
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>                      <em class="jxr_comment">// don't force all of the "one of many" schemas to have metafiles</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>                      logger.info(<span class="jxr_string">"Meta directory \&quot;"</span> + xmlMeta + <span class="jxr_string">"\&quot; should contain a file named \&quot;"</span> + filename + '\&quot;');
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                      comments = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>                      metaFile = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>                      <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  }
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a>(<span class="jxr_string">"Meta directory \&quot;"</span> + xmlMeta + <span class="jxr_string">"\&quot; must contain a file named \&quot;"</span> + filename + '\&quot;');
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>              }
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (!meta.exists()) {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a>(<span class="jxr_string">"Specified meta file \&quot;"</span> + xmlMeta + <span class="jxr_string">"\&quot; does not exist"</span>);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          }
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          metaFile = meta;
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          Document doc = parse(metaFile);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          NodeList commentsNodes = doc.getElementsByTagName(<span class="jxr_string">"comments"</span>);
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          <strong class="jxr_keyword">if</strong> (commentsNodes != <strong class="jxr_keyword">null</strong> &amp;&amp; commentsNodes.getLength() &gt; 0)
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>              comments = commentsNodes.item(0).getTextContent();
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>              comments = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          NodeList tablesNodes = doc.getElementsByTagName(<span class="jxr_string">"tables"</span>);
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <strong class="jxr_keyword">if</strong> (tablesNodes != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              NodeList tableNodes = ((Element)tablesNodes.item(0)).getElementsByTagName(<span class="jxr_string">"table"</span>);
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; tableNodes.getLength(); ++i) {
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>                  Node tableNode = tableNodes.item(i);
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>                  <a name="TableMeta" href="../../../../../net/sourceforge/schema<a name="TableMeta" href="../../../../../net/sourceforge/schemaspy/model/xml/TableMeta.html#TableMeta">TableMeta</a>/xml/TableMeta.html#TableMeta">TableMeta</a> tableMeta = <strong class="jxr_keyword">new</strong> <a name="TableMeta" href="../../../../../net/sourceforge/schemaspy/model/xml/TableMeta.html#TableMeta">TableMeta</a>(tableNode);
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>                  tables.add(tableMeta);
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>              }
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          }
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>      }
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> <em class="jxr_javadoccomment">     * Comments that describe the schema</em>
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>     <strong class="jxr_keyword">public</strong> String getComments() {
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         <strong class="jxr_keyword">return</strong> comments;
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>     }
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> 
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>     <strong class="jxr_keyword">public</strong> File getFile() {
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         <strong class="jxr_keyword">return</strong> metaFile;
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>     }
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> 
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>     <strong class="jxr_keyword">public</strong> List&lt;TableMeta&gt; getTables() {
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>         <strong class="jxr_keyword">return</strong> tables;
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>     }
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> 
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> validate(Document document) <strong class="jxr_keyword">throws</strong> SAXException, IOException {
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         <em class="jxr_comment">// create a SchemaFactory capable of understanding WXS schemas</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> 
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         <em class="jxr_comment">// load a WXS schema, represented by a Schema instance</em>
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         InputStream xsl = getClass().getResourceAsStream(<span class="jxr_string">"/schemaspy.meta.xsd"</span>);
+<a class="jxr_linenumber" name="L120" href="#L120">120</a> 
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>         Schema schema = factory.newSchema(<strong class="jxr_keyword">new</strong> StreamSource(xsl));
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> 
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         <em class="jxr_comment">// create a Validator instance, which can be used to validate an instance document</em>
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>         Validator validator = schema.newValidator();
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> 
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>         <em class="jxr_comment">// validate the DOM tree</em>
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>         validator.validate(<strong class="jxr_keyword">new</strong> DOMSource(document));
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>     }
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>     <strong class="jxr_keyword">private</strong> Document parse(File file) <strong class="jxr_keyword">throws</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a> {
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>         DocumentBuilder docBuilder;
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>         Document doc = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>         factory.setNamespaceAware(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         factory.setIgnoringElementContentWhitespace(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>         factory.setIgnoringComments(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>             docBuilder = factory.newDocumentBuilder();
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         } <strong class="jxr_keyword">catch</strong> (ParserConfigurationException exc) {
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a>(<span class="jxr_string">"Invalid XML parser configuration"</span>, exc);
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         }
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> 
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>             doc = docBuilder.parse(file);
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>             validate(doc);
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>         } <strong class="jxr_keyword">catch</strong> (SAXException exc) {
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a>(file + <span class="jxr_string">" failed XML validation:"</span>, exc);
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>         } <strong class="jxr_keyword">catch</strong> (IOException exc) {
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="InvalidConfigurationException" href="../../../../../net/sourceforge/schemaspy/model/InvalidConfigurationException.html#InvalidConfigurationException">InvalidConfigurationException</a>(<span class="jxr_string">"Could not read "</span> + file + <span class="jxr_string">":"</span>, exc);
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>         }
+<a class="jxr_linenumber" name="L152" href="#L152">152</a> 
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>         <strong class="jxr_keyword">return</strong> doc;
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>     }
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2007&#x2013;2018 <a href="https://github.com/GeoDienstenCentrum">GeoDienstenCentrum</a>. All rights reserved.</div>
+</body>
+</html>
