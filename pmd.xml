@@ -2,24 +2,24 @@
 <pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
-    version="6.4.0" timestamp="2018-10-02T22:57:45.463">
+    version="6.4.0" timestamp="2018-10-03T10:23:10.913">
 <file name="/home/mprins/workspace/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/SchemaSpyReport.java">
-<violation beginline="341" endline="341" begincolumn="14" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+<violation beginline="336" endline="336" begincolumn="14" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
 Useless parentheses.
 </violation>
-<violation beginline="341" endline="341" begincolumn="33" endcolumn="37" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+<violation beginline="336" endline="336" begincolumn="33" endcolumn="37" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
 Useless parentheses.
 </violation>
-<violation beginline="358" endline="358" begincolumn="14" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addFlagToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+<violation beginline="353" endline="353" begincolumn="14" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addFlagToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
 Useless parentheses.
 </violation>
-<violation beginline="358" endline="358" begincolumn="33" endcolumn="37" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addFlagToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+<violation beginline="353" endline="353" begincolumn="33" endcolumn="37" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addFlagToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
 Useless parentheses.
 </violation>
-<violation beginline="414" endline="414" begincolumn="14" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="executeReport" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+<violation beginline="409" endline="409" begincolumn="14" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="executeReport" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
 Useless parentheses.
 </violation>
-<violation beginline="414" endline="414" begincolumn="35" endcolumn="54" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="executeReport" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+<violation beginline="409" endline="409" begincolumn="35" endcolumn="54" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="executeReport" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
 Useless parentheses.
 </violation>
 </file>
