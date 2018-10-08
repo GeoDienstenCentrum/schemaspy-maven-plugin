@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WriteStats.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.view</a> &gt; <span class="el_source">WriteStats.java</span></div><h1>WriteStats.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.view;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import net.sourceforge.schemaspy.model.Table;
+import net.sourceforge.schemaspy.model.TableColumn;
+
+/**
+ * Simple ugly hack that provides details of what was written.
+ */
+public class WriteStats {
+    private int numTables;
+    private int numViews;
+    private final Set&lt;TableColumn&gt; excludedColumns;
+
+<span class="fc" id="L35">    public WriteStats(Collection&lt;Table&gt; tables) {</span>
+<span class="fc" id="L36">        excludedColumns = new HashSet&lt;TableColumn&gt;();</span>
+
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (Table table : tables) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            for (TableColumn column : table.getColumns()) {</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">                if (column.isExcluded()) {</span>
+<span class="nc" id="L41">                    excludedColumns.add(column);</span>
+                }
+<span class="fc" id="L43">            }</span>
+<span class="fc" id="L44">        }</span>
+<span class="fc" id="L45">    }</span>
+
+<span class="fc" id="L47">    public WriteStats(WriteStats stats) {</span>
+<span class="fc" id="L48">        excludedColumns = stats.excludedColumns;</span>
+<span class="fc" id="L49">    }</span>
+
+    public void wroteTable(Table table) {
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if (table.isView())</span>
+<span class="nc" id="L53">            ++numViews;</span>
+        else
+<span class="fc" id="L55">            ++numTables;</span>
+<span class="fc" id="L56">    }</span>
+
+    public int getNumTablesWritten() {
+<span class="fc" id="L59">        return numTables;</span>
+    }
+
+    public int getNumViewsWritten() {
+<span class="fc" id="L63">        return numViews;</span>
+    }
+
+    public Set&lt;TableColumn&gt; getExcludedColumns() {
+<span class="fc" id="L67">        return excludedColumns;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

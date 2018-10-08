@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExplicitRemoteTable.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.model</a> &gt; <span class="el_source">ExplicitRemoteTable.java</span></div><h1>ExplicitRemoteTable.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.model;
+
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+/**
+ * A remote table (exists in another schema) that was explicitly created via XML metadata.
+ *
+ * @author John Currier
+ */
+public class ExplicitRemoteTable extends RemoteTable {
+<span class="nc" id="L31">    private static final Pattern excludeNone = Pattern.compile(&quot;[^.]&quot;);</span>
+
+    public ExplicitRemoteTable(Database db, String schema, String name, String baseSchema) throws SQLException {
+<span class="nc" id="L34">        super(db, schema, name, baseSchema, null, excludeNone, excludeNone);</span>
+<span class="nc" id="L35">    }</span>
+
+    @Override
+    public void connectForeignKeys(Map&lt;String, Table&gt; tables, Pattern excludeIndirectColumns, Pattern excludeColumns) throws SQLException {
+        // this probably won't work, so ignore any failures...but try anyways just in case
+        try {
+<span class="nc" id="L41">            super.connectForeignKeys(tables, excludeIndirectColumns, excludeColumns);</span>
+<span class="nc" id="L42">        } catch (SQLException ignore) {}</span>
+<span class="nc" id="L43">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

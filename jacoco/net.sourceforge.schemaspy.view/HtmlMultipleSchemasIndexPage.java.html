@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HtmlMultipleSchemasIndexPage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.view</a> &gt; <span class="el_source">HtmlMultipleSchemasIndexPage.java</span></div><h1>HtmlMultipleSchemasIndexPage.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.view;
+
+import java.io.IOException;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import net.sourceforge.schemaspy.Config;
+import net.sourceforge.schemaspy.util.LineWriter;
+
+/**
+ * The page that contains links to the various schemas that were analyzed
+ *
+ * @author John Currier
+ */
+public class HtmlMultipleSchemasIndexPage extends HtmlFormatter {
+<span class="nc" id="L36">    private static HtmlMultipleSchemasIndexPage instance = new HtmlMultipleSchemasIndexPage();</span>
+
+    /**
+     * Singleton: Don't allow instantiation
+     */
+    private HtmlMultipleSchemasIndexPage() {
+    }
+
+    /**
+     * Singleton accessor
+     *
+     * @return the singleton instance
+     */
+    public static HtmlMultipleSchemasIndexPage getInstance() {
+<span class="nc" id="L50">        return instance;</span>
+    }
+
+    public void write(String dbName, List&lt;String&gt; populatedSchemas, DatabaseMetaData meta, LineWriter index) throws IOException {
+<span class="nc" id="L54">        writeHeader(dbName, meta, populatedSchemas.size(), false, populatedSchemas.get(0).toString(), index);</span>
+
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        for (String schema : populatedSchemas) {</span>
+<span class="nc" id="L57">            writeLineItem(schema, index);</span>
+<span class="nc" id="L58">        }</span>
+
+<span class="nc" id="L60">        writeFooter(index);</span>
+<span class="nc" id="L61">    }</span>
+
+    private void writeHeader(String databaseName, DatabaseMetaData meta, int numberOfSchemas, boolean showIds, String aSchema, LineWriter html) throws IOException {
+<span class="nc" id="L64">        String connectTime = new SimpleDateFormat(&quot;EEE MMM dd HH:mm z yyyy&quot;).format(new Date());</span>
+
+<span class="nc" id="L66">        html.writeln(&quot;&lt;!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'&gt;&quot;);</span>
+<span class="nc" id="L67">        html.writeln(&quot;&lt;html&gt;&quot;);</span>
+<span class="nc" id="L68">        html.writeln(&quot;&lt;head&gt;&quot;);</span>
+<span class="nc" id="L69">        html.write(&quot;  &lt;title&gt;SchemaSpy Analysis&quot;);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (databaseName != null) {</span>
+<span class="nc" id="L71">            html.write(&quot; of Database &quot;);</span>
+<span class="nc" id="L72">            html.write(databaseName);</span>
+        }
+<span class="nc" id="L74">        html.writeln(&quot;&lt;/title&gt;&quot;);</span>
+<span class="nc" id="L75">        html.write(&quot;  &lt;link rel=stylesheet href='&quot;);</span>
+<span class="nc" id="L76">        html.write(encodeHref(aSchema));</span>
+<span class="nc" id="L77">        html.writeln(&quot;/schemaSpy.css' type='text/css'&gt;&quot;);</span>
+<span class="nc" id="L78">        html.writeln(&quot;  &lt;meta HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=&quot; + Config.getInstance().getCharset() + &quot;'&gt;&quot;);</span>
+<span class="nc" id="L79">        html.writeln(&quot;&lt;/head&gt;&quot;);</span>
+<span class="nc" id="L80">        html.writeln(&quot;&lt;body&gt;&quot;);</span>
+<span class="nc" id="L81">        writeTableOfContents(html);</span>
+<span class="nc" id="L82">        html.writeln(&quot;&lt;div class='content' style='clear:both;'&gt;&quot;);</span>
+<span class="nc" id="L83">        html.writeln(&quot;&lt;table width='100%' border='0' cellpadding='0'&gt;&quot;);</span>
+<span class="nc" id="L84">        html.writeln(&quot; &lt;tr&gt;&quot;);</span>
+<span class="nc" id="L85">        html.write(&quot;  &lt;td class='heading' valign='top'&gt;&lt;h1&gt;&quot;);</span>
+<span class="nc" id="L86">        html.write(&quot;SchemaSpy Analysis&quot;);</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (databaseName != null) {</span>
+<span class="nc" id="L88">            html.write(&quot; of Database &quot;);</span>
+<span class="nc" id="L89">            html.write(databaseName);</span>
+        }
+<span class="nc" id="L91">        html.writeln(&quot;&lt;/h1&gt;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L92">        html.writeln(&quot;  &lt;td class='heading' align='right' valign='top' title='John Currier - Creator of Cool Tools'&gt;&lt;span class='indent'&gt;Generated by&lt;/span&gt;&lt;br&gt;&lt;span class='indent'&gt;&lt;span class='signature'&gt;&lt;a href='http://schemaspy.sourceforge.net' target='_blank'&gt;SchemaSpy&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L93">        html.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L94">        html.writeln(&quot;&lt;/table&gt;&quot;);</span>
+<span class="nc" id="L95">        html.writeln(&quot;&lt;table width='100%'&gt;&quot;);</span>
+<span class="nc" id="L96">        html.writeln(&quot; &lt;tr&gt;&lt;td class='container'&gt;&quot;);</span>
+<span class="nc" id="L97">        writeGeneratedBy(connectTime, html);</span>
+<span class="nc" id="L98">        html.writeln(&quot; &lt;/td&gt;&lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L99">        html.writeln(&quot; &lt;tr&gt;&quot;);</span>
+<span class="nc" id="L100">        html.write(&quot;  &lt;td class='container'&gt;&quot;);</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (meta != null) {</span>
+<span class="nc" id="L102">            html.write(&quot;Database Type: &quot;);</span>
+<span class="nc" id="L103">            html.write(getDatabaseProduct(meta));</span>
+        }
+<span class="nc" id="L105">        html.writeln(&quot;  &lt;/td&gt;&quot;);</span>
+<span class="nc" id="L106">        html.writeln(&quot;  &lt;td class='container' align='right' valign='top' rowspan='3'&gt;&quot;);</span>
+        //if (sourceForgeLogoEnabled())
+        //    html.writeln(&quot;    &lt;a href='http://sourceforge.net' target='_blank'&gt;&lt;img src='http://sourceforge.net/sflogo.php?group_id=137197&amp;amp;type=1' alt='SourceForge.net' border='0' height='31' width='88'&gt;&lt;/a&gt;&lt;br&gt;&quot;);
+<span class="nc" id="L109">        html.write(&quot;    &lt;br&gt;&quot;);</span>
+<span class="nc" id="L110">        writeFeedMe(html);</span>
+<span class="nc" id="L111">        html.writeln(&quot;  &lt;/td&gt;&quot;);</span>
+<span class="nc" id="L112">        html.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L113">        html.writeln(&quot;&lt;/table&gt;&quot;);</span>
+
+<span class="nc" id="L115">        html.writeln(&quot;&lt;div class='indent'&gt;&quot;);</span>
+<span class="nc" id="L116">        html.write(&quot;&lt;b&gt;&quot;);</span>
+<span class="nc" id="L117">        html.write(String.valueOf(numberOfSchemas));</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (databaseName != null)</span>
+<span class="nc" id="L119">            html.write(&quot; Schema&quot;);</span>
+        else
+<span class="nc" id="L121">            html.write(&quot; Database&quot;);</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        html.write(numberOfSchemas == 1 ? &quot;&quot; : &quot;s&quot;);</span>
+<span class="nc" id="L123">        html.writeln(&quot;:&lt;/b&gt;&quot;);</span>
+<span class="nc" id="L124">        html.writeln(&quot;&lt;TABLE class='dataTable' border='1' rules='groups'&gt;&quot;);</span>
+<span class="nc" id="L125">        html.writeln(&quot;&lt;colgroup&gt;&quot;);</span>
+<span class="nc" id="L126">        html.writeln(&quot;&lt;thead align='left'&gt;&quot;);</span>
+<span class="nc" id="L127">        html.writeln(&quot;&lt;tr&gt;&quot;);</span>
+<span class="nc" id="L128">        html.write(&quot;  &lt;th valign='bottom'&gt;&quot;);</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        if (databaseName != null)</span>
+<span class="nc" id="L130">            html.write(&quot;Schema&quot;);</span>
+        else
+<span class="nc" id="L132">            html.write(&quot;Database&quot;);</span>
+<span class="nc" id="L133">        html.writeln(&quot;&lt;/th&gt;&quot;);</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        if (showIds)</span>
+<span class="nc" id="L135">            html.writeln(&quot;  &lt;th align='center' valign='bottom'&gt;ID&lt;/th&gt;&quot;);</span>
+<span class="nc" id="L136">        html.writeln(&quot;&lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L137">        html.writeln(&quot;&lt;/thead&gt;&quot;);</span>
+<span class="nc" id="L138">        html.writeln(&quot;&lt;tbody&gt;&quot;);</span>
+<span class="nc" id="L139">    }</span>
+
+    private void writeLineItem(String schema, LineWriter index) throws IOException {
+<span class="nc" id="L142">        index.writeln(&quot; &lt;tr&gt;&quot;);</span>
+<span class="nc" id="L143">        index.write(&quot;  &lt;td class='detail'&gt;&lt;a href='&quot;);</span>
+<span class="nc" id="L144">        index.write(encodeHref(schema));</span>
+<span class="nc" id="L145">        index.write(&quot;/index.html'&gt;&quot;);</span>
+<span class="nc" id="L146">        index.write(schema);</span>
+<span class="nc" id="L147">        index.writeln(&quot;&lt;/a&gt;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L148">        index.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L149">    }</span>
+
+    protected void writeTableOfContents(LineWriter html) throws IOException {
+        // have to use a table to deal with a horizontal scrollbar showing up inappropriately
+<span class="nc" id="L153">        html.writeln(&quot;&lt;table id='headerHolder' cellspacing='0' cellpadding='0'&gt;&lt;tr&gt;&lt;td&gt;&quot;);</span>
+<span class="nc" id="L154">        html.writeln(&quot;&lt;div id='header'&gt;&quot;);</span>
+<span class="nc" id="L155">        html.writeln(&quot; &lt;ul&gt;&quot;);</span>
+<span class="nc" id="L156">        html.writeln(&quot;  &lt;li id='current'&gt;&lt;a href='index.html' title='All user schemas in the database'&gt;Schemas&lt;/a&gt;&lt;/li&gt;&quot;);</span>
+//        html.writeln(&quot;  &lt;li&gt;&lt;a href='http://sourceforge.net/donate/index.php?group_id=137197' title='Please help keep SchemaSpy alive' target='_blank'&gt;Donate&lt;/a&gt;&lt;/li&gt;&quot;);
+<span class="nc" id="L158">        html.writeln(&quot; &lt;/ul&gt;&quot;);</span>
+<span class="nc" id="L159">        html.writeln(&quot;&lt;/div&gt;&quot;);</span>
+<span class="nc" id="L160">        html.writeln(&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;);</span>
+<span class="nc" id="L161">    }</span>
+
+    /**
+     * Copy / paste from Database, but we can't use Database here...
+     *
+     * @param meta DatabaseMetaData
+     * @return String
+     */
+    private String getDatabaseProduct(DatabaseMetaData meta) {
+        try {
+<span class="nc" id="L171">            return meta.getDatabaseProductName() + &quot; - &quot; + meta.getDatabaseProductVersion();</span>
+<span class="nc" id="L172">        } catch (SQLException exc) {</span>
+<span class="nc" id="L173">            return &quot;&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

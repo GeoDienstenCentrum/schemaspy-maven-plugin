@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MultipleSchemaAnalyzer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy</a> &gt; <span class="el_source">MultipleSchemaAnalyzer.java</span></div><h1>MultipleSchemaAnalyzer.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.io.Reader;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import net.sourceforge.schemaspy.model.ProcessExecutionException;
+import net.sourceforge.schemaspy.util.LineWriter;
+import net.sourceforge.schemaspy.view.HtmlMultipleSchemasIndexPage;
+
+/**
+ * @author John Currier
+ */
+public final class MultipleSchemaAnalyzer {
+<span class="nc" id="L44">    private static MultipleSchemaAnalyzer instance = new MultipleSchemaAnalyzer();</span>
+<span class="nc" id="L45">    private final Logger logger = Logger.getLogger(getClass().getName());</span>
+<span class="nc" id="L46">    private final boolean fineEnabled = logger.isLoggable(Level.FINE);</span>
+
+<span class="nc" id="L48">    private MultipleSchemaAnalyzer() {</span>
+<span class="nc" id="L49">    }</span>
+
+    public static MultipleSchemaAnalyzer getInstance() {
+<span class="nc" id="L52">        return instance;</span>
+    }
+
+    public void analyze(String dbName, DatabaseMetaData meta, String schemaSpec, List&lt;String&gt; schemas, List&lt;String&gt; args, String user, File outputDir, String charset, String loadedFrom) throws SQLException, IOException {
+<span class="nc" id="L56">        long start = System.currentTimeMillis();</span>
+<span class="nc" id="L57">        List&lt;String&gt; genericCommand = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L58">        genericCommand.add(&quot;java&quot;);</span>
+<span class="nc" id="L59">        genericCommand.add(&quot;-Doneofmultipleschemas=true&quot;);</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (new File(loadedFrom).isDirectory()) {</span>
+<span class="nc" id="L61">            genericCommand.add(&quot;-cp&quot;);</span>
+<span class="nc" id="L62">            genericCommand.add(loadedFrom);</span>
+<span class="nc" id="L63">            genericCommand.add(Main.class.getName());</span>
+        } else {
+<span class="nc" id="L65">            genericCommand.add(&quot;-jar&quot;);</span>
+<span class="nc" id="L66">            genericCommand.add(loadedFrom);</span>
+        }
+
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        for (String next : args) {</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            if (next.startsWith(&quot;-&quot;))</span>
+<span class="nc" id="L71">                genericCommand.add(next);</span>
+            else
+<span class="nc" id="L73">                genericCommand.add(&quot;\&quot;&quot; + next + &quot;\&quot;&quot;);</span>
+<span class="nc" id="L74">        }</span>
+
+        List&lt;String&gt; populatedSchemas;
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if (schemas == null) {</span>
+<span class="nc" id="L78">            System.out.println(&quot;Analyzing schemas that match regular expression '&quot; + schemaSpec + &quot;':&quot;);</span>
+<span class="nc" id="L79">            System.out.println(&quot;(use -schemaSpec on command line or in .properties to exclude other schemas)&quot;);</span>
+<span class="nc" id="L80">            populatedSchemas = getPopulatedSchemas(meta, schemaSpec, user);</span>
+        } else {
+<span class="nc" id="L82">            System.out.println(&quot;Analyzing schemas:&quot;);</span>
+<span class="nc" id="L83">            populatedSchemas = schemas;</span>
+        }
+
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        for (String populatedSchema : populatedSchemas)</span>
+<span class="nc" id="L87">            System.out.print(&quot; &quot; + populatedSchema);</span>
+<span class="nc" id="L88">        System.out.println();</span>
+
+<span class="nc" id="L90">        writeIndexPage(dbName, populatedSchemas, meta, outputDir, charset);</span>
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        for (String schema : populatedSchemas) {</span>
+<span class="nc" id="L93">            List&lt;String&gt; command = new ArrayList&lt;String&gt;(genericCommand);</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            if (dbName == null)</span>
+<span class="nc" id="L95">                command.add(&quot;-db&quot;);</span>
+            else
+<span class="nc" id="L97">                command.add(&quot;-s&quot;);</span>
+<span class="nc" id="L98">            command.add(schema);</span>
+<span class="nc" id="L99">            command.add(&quot;-o&quot;);</span>
+<span class="nc" id="L100">            command.add(new File(outputDir, schema).toString());</span>
+<span class="nc" id="L101">            System.out.println(&quot;Analyzing &quot; + schema);</span>
+<span class="nc" id="L102">            System.out.flush();</span>
+<span class="nc" id="L103">            Process java = Runtime.getRuntime().exec(command.toArray(new String[]{}));</span>
+<span class="nc" id="L104">            new ProcessOutputReader(java.getInputStream(), System.out).start();</span>
+<span class="nc" id="L105">            new ProcessOutputReader(java.getErrorStream(), System.err).start();</span>
+
+            try {
+<span class="nc" id="L108">                int rc = java.waitFor();</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                if (rc != 0) {</span>
+<span class="nc" id="L110">                    StringBuilder err = new StringBuilder(&quot;Failed to execute this process (rc &quot; + rc + &quot;):&quot;);</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                    for (String chunk : command) {</span>
+<span class="nc" id="L112">                        err.append(&quot; &quot;);</span>
+<span class="nc" id="L113">                        err.append(chunk);</span>
+<span class="nc" id="L114">                    }</span>
+<span class="nc" id="L115">                    throw new ProcessExecutionException(err.toString());</span>
+                }
+<span class="nc" id="L117">            } catch (InterruptedException exc) {</span>
+<span class="nc" id="L118">            }</span>
+<span class="nc" id="L119">        }</span>
+
+<span class="nc" id="L121">        long end = System.currentTimeMillis();</span>
+<span class="nc" id="L122">        System.out.println();</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        System.out.println(&quot;Wrote relationship details of &quot; + populatedSchemas.size() + &quot; schema&quot; + (populatedSchemas.size() == 1 ? &quot;&quot; : &quot;s&quot;) + &quot; in &quot; + (end - start) / 1000 + &quot; seconds.&quot;);</span>
+<span class="nc" id="L124">        System.out.println(&quot;Start with &quot; + new File(outputDir, &quot;index.html&quot;));</span>
+<span class="nc" id="L125">    }</span>
+
+    public void analyze(String dbName, List&lt;String&gt; schemas, List&lt;String&gt; args,
+            String user, File outputDir, String charset, String loadedFromJar) throws SQLException, IOException {
+<span class="nc" id="L129">        analyze(dbName, null, null, schemas, args, user, outputDir, charset, loadedFromJar);</span>
+<span class="nc" id="L130">    }</span>
+
+   private void writeIndexPage(String dbName, List&lt;String&gt; populatedSchemas, DatabaseMetaData meta, File outputDir, String charset) throws IOException {
+<span class="nc bnc" id="L133" title="All 2 branches missed.">        if (populatedSchemas.size() &gt; 0) {</span>
+<span class="nc" id="L134">            LineWriter index = new LineWriter(new File(outputDir, &quot;index.html&quot;), charset);</span>
+<span class="nc" id="L135">            HtmlMultipleSchemasIndexPage.getInstance().write(dbName, populatedSchemas, meta, index);</span>
+<span class="nc" id="L136">            index.close();</span>
+        }
+<span class="nc" id="L138">    }</span>
+
+    private List&lt;String&gt; getPopulatedSchemas(DatabaseMetaData meta, String schemaSpec, String user) throws SQLException {
+        List&lt;String&gt; populatedSchemas;
+
+<span class="nc bnc" id="L143" title="All 2 branches missed.">        if (meta.supportsSchemasInTableDefinitions()) {</span>
+<span class="nc" id="L144">            Pattern schemaRegex = Pattern.compile(schemaSpec);</span>
+
+<span class="nc" id="L146">            populatedSchemas = DbAnalyzer.getPopulatedSchemas(meta, schemaSpec);</span>
+<span class="nc" id="L147">            Iterator&lt;String&gt; iter = populatedSchemas.iterator();</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">            while (iter.hasNext()) {</span>
+<span class="nc" id="L149">                String schema = iter.next();</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">                if (!schemaRegex.matcher(schema).matches()) {</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">                    if (fineEnabled) {</span>
+<span class="nc" id="L152">                        logger.fine(&quot;Excluding schema &quot; + schema +</span>
+                                    &quot;: doesn't match + \&quot;&quot; + schemaRegex + '&quot;');
+                    }
+<span class="nc" id="L155">                    iter.remove(); // remove those that we're not supposed to analyze</span>
+                } else {
+<span class="nc bnc" id="L157" title="All 2 branches missed.">                    if (fineEnabled) {</span>
+<span class="nc" id="L158">                        logger.fine(&quot;Including schema &quot; + schema +</span>
+                                    &quot;: matches + \&quot;&quot; + schemaRegex + '&quot;');
+                    }
+                }
+<span class="nc" id="L162">            }</span>
+<span class="nc" id="L163">        } else {</span>
+<span class="nc" id="L164">            populatedSchemas = Arrays.asList(new String[] {user});</span>
+        }
+
+<span class="nc" id="L167">        return populatedSchemas;</span>
+    }
+
+    private static class ProcessOutputReader extends Thread {
+        private final Reader processReader;
+        private final PrintStream out;
+
+<span class="nc" id="L174">        ProcessOutputReader(InputStream processStream, PrintStream out) {</span>
+<span class="nc" id="L175">            processReader = new InputStreamReader(processStream);</span>
+<span class="nc" id="L176">            this.out = out;</span>
+<span class="nc" id="L177">            setDaemon(true);</span>
+<span class="nc" id="L178">        }</span>
+
+        @Override
+        public void run() {
+            try {
+                int ch;
+<span class="nc bnc" id="L184" title="All 2 branches missed.">                while ((ch = processReader.read()) != -1) {</span>
+<span class="nc" id="L185">                    out.print((char)ch);</span>
+<span class="nc" id="L186">                    out.flush();</span>
+                }
+<span class="nc" id="L188">            } catch (IOException ioException) {</span>
+<span class="nc" id="L189">                ioException.printStackTrace();</span>
+            } finally {
+                try {
+<span class="nc" id="L192">                    processReader.close();</span>
+<span class="nc" id="L193">                } catch (Exception exc) {</span>
+<span class="nc" id="L194">                    exc.printStackTrace(); // shouldn't ever get here...but...</span>
+<span class="nc" id="L195">                }</span>
+            }
+<span class="nc" id="L197">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

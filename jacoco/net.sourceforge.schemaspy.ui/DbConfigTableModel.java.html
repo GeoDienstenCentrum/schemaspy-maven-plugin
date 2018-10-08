@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DbConfigTableModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.ui</a> &gt; <span class="el_source">DbConfigTableModel.java</span></div><h1>DbConfigTableModel.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.ui;
+
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.table.AbstractTableModel;
+import net.sourceforge.schemaspy.Config;
+import net.sourceforge.schemaspy.Config.MissingRequiredParameterException;
+import net.sourceforge.schemaspy.util.DbSpecificConfig;
+import net.sourceforge.schemaspy.util.DbSpecificOption;
+
+/**
+ * @author John Currier
+ */
+public class DbConfigTableModel extends AbstractTableModel {
+    private static final long serialVersionUID = 1L;
+<span class="nc" id="L40">    private final List&lt;PropertyDescriptor&gt; options = new ArrayList&lt;PropertyDescriptor&gt;();</span>
+<span class="nc" id="L41">    private Config config = Config.getInstance(); // the config associated with DbSpecificConfig</span>
+
+<span class="nc" id="L43">    public DbConfigTableModel() {</span>
+<span class="nc" id="L44">        PropertyDescriptor[] props = getConfigProps();</span>
+
+<span class="nc" id="L46">        options.add(getDescriptor(&quot;outputDir&quot;, &quot;Directory to generate HTML output to&quot;, props));</span>
+<span class="nc" id="L47">        options.add(getDescriptor(&quot;schema&quot;, &quot;Schema to evaluate&quot;, props));</span>
+<span class="nc" id="L48">        options.add(getDescriptor(&quot;user&quot;, &quot;User ID to connect with&quot;, props));</span>
+<span class="nc" id="L49">        options.add(getDescriptor(&quot;password&quot;, &quot;Password associated with user id&quot;, props));</span>
+<span class="nc" id="L50">        options.add(getDescriptor(&quot;impliedConstraintsEnabled&quot;, &quot;XXXX&quot;, props));</span>
+<span class="nc" id="L51">    }</span>
+
+    public void setDbSpecificConfig(DbSpecificConfig dbConfig) {
+<span class="nc" id="L54">        config  = dbConfig.getConfig();</span>
+<span class="nc" id="L55">        Config.setInstance(config);</span>
+<span class="nc" id="L56">        PropertyDescriptor[] props = getConfigProps();</span>
+<span class="nc" id="L57">        removeDbSpecificOptions();</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        for (DbSpecificOption option : dbConfig.getOptions()) {</span>
+<span class="nc" id="L60">            PropertyDescriptor descriptor = getDescriptor(option.getName(), option.getDescription(), props);</span>
+<span class="nc" id="L61">            descriptor.setValue(&quot;dbSpecific&quot;, Boolean.TRUE);</span>
+<span class="nc" id="L62">            options.add(descriptor);</span>
+<span class="nc" id="L63">        }</span>
+
+<span class="nc" id="L65">        fireTableDataChanged();</span>
+<span class="nc" id="L66">    }</span>
+
+    @Override
+    public String getColumnName(int column) {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        switch (column) {</span>
+            case 0:
+<span class="nc" id="L72">                return &quot;Option&quot;;</span>
+            default:
+<span class="nc" id="L74">                return &quot;Value&quot;;</span>
+        }
+    }
+
+    /**
+     * @param string
+     * @param string2
+     * @param props
+     * @return
+     */
+    private PropertyDescriptor getDescriptor(String propName, String description, PropertyDescriptor[] props) {
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (props == null)</span>
+<span class="nc" id="L86">            props = getConfigProps();</span>
+
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        for (int i = 0; i &lt; props.length; ++i) {</span>
+<span class="nc" id="L89">            PropertyDescriptor prop = props[i];</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (prop.getName().equalsIgnoreCase(propName)) {</span>
+<span class="nc" id="L91">                prop.setShortDescription(description);</span>
+<span class="nc" id="L92">                return prop;</span>
+            }
+        }
+
+<span class="nc" id="L96">        throw new IllegalArgumentException(propName + &quot; is not a valid configuration item&quot;);</span>
+    }
+
+    private PropertyDescriptor[] getConfigProps() throws RuntimeException {
+        BeanInfo beanInfo;
+        try {
+<span class="nc" id="L102">            beanInfo = Introspector.getBeanInfo(Config.class);</span>
+<span class="nc" id="L103">        } catch (IntrospectionException exc) {</span>
+<span class="nc" id="L104">            throw new RuntimeException(exc);</span>
+<span class="nc" id="L105">        }</span>
+
+<span class="nc" id="L107">        return beanInfo.getPropertyDescriptors();</span>
+    }
+
+    private void removeDbSpecificOptions() {
+<span class="nc" id="L111">        Iterator&lt;PropertyDescriptor&gt; iter = options.iterator();</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        while (iter.hasNext()) {</span>
+<span class="nc" id="L113">            PropertyDescriptor descriptor = iter.next();</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">            if (descriptor.getValue(&quot;dbSpecific&quot;) != null)</span>
+<span class="nc" id="L115">                iter.remove();</span>
+<span class="nc" id="L116">        }</span>
+<span class="nc" id="L117">    }</span>
+
+    /* (non-Javadoc)
+     * @see javax.swing.table.TableModel#getColumnCount()
+     */
+    public int getColumnCount() {
+<span class="nc" id="L123">        return 2;</span>
+    }
+
+    /* (non-Javadoc)
+     * @see javax.swing.table.TableModel#getRowCount()
+     */
+    public int getRowCount() {
+<span class="nc" id="L130">        return options.size();</span>
+    }
+
+    @Override
+    public boolean isCellEditable(int row, int col) {
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (col != 1)</span>
+<span class="nc" id="L136">            return false;</span>
+
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        return options.get(row).getWriteMethod() != null;</span>
+    }
+
+    /* (non-Javadoc)
+     * @see javax.swing.table.TableModel#getValueAt(int, int)
+     */
+    public Object getValueAt(int row, int column) {
+<span class="nc" id="L145">        PropertyDescriptor descriptor = options.get(row);</span>
+<span class="nc bnc" id="L146" title="All 3 branches missed.">        switch (column) {</span>
+            case 0:
+<span class="nc" id="L148">                return descriptor.getName();</span>
+            case 1:
+                try {
+<span class="nc" id="L151">                    Object value = descriptor.getReadMethod().invoke(config, (Object[])null);</span>
+                    //System.out.println(descriptor.getReadMethod().getName() + &quot;:'&quot; + value + &quot;' &quot; + (value != null ? value.getClass().toString() : &quot;&quot;));
+<span class="nc" id="L153">                    return value;</span>
+<span class="nc" id="L154">                } catch (InvocationTargetException exc) {</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">                    if (exc.getCause() instanceof MissingRequiredParameterException)</span>
+<span class="nc" id="L156">                        return null;</span>
+<span class="nc" id="L157">                    throw new RuntimeException(exc);</span>
+<span class="nc" id="L158">                } catch (Exception exc) {</span>
+<span class="nc" id="L159">                    throw new RuntimeException(exc);</span>
+                }
+        }
+
+<span class="nc" id="L163">        return null;</span>
+    }
+
+    @Override
+    public void setValueAt(Object value, int row, int col) {
+<span class="nc" id="L168">        Object oldValue = getValueAt(row, col);</span>
+<span class="nc bnc" id="L169" title="All 8 branches missed.">        if (oldValue != value &amp;&amp; (value == null || oldValue == null || !value.equals(oldValue))) {</span>
+<span class="nc" id="L170">            PropertyDescriptor descriptor = options.get(row);</span>
+            try {
+                //System.out.println(descriptor.getWriteMethod().getName() + &quot;:'&quot; + value + &quot;' &quot; + (value != null ? value.getClass().toString() : &quot;&quot;));
+<span class="nc bnc" id="L173" title="All 4 branches missed.">                if (value instanceof String &amp;&amp; descriptor.getPropertyType().isAssignableFrom(Integer.class)) {</span>
+                    try {
+<span class="nc" id="L175">                        value = Integer.valueOf((String)value);</span>
+<span class="nc" id="L176">                    } catch (NumberFormatException nfe) {</span>
+<span class="nc" id="L177">                        value = oldValue;</span>
+<span class="nc" id="L178">                    }</span>
+                }
+
+<span class="nc" id="L181">                descriptor.getWriteMethod().invoke(config, new Object[] {value});</span>
+<span class="nc" id="L182">            } catch (Exception exc) {</span>
+<span class="nc" id="L183">                throw new RuntimeException(exc);</span>
+<span class="nc" id="L184">            }</span>
+
+<span class="nc" id="L186">            fireTableCellUpdated(row, col);</span>
+        }
+<span class="nc" id="L188">    }</span>
+
+    /**
+     * @param row
+     * @return
+     */
+    public Class&lt;?&gt; getClass(int row) {
+<span class="nc" id="L195">        PropertyDescriptor descriptor = options.get(row);</span>
+<span class="nc" id="L196">        return descriptor.getPropertyType();</span>
+    }
+
+    /**
+     * @param row
+     * @return
+     */
+    public String getDescription(int row) {
+<span class="nc" id="L204">        PropertyDescriptor descriptor = options.get(row);</span>
+<span class="nc" id="L205">        return descriptor.getShortDescription();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

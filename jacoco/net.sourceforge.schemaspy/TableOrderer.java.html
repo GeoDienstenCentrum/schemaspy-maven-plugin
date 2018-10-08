@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TableOrderer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy</a> &gt; <span class="el_source">TableOrderer.java</span></div><h1>TableOrderer.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import net.sourceforge.schemaspy.model.ForeignKeyConstraint;
+import net.sourceforge.schemaspy.model.Table;
+
+/**
+ * Sorts {@link Table}s by their referential integrity constraints.
+ * The intent is to have a list of tables in an order that can be used
+ * to insert or delete them from a database.
+ *
+ * @author John Currier
+ */
+<span class="fc" id="L38">public class TableOrderer {</span>
+    /**
+     * Returns a list of &lt;code&gt;Table&lt;/code&gt;s ordered such that parents are listed first
+     * and child tables are listed last.
+     *
+     * &lt;code&gt;recursiveConstraints&lt;/code&gt; gets populated with &lt;code&gt;TableConstraint&lt;/code&gt;s
+     * that had to be removed to resolve the returned list.
+     * @param recursiveConstraints
+     * @return
+     */
+    public List&lt;Table&gt; getTablesOrderedByRI(Collection&lt;Table&gt; tables, Collection&lt;ForeignKeyConstraint&gt; recursiveConstraints) {
+<span class="fc" id="L49">        List&lt;Table&gt; heads = new ArrayList&lt;Table&gt;();</span>
+<span class="fc" id="L50">        List&lt;Table&gt; tails = new ArrayList&lt;Table&gt;();</span>
+<span class="fc" id="L51">        List&lt;Table&gt; remainingTables = new ArrayList&lt;Table&gt;(tables);</span>
+<span class="fc" id="L52">        List&lt;Table&gt; unattached = new ArrayList&lt;Table&gt;();</span>
+
+        // first pass to gather the 'low hanging fruit'
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        for (Iterator&lt;Table&gt; iter = remainingTables.iterator(); iter.hasNext(); ) {</span>
+<span class="fc" id="L56">            Table table = iter.next();</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">            if (table.isRemote()) {</span>
+                // ignore remote tables since there's no way to deal with them
+<span class="nc" id="L59">                table.unlinkParents();</span>
+<span class="nc" id="L60">                table.unlinkChildren();</span>
+<span class="nc" id="L61">                iter.remove();</span>
+<span class="pc bpc" id="L62" title="1 of 4 branches missed.">            } else if (table.isLeaf() &amp;&amp; table.isRoot()) {</span>
+                // floater, so add it to 'unattached'
+<span class="nc" id="L64">                unattached.add(table);</span>
+<span class="nc" id="L65">                iter.remove();</span>
+            }
+<span class="fc" id="L67">        }</span>
+
+<span class="fc" id="L69">        unattached = sortTrimmedLevel(unattached);</span>
+<span class="fc" id="L70">        boolean prunedNonReals = false;</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        while (!remainingTables.isEmpty()) {</span>
+<span class="fc" id="L73">            int tablesLeft = remainingTables.size();</span>
+<span class="fc" id="L74">            tails.addAll(0, trimLeaves(remainingTables));</span>
+<span class="fc" id="L75">            heads.addAll(trimRoots(remainingTables));</span>
+
+            // if we could't trim anything then there's recursion....
+            // resolve it by removing a constraint, one by one, 'till the tables are all trimmed
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">            if (tablesLeft == remainingTables.size()) {</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                if (!prunedNonReals) {</span>
+                    // get ride of everything that isn't explicitly specified by the database
+<span class="nc bnc" id="L82" title="All 2 branches missed.">                    for (Table table : remainingTables) {</span>
+<span class="nc" id="L83">                        table.removeNonRealForeignKeys();</span>
+<span class="nc" id="L84">                    }</span>
+
+<span class="nc" id="L86">                    prunedNonReals = true;</span>
+<span class="nc" id="L87">                    continue;</span>
+                }
+
+<span class="nc" id="L90">                boolean foundSimpleRecursion = false;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                for (Table potentialRecursiveTable : remainingTables) {</span>
+<span class="nc" id="L92">                    ForeignKeyConstraint recursiveConstraint = potentialRecursiveTable.removeSelfReferencingConstraint();</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">                    if (recursiveConstraint != null) {</span>
+<span class="nc" id="L94">                        recursiveConstraints.add(recursiveConstraint);</span>
+<span class="nc" id="L95">                        foundSimpleRecursion = true;</span>
+                    }
+<span class="nc" id="L97">                }</span>
+
+<span class="nc bnc" id="L99" title="All 2 branches missed.">                if (!foundSimpleRecursion) {</span>
+                    // expensive comparison, but we're down to the end of the tables so it shouldn't really matter
+<span class="nc" id="L101">                    Set&lt;Table&gt; byParentChildDelta = new TreeSet&lt;Table&gt;(new Comparator&lt;Table&gt;() {</span>
+                        // sort on the delta between number of parents and kids so we can
+                        // target the tables with the biggest delta and therefore the most impact
+                        // on reducing the smaller of the two
+                        public int compare(Table table1, Table table2) {
+<span class="nc" id="L106">                            int rc = Math.abs(table2.getNumChildren() - table2.getNumParents()) - Math.abs(table1.getNumChildren() - table1.getNumParents());</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">                            if (rc == 0)</span>
+<span class="nc" id="L108">                                rc = table1.compareTo(table2);</span>
+<span class="nc" id="L109">                            return rc;</span>
+                        }
+                    });
+<span class="nc" id="L112">                    byParentChildDelta.addAll(remainingTables);</span>
+<span class="nc" id="L113">                    Table recursiveTable = byParentChildDelta.iterator().next(); // this one has the largest delta</span>
+<span class="nc" id="L114">                    ForeignKeyConstraint removedConstraint = recursiveTable.removeAForeignKeyConstraint();</span>
+<span class="nc" id="L115">                    recursiveConstraints.add(removedConstraint);</span>
+                }
+            }
+<span class="fc" id="L118">        }</span>
+
+        // we've gathered all the heads and tails, so combine them here moving 'unattached' tables to the end
+<span class="fc" id="L121">        List&lt;Table&gt; ordered = new ArrayList&lt;Table&gt;(heads.size() + tails.size());</span>
+
+<span class="fc" id="L123">        ordered.addAll(heads);</span>
+<span class="fc" id="L124">        heads = null; // allow gc ASAP</span>
+
+<span class="fc" id="L126">        ordered.addAll(tails);</span>
+<span class="fc" id="L127">        tails = null; // allow gc ASAP</span>
+
+<span class="fc" id="L129">        ordered.addAll(unattached);</span>
+
+<span class="fc" id="L131">        return ordered;</span>
+    }
+
+    /**
+     * Remove the root nodes (tables w/o parents)
+     *
+     * @param tables
+     * @return tables removed
+     */
+    private static List&lt;Table&gt; trimRoots(List&lt;Table&gt; tables) {
+<span class="fc" id="L141">        List&lt;Table&gt; roots = new ArrayList&lt;Table&gt;();</span>
+
+<span class="fc" id="L143">        Iterator&lt;Table&gt; iter = tables.iterator();</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        while (iter.hasNext()) {</span>
+<span class="fc" id="L145">            Table root = iter.next();</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">            if (root.isRoot()) {</span>
+<span class="fc" id="L147">                roots.add(root);</span>
+<span class="fc" id="L148">                iter.remove();</span>
+            }
+<span class="fc" id="L150">        }</span>
+
+        // now sort them so the ones with large numbers of children show up first (not required, but cool)
+<span class="fc" id="L153">        roots = sortTrimmedLevel(roots);</span>
+<span class="fc" id="L154">        iter = roots.iterator();</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">        while (iter.hasNext()) {</span>
+            // do this after the previous loop to prevent getting roots before they're ready
+            // and so we can sort them correctly
+<span class="fc" id="L158">            iter.next().unlinkChildren();</span>
+        }
+
+<span class="fc" id="L161">        return roots;</span>
+    }
+
+    /**
+     * Remove the leaf nodes (tables w/o children)
+     *
+     * @param tables
+     * @return tables removed
+     */
+    private static List&lt;Table&gt; trimLeaves(List&lt;Table&gt; tables) {
+<span class="fc" id="L171">        List&lt;Table&gt; leaves = new ArrayList&lt;Table&gt;();</span>
+
+<span class="fc" id="L173">        Iterator&lt;Table&gt; iter = tables.iterator();</span>
+<span class="fc bfc" id="L174" title="All 2 branches covered.">        while (iter.hasNext()) {</span>
+<span class="fc" id="L175">            Table leaf = iter.next();</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">            if (leaf.isLeaf()) {</span>
+<span class="fc" id="L177">                leaves.add(leaf);</span>
+<span class="fc" id="L178">                iter.remove();</span>
+            }
+<span class="fc" id="L180">        }</span>
+
+        // now sort them so the ones with large numbers of children show up first (not required, but cool)
+<span class="fc" id="L183">        leaves = sortTrimmedLevel(leaves);</span>
+<span class="fc" id="L184">        iter = leaves.iterator();</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">        while (iter.hasNext()) {</span>
+            // do this after the previous loop to prevent getting leaves before they're ready
+            // and so we can sort them correctly
+<span class="fc" id="L188">            iter.next().unlinkParents();</span>
+        }
+
+<span class="fc" id="L191">        return leaves;</span>
+    }
+
+    /**
+     * this doesn't change the logical output of the program because all of these (leaves or roots) are at the same logical level
+     */
+    private static List&lt;Table&gt; sortTrimmedLevel(List&lt;Table&gt; tables) {
+        /**
+         * order by
+         * &lt;ul&gt;
+         *  &lt;li&gt;number of kids (descending)
+         *  &lt;li&gt;number of parents (ascending)
+         *  &lt;li&gt;alpha name (ascending)
+         * &lt;/ul&gt;
+         */
+<span class="fc" id="L206">        final class TrimComparator implements Comparator&lt;Table&gt; {</span>
+            public int compare(Table table1, Table table2) {
+                // have to keep track of and use the 'max' versions because
+                // by the time we get here we'll (probably?) have no parents or children
+<span class="fc" id="L210">                int rc = table2.getMaxChildren() - table1.getMaxChildren();</span>
+<span class="pc bpc" id="L211" title="1 of 2 branches missed.">                if (rc == 0)</span>
+<span class="fc" id="L212">                    rc = table1.getMaxParents() - table2.getMaxParents();</span>
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">                if (rc == 0)</span>
+<span class="fc" id="L214">                    rc = table1.compareTo(table2);</span>
+<span class="fc" id="L215">                return rc;</span>
+            }
+        }
+
+<span class="fc" id="L219">        Set&lt;Table&gt; sorter = new TreeSet&lt;Table&gt;(new TrimComparator());</span>
+<span class="fc" id="L220">        sorter.addAll(tables);</span>
+<span class="fc" id="L221">        return new ArrayList&lt;Table&gt;(sorter);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

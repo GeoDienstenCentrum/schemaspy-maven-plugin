@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Database.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.model</a> &gt; <span class="el_source">Database.java</span></div><h1>Database.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.model;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.Properties;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import net.sourceforge.schemaspy.Config;
+import net.sourceforge.schemaspy.model.xml.SchemaMeta;
+import net.sourceforge.schemaspy.model.xml.TableMeta;
+import net.sourceforge.schemaspy.util.CaseInsensitiveMap;
+
+public class Database {
+    private final String databaseName;
+    private final String schema;
+    private String description;
+<span class="fc" id="L53">    private final Map&lt;String, Table&gt; tables = new CaseInsensitiveMap&lt;Table&gt;();</span>
+<span class="fc" id="L54">    private final Map&lt;String, View&gt; views = new CaseInsensitiveMap&lt;View&gt;();</span>
+<span class="fc" id="L55">    private final Map&lt;String, Table&gt; remoteTables = new CaseInsensitiveMap&lt;Table&gt;(); // key: schema.tableName value: RemoteTable</span>
+    private final DatabaseMetaData meta;
+    private final Connection connection;
+<span class="fc" id="L58">    private final String connectTime = new SimpleDateFormat(&quot;EEE MMM dd HH:mm z yyyy&quot;).format(new Date());</span>
+    private Set&lt;String&gt; sqlKeywords;
+    private Pattern invalidIdentifierPattern;
+<span class="fc" id="L61">    private final Logger logger = Logger.getLogger(getClass().getName());</span>
+<span class="fc" id="L62">    private final boolean fineEnabled = logger.isLoggable(Level.FINE);</span>
+
+<span class="fc" id="L64">    public Database(Config config, Connection connection, DatabaseMetaData meta, String name, String schema, Properties properties, SchemaMeta schemaMeta) throws SQLException, MissingResourceException {</span>
+<span class="fc" id="L65">        this.connection = connection;</span>
+<span class="fc" id="L66">        this.meta = meta;</span>
+<span class="fc" id="L67">        databaseName = name;</span>
+<span class="fc" id="L68">        this.schema = schema;</span>
+<span class="fc" id="L69">        description = config.getDescription();</span>
+
+<span class="fc" id="L71">        initTables(meta, properties, config);</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (config.isViewsEnabled())</span>
+<span class="fc" id="L73">            initViews(meta, properties, config);</span>
+
+<span class="fc" id="L75">        initCheckConstraints(properties);</span>
+<span class="fc" id="L76">        initTableIds(properties);</span>
+<span class="fc" id="L77">        initIndexIds(properties);</span>
+<span class="fc" id="L78">        initTableComments(properties);</span>
+<span class="fc" id="L79">        initTableColumnComments(properties);</span>
+<span class="fc" id="L80">        initViewComments(properties);</span>
+<span class="fc" id="L81">        initViewColumnComments(properties);</span>
+
+<span class="fc" id="L83">        connectTables();</span>
+<span class="fc" id="L84">        updateFromXmlMetadata(schemaMeta);</span>
+<span class="fc" id="L85">    }</span>
+
+    public String getName() {
+<span class="fc" id="L88">        return databaseName;</span>
+    }
+
+    public String getSchema() {
+<span class="fc" id="L92">        return schema;</span>
+    }
+
+    /**
+     * Details of the database type that's running under the covers.
+     *
+     * @return null if a description wasn't specified.
+     */
+    public String getDescription() {
+<span class="fc" id="L101">        return description;</span>
+    }
+
+    public Collection&lt;Table&gt; getTables() {
+<span class="fc" id="L105">        return tables.values();</span>
+    }
+
+    /**
+     * Return a {@link Map} of all {@link Table}s keyed by their name.
+     *
+     * @return
+     */
+    public Map&lt;String, Table&gt; getTablesByName() {
+<span class="nc" id="L114">    	return tables;</span>
+    }
+
+    public Collection&lt;View&gt; getViews() {
+<span class="fc" id="L118">        return views.values();</span>
+    }
+
+    public Collection&lt;Table&gt; getRemoteTables() {
+<span class="fc" id="L122">        return remoteTables.values();</span>
+    }
+
+    public Connection getConnection() {
+<span class="fc" id="L126">        return connection;</span>
+    }
+
+    public DatabaseMetaData getMetaData() {
+<span class="fc" id="L130">        return meta;</span>
+    }
+
+    public String getConnectTime() {
+<span class="fc" id="L134">        return connectTime;</span>
+    }
+
+    public String getDatabaseProduct() {
+        try {
+<span class="fc" id="L139">            return meta.getDatabaseProductName() + &quot; - &quot; + meta.getDatabaseProductVersion();</span>
+<span class="nc" id="L140">        } catch (SQLException exc) {</span>
+<span class="nc" id="L141">            return &quot;&quot;;</span>
+        }
+    }
+
+    /**
+     *  &quot;macro&quot; to validate that a table is somewhat valid
+     */
+    class NameValidator {
+        private final String clazz;
+        private final Pattern include;
+        private final Pattern exclude;
+        private final Set&lt;String&gt; validTypes;
+
+        /**
+         * @param clazz table or view
+         * @param include
+         * @param exclude
+         * @param validTypes
+         */
+<span class="fc" id="L160">        NameValidator(String clazz, Pattern include, Pattern exclude, String[] validTypes) {</span>
+<span class="fc" id="L161">            this.clazz = clazz;</span>
+<span class="fc" id="L162">            this.include = include;</span>
+<span class="fc" id="L163">            this.exclude = exclude;</span>
+<span class="fc" id="L164">            this.validTypes = new HashSet&lt;String&gt;();</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">            for (String type : validTypes)</span>
+            {
+<span class="fc" id="L167">                this.validTypes.add(type.toUpperCase());</span>
+            }
+<span class="fc" id="L169">        }</span>
+
+        /**
+         * Returns &lt;code&gt;true&lt;/code&gt; if the table/view name is deemed &quot;valid&quot;
+         *
+         * @param name name of the table or view
+         * @param type type as returned by metadata.getTables():TABLE_TYPE
+         * @return
+         */
+        boolean isValid(String name, String type) {
+            // some databases (MySQL) return more than we wanted
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">            if (!validTypes.contains(type.toUpperCase()))</span>
+<span class="nc" id="L181">                return false;</span>
+
+            // Oracle 10g introduced problematic flashback tables
+            // with bizarre illegal names
+            // Naming Convention &quot;BIN$&quot;${globalUID}${version}
+            // http://docs.oracle.com/cd/B19306_01/backup.102/b14192/flashptr004.htm#i1016977
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">            if (name.indexOf(&quot;BIN$&quot;) == 0) {</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">                if (fineEnabled) {</span>
+<span class="nc" id="L189">                    logger.fine(&quot;Excluding &quot; + clazz + &quot; &quot; + name +</span>
+                                &quot;: \&quot;BIN$\&quot; prefix implies  a (deleted) table in the Oracle Recycle Bin &quot;);
+                }
+<span class="nc" id="L192">                return false;</span>
+            }
+
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">            if (exclude.matcher(name).matches()) {</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">                if (fineEnabled) {</span>
+<span class="nc" id="L197">                    logger.fine(&quot;Excluding &quot; + clazz + &quot; &quot; + name +</span>
+                                &quot;: matches exclusion pattern \&quot;&quot; + exclude + '&quot;');
+                }
+<span class="nc" id="L200">                return false;</span>
+            }
+
+<span class="fc" id="L203">            boolean valid = include.matcher(name).matches();</span>
+<span class="pc bpc" id="L204" title="1 of 2 branches missed.">            if (fineEnabled) {</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">                if (valid) {</span>
+<span class="nc" id="L206">                    logger.fine(&quot;Including &quot; + clazz + &quot; &quot; + name +</span>
+                                &quot;: matches inclusion pattern \&quot;&quot; + include + '&quot;');
+                } else {
+<span class="nc" id="L209">                    logger.fine(&quot;Excluding &quot; + clazz + &quot; &quot; + name +</span>
+                                &quot;: doesn't match inclusion pattern \&quot;&quot; + include + '&quot;');
+                }
+            }
+<span class="fc" id="L213">            return valid;</span>
+        }
+    }
+
+    /**
+     * Create/initialize any tables in the schema.
+
+     * @param metadata
+     * @param properties
+     * @param config
+     * @throws SQLException
+     */
+    private void initTables(final DatabaseMetaData metadata, final Properties properties,
+                            final Config config) throws SQLException {
+<span class="fc" id="L227">        final Pattern include = config.getTableInclusions();</span>
+<span class="fc" id="L228">        final Pattern exclude = config.getTableExclusions();</span>
+<span class="fc" id="L229">        final int maxThreads = config.getMaxDbThreads();</span>
+
+<span class="fc" id="L231">        String[] types = getTypes(&quot;tableTypes&quot;, &quot;TABLE&quot;, properties);</span>
+<span class="fc" id="L232">        NameValidator validator = new NameValidator(&quot;table&quot;, include, exclude, types);</span>
+<span class="fc" id="L233">        List&lt;BasicTableMeta&gt; entries = getBasicTableMeta(metadata, true, properties, types);</span>
+
+        TableCreator creator;
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">        if (maxThreads == 1) {</span>
+<span class="nc" id="L237">            creator = new TableCreator();</span>
+        } else {
+            // creating tables takes a LONG time (based on JProbe analysis),
+            // so attempt to speed it up by doing several in parallel.
+            // note that it's actually DatabaseMetaData.getIndexInfo() that's expensive
+
+<span class="fc" id="L243">            creator = new ThreadedTableCreator(maxThreads);</span>
+
+            // &quot;prime the pump&quot; so if there's a database problem we'll probably see it now
+            // and not in a secondary thread
+<span class="pc bpc" id="L247" title="1 of 2 branches missed.">            while (!entries.isEmpty()) {</span>
+<span class="fc" id="L248">                BasicTableMeta entry = entries.remove(0);</span>
+
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">                if (validator.isValid(entry.name, entry.type)) {</span>
+<span class="fc" id="L251">                    new TableCreator().create(entry, properties);</span>
+<span class="fc" id="L252">                    break;</span>
+                }
+<span class="nc" id="L254">            }</span>
+        }
+
+        // kick off the secondary threads to do the creation in parallel
+<span class="fc bfc" id="L258" title="All 2 branches covered.">        for (BasicTableMeta entry : entries) {</span>
+<span class="pc bpc" id="L259" title="1 of 2 branches missed.">            if (validator.isValid(entry.name, entry.type)) {</span>
+<span class="fc" id="L260">                creator.create(entry, properties);</span>
+            }
+<span class="fc" id="L262">        }</span>
+
+        // wait for everyone to finish
+<span class="fc" id="L265">        creator.join();</span>
+<span class="fc" id="L266">    }</span>
+
+    /**
+     * Create/initialize any views in the schema.
+     *
+     * @param metadata
+     * @param properties
+     * @param config
+     * @throws SQLException
+     */
+    private void initViews(DatabaseMetaData metadata, Properties properties,
+                            Config config) throws SQLException {
+<span class="fc" id="L278">        Pattern includeTables = config.getTableInclusions();</span>
+<span class="fc" id="L279">        Pattern excludeTables = config.getTableExclusions();</span>
+<span class="fc" id="L280">        Pattern excludeColumns = config.getColumnExclusions();</span>
+<span class="fc" id="L281">        Pattern excludeIndirectColumns = config.getIndirectColumnExclusions();</span>
+
+<span class="fc" id="L283">        String[] types = getTypes(&quot;viewTypes&quot;, &quot;VIEW&quot;, properties);</span>
+<span class="fc" id="L284">        NameValidator validator = new NameValidator(&quot;view&quot;, includeTables, excludeTables, types);</span>
+
+<span class="pc bpc" id="L286" title="1 of 2 branches missed.">        for (BasicTableMeta entry : getBasicTableMeta(metadata, false, properties, types)) {</span>
+<span class="nc bnc" id="L287" title="All 2 branches missed.">            if (validator.isValid(entry.name, entry.type)) {</span>
+<span class="nc" id="L288">                View view = new View(this, entry.schema, entry.name, entry.remarks,</span>
+                                    entry.viewSql, properties,
+                                    excludeIndirectColumns, excludeColumns);
+<span class="nc" id="L291">                views.put(view.getName(), view);</span>
+<span class="nc bnc" id="L292" title="All 2 branches missed.">                if (logger.isLoggable(Level.FINE)) {</span>
+<span class="nc" id="L293">                    logger.fine(&quot;Found details of view &quot; + view.getName());</span>
+                } else {
+<span class="nc" id="L295">                    System.out.print('.');</span>
+                }
+            }
+<span class="nc" id="L298">        }</span>
+<span class="fc" id="L299">    }</span>
+
+    /**
+     * Collection of fundamental table/view metadata
+     */
+    private class BasicTableMeta
+    {
+        @SuppressWarnings(&quot;hiding&quot;)
+        final String schema;
+        final String name;
+        final String type;
+        final String remarks;
+        final String viewSql;
+        final long numRows;  // -1 if not determined
+
+        /**
+         * @param schema
+         * @param name
+         * @param type typically &quot;TABLE&quot; or &quot;VIEW&quot;
+         * @param remarks
+         * @param text optional textual SQL used to create the view
+         * @param numRows number of rows, or -1 if not determined
+         */
+        BasicTableMeta(String schema, String name, String type, String remarks, String text, long numRows)
+<span class="fc" id="L323">        {</span>
+<span class="fc" id="L324">            this.schema = schema;</span>
+<span class="fc" id="L325">            this.name = name;</span>
+<span class="fc" id="L326">            this.type = type;</span>
+<span class="fc" id="L327">            this.remarks = remarks;</span>
+<span class="fc" id="L328">            viewSql = text;</span>
+<span class="fc" id="L329">            this.numRows = numRows;</span>
+<span class="fc" id="L330">        }</span>
+    }
+
+    /**
+     * Return a list of basic details of the tables in the schema.
+     *
+     * @param metadata
+     * @param forTables true if we're getting table data, false if getting view data
+     * @param properties
+     * @return
+     * @throws SQLException
+     */
+    private List&lt;BasicTableMeta&gt; getBasicTableMeta(DatabaseMetaData metadata,
+                                                    boolean forTables,
+                                                    Properties properties,
+                                                    String... types) throws SQLException {
+<span class="fc bfc" id="L346" title="All 2 branches covered.">        String queryName = forTables ? &quot;selectTablesSql&quot; : &quot;selectViewsSql&quot;;</span>
+<span class="fc" id="L347">        String sql = properties.getProperty(queryName);</span>
+<span class="fc" id="L348">        List&lt;BasicTableMeta&gt; basics = new ArrayList&lt;BasicTableMeta&gt;();</span>
+<span class="fc" id="L349">        ResultSet rs = null;</span>
+
+<span class="pc bpc" id="L351" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">            String clazz = forTables ? &quot;table&quot; : &quot;view&quot;;</span>
+<span class="nc" id="L353">            PreparedStatement stmt = null;</span>
+
+            try {
+<span class="nc" id="L356">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L357">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L359" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L360">                    String name = rs.getString(clazz + &quot;_name&quot;);</span>
+<span class="nc" id="L361">                    String sch = getOptionalString(rs, clazz + &quot;_schema&quot;);</span>
+<span class="nc bnc" id="L362" title="All 2 branches missed.">                    if (sch == null)</span>
+<span class="nc" id="L363">                        sch = schema;</span>
+<span class="nc" id="L364">                    String remarks = getOptionalString(rs, clazz + &quot;_comment&quot;);</span>
+<span class="nc bnc" id="L365" title="All 2 branches missed.">                    String text = forTables ? null : getOptionalString(rs, &quot;view_definition&quot;);</span>
+<span class="nc bnc" id="L366" title="All 2 branches missed.">                    String rows = forTables ? getOptionalString(rs, &quot;table_rows&quot;) : null;</span>
+<span class="nc bnc" id="L367" title="All 2 branches missed.">                    long numRows = rows == null ? -1 : Long.parseLong(rows);</span>
+
+<span class="nc" id="L369">                    basics.add(new BasicTableMeta(sch, name, clazz, remarks, text, numRows));</span>
+<span class="nc" id="L370">                }</span>
+<span class="nc" id="L371">            } catch (SQLException sqlException) {</span>
+                // don't die just because this failed
+<span class="nc" id="L373">                System.out.flush();</span>
+<span class="nc" id="L374">                System.err.println();</span>
+<span class="nc" id="L375">                System.err.println(&quot;Failed to retrieve &quot; + clazz + &quot; names with custom SQL: &quot; + sqlException);</span>
+<span class="nc" id="L376">                System.err.println(sql);</span>
+            } finally {
+<span class="nc bnc" id="L378" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L379">                    rs.close();</span>
+<span class="nc bnc" id="L380" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L381">                    stmt.close();</span>
+            }
+        }
+
+<span class="pc bpc" id="L385" title="1 of 2 branches missed.">        if (basics.isEmpty()) {</span>
+<span class="fc" id="L386">            rs = metadata.getTables(null, schema, &quot;%&quot;, types);</span>
+
+            try {
+<span class="fc bfc" id="L389" title="All 2 branches covered.">                while (rs.next()) {</span>
+<span class="fc" id="L390">                    String name = rs.getString(&quot;TABLE_NAME&quot;);</span>
+<span class="fc" id="L391">                    String type = rs.getString(&quot;TABLE_TYPE&quot;);</span>
+<span class="fc" id="L392">                    String schem = rs.getString(&quot;TABLE_SCHEM&quot;);</span>
+<span class="fc" id="L393">                    String remarks = getOptionalString(rs, &quot;REMARKS&quot;);</span>
+
+<span class="fc" id="L395">                    basics.add(new BasicTableMeta(schem, name, type, remarks, null, -1));</span>
+<span class="fc" id="L396">                }</span>
+<span class="nc" id="L397">            } catch (SQLException exc) {</span>
+<span class="nc bnc" id="L398" title="All 2 branches missed.">                if (forTables)</span>
+<span class="nc" id="L399">                    throw exc;</span>
+
+<span class="nc" id="L401">                System.out.flush();</span>
+<span class="nc" id="L402">                System.err.println();</span>
+<span class="nc" id="L403">                System.err.println(&quot;Ignoring view &quot; + rs.getString(&quot;TABLE_NAME&quot;) + &quot; due to exception:&quot;);</span>
+<span class="nc" id="L404">                exc.printStackTrace();</span>
+<span class="nc" id="L405">                System.err.println(&quot;Continuing analysis.&quot;);</span>
+            } finally {
+<span class="pc bpc" id="L407" title="1 of 2 branches missed.">                if (rs != null)</span>
+<span class="fc" id="L408">                    rs.close();</span>
+            }
+        }
+
+<span class="fc" id="L412">        return basics;</span>
+    }
+
+    /**
+     * Return a database-specific array of types from the .properties file
+     * with the specified property name.
+     *
+     * @param propName
+     * @param defaultValue
+     * @param props
+     * @return
+     */
+    private String[] getTypes(String propName, String defaultValue, Properties props) {
+<span class="fc" id="L425">        String value = props.getProperty(propName, defaultValue);</span>
+<span class="fc" id="L426">        List&lt;String&gt; types = new ArrayList&lt;String&gt;();</span>
+<span class="fc bfc" id="L427" title="All 2 branches covered.">        for (String type : value.split(&quot;,&quot;)) {</span>
+<span class="fc" id="L428">            type = type.trim();</span>
+<span class="pc bpc" id="L429" title="1 of 2 branches missed.">            if (type.length() &gt; 0)</span>
+<span class="fc" id="L430">                types.add(type);</span>
+        }
+
+<span class="fc" id="L433">        return types.toArray(new String[types.size()]);</span>
+    }
+
+    /**
+     * Some databases don't play nice with their metadata.
+     * E.g. Oracle doesn't have a REMARKS column at all.
+     * This method ignores those types of failures, replacing them with null.
+     */
+    public String getOptionalString(ResultSet rs, String columnName)
+    {
+        try {
+<span class="fc" id="L444">            return rs.getString(columnName);</span>
+<span class="nc" id="L445">        } catch (SQLException ignore) {</span>
+<span class="nc" id="L446">            return null;</span>
+        }
+    }
+
+    private void initCheckConstraints(Properties properties) throws SQLException {
+<span class="fc" id="L451">        String sql = properties.getProperty(&quot;selectCheckConstraintsSql&quot;);</span>
+<span class="pc bpc" id="L452" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L453">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L454">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L457">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L458">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L460" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L461">                    String tableName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L462">                    Table table = tables.get(tableName);</span>
+<span class="nc bnc" id="L463" title="All 2 branches missed.">                    if (table != null)</span>
+<span class="nc" id="L464">                        table.addCheckConstraint(rs.getString(&quot;constraint_name&quot;), rs.getString(&quot;text&quot;));</span>
+<span class="nc" id="L465">                }</span>
+<span class="nc" id="L466">            } catch (SQLException sqlException) {</span>
+                // don't die just because this failed
+<span class="nc" id="L468">                System.err.println();</span>
+<span class="nc" id="L469">                System.err.println(&quot;Failed to retrieve check constraints: &quot; + sqlException);</span>
+<span class="nc" id="L470">                System.err.println(sql);</span>
+            } finally {
+<span class="nc bnc" id="L472" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L473">                    rs.close();</span>
+<span class="nc bnc" id="L474" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L475">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L478">    }</span>
+
+    private void initTableIds(Properties properties) throws SQLException {
+<span class="fc" id="L481">        String sql = properties.getProperty(&quot;selectTableIdsSql&quot;);</span>
+<span class="pc bpc" id="L482" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L483">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L484">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L487">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L488">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L490" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L491">                    String tableName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L492">                    Table table = tables.get(tableName);</span>
+<span class="nc bnc" id="L493" title="All 2 branches missed.">                    if (table != null)</span>
+<span class="nc" id="L494">                        table.setId(rs.getObject(&quot;table_id&quot;));</span>
+<span class="nc" id="L495">                }</span>
+<span class="nc" id="L496">            } catch (SQLException sqlException) {</span>
+<span class="nc" id="L497">                System.err.println();</span>
+<span class="nc" id="L498">                System.err.println(sql);</span>
+<span class="nc" id="L499">                throw sqlException;</span>
+            } finally {
+<span class="nc bnc" id="L501" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L502">                    rs.close();</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L504">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L507">    }</span>
+
+    private void initIndexIds(Properties properties) throws SQLException {
+<span class="fc" id="L510">        String sql = properties.getProperty(&quot;selectIndexIdsSql&quot;);</span>
+<span class="pc bpc" id="L511" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L512">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L513">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L516">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L517">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L519" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L520">                    String tableName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L521">                    Table table = tables.get(tableName);</span>
+<span class="nc bnc" id="L522" title="All 2 branches missed.">                    if (table != null) {</span>
+<span class="nc" id="L523">                        TableIndex index = table.getIndex(rs.getString(&quot;index_name&quot;));</span>
+<span class="nc bnc" id="L524" title="All 2 branches missed.">                        if (index != null)</span>
+<span class="nc" id="L525">                            index.setId(rs.getObject(&quot;index_id&quot;));</span>
+                    }
+<span class="nc" id="L527">                }</span>
+<span class="nc" id="L528">            } catch (SQLException sqlException) {</span>
+<span class="nc" id="L529">                System.err.println();</span>
+<span class="nc" id="L530">                System.err.println(sql);</span>
+<span class="nc" id="L531">                throw sqlException;</span>
+            } finally {
+<span class="nc bnc" id="L533" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L534">                    rs.close();</span>
+<span class="nc bnc" id="L535" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L536">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L539">    }</span>
+
+    /**
+     * Initializes table comments.
+     * If the SQL also returns view comments then they're plugged into the
+     * appropriate views.
+     *
+     * @param properties
+     * @throws SQLException
+     */
+    private void initTableComments(Properties properties) throws SQLException {
+<span class="fc" id="L550">        String sql = properties.getProperty(&quot;selectTableCommentsSql&quot;);</span>
+<span class="pc bpc" id="L551" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L552">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L553">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L556">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L557">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L559" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L560">                    String tableName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L561">                    Table table = tables.get(tableName);</span>
+<span class="nc bnc" id="L562" title="All 2 branches missed.">                    if (table == null)</span>
+<span class="nc" id="L563">                        table = views.get(tableName);</span>
+
+<span class="nc bnc" id="L565" title="All 2 branches missed.">                    if (table != null)</span>
+<span class="nc" id="L566">                        table.setComments(rs.getString(&quot;comments&quot;));</span>
+<span class="nc" id="L567">                }</span>
+<span class="nc" id="L568">            } catch (SQLException sqlException) {</span>
+                // don't die just because this failed
+<span class="nc" id="L570">                System.err.println();</span>
+<span class="nc" id="L571">                System.err.println(&quot;Failed to retrieve table/view comments: &quot; + sqlException);</span>
+<span class="nc" id="L572">                System.err.println(sql);</span>
+            } finally {
+<span class="nc bnc" id="L574" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L575">                    rs.close();</span>
+<span class="nc bnc" id="L576" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L577">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L580">    }</span>
+
+    /**
+     * Initializes view comments.
+     *
+     * @param properties
+     * @throws SQLException
+     */
+    private void initViewComments(Properties properties) throws SQLException {
+<span class="fc" id="L589">        String sql = properties.getProperty(&quot;selectViewCommentsSql&quot;);</span>
+<span class="pc bpc" id="L590" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L591">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L592">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L595">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L596">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L598" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L599">                    String viewName = rs.getString(&quot;view_name&quot;);</span>
+<span class="nc bnc" id="L600" title="All 2 branches missed.">                    if (viewName == null)</span>
+<span class="nc" id="L601">                        viewName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L602">                    Table view = views.get(viewName);</span>
+
+<span class="nc bnc" id="L604" title="All 2 branches missed.">                    if (view != null)</span>
+<span class="nc" id="L605">                        view.setComments(rs.getString(&quot;comments&quot;));</span>
+<span class="nc" id="L606">                }</span>
+<span class="nc" id="L607">            } catch (SQLException sqlException) {</span>
+                // don't die just because this failed
+<span class="nc" id="L609">                System.err.println();</span>
+<span class="nc" id="L610">                System.err.println(&quot;Failed to retrieve table/view comments: &quot; + sqlException);</span>
+<span class="nc" id="L611">                System.err.println(sql);</span>
+            } finally {
+<span class="nc bnc" id="L613" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L614">                    rs.close();</span>
+<span class="nc bnc" id="L615" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L616">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L619">    }</span>
+
+    /**
+     * Initializes table column comments.
+     * If the SQL also returns view column comments then they're plugged into the
+     * appropriate views.
+     *
+     * @param properties
+     * @throws SQLException
+     */
+    private void initTableColumnComments(Properties properties) throws SQLException {
+<span class="fc" id="L630">        String sql = properties.getProperty(&quot;selectColumnCommentsSql&quot;);</span>
+<span class="pc bpc" id="L631" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L632">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L633">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L636">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L637">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L639" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L640">                    String tableName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L641">                    Table table = tables.get(tableName);</span>
+<span class="nc bnc" id="L642" title="All 2 branches missed.">                    if (table == null)</span>
+<span class="nc" id="L643">                        table = views.get(tableName);</span>
+
+<span class="nc bnc" id="L645" title="All 2 branches missed.">                    if (table != null) {</span>
+<span class="nc" id="L646">                        TableColumn column = table.getColumn(rs.getString(&quot;column_name&quot;));</span>
+<span class="nc bnc" id="L647" title="All 2 branches missed.">                        if (column != null)</span>
+<span class="nc" id="L648">                            column.setComments(rs.getString(&quot;comments&quot;));</span>
+                    }
+<span class="nc" id="L650">                }</span>
+<span class="nc" id="L651">            } catch (SQLException sqlException) {</span>
+                // don't die just because this failed
+<span class="nc" id="L653">                System.err.println();</span>
+<span class="nc" id="L654">                System.err.println(&quot;Failed to retrieve column comments: &quot; + sqlException);</span>
+<span class="nc" id="L655">                System.err.println(sql);</span>
+            } finally {
+<span class="nc bnc" id="L657" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L658">                    rs.close();</span>
+<span class="nc bnc" id="L659" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L660">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L663">    }</span>
+
+    /**
+     * Initializes view column comments.
+     *
+     * @param properties
+     * @throws SQLException
+     */
+    private void initViewColumnComments(Properties properties) throws SQLException {
+<span class="fc" id="L672">        String sql = properties.getProperty(&quot;selectViewColumnCommentsSql&quot;);</span>
+<span class="pc bpc" id="L673" title="1 of 2 branches missed.">        if (sql != null) {</span>
+<span class="nc" id="L674">            PreparedStatement stmt = null;</span>
+<span class="nc" id="L675">            ResultSet rs = null;</span>
+
+            try {
+<span class="nc" id="L678">                stmt = prepareStatement(sql, null);</span>
+<span class="nc" id="L679">                rs = stmt.executeQuery();</span>
+
+<span class="nc bnc" id="L681" title="All 2 branches missed.">                while (rs.next()) {</span>
+<span class="nc" id="L682">                    String viewName = rs.getString(&quot;view_name&quot;);</span>
+<span class="nc bnc" id="L683" title="All 2 branches missed.">                    if (viewName == null)</span>
+<span class="nc" id="L684">                        viewName = rs.getString(&quot;table_name&quot;);</span>
+<span class="nc" id="L685">                    Table view = views.get(viewName);</span>
+
+<span class="nc bnc" id="L687" title="All 2 branches missed.">                    if (view != null) {</span>
+<span class="nc" id="L688">                        TableColumn column = view.getColumn(rs.getString(&quot;column_name&quot;));</span>
+<span class="nc bnc" id="L689" title="All 2 branches missed.">                        if (column != null)</span>
+<span class="nc" id="L690">                            column.setComments(rs.getString(&quot;comments&quot;));</span>
+                    }
+<span class="nc" id="L692">                }</span>
+<span class="nc" id="L693">            } catch (SQLException sqlException) {</span>
+                // don't die just because this failed
+<span class="nc" id="L695">                System.err.println();</span>
+<span class="nc" id="L696">                System.err.println(&quot;Failed to retrieve view column comments: &quot; + sqlException);</span>
+<span class="nc" id="L697">                System.err.println(sql);</span>
+            } finally {
+<span class="nc bnc" id="L699" title="All 2 branches missed.">                if (rs != null)</span>
+<span class="nc" id="L700">                    rs.close();</span>
+<span class="nc bnc" id="L701" title="All 2 branches missed.">                if (stmt != null)</span>
+<span class="nc" id="L702">                    stmt.close();</span>
+            }
+        }
+<span class="fc" id="L705">    }</span>
+
+    /**
+     * Create a &lt;code&gt;PreparedStatement&lt;/code&gt; from the specified SQL.
+     * The SQL can contain these named parameters (but &lt;b&gt;not&lt;/b&gt; question marks).
+     * &lt;ol&gt;
+     * &lt;li&gt;:schema - replaced with the name of the schema
+     * &lt;li&gt;:owner - alias for :schema
+     * &lt;li&gt;:table - replaced with the name of the table
+     * &lt;/ol&gt;
+     * @param sql String - SQL without question marks
+     * @param tableName String - &lt;code&gt;null&lt;/code&gt; if the statement doesn't deal with &lt;code&gt;Table&lt;/code&gt;-level details.
+     * @throws SQLException
+     * @return PreparedStatement
+     */
+    public PreparedStatement prepareStatement(String sql, String tableName) throws SQLException {
+<span class="nc" id="L721">        StringBuilder sqlBuf = new StringBuilder(sql);</span>
+<span class="nc" id="L722">        List&lt;String&gt; sqlParams = getSqlParams(sqlBuf, tableName); // modifies sqlBuf</span>
+<span class="nc" id="L723">        PreparedStatement stmt = getConnection().prepareStatement(sqlBuf.toString());</span>
+
+        try {
+<span class="nc bnc" id="L726" title="All 2 branches missed.">            for (int i = 0; i &lt; sqlParams.size(); ++i) {</span>
+<span class="nc" id="L727">                stmt.setString(i + 1, sqlParams.get(i).toString());</span>
+            }
+<span class="nc" id="L729">        } catch (SQLException exc) {</span>
+<span class="nc" id="L730">            stmt.close();</span>
+<span class="nc" id="L731">            throw exc;</span>
+<span class="nc" id="L732">        }</span>
+
+<span class="nc" id="L734">        return stmt;</span>
+    }
+
+    public Table addRemoteTable(String remoteSchema, String remoteTableName, String baseSchema, Properties properties, Pattern excludeIndirectColumns, Pattern excludeColumns) throws SQLException {
+<span class="nc" id="L738">        String fullName = remoteSchema + &quot;.&quot; + remoteTableName;</span>
+<span class="nc" id="L739">        Table remoteTable = remoteTables.get(fullName);</span>
+<span class="nc bnc" id="L740" title="All 2 branches missed.">        if (remoteTable == null) {</span>
+<span class="nc bnc" id="L741" title="All 2 branches missed.">            if (properties != null)</span>
+<span class="nc" id="L742">                remoteTable = new RemoteTable(this, remoteSchema, remoteTableName, baseSchema, properties, excludeIndirectColumns, excludeColumns);</span>
+            else
+<span class="nc" id="L744">                remoteTable = new ExplicitRemoteTable(this, remoteSchema, remoteTableName, baseSchema);</span>
+
+<span class="nc" id="L746">            logger.fine(&quot;Adding remote table &quot; + fullName);</span>
+<span class="nc" id="L747">            remoteTable.connectForeignKeys(tables, excludeIndirectColumns, excludeColumns);</span>
+<span class="nc" id="L748">            remoteTables.put(fullName, remoteTable);</span>
+        }
+
+<span class="nc" id="L751">        return remoteTable;</span>
+    }
+
+    /**
+     * Return an uppercased &lt;code&gt;Set&lt;/code&gt; of all SQL keywords used by a database
+     *
+     * @return
+     * @throws SQLException
+     */
+    public Set&lt;String&gt; getSqlKeywords() throws SQLException {
+<span class="fc bfc" id="L761" title="All 2 branches covered.">        if (sqlKeywords == null) {</span>
+            // from http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt:
+<span class="fc" id="L763">            String[] sql92Keywords =</span>
+                (&quot;ADA&quot; +
+                &quot;| C | CATALOG_NAME | CHARACTER_SET_CATALOG | CHARACTER_SET_NAME&quot; +
+                &quot;| CHARACTER_SET_SCHEMA | CLASS_ORIGIN | COBOL | COLLATION_CATALOG&quot; +
+                &quot;| COLLATION_NAME | COLLATION_SCHEMA | COLUMN_NAME | COMMAND_FUNCTION | COMMITTED&quot; +
+                &quot;| CONDITION_NUMBER | CONNECTION_NAME | CONSTRAINT_CATALOG | CONSTRAINT_NAME&quot; +
+                &quot;| CONSTRAINT_SCHEMA | CURSOR_NAME&quot; +
+                &quot;| DATA | DATETIME_INTERVAL_CODE | DATETIME_INTERVAL_PRECISION | DYNAMIC_FUNCTION&quot; +
+                &quot;| FORTRAN&quot; +
+                &quot;| LENGTH&quot; +
+                &quot;| MESSAGE_LENGTH | MESSAGE_OCTET_LENGTH | MESSAGE_TEXT | MORE | MUMPS&quot; +
+                &quot;| NAME | NULLABLE | NUMBER&quot; +
+                &quot;| PASCAL | PLI&quot; +
+                &quot;| REPEATABLE | RETURNED_LENGTH | RETURNED_OCTET_LENGTH | RETURNED_SQLSTATE&quot; +
+                &quot;| ROW_COUNT&quot; +
+                &quot;| SCALE | SCHEMA_NAME | SERIALIZABLE | SERVER_NAME | SUBCLASS_ORIGIN&quot; +
+                &quot;| TABLE_NAME | TYPE&quot; +
+                &quot;| UNCOMMITTED | UNNAMED&quot; +
+                &quot;| ABSOLUTE | ACTION | ADD | ALL | ALLOCATE | ALTER | AND&quot; +
+                &quot;| ANY | ARE | AS | ASC&quot; +
+                &quot;| ASSERTION | AT | AUTHORIZATION | AVG&quot; +
+                &quot;| BEGIN | BETWEEN | BIT | BIT_LENGTH | BOTH | BY&quot; +
+                &quot;| CASCADE | CASCADED | CASE | CAST | CATALOG | CHAR | CHARACTER | CHAR_LENGTH&quot; +
+                &quot;| CHARACTER_LENGTH | CHECK | CLOSE | COALESCE | COLLATE | COLLATION&quot; +
+                &quot;| COLUMN | COMMIT | CONNECT | CONNECTION | CONSTRAINT&quot; +
+                &quot;| CONSTRAINTS | CONTINUE&quot; +
+                &quot;| CONVERT | CORRESPONDING | COUNT | CREATE | CROSS | CURRENT&quot; +
+                &quot;| CURRENT_DATE | CURRENT_TIME | CURRENT_TIMESTAMP | CURRENT_USER | CURSOR&quot; +
+                &quot;| DATE | DAY | DEALLOCATE | DEC | DECIMAL | DECLARE | DEFAULT | DEFERRABLE&quot; +
+                &quot;| DEFERRED | DELETE | DESC | DESCRIBE | DESCRIPTOR | DIAGNOSTICS&quot; +
+                &quot;| DISCONNECT | DISTINCT | DOMAIN | DOUBLE | DROP&quot; +
+                &quot;| ELSE | END | END-EXEC | ESCAPE | EXCEPT | EXCEPTION&quot; +
+                &quot;| EXEC | EXECUTE | EXISTS&quot; +
+                &quot;| EXTERNAL | EXTRACT&quot; +
+                &quot;| FALSE | FETCH | FIRST | FLOAT | FOR | FOREIGN | FOUND | FROM | FULL&quot; +
+                &quot;| GET | GLOBAL | GO | GOTO | GRANT | GROUP&quot; +
+                &quot;| HAVING | HOUR&quot; +
+                &quot;| IDENTITY | IMMEDIATE | IN | INDICATOR | INITIALLY | INNER | INPUT&quot; +
+                &quot;| INSENSITIVE | INSERT | INT | INTEGER | INTERSECT | INTERVAL | INTO | IS&quot; +
+                &quot;| ISOLATION&quot; +
+                &quot;| JOIN&quot; +
+                &quot;| KEY&quot; +
+                &quot;| LANGUAGE | LAST | LEADING | LEFT | LEVEL | LIKE | LOCAL | LOWER&quot; +
+                &quot;| MATCH | MAX | MIN | MINUTE | MODULE | MONTH&quot; +
+                &quot;| NAMES | NATIONAL | NATURAL | NCHAR | NEXT | NO | NOT | NULL&quot; +
+                &quot;| NULLIF | NUMERIC&quot; +
+                &quot;| OCTET_LENGTH | OF | ON | ONLY | OPEN | OPTION | OR&quot; +
+                &quot;| ORDER | OUTER&quot; +
+                &quot;| OUTPUT | OVERLAPS&quot; +
+                &quot;| PAD | PARTIAL | POSITION | PRECISION | PREPARE | PRESERVE | PRIMARY&quot; +
+                &quot;| PRIOR | PRIVILEGES | PROCEDURE | PUBLIC&quot; +
+                &quot;| READ | REAL | REFERENCES | RELATIVE | RESTRICT | REVOKE | RIGHT&quot; +
+                &quot;| ROLLBACK | ROWS&quot; +
+                &quot;| SCHEMA | SCROLL | SECOND | SECTION | SELECT | SESSION | SESSION_USER | SET&quot; +
+                &quot;| SIZE | SMALLINT | SOME | SPACE | SQL | SQLCODE | SQLERROR | SQLSTATE&quot; +
+                &quot;| SUBSTRING | SUM | SYSTEM_USER&quot; +
+                &quot;| TABLE | TEMPORARY | THEN | TIME | TIMESTAMP | TIMEZONE_HOUR | TIMEZONE_MINUTE&quot; +
+                &quot;| TO | TRAILING | TRANSACTION | TRANSLATE | TRANSLATION | TRIM | TRUE&quot; +
+                &quot;| UNION | UNIQUE | UNKNOWN | UPDATE | UPPER | USAGE | USER | USING&quot; +
+                &quot;| VALUE | VALUES | VARCHAR | VARYING | VIEW&quot; +
+                &quot;| WHEN | WHENEVER | WHERE | WITH | WORK | WRITE&quot; +
+                &quot;| YEAR&quot; +
+<span class="fc" id="L825">                &quot;| ZONE&quot;).split(&quot;|,\\s*&quot;);</span>
+
+<span class="fc" id="L827">            String[] nonSql92Keywords = getMetaData().getSQLKeywords().toUpperCase().split(&quot;,\\s*&quot;);</span>
+
+<span class="fc" id="L829">            sqlKeywords = new HashSet&lt;String&gt;();</span>
+<span class="fc" id="L830">            sqlKeywords.addAll(Arrays.asList(sql92Keywords));</span>
+<span class="fc" id="L831">            sqlKeywords.addAll(Arrays.asList(nonSql92Keywords));</span>
+        }
+
+<span class="fc" id="L834">        return sqlKeywords;</span>
+    }
+
+    /**
+     * Return &lt;code&gt;id&lt;/code&gt; quoted if required, otherwise return &lt;code&gt;id&lt;/code&gt;
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
+    public String getQuotedIdentifier(String id) throws SQLException {
+        // look for any character that isn't valid (then matcher.find() returns true)
+<span class="fc" id="L846">        Matcher matcher = getInvalidIdentifierPattern().matcher(id);</span>
+
+<span class="pc bpc" id="L848" title="2 of 4 branches missed.">        boolean quotesRequired = matcher.find() || getSqlKeywords().contains(id.toUpperCase());</span>
+
+<span class="pc bpc" id="L850" title="1 of 2 branches missed.">        if (quotesRequired) {</span>
+            // name contains something that must be quoted
+<span class="nc" id="L852">            String quote = getMetaData().getIdentifierQuoteString().trim();</span>
+<span class="nc" id="L853">            return quote + id + quote;</span>
+        }
+
+        // no quoting necessary
+<span class="fc" id="L857">        return id;</span>
+    }
+
+    /**
+     * Return a &lt;code&gt;Pattern&lt;/code&gt; whose matcher will return &lt;code&gt;true&lt;/code&gt;
+     * when run against an identifier that contains a character that is not
+     * acceptable by the database without being quoted.
+     */
+    private Pattern getInvalidIdentifierPattern() throws SQLException {
+<span class="fc bfc" id="L866" title="All 2 branches covered.">        if (invalidIdentifierPattern == null) {</span>
+<span class="fc" id="L867">            String validChars = &quot;a-zA-Z0-9_&quot;;</span>
+<span class="fc" id="L868">            String reservedRegexChars = &quot;-&amp;^&quot;;</span>
+<span class="fc" id="L869">            String extraValidChars = getMetaData().getExtraNameCharacters();</span>
+<span class="pc bpc" id="L870" title="1 of 2 branches missed.">            for (int i = 0; i &lt; extraValidChars.length(); ++i) {</span>
+<span class="nc" id="L871">                char ch = extraValidChars.charAt(i);</span>
+<span class="nc bnc" id="L872" title="All 2 branches missed.">                if (reservedRegexChars.indexOf(ch) &gt;= 0)</span>
+<span class="nc" id="L873">                    validChars += &quot;\\&quot;;</span>
+<span class="nc" id="L874">                validChars += ch;</span>
+            }
+
+<span class="fc" id="L877">            invalidIdentifierPattern = Pattern.compile(&quot;[^&quot; + validChars + &quot;]&quot;);</span>
+        }
+
+<span class="fc" id="L880">        return invalidIdentifierPattern;</span>
+    }
+
+    /**
+     * Replaces named parameters in &lt;code&gt;sql&lt;/code&gt; with question marks and
+     * returns appropriate matching values in the returned &lt;code&gt;List&lt;/code&gt; of &lt;code&gt;String&lt;/code&gt;s.
+     *
+     * @param sql StringBuffer input SQL with named parameters, output named params are replaced with ?'s.
+     * @param tableName String
+     * @return List of Strings
+     *
+     * @see #prepareStatement(String, String)
+     */
+    private List&lt;String&gt; getSqlParams(StringBuilder sql, String tableName) {
+<span class="nc" id="L894">        Map&lt;String, String&gt; namedParams = new HashMap&lt;String, String&gt;();</span>
+        @SuppressWarnings(&quot;hiding&quot;)
+<span class="nc" id="L896">        String schema = getSchema();</span>
+<span class="nc bnc" id="L897" title="All 2 branches missed.">        if (schema == null)</span>
+<span class="nc" id="L898">            schema = getName(); // some 'schema-less' db's treat the db name like a schema (unusual case)</span>
+<span class="nc" id="L899">        namedParams.put(&quot;:schema&quot;, schema);</span>
+<span class="nc" id="L900">        namedParams.put(&quot;:owner&quot;, schema); // alias for :schema</span>
+<span class="nc bnc" id="L901" title="All 2 branches missed.">        if (tableName != null) {</span>
+<span class="nc" id="L902">            namedParams.put(&quot;:table&quot;, tableName);</span>
+<span class="nc" id="L903">            namedParams.put(&quot;:view&quot;, tableName); // alias for :table</span>
+        }
+
+<span class="nc" id="L906">        List&lt;String&gt; sqlParams = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L907">        int nextColon = sql.indexOf(&quot;:&quot;);</span>
+<span class="nc bnc" id="L908" title="All 2 branches missed.">        while (nextColon != -1) {</span>
+<span class="nc" id="L909">            String paramName = new StringTokenizer(sql.substring(nextColon), &quot; ,\&quot;')&quot;).nextToken();</span>
+<span class="nc" id="L910">            String paramValue = namedParams.get(paramName);</span>
+<span class="nc bnc" id="L911" title="All 2 branches missed.">            if (paramValue == null)</span>
+<span class="nc" id="L912">                throw new InvalidConfigurationException(&quot;Unexpected named parameter '&quot; + paramName + &quot;' found in SQL '&quot; + sql + &quot;'&quot;);</span>
+<span class="nc" id="L913">            sqlParams.add(paramValue);</span>
+<span class="nc" id="L914">            sql.replace(nextColon, nextColon + paramName.length(), &quot;?&quot;); // replace with a ?</span>
+<span class="nc" id="L915">            nextColon = sql.indexOf(&quot;:&quot;, nextColon);</span>
+<span class="nc" id="L916">        }</span>
+
+<span class="nc" id="L918">        return sqlParams;</span>
+    }
+
+    /**
+     * Take the supplied XML-based metadata and update our model of the schema with it
+     *
+     * @param schemaMeta
+     * @throws SQLException
+     */
+    private void updateFromXmlMetadata(SchemaMeta schemaMeta) throws SQLException {
+<span class="pc bpc" id="L928" title="1 of 2 branches missed.">        if (schemaMeta != null) {</span>
+<span class="nc" id="L929">            final Pattern excludeNone = Pattern.compile(&quot;[^.]&quot;);</span>
+<span class="nc" id="L930">            final Properties noProps = new Properties();</span>
+
+<span class="nc" id="L932">            description = schemaMeta.getComments();</span>
+
+            // done in three passes:
+            // 1: create any new tables
+            // 2: add/mod columns
+            // 3: connect
+
+            // add the newly defined tables and columns first
+<span class="nc bnc" id="L940" title="All 2 branches missed.">            for (TableMeta tableMeta : schemaMeta.getTables()) {</span>
+                Table table;
+
+<span class="nc bnc" id="L943" title="All 2 branches missed.">                if (tableMeta.getRemoteSchema() != null) {</span>
+<span class="nc" id="L944">                    table = remoteTables.get(tableMeta.getRemoteSchema() + '.' + tableMeta.getName());</span>
+<span class="nc bnc" id="L945" title="All 2 branches missed.">                    if (table == null) {</span>
+<span class="nc" id="L946">                        table = addRemoteTable(tableMeta.getRemoteSchema(), tableMeta.getName(), getSchema(), null, excludeNone, excludeNone);</span>
+                    }
+                } else {
+<span class="nc" id="L949">                    table = tables.get(tableMeta.getName());</span>
+
+<span class="nc bnc" id="L951" title="All 2 branches missed.">                    if (table == null)</span>
+<span class="nc" id="L952">                        table = views.get(tableMeta.getName());</span>
+
+<span class="nc bnc" id="L954" title="All 2 branches missed.">                    if (table == null) {</span>
+<span class="nc" id="L955">                        table = new Table(Database.this, getSchema(), tableMeta.getName(), null, noProps, excludeNone, excludeNone);</span>
+<span class="nc" id="L956">                        tables.put(table.getName(), table);</span>
+                    }
+                }
+
+<span class="nc" id="L960">                table.update(tableMeta);</span>
+<span class="nc" id="L961">            }</span>
+
+            // then tie the tables together
+<span class="nc bnc" id="L964" title="All 2 branches missed.">            for (TableMeta tableMeta : schemaMeta.getTables()) {</span>
+                Table table;
+
+<span class="nc bnc" id="L967" title="All 2 branches missed.">                if (tableMeta.getRemoteSchema() != null) {</span>
+<span class="nc" id="L968">                    table = remoteTables.get(tableMeta.getRemoteSchema() + '.' + tableMeta.getName());</span>
+                } else {
+<span class="nc" id="L970">                    table = tables.get(tableMeta.getName());</span>
+<span class="nc bnc" id="L971" title="All 2 branches missed.">                    if (table == null)</span>
+<span class="nc" id="L972">                        table = views.get(tableMeta.getName());</span>
+                }
+
+<span class="nc" id="L975">                table.connect(tableMeta, tables, remoteTables);</span>
+<span class="nc" id="L976">            }</span>
+        }
+<span class="fc" id="L978">    }</span>
+
+    private void connectTables() throws SQLException {
+<span class="fc" id="L981">        Pattern excludeColumns = Config.getInstance().getColumnExclusions();</span>
+<span class="fc" id="L982">        Pattern excludeIndirectColumns = Config.getInstance().getIndirectColumnExclusions();</span>
+
+<span class="fc bfc" id="L984" title="All 2 branches covered.">        for (Table table : tables.values()) {</span>
+<span class="fc" id="L985">            table.connectForeignKeys(tables, excludeIndirectColumns, excludeColumns);</span>
+<span class="fc" id="L986">        }</span>
+<span class="fc" id="L987">    }</span>
+
+    /**
+     * Single-threaded implementation of a class that creates tables
+     */
+<span class="fc" id="L992">    private class TableCreator {</span>
+<span class="fc" id="L993">        private final Pattern excludeColumns = Config.getInstance().getColumnExclusions();</span>
+<span class="fc" id="L994">        private final Pattern excludeIndirectColumns = Config.getInstance().getIndirectColumnExclusions();</span>
+
+        /**
+         * Create a table and put it into &lt;code&gt;tables&lt;/code&gt;
+         */
+        void create(BasicTableMeta tableMeta, Properties properties) throws SQLException {
+<span class="fc" id="L1000">            createImpl(tableMeta, properties);</span>
+<span class="fc" id="L1001">        }</span>
+
+        protected void createImpl(BasicTableMeta tableMeta, Properties properties) throws SQLException {
+<span class="fc" id="L1004">            Table table = new Table(Database.this, tableMeta.schema, tableMeta.name, tableMeta.remarks, properties, excludeIndirectColumns, excludeColumns);</span>
+<span class="pc bpc" id="L1005" title="1 of 2 branches missed.">            if (tableMeta.numRows != -1) {</span>
+<span class="nc" id="L1006">                table.setNumRows(tableMeta.numRows);</span>
+            }
+
+<span class="fc" id="L1009">            synchronized (tables) {</span>
+<span class="fc" id="L1010">                tables.put(table.getName(), table);</span>
+<span class="fc" id="L1011">            }</span>
+
+<span class="pc bpc" id="L1013" title="1 of 2 branches missed.">            if (logger.isLoggable(Level.FINE)) {</span>
+<span class="nc" id="L1014">                logger.fine(&quot;Found details of table &quot; + table.getName());</span>
+            } else {
+<span class="fc" id="L1016">                System.out.print('.');</span>
+            }
+<span class="fc" id="L1018">        }</span>
+
+        /**
+         * Wait for all of the tables to be created.
+         * By default this does nothing since this implementation isn't threaded.
+         */
+        void join() {
+<span class="nc" id="L1025">        }</span>
+    }
+
+    /**
+     * Multi-threaded implementation of a class that creates tables
+     */
+    private class ThreadedTableCreator extends TableCreator {
+<span class="fc" id="L1032">        private final Set&lt;Thread&gt; threads = new HashSet&lt;Thread&gt;();</span>
+        private final int maxThreads;
+
+<span class="fc" id="L1035">        ThreadedTableCreator(int maxThreads) {</span>
+<span class="fc" id="L1036">            this.maxThreads = maxThreads;</span>
+<span class="fc" id="L1037">        }</span>
+
+        @Override
+        void create(final BasicTableMeta tableMeta, final Properties properties) throws SQLException {
+<span class="fc" id="L1041">            Thread runner = new Thread() {</span>
+                @Override
+                public void run() {
+                    try {
+<span class="fc" id="L1045">                        createImpl(tableMeta, properties);</span>
+<span class="nc" id="L1046">                    } catch (SQLException exc) {</span>
+<span class="nc" id="L1047">                        exc.printStackTrace(); // nobody above us in call stack...dump it here</span>
+                    } finally {
+<span class="fc" id="L1049">                        synchronized (threads) {</span>
+<span class="fc" id="L1050">                            threads.remove(this);</span>
+<span class="fc" id="L1051">                            threads.notify();</span>
+<span class="fc" id="L1052">                        }</span>
+                    }
+<span class="fc" id="L1054">                }</span>
+            };
+
+<span class="fc" id="L1057">            synchronized (threads) {</span>
+                // wait for enough 'room'
+<span class="pc bpc" id="L1059" title="1 of 2 branches missed.">                while (threads.size() &gt;= maxThreads) {</span>
+                    try {
+<span class="nc" id="L1061">                        threads.wait();</span>
+<span class="nc" id="L1062">                    } catch (InterruptedException interrupted) {</span>
+<span class="nc" id="L1063">                    }</span>
+                }
+
+<span class="fc" id="L1066">                threads.add(runner);</span>
+<span class="fc" id="L1067">            }</span>
+
+<span class="fc" id="L1069">            runner.start();</span>
+<span class="fc" id="L1070">        }</span>
+
+        /**
+         * Wait for all of the started threads to complete
+         */
+        @Override
+        public void join() {
+            while (true) {
+                Thread thread;
+
+<span class="fc" id="L1080">                synchronized (threads) {</span>
+<span class="fc" id="L1081">                    Iterator&lt;Thread&gt; iter = threads.iterator();</span>
+<span class="fc bfc" id="L1082" title="All 2 branches covered.">                    if (!iter.hasNext())</span>
+<span class="fc" id="L1083">                        break;</span>
+
+<span class="fc" id="L1085">                    thread = iter.next();</span>
+<span class="fc" id="L1086">                }</span>
+
+                try {
+<span class="fc" id="L1089">                    thread.join();</span>
+<span class="nc" id="L1090">                } catch (InterruptedException exc) {</span>
+<span class="fc" id="L1091">                }</span>
+<span class="fc" id="L1092">            }</span>
+<span class="fc" id="L1093">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

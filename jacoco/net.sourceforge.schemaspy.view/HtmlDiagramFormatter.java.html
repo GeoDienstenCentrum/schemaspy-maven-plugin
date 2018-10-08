@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HtmlDiagramFormatter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.view</a> &gt; <span class="el_source">HtmlDiagramFormatter.java</span></div><h1>HtmlDiagramFormatter.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.view;
+
+import net.sourceforge.schemaspy.util.Dot;
+
+public class HtmlDiagramFormatter extends HtmlFormatter {
+<span class="fc" id="L24">    private static boolean printedNoDotWarning = false;</span>
+<span class="fc" id="L25">    private static boolean printedInvalidVersionWarning = false;</span>
+
+<span class="fc" id="L27">    protected HtmlDiagramFormatter() {</span>
+<span class="fc" id="L28">    }</span>
+
+    protected Dot getDot() {
+<span class="fc" id="L31">        Dot dot = Dot.getInstance();</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (!dot.exists()) {</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">            if (!printedNoDotWarning) {</span>
+<span class="nc" id="L34">                printedNoDotWarning = true;</span>
+<span class="nc" id="L35">                System.err.println();</span>
+<span class="nc" id="L36">                System.err.println(&quot;Warning: Failed to run dot.&quot;);</span>
+<span class="nc" id="L37">                System.err.println(&quot;   Download &quot; + dot.getSupportedVersions());</span>
+<span class="nc" id="L38">                System.err.println(&quot;   from www.graphviz.org and make sure that dot is either in your path&quot;);</span>
+<span class="nc" id="L39">                System.err.println(&quot;   or point to where you installed Graphviz with the -gv option.&quot;);</span>
+<span class="nc" id="L40">                System.err.println(&quot;   Generated pages will not contain a diagramtic view of table relationships.&quot;);</span>
+            }
+
+<span class="nc" id="L43">            return null;</span>
+        }
+
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (!dot.isValid()) {</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">            if (!printedInvalidVersionWarning) {</span>
+<span class="nc" id="L48">                printedInvalidVersionWarning = true;</span>
+<span class="nc" id="L49">                System.err.println();</span>
+<span class="nc" id="L50">                System.err.println(&quot;Warning: Invalid version of Graphviz dot detected (&quot; + dot.getVersion() + &quot;).&quot;);</span>
+<span class="nc" id="L51">                System.err.println(&quot;   SchemaSpy requires &quot; + dot.getSupportedVersions() + &quot;. from www.graphviz.org.&quot;);</span>
+<span class="nc" id="L52">                System.err.println(&quot;   Generated pages will not contain a diagramatic view of table relationships.&quot;);</span>
+            }
+
+<span class="nc" id="L55">            return null;</span>
+        }
+
+<span class="fc" id="L58">        return dot;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

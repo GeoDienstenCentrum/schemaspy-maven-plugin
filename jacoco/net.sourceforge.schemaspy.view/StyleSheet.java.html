@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StyleSheet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.view</a> &gt; <span class="el_source">StyleSheet.java</span></div><h1>StyleSheet.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.view;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
+import net.sourceforge.schemaspy.Config;
+import net.sourceforge.schemaspy.model.InvalidConfigurationException;
+import net.sourceforge.schemaspy.util.LineWriter;
+
+/**
+ * Represents our CSS style sheet (CSS) with accessors for important
+ * data from that style sheet.
+ * The idea is that the CSS that will be used to render the HTML pages
+ * also determines the colors used in the generated ER diagrams.
+ *
+ * @author John Currier
+ */
+public class StyleSheet {
+    private static StyleSheet instance;
+    private final String css;
+    private String bodyBackgroundColor;
+    private String tableHeadBackgroundColor;
+    private String tableBackgroundColor;
+    private String linkColor;
+    private String linkVisitedColor;
+    private String primaryKeyBackgroundColor;
+    private String indexedColumnBackgroundColor;
+    private String selectedTableBackgroundColor;
+    private String excludedColumnBackgroundColor;
+<span class="fc" id="L58">    private final List&lt;String&gt; ids = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc" id="L60">    private StyleSheet(BufferedReader cssReader) throws IOException {</span>
+<span class="fc" id="L61">        String lineSeparator = System.getProperty(&quot;line.separator&quot;);</span>
+<span class="fc" id="L62">        StringBuilder data = new StringBuilder();</span>
+        String line;
+
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        while ((line = cssReader.readLine()) != null) {</span>
+<span class="fc" id="L66">            data.append(line);</span>
+<span class="fc" id="L67">            data.append(lineSeparator);</span>
+        }
+
+<span class="fc" id="L70">        css = data.toString();</span>
+
+<span class="fc" id="L72">        int startComment = data.indexOf(&quot;/*&quot;);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        while (startComment != -1) {</span>
+<span class="fc" id="L74">            int endComment = data.indexOf(&quot;*/&quot;);</span>
+<span class="fc" id="L75">            data.replace(startComment, endComment + 2, &quot;&quot;);</span>
+<span class="fc" id="L76">            startComment = data.indexOf(&quot;/*&quot;);</span>
+<span class="fc" id="L77">        }</span>
+
+<span class="fc" id="L79">        StringTokenizer tokenizer = new StringTokenizer(data.toString(), &quot;{}&quot;);</span>
+<span class="fc" id="L80">        String id = null;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        while (tokenizer.hasMoreTokens()) {</span>
+<span class="fc" id="L82">            String token = tokenizer.nextToken().trim();</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            if (id == null) {</span>
+<span class="fc" id="L84">                id = token.toLowerCase();</span>
+<span class="fc" id="L85">                ids.add(id);</span>
+            } else {
+<span class="fc" id="L87">                Map&lt;String, String&gt; attribs = parseAttributes(token);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">                if (id.equals(&quot;.content&quot;))</span>
+<span class="fc" id="L89">                    bodyBackgroundColor = attribs.get(&quot;background&quot;);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">                else if (id.equals(&quot;th&quot;))</span>
+<span class="fc" id="L91">                    tableHeadBackgroundColor = attribs.get(&quot;background-color&quot;);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">                else if (id.equals(&quot;td&quot;))</span>
+<span class="fc" id="L93">                    tableBackgroundColor = attribs.get(&quot;background-color&quot;);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">                else if (id.equals(&quot;.primarykey&quot;))</span>
+<span class="fc" id="L95">                    primaryKeyBackgroundColor = attribs.get(&quot;background&quot;);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">                else if (id.equals(&quot;.indexedcolumn&quot;))</span>
+<span class="fc" id="L97">                    indexedColumnBackgroundColor = attribs.get(&quot;background&quot;);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">                else if (id.equals(&quot;.selectedtable&quot;))</span>
+<span class="fc" id="L99">                    selectedTableBackgroundColor = attribs.get(&quot;background&quot;);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">                else if (id.equals(&quot;.excludedcolumn&quot;))</span>
+<span class="fc" id="L101">                    excludedColumnBackgroundColor = attribs.get(&quot;background&quot;);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                else if (id.equals(&quot;a:link&quot;))</span>
+<span class="fc" id="L103">                    linkColor = attribs.get(&quot;color&quot;);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">                else if (id.equals(&quot;a:visited&quot;))</span>
+<span class="fc" id="L105">                    linkVisitedColor = attribs.get(&quot;color&quot;);</span>
+<span class="fc" id="L106">                id = null;</span>
+            }
+<span class="fc" id="L108">        }</span>
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Singleton accessor
+     *
+     * @return the singleton
+     * @throws ParseException
+     */
+    public static StyleSheet getInstance() throws ParseException {
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (instance == null) {</span>
+            try {
+<span class="fc" id="L120">                instance = new StyleSheet(new BufferedReader(getReader(Config.getInstance().getCss())));</span>
+<span class="nc" id="L121">            } catch (IOException exc) {</span>
+<span class="nc" id="L122">                throw new ParseException(exc);</span>
+<span class="fc" id="L123">            }</span>
+        }
+
+<span class="fc" id="L126">        return instance;</span>
+    }
+
+    /**
+     * Returns a {@link Reader} that can be used to read the contents
+     * of the specified css.&lt;p&gt;
+     * Search order is
+     * &lt;ol&gt;
+     * &lt;li&gt;&lt;code&gt;cssName&lt;/code&gt; as an explicitly-defined file&lt;/li&gt;
+     * &lt;li&gt;&lt;code&gt;cssName&lt;/code&gt; as a file in the user's home directory&lt;/li&gt;
+     * &lt;li&gt;&lt;code&gt;cssName&lt;/code&gt; as a resource from the class path&lt;/li&gt;
+     * &lt;/ol&gt;
+     *
+     * @param cssName
+     * @return
+     * @throws IOException
+     */
+    private static Reader getReader(String cssName) throws IOException {
+<span class="fc" id="L144">        File cssFile = new File(cssName);</span>
+<span class="pc bpc" id="L145" title="1 of 2 branches missed.">        if (cssFile.exists())</span>
+<span class="nc" id="L146">            return new FileReader(cssFile);</span>
+<span class="fc" id="L147">        cssFile = new File(System.getProperty(&quot;user.dir&quot;), cssName);</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">        if (cssFile.exists())</span>
+<span class="nc" id="L149">            return new FileReader(cssFile);</span>
+
+<span class="fc" id="L151">        InputStream cssStream = StyleSheet.class.getClassLoader().getResourceAsStream(cssName);</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        if (cssStream == null)</span>
+<span class="nc" id="L153">            throw new ParseException(&quot;Unable to find requested style sheet: &quot; + cssName);</span>
+
+<span class="fc" id="L155">        return new InputStreamReader(cssStream);</span>
+    }
+
+    private Map&lt;String, String&gt; parseAttributes(String data) {
+<span class="fc" id="L159">        Map&lt;String, String&gt; attribs = new HashMap&lt;String, String&gt;();</span>
+
+        try {
+<span class="fc" id="L162">            StringTokenizer attrTokenizer = new StringTokenizer(data, &quot;;&quot;);</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">            while (attrTokenizer.hasMoreTokens()) {</span>
+<span class="fc" id="L164">                StringTokenizer pairTokenizer = new StringTokenizer(attrTokenizer.nextToken(), &quot;:&quot;);</span>
+<span class="fc" id="L165">                String attribute = pairTokenizer.nextToken().trim().toLowerCase();</span>
+<span class="fc" id="L166">                String value = pairTokenizer.nextToken().trim().toLowerCase();</span>
+<span class="fc" id="L167">                attribs.put(attribute, value);</span>
+<span class="fc" id="L168">            }</span>
+<span class="nc" id="L169">        } catch (NoSuchElementException badToken) {</span>
+<span class="nc" id="L170">            System.err.println(&quot;Failed to extract attributes from '&quot; + data + &quot;'&quot;);</span>
+<span class="nc" id="L171">            throw badToken;</span>
+<span class="fc" id="L172">        }</span>
+
+<span class="fc" id="L174">        return attribs;</span>
+    }
+
+    /**
+     * Write the contents of the original css to &lt;code&gt;out&lt;/code&gt;.
+     *
+     * @param out
+     * @throws IOException
+     */
+    public void write(LineWriter out) throws IOException {
+<span class="fc" id="L184">        out.write(css);</span>
+<span class="fc" id="L185">    }</span>
+
+    public String getBodyBackground() {
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">        if (bodyBackgroundColor == null)</span>
+<span class="nc" id="L189">            throw new MissingCssPropertyException(&quot;.content&quot;, &quot;background&quot;);</span>
+
+<span class="fc" id="L191">        return bodyBackgroundColor;</span>
+    }
+
+    public String getTableBackground() {
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">        if (tableBackgroundColor == null)</span>
+<span class="nc" id="L196">            throw new MissingCssPropertyException(&quot;td&quot;, &quot;background-color&quot;);</span>
+
+<span class="fc" id="L198">        return tableBackgroundColor;</span>
+    }
+
+    public String getTableHeadBackground() {
+<span class="pc bpc" id="L202" title="1 of 2 branches missed.">        if (tableHeadBackgroundColor == null)</span>
+<span class="nc" id="L203">            throw new MissingCssPropertyException(&quot;th&quot;, &quot;background-color&quot;);</span>
+
+<span class="fc" id="L205">        return tableHeadBackgroundColor;</span>
+    }
+
+    public String getPrimaryKeyBackground() {
+<span class="pc bpc" id="L209" title="1 of 2 branches missed.">        if (primaryKeyBackgroundColor == null)</span>
+<span class="nc" id="L210">            throw new MissingCssPropertyException(&quot;.primaryKey&quot;, &quot;background&quot;);</span>
+
+<span class="fc" id="L212">        return primaryKeyBackgroundColor;</span>
+    }
+
+    public String getIndexedColumnBackground() {
+<span class="pc bpc" id="L216" title="1 of 2 branches missed.">        if (indexedColumnBackgroundColor == null)</span>
+<span class="nc" id="L217">            throw new MissingCssPropertyException(&quot;.indexedColumn&quot;, &quot;background&quot;);</span>
+
+<span class="fc" id="L219">        return indexedColumnBackgroundColor;</span>
+    }
+
+    public String getSelectedTableBackground() {
+<span class="nc bnc" id="L223" title="All 2 branches missed.">        if (selectedTableBackgroundColor == null)</span>
+<span class="nc" id="L224">            throw new MissingCssPropertyException(&quot;.selectedTable&quot;, &quot;background&quot;);</span>
+
+<span class="nc" id="L226">        return selectedTableBackgroundColor;</span>
+    }
+
+    public String getExcludedColumnBackgroundColor() {
+<span class="nc bnc" id="L230" title="All 2 branches missed.">        if (excludedColumnBackgroundColor == null)</span>
+<span class="nc" id="L231">            throw new MissingCssPropertyException(&quot;.excludedColumn&quot;, &quot;background&quot;);</span>
+
+<span class="nc" id="L233">        return excludedColumnBackgroundColor;</span>
+    }
+
+    public String getLinkColor() {
+<span class="pc bpc" id="L237" title="1 of 2 branches missed.">        if (linkColor == null)</span>
+<span class="nc" id="L238">            throw new MissingCssPropertyException(&quot;a:link&quot;, &quot;color&quot;);</span>
+
+<span class="fc" id="L240">        return linkColor;</span>
+    }
+
+    public String getLinkVisitedColor() {
+<span class="nc bnc" id="L244" title="All 2 branches missed.">        if (linkVisitedColor == null)</span>
+<span class="nc" id="L245">            throw new MissingCssPropertyException(&quot;a:visited&quot;, &quot;color&quot;);</span>
+
+<span class="nc" id="L247">        return linkVisitedColor;</span>
+    }
+
+    /**
+     * Indicates that a css property was missing
+     */
+    public static class MissingCssPropertyException extends InvalidConfigurationException {
+        private static final long serialVersionUID = 1L;
+
+        /**
+         * @param cssSection name of the css section
+         * @param propName name of the missing property in that section
+         */
+        public MissingCssPropertyException(String cssSection, String propName) {
+<span class="nc" id="L261">            super(&quot;Required property '&quot; + propName + &quot;' was not found for the definition of '&quot; + cssSection + &quot;' in &quot; + Config.getInstance().getCss());</span>
+<span class="nc" id="L262">        }</span>
+    }
+
+    /**
+     * Indicates an exception in parsing the css
+     */
+    public static class ParseException extends InvalidConfigurationException {
+        private static final long serialVersionUID = 1L;
+
+        /**
+         * @param cause root exception that caused the failure
+         */
+        public ParseException(Exception cause) {
+<span class="nc" id="L275">            super(cause);</span>
+<span class="nc" id="L276">        }</span>
+
+        /**
+         * @param msg textual description of the failure
+         */
+        public ParseException(String msg) {
+<span class="nc" id="L282">            super(msg);</span>
+<span class="nc" id="L283">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

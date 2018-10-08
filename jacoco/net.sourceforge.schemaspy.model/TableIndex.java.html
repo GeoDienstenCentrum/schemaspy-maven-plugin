@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TableIndex.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.model</a> &gt; <span class="el_source">TableIndex.java</span></div><h1>TableIndex.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.model;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class TableIndex implements Comparable&lt;TableIndex&gt; {
+    private final String name;
+    private final boolean isUnique;
+    private Object id;
+    private boolean isPrimary;
+<span class="fc" id="L32">    private final List&lt;TableColumn&gt; columns = new ArrayList&lt;TableColumn&gt;();</span>
+<span class="fc" id="L33">    private final List&lt;Boolean&gt; columnsAscending = new ArrayList&lt;Boolean&gt;(); // for whether colums are ascending order</span>
+
+    /**
+     * @param rs
+     * @throws java.sql.SQLException
+     */
+<span class="fc" id="L39">    public TableIndex(ResultSet rs) throws SQLException {</span>
+<span class="fc" id="L40">        name = rs.getString(&quot;INDEX_NAME&quot;);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        isUnique = !rs.getBoolean(&quot;NON_UNIQUE&quot;);</span>
+<span class="fc" id="L42">    }</span>
+
+    public void setId(Object id) {
+<span class="nc" id="L45">        this.id = id;</span>
+<span class="nc" id="L46">    }</span>
+
+    public Object getId() {
+<span class="fc" id="L49">        return id;</span>
+    }
+
+    public String getName() {
+<span class="fc" id="L53">        return name;</span>
+    }
+
+    void addColumn(TableColumn column, String sortOrder) {
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (column != null) {</span>
+<span class="fc" id="L58">            columns.add(column);</span>
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">            columnsAscending.add(Boolean.valueOf(sortOrder == null || sortOrder.equals(&quot;A&quot;)));</span>
+        }
+<span class="fc" id="L61">    }</span>
+
+    /**
+     * @return
+     */
+    public String getType() {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (isPrimaryKey())</span>
+<span class="fc" id="L68">            return &quot;Primary key&quot;;</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (isUnique())</span>
+<span class="nc" id="L70">            return &quot;Must be unique&quot;;</span>
+<span class="fc" id="L71">        return &quot;Performance&quot;;</span>
+    }
+
+    /**
+     * @return
+     */
+    public boolean isPrimaryKey() {
+<span class="fc" id="L78">        return isPrimary;</span>
+    }
+
+    /**
+     * @param isPrimaryKey
+     */
+    public void setIsPrimaryKey(boolean isPrimaryKey) {
+<span class="fc" id="L85">        isPrimary = isPrimaryKey;</span>
+<span class="fc" id="L86">    }</span>
+
+    /**
+     * @return
+     */
+    public boolean isUnique() {
+<span class="fc" id="L92">        return isUnique;</span>
+    }
+
+    /**
+     * @return
+     */
+    public String getColumnsAsString() {
+<span class="fc" id="L99">        StringBuilder buf = new StringBuilder();</span>
+
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for (TableColumn column : columns) {</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">            if (buf.length() &gt; 0)</span>
+<span class="nc" id="L103">                buf.append(&quot; + &quot;);</span>
+<span class="fc" id="L104">            buf.append(column);</span>
+<span class="fc" id="L105">        }</span>
+<span class="fc" id="L106">        return buf.toString();</span>
+    }
+
+    public List&lt;TableColumn&gt; getColumns() {
+<span class="fc" id="L110">        return Collections.unmodifiableList(columns);</span>
+    }
+
+    /**
+     * Yes, we had a project that had columns defined as both 'nullable' and 'must be unique'.
+     *
+     * @return boolean
+     */
+    public boolean isUniqueNullable() {
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (!isUnique())</span>
+<span class="fc" id="L120">            return false;</span>
+
+        // if all of the columns specified by the Unique Index are nullable
+        // then return true, otherwise false
+<span class="fc" id="L124">        boolean allNullable = true;</span>
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">        for (TableColumn column : getColumns()) {</span>
+<span class="pc bpc" id="L126" title="2 of 4 branches missed.">            allNullable = column != null &amp;&amp; column.isNullable();</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">            if (!allNullable)</span>
+<span class="fc" id="L128">                break;</span>
+<span class="nc" id="L129">        }</span>
+
+<span class="fc" id="L131">        return allNullable;</span>
+    }
+
+    /**
+     * @param column
+     * @return
+     */
+    public boolean isAscending(TableColumn column) {
+<span class="fc" id="L139">        return columnsAscending.get(columns.indexOf(column)).booleanValue();</span>
+    }
+
+    /**
+     */
+    public int compareTo(TableIndex other) {
+<span class="fc bfc" id="L145" title="All 4 branches covered.">        if (isPrimaryKey() &amp;&amp; !other.isPrimaryKey())</span>
+<span class="fc" id="L146">            return -1;</span>
+<span class="fc bfc" id="L147" title="All 4 branches covered.">        if (!isPrimaryKey() &amp;&amp; other.isPrimaryKey())</span>
+<span class="fc" id="L148">            return 1;</span>
+
+<span class="fc" id="L150">        Object thisId = getId();</span>
+<span class="fc" id="L151">        Object otherId = other.getId();</span>
+<span class="pc bpc" id="L152" title="3 of 4 branches missed.">        if (thisId == null || otherId == null)</span>
+<span class="fc" id="L153">            return getName().compareToIgnoreCase(other.getName());</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">        if (thisId instanceof Number)</span>
+<span class="nc" id="L155">            return ((Number)thisId).intValue() - ((Number)otherId).intValue();</span>
+<span class="nc" id="L156">        return thisId.toString().compareToIgnoreCase(otherId.toString());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

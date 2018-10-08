@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Dot.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.util</a> &gt; <span class="el_source">Dot.java</span></div><h1>Dot.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.util;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import net.sourceforge.schemaspy.Config;
+
+public class Dot {
+<span class="fc" id="L34">    private static Dot instance = new Dot();</span>
+    private final Version version;
+<span class="fc" id="L36">    private final Version supportedVersion = new Version(&quot;2.2.1&quot;);</span>
+<span class="fc" id="L37">    private final Version badVersion = new Version(&quot;2.4&quot;);</span>
+<span class="fc" id="L38">    private final String lineSeparator = System.getProperty(&quot;line.separator&quot;);</span>
+    private String dotExe;
+<span class="fc" id="L40">    private String format = &quot;png&quot;;</span>
+    private String renderer;
+<span class="fc" id="L42">    private final Set&lt;String&gt; validatedRenderers = Collections.synchronizedSet(new HashSet&lt;String&gt;());</span>
+<span class="fc" id="L43">    private final Set&lt;String&gt; invalidatedRenderers = Collections.synchronizedSet(new HashSet&lt;String&gt;());</span>
+
+<span class="fc" id="L45">    private Dot() {</span>
+<span class="fc" id="L46">        String versionText = null;</span>
+        // dot -V should return something similar to:
+        //  dot version 2.8 (Fri Feb  3 22:38:53 UTC 2006)
+        // or sometimes something like:
+        //  dot - Graphviz version 2.9.20061004.0440 (Wed Oct 4 21:01:52 GMT 2006)
+<span class="fc" id="L51">        String[] dotCommand = new String[] { getExe(), &quot;-V&quot; };</span>
+
+        try {
+<span class="fc" id="L54">            Process process = Runtime.getRuntime().exec(dotCommand);</span>
+<span class="fc" id="L55">            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));</span>
+<span class="fc" id="L56">            String versionLine = reader.readLine();</span>
+
+            // look for a number followed numbers or dots
+<span class="fc" id="L59">            Matcher matcher = Pattern.compile(&quot;[0-9][0-9.]+&quot;).matcher(versionLine);</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">            if (matcher.find()) {</span>
+<span class="fc" id="L61">                versionText = matcher.group();</span>
+            } else {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                if (Config.getInstance().isHtmlGenerationEnabled()) {</span>
+<span class="nc" id="L64">                    System.err.println();</span>
+<span class="nc" id="L65">                    System.err.println(&quot;Invalid dot configuration detected.  '&quot; +</span>
+<span class="nc" id="L66">                                        getDisplayableCommand(dotCommand) + &quot;' returned:&quot;);</span>
+<span class="nc" id="L67">                    System.err.println(&quot;   &quot; + versionLine);</span>
+                }
+            }
+<span class="nc" id="L70">        } catch (Exception validDotDoesntExist) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            if (Config.getInstance().isHtmlGenerationEnabled()) {</span>
+<span class="nc" id="L72">                System.err.println(&quot;Failed to query Graphviz version information&quot;);</span>
+<span class="nc" id="L73">                System.err.println(&quot;  with: &quot; + getDisplayableCommand(dotCommand));</span>
+<span class="nc" id="L74">                System.err.println(&quot;  &quot; + validDotDoesntExist);</span>
+            }
+<span class="fc" id="L76">        }</span>
+
+<span class="fc" id="L78">        version = new Version(versionText);</span>
+<span class="fc" id="L79">    }</span>
+
+    public static Dot getInstance() {
+<span class="fc" id="L82">        return instance;</span>
+    }
+
+    public boolean exists() {
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">        return version.toString() != null;</span>
+    }
+
+    public Version getVersion() {
+<span class="fc" id="L90">        return version;</span>
+    }
+
+    public boolean isValid() {
+<span class="pc bpc" id="L94" title="3 of 6 branches missed.">        return exists() &amp;&amp; (getVersion().equals(supportedVersion) || getVersion().compareTo(badVersion) &gt; 0);</span>
+    }
+
+    public String getSupportedVersions() {
+<span class="nc" id="L98">        return &quot;dot version &quot; + supportedVersion + &quot; or versions greater than &quot; + badVersion;</span>
+    }
+
+    public boolean supportsCenteredEastWestEdges() {
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        return getVersion().compareTo(new Version(&quot;2.6&quot;)) &gt;= 0;</span>
+    }
+
+    /**
+     * Set the image format to generate.  Defaults to &lt;code&gt;png&lt;/code&gt;.
+     * See &lt;a href='http://www.graphviz.org/doc/info/output.html'&gt;http://www.graphviz.org/doc/info/output.html&lt;/a&gt;
+     * for valid formats.
+     *
+     * @param format image format to generate
+     */
+    public void setFormat(String format) {
+<span class="nc" id="L113">        this.format = format;</span>
+<span class="nc" id="L114">    }</span>
+
+    /**
+     * @see #setFormat(String)
+     * @return
+     */
+    public String getFormat() {
+<span class="fc" id="L121">        return format;</span>
+    }
+
+    /**
+     * Returns true if the installed dot requires specifying :gd as a renderer.
+     * This was added when Win 2.15 came out because it defaulted to Cairo, which produces
+     * better quality output, but at a significant speed and size penalty.&lt;p&gt;
+     *
+     * The intent of this property is to determine if it's ok to tack &quot;:gd&quot; to
+     * the format specifier.  Earlier versions didn't require it and didn't know
+     * about the option.
+     *
+     * @return
+     */
+    public boolean requiresGdRenderer() {
+<span class="pc bpc" id="L136" title="2 of 4 branches missed.">        return getVersion().compareTo(new Version(&quot;2.12&quot;)) &gt;= 0 &amp;&amp; supportsRenderer(&quot;:gd&quot;);</span>
+    }
+
+    /**
+     * Set the renderer to use for the -Tformat[:renderer[:formatter]] dot option as specified
+     * at &lt;a href='http://www.graphviz.org/doc/info/command.html'&gt;
+     * http://www.graphviz.org/doc/info/command.html&lt;/a&gt; where &quot;format&quot; is specified by
+     * {@link #setFormat(String)}&lt;p&gt;
+     * Note that the leading &quot;:&quot; is required while :formatter is optional.
+     *
+     * @param renderer
+     */
+    public void setRenderer(String renderer) {
+<span class="nc" id="L149">        this.renderer = renderer;</span>
+<span class="nc" id="L150">    }</span>
+
+    public String getRenderer() {
+<span class="pc bpc" id="L153" title="3 of 4 branches missed.">        return renderer != null &amp;&amp; supportsRenderer(renderer) ? renderer</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">            : (requiresGdRenderer() ? &quot;:gd&quot; : &quot;&quot;);</span>
+    }
+
+    /**
+     * If &lt;code&gt;true&lt;/code&gt; then generate output of &quot;higher quality&quot;
+     * than the default (&quot;lower quality&quot;).
+     * Note that the default is intended to be &quot;lower quality&quot;,
+     * but various installations of Graphviz may have have different abilities.
+     * That is, some might not have the &quot;lower quality&quot; libraries and others might
+     * not have the &quot;higher quality&quot; libraries.
+     */
+    public void setHighQuality(boolean highQuality) {
+<span class="nc bnc" id="L166" title="All 4 branches missed.">        if (highQuality &amp;&amp; supportsRenderer(&quot;:cairo&quot;)) {</span>
+<span class="nc" id="L167">            setRenderer(&quot;:cairo&quot;);</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">        } else if (supportsRenderer(&quot;:gd&quot;)) {</span>
+<span class="nc" id="L169">            setRenderer(&quot;:gd&quot;);</span>
+        }
+<span class="nc" id="L171">    }</span>
+
+    /**
+     * @see #setHighQuality(boolean)
+     */
+    public boolean isHighQuality() {
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">        return getRenderer().indexOf(&quot;:cairo&quot;) != -1;</span>
+    }
+
+    /**
+     * Returns &lt;code&gt;true&lt;/code&gt; if the specified renderer is supported.
+     * See {@link #setRenderer(String)} for renderer details.
+     *
+     * @param renderer
+     * @return
+     */
+    public boolean supportsRenderer(@SuppressWarnings(&quot;hiding&quot;) String renderer) {
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">        if (!exists())</span>
+<span class="nc" id="L189">            return false;</span>
+
+<span class="fc bfc" id="L191" title="All 2 branches covered.">        if (validatedRenderers.contains(renderer))</span>
+<span class="fc" id="L192">            return true;</span>
+
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        if (invalidatedRenderers.contains(renderer))</span>
+<span class="nc" id="L195">            return false;</span>
+
+        try {
+<span class="fc" id="L198">            String[] dotCommand = new String[] {</span>
+<span class="fc" id="L199">                getExe(),</span>
+<span class="fc" id="L200">                &quot;-T&quot; + getFormat() + ':'</span>
+            };
+<span class="fc" id="L202">            Process process = Runtime.getRuntime().exec(dotCommand);</span>
+<span class="fc" id="L203">            BufferedReader errors = new BufferedReader(new InputStreamReader(process.getErrorStream()));</span>
+            String line;
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            while ((line = errors.readLine()) != null) {</span>
+<span class="pc bpc" id="L206" title="1 of 2 branches missed.">                if (line.contains(getFormat() + renderer)) {</span>
+<span class="fc" id="L207">                    validatedRenderers.add(renderer);</span>
+                }
+            }
+<span class="fc" id="L210">            process.waitFor();</span>
+<span class="nc" id="L211">        } catch (Exception exc) {</span>
+<span class="nc" id="L212">            exc.printStackTrace();</span>
+<span class="fc" id="L213">        }</span>
+
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">        if (!validatedRenderers.contains(renderer)) {</span>
+            //System.err.println(&quot;\nFailed to validate &quot; + getFormat() + &quot; renderer '&quot; + renderer + &quot;'.  Reverting to detault renderer for &quot; + getFormat() + '.');
+<span class="nc" id="L217">            invalidatedRenderers.add(renderer);</span>
+<span class="nc" id="L218">            return false;</span>
+        }
+
+<span class="fc" id="L221">        return true;</span>
+    }
+
+    /**
+     * Returns the executable to use to run dot
+     *
+     * @return
+     */
+    private String getExe() {
+<span class="fc bfc" id="L230" title="All 2 branches covered.">        if (dotExe == null)</span>
+        {
+<span class="fc" id="L232">            File gv = Config.getInstance().getGraphvizDir();</span>
+
+<span class="pc bpc" id="L234" title="1 of 2 branches missed.">            if (gv == null) {</span>
+                // default to finding dot in the PATH
+<span class="fc" id="L236">                dotExe = &quot;dot&quot;;</span>
+            } else {
+                // pull dot from the Graphviz bin directory specified
+<span class="nc" id="L239">                dotExe = new File(new File(gv, &quot;bin&quot;), &quot;dot&quot;).toString();</span>
+            }
+        }
+
+<span class="fc" id="L243">        return dotExe;</span>
+    }
+
+    /**
+     * Using the specified .dot file generates an image returning the image's image map.
+     */
+    public String generateDiagram(File dotFile, File diagramFile) throws DotFailure {
+<span class="fc" id="L250">        StringBuilder mapBuffer = new StringBuilder(1024);</span>
+
+<span class="fc" id="L252">        BufferedReader mapReader = null;</span>
+        // this one is for executing.  it can (hopefully) deal with funky things in filenames.
+<span class="fc" id="L254">        String[] dotCommand = new String[] {</span>
+<span class="fc" id="L255">            getExe(),</span>
+<span class="fc" id="L256">            &quot;-T&quot; + getFormat() + getRenderer(),</span>
+<span class="fc" id="L257">            dotFile.toString(),</span>
+            &quot;-o&quot; + diagramFile,
+            &quot;-Tcmapx&quot;
+        };
+        // this one is for display purposes ONLY.
+<span class="fc" id="L262">        String commandLine = getDisplayableCommand(dotCommand);</span>
+
+        try {
+<span class="fc" id="L265">            Process process = Runtime.getRuntime().exec(dotCommand);</span>
+<span class="fc" id="L266">            new ProcessOutputReader(commandLine, process.getErrorStream()).start();</span>
+<span class="fc" id="L267">            mapReader = new BufferedReader(new InputStreamReader(process.getInputStream()));</span>
+            String line;
+<span class="fc bfc" id="L269" title="All 2 branches covered.">            while ((line = mapReader.readLine()) != null) {</span>
+<span class="fc" id="L270">                mapBuffer.append(line);</span>
+<span class="fc" id="L271">                mapBuffer.append(lineSeparator);</span>
+            }
+<span class="fc" id="L273">            int rc = process.waitFor();</span>
+<span class="pc bpc" id="L274" title="1 of 2 branches missed.">            if (rc != 0)</span>
+<span class="nc" id="L275">                throw new DotFailure(&quot;'&quot; + commandLine + &quot;' failed with return code &quot; + rc);</span>
+<span class="pc bpc" id="L276" title="1 of 2 branches missed.">            if (!diagramFile.exists())</span>
+<span class="nc" id="L277">                throw new DotFailure(&quot;'&quot; + commandLine + &quot;' failed to create output file&quot;);</span>
+
+            // dot generates post-HTML 4.0.1 output...convert trailing /&gt;'s to &gt;'s
+<span class="fc" id="L280">            return mapBuffer.toString().replace(&quot;/&gt;&quot;, &quot;&gt;&quot;);</span>
+<span class="nc" id="L281">        } catch (InterruptedException interrupted) {</span>
+<span class="nc" id="L282">            throw new RuntimeException(interrupted);</span>
+<span class="nc" id="L283">        } catch (DotFailure failed) {</span>
+<span class="nc" id="L284">            diagramFile.delete();</span>
+<span class="nc" id="L285">            throw failed;</span>
+<span class="nc" id="L286">        } catch (IOException failed) {</span>
+<span class="nc" id="L287">            diagramFile.delete();</span>
+<span class="nc" id="L288">            throw new DotFailure(&quot;'&quot; + commandLine + &quot;' failed with exception &quot; + failed);</span>
+        } finally {
+<span class="pc bpc" id="L290" title="1 of 2 branches missed.">            if (mapReader != null) {</span>
+                try {
+<span class="fc" id="L292">                    mapReader.close();</span>
+<span class="pc" id="L293">                } catch (IOException ignore) {}</span>
+            }
+        }
+    }
+
+    public class DotFailure extends IOException {
+        private static final long serialVersionUID = 3833743270181351987L;
+
+<span class="nc" id="L301">        public DotFailure(String msg) {</span>
+<span class="nc" id="L302">            super(msg);</span>
+<span class="nc" id="L303">        }</span>
+    }
+
+    private static String getDisplayableCommand(String[] command) {
+<span class="fc" id="L307">        StringBuilder displayable = new StringBuilder();</span>
+<span class="fc bfc" id="L308" title="All 2 branches covered.">        for (int i = 0; i &lt; command.length; ++i) {</span>
+<span class="fc" id="L309">            displayable.append(command[i]);</span>
+<span class="fc bfc" id="L310" title="All 2 branches covered.">            if (i + 1 &lt; command.length)</span>
+<span class="fc" id="L311">                displayable.append(' ');</span>
+        }
+<span class="fc" id="L313">        return displayable.toString();</span>
+    }
+
+    private static class ProcessOutputReader extends Thread {
+        private final BufferedReader processReader;
+        private final String command;
+
+<span class="fc" id="L320">        ProcessOutputReader(String command, InputStream processStream) {</span>
+<span class="fc" id="L321">            processReader = new BufferedReader(new InputStreamReader(processStream));</span>
+<span class="fc" id="L322">            this.command = command;</span>
+<span class="fc" id="L323">            setDaemon(true);</span>
+<span class="fc" id="L324">        }</span>
+
+        @Override
+        public void run() {
+            try {
+                String line;
+<span class="pc bpc" id="L330" title="1 of 2 branches missed.">                while ((line = processReader.readLine()) != null) {</span>
+                    // don't report port id unrecognized or unrecognized port
+<span class="nc bnc" id="L332" title="All 4 branches missed.">                    if (line.indexOf(&quot;unrecognized&quot;) == -1 &amp;&amp; line.indexOf(&quot;port&quot;) == -1)</span>
+<span class="nc" id="L333">                        System.err.println(command + &quot;: &quot; + line);</span>
+                }
+<span class="nc" id="L335">            } catch (IOException ioException) {</span>
+<span class="nc" id="L336">                ioException.printStackTrace();</span>
+            } finally {
+                try {
+<span class="fc" id="L339">                    processReader.close();</span>
+<span class="nc" id="L340">                } catch (Exception exc) {</span>
+<span class="nc" id="L341">                    exc.printStackTrace(); // shouldn't ever get here...but...</span>
+<span class="fc" id="L342">                }</span>
+            }
+<span class="fc" id="L344">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

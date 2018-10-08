@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Config.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy</a> &gt; <span class="el_source">Config.java</span></div><h1>Config.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy;
+
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.sql.DatabaseMetaData;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.TreeSet;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
+import java.util.logging.Level;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import net.sourceforge.schemaspy.model.InvalidConfigurationException;
+import net.sourceforge.schemaspy.util.DbSpecificConfig;
+import net.sourceforge.schemaspy.util.Dot;
+import net.sourceforge.schemaspy.view.DefaultSqlFormatter;
+import net.sourceforge.schemaspy.view.SqlFormatter;
+
+/**
+ * Configuration of a SchemaSpy run
+ *
+ * @author John Currier
+ */
+public class Config
+{
+    private static Config instance;
+    private final List&lt;String&gt; options;
+    private Map&lt;String, String&gt; dbSpecificOptions;
+    private Map&lt;String, String&gt; originalDbSpecificOptions;
+    private boolean helpRequired;
+    private boolean dbHelpRequired;
+    private File outputDir;
+    private File graphvizDir;
+    private String dbType;
+    private String schema;
+    private List&lt;String&gt; schemas;
+    private String user;
+    private Boolean singleSignOn;
+    private Boolean noSchema;
+    private String password;
+    private Boolean promptForPassword;
+    private String db;
+    private String host;
+    private Integer port;
+    private String server;
+    private String meta;
+    private Pattern tableInclusions;
+    private Pattern tableExclusions;
+    private Pattern columnExclusions;
+    private Pattern indirectColumnExclusions;
+    private String userConnectionPropertiesFile;
+    private Properties userConnectionProperties;
+    private Integer maxDbThreads;
+    private Integer maxDetailedTables;
+    private String driverPath;
+    private String css;
+    private String charset;
+    private String font;
+    private Integer fontSize;
+    private String description;
+    private String dbPropertiesLoadedFrom;
+    private Level logLevel;
+    private SqlFormatter sqlFormatter;
+    private String sqlFormatterClass;
+    private Boolean generateHtml;
+    private Boolean includeImpliedConstraints;
+    private Boolean logoEnabled;
+    private Boolean rankDirBugEnabled;
+    private Boolean encodeCommentsEnabled;
+    private Boolean numRowsEnabled;
+    private Boolean viewsEnabled;
+    private Boolean meterEnabled;
+    private Boolean railsEnabled;
+    private Boolean evaluteAll;
+    private Boolean highQuality;
+    private Boolean lowQuality;
+    private Boolean adsEnabled;
+    private String schemaSpec;  // used in conjunction with evaluateAll
+<span class="fc" id="L120">    private boolean populating = false;</span>
+    public static final String DOT_CHARSET = &quot;UTF-8&quot;;
+    private static final String ESCAPED_EQUALS = &quot;\\=&quot;;
+
+    /**
+     * Default constructor. Intended for when you want to inject properties
+     * independently (i.e. not from a command line interface).
+     */
+    public Config()
+<span class="fc" id="L129">    {</span>
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">        if (instance == null)</span>
+<span class="nc" id="L131">            setInstance(this);</span>
+<span class="fc" id="L132">        options = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L133">    }</span>
+
+    /**
+     * Construct a configuration from an array of options (e.g. from a command
+     * line interface).
+     *
+     */
+    public Config(String[] argv)
+<span class="fc" id="L141">    {</span>
+<span class="fc" id="L142">        setInstance(this);</span>
+<span class="fc" id="L143">        options = fixupArgs(Arrays.asList(argv));</span>
+
+<span class="pc bpc" id="L145" title="1 of 2 branches missed.">        helpRequired =  options.remove(&quot;-?&quot;) ||</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">                        options.remove(&quot;/?&quot;) ||</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">                        options.remove(&quot;?&quot;) ||</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">                        options.remove(&quot;-h&quot;) ||</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">                        options.remove(&quot;-help&quot;) ||</span>
+<span class="pc bpc" id="L150" title="1 of 2 branches missed.">                        options.remove(&quot;--help&quot;);</span>
+<span class="pc bpc" id="L151" title="2 of 4 branches missed.">        dbHelpRequired =  options.remove(&quot;-dbHelp&quot;) || options.remove(&quot;-dbhelp&quot;);</span>
+<span class="fc" id="L152">    }</span>
+
+    public static Config getInstance() {
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">        if (instance == null)</span>
+<span class="nc" id="L156">            instance = new Config();</span>
+
+<span class="fc" id="L158">        return instance;</span>
+    }
+
+    /**
+     * Sets the global instance.
+     *
+     * Useful for things like selecting a specific configuration in a UI.
+     *
+     */
+    public static void setInstance(Config config) {
+<span class="fc" id="L168">        instance = config;</span>
+<span class="fc" id="L169">    }</span>
+
+    public void setHtmlGenerationEnabled(boolean generateHtml) {
+<span class="nc" id="L172">        this.generateHtml = generateHtml;</span>
+<span class="nc" id="L173">    }</span>
+
+    public boolean isHtmlGenerationEnabled() {
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        if (generateHtml == null)</span>
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">            generateHtml = !options.remove(&quot;-nohtml&quot;);</span>
+
+<span class="fc" id="L179">        return generateHtml;</span>
+    }
+
+    public void setImpliedConstraintsEnabled(boolean includeImpliedConstraints) {
+<span class="nc" id="L183">        this.includeImpliedConstraints = includeImpliedConstraints;</span>
+<span class="nc" id="L184">    }</span>
+
+    public boolean isImpliedConstraintsEnabled() {
+<span class="fc bfc" id="L187" title="All 2 branches covered.">        if (includeImpliedConstraints == null)</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">            includeImpliedConstraints = !options.remove(&quot;-noimplied&quot;);</span>
+
+<span class="fc" id="L190">        return includeImpliedConstraints;</span>
+    }
+
+    public void setOutputDir(String outputDirName) {
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        if (outputDirName.endsWith(&quot;\&quot;&quot;))</span>
+<span class="nc" id="L195">            outputDirName = outputDirName.substring(0, outputDirName.length() - 1);</span>
+
+<span class="fc" id="L197">        setOutputDir(new File(outputDirName));</span>
+<span class="fc" id="L198">    }</span>
+
+    public void setOutputDir(File outputDir) {
+<span class="fc" id="L201">        this.outputDir = outputDir;</span>
+<span class="fc" id="L202">    }</span>
+
+    public File getOutputDir() {
+<span class="fc bfc" id="L205" title="All 2 branches covered.">        if (outputDir == null) {</span>
+<span class="fc" id="L206">            setOutputDir(pullRequiredParam(&quot;-o&quot;));</span>
+        }
+
+<span class="fc" id="L209">        return outputDir;</span>
+    }
+
+    /**
+     * Set the path to Graphviz so we can find dot to generate ER diagrams
+     *
+     */
+    public void setGraphvizDir(String graphvizDir) {
+<span class="nc bnc" id="L217" title="All 2 branches missed.">        if (graphvizDir.endsWith(&quot;\&quot;&quot;))</span>
+<span class="nc" id="L218">            graphvizDir = graphvizDir.substring(0, graphvizDir.length() - 1);</span>
+
+<span class="nc" id="L220">        setGraphvizDir(new File(graphvizDir));</span>
+<span class="nc" id="L221">    }</span>
+
+    /**
+     * Set the path to Graphviz so we can find dot to generate ER diagrams
+     */
+    public void setGraphvizDir(File graphvizDir) {
+<span class="nc" id="L227">        this.graphvizDir = graphvizDir;</span>
+<span class="nc" id="L228">    }</span>
+
+    /**
+     * Return the path to Graphviz (used to find the dot executable to run to
+     * generate ER diagrams).
+     *
+     * Returns path to Graphviz if a specific Graphviz path
+     * was not specified.
+     *
+     */
+    public File getGraphvizDir() {
+<span class="pc bpc" id="L239" title="1 of 2 branches missed.">        if (graphvizDir == null) {</span>
+<span class="fc" id="L240">            String gv = pullParam(&quot;-gv&quot;);</span>
+<span class="pc bpc" id="L241" title="1 of 2 branches missed.">            if (gv != null) {</span>
+<span class="nc" id="L242">                setGraphvizDir(gv);</span>
+            } else {
+                // expect to find Graphviz's bin directory on the PATH
+            }
+        }
+
+<span class="fc" id="L248">        return graphvizDir;</span>
+    }
+
+    /**
+     * Meta files are XML-based files that provide additional metadata
+     * about the schema being evaluated.&lt;p&gt;
+     * &lt;code&gt;meta&lt;/code&gt; is either the name of an individual XML file or
+     * the directory that contains meta files.&lt;p&gt;
+     * If a directory is specified then it is expected to contain files
+     * matching the pattern &lt;code&gt;[schema].meta.xml&lt;/code&gt;.
+     * For databases that don't have schema substitute database for schema.
+     */
+    public void setMeta(String meta) {
+<span class="nc" id="L261">        this.meta = meta;</span>
+<span class="nc" id="L262">    }</span>
+
+    public String getMeta() {
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">        if (meta == null)</span>
+<span class="fc" id="L266">            meta = pullParam(&quot;-meta&quot;);</span>
+<span class="fc" id="L267">        return meta;</span>
+    }
+
+    public void setDbType(String dbType) {
+<span class="nc" id="L271">        this.dbType = dbType;</span>
+<span class="nc" id="L272">    }</span>
+
+    public String getDbType() {
+<span class="fc bfc" id="L275" title="All 2 branches covered.">        if (dbType == null) {</span>
+<span class="fc" id="L276">            dbType = pullParam(&quot;-t&quot;);</span>
+<span class="pc bpc" id="L277" title="1 of 2 branches missed.">            if (dbType == null)</span>
+<span class="nc" id="L278">                dbType = &quot;ora&quot;;</span>
+        }
+
+<span class="fc" id="L281">        return dbType;</span>
+    }
+
+    public void setDb(String db) {
+<span class="nc" id="L285">        this.db = db;</span>
+<span class="nc" id="L286">    }</span>
+
+    public String getDb() {
+<span class="fc bfc" id="L289" title="All 2 branches covered.">        if (db == null)</span>
+<span class="fc" id="L290">            db = pullParam(&quot;-db&quot;);</span>
+<span class="fc" id="L291">        return db;</span>
+    }
+
+    public void setSchema(String schema) {
+<span class="nc" id="L295">        this.schema = schema;</span>
+<span class="nc" id="L296">    }</span>
+
+    public String getSchema() {
+<span class="pc bpc" id="L299" title="1 of 2 branches missed.">        if (schema == null)</span>
+<span class="fc" id="L300">            schema = pullParam(&quot;-s&quot;);</span>
+<span class="fc" id="L301">        return schema;</span>
+    }
+
+    /**
+     * Some databases types (e.g. older versions of Informix) don't really
+     * have the concept of a schema but still return true from
+     * {@link DatabaseMetaData#supportsSchemasInTableDefinitions()}.
+     * This option lets you ignore that and treat all the tables
+     * as if they were in one flat namespace.
+     */
+    public boolean isSchemaDisabled() {
+<span class="fc bfc" id="L312" title="All 2 branches covered.">        if (noSchema == null)</span>
+<span class="fc" id="L313">            noSchema = options.remove(&quot;-noschema&quot;);</span>
+
+<span class="fc" id="L315">        return noSchema;</span>
+    }
+
+    public void setHost(String host) {
+<span class="nc" id="L319">        this.host = host;</span>
+<span class="nc" id="L320">    }</span>
+
+    public String getHost() {
+<span class="pc bpc" id="L323" title="1 of 2 branches missed.">        if (host == null)</span>
+<span class="fc" id="L324">            host = pullParam(&quot;-host&quot;);</span>
+<span class="fc" id="L325">        return host;</span>
+    }
+
+    public void setPort(Integer port) {
+<span class="nc" id="L329">        this.port = port;</span>
+<span class="nc" id="L330">    }</span>
+
+    public Integer getPort() {
+<span class="pc bpc" id="L333" title="1 of 2 branches missed.">        if (port == null)</span>
+            try {
+<span class="nc" id="L335">                port = Integer.valueOf(pullParam(&quot;-port&quot;));</span>
+<span class="pc" id="L336">            } catch (Exception notSpecified) {}</span>
+<span class="fc" id="L337">        return port;</span>
+    }
+
+    public void setServer(String server) {
+<span class="nc" id="L341">        this.server = server;</span>
+<span class="nc" id="L342">    }</span>
+
+    public String getServer() {
+<span class="pc bpc" id="L345" title="1 of 2 branches missed.">        if (server == null) {</span>
+<span class="fc" id="L346">            server = pullParam(&quot;-server&quot;);</span>
+        }
+
+<span class="fc" id="L349">        return server;</span>
+    }
+
+    public void setUser(String user) {
+<span class="nc" id="L353">        this.user = user;</span>
+<span class="nc" id="L354">    }</span>
+
+    /**
+     * User used to connect to the database.
+     * Required unless single sign-on is enabled
+     * (see {@link #setSingleSignOn(boolean)}).
+
+     */
+    public String getUser() {
+<span class="pc bpc" id="L363" title="1 of 2 branches missed.">        if (user == null) {</span>
+<span class="pc bpc" id="L364" title="1 of 2 branches missed.">            if (!isSingleSignOn())</span>
+<span class="nc" id="L365">                user = pullRequiredParam(&quot;-u&quot;);</span>
+            else
+<span class="fc" id="L367">                user = pullParam(&quot;-u&quot;);</span>
+        }
+<span class="fc" id="L369">        return user;</span>
+    }
+
+    /**
+     * By default a &quot;user&quot; (as specified with -u) is required.
+     * This option allows disabling of that requirement for
+     * single sign-on environments.
+     *
+     * @param enabled defaults to &lt;code&gt;false&lt;/code&gt;
+     */
+    public void setSingleSignOn(boolean enabled) {
+<span class="nc" id="L380">        singleSignOn = enabled;</span>
+<span class="nc" id="L381">    }</span>
+
+    /**
+     * @see #setSingleSignOn(boolean)
+     */
+    public boolean isSingleSignOn() {
+<span class="fc bfc" id="L387" title="All 2 branches covered.">        if (singleSignOn == null)</span>
+<span class="fc" id="L388">            singleSignOn = options.remove(&quot;-sso&quot;);</span>
+
+<span class="fc" id="L390">        return singleSignOn;</span>
+    }
+
+    /**
+     * Set the password used to connect to the database.
+     * @param password
+     */
+    public void setPassword(String password) {
+<span class="nc" id="L398">        this.password = password;</span>
+<span class="nc" id="L399">    }</span>
+
+    /**
+     * @see #setPassword(String)
+
+     */
+    public String getPassword() {
+<span class="pc bpc" id="L406" title="1 of 2 branches missed.">        if (password == null)</span>
+<span class="fc" id="L407">            password = pullParam(&quot;-p&quot;);</span>
+<span class="fc" id="L408">        return password;</span>
+    }
+
+    /**
+     * Set to &lt;code&gt;true&lt;/code&gt; to prompt for the password
+     * @param promptForPassword
+     */
+    public void setPromptForPasswordEnabled(boolean promptForPassword) {
+<span class="nc" id="L416">        this.promptForPassword = promptForPassword;</span>
+<span class="nc" id="L417">    }</span>
+
+    /**
+     * @see #setPromptForPasswordEnabled(boolean)
+
+     */
+    public boolean isPromptForPasswordEnabled() {
+<span class="fc bfc" id="L424" title="All 2 branches covered.">        if (promptForPassword == null) {</span>
+<span class="fc" id="L425">            promptForPassword = options.remove(&quot;-pfp&quot;);</span>
+        }
+
+<span class="fc" id="L428">        return promptForPassword;</span>
+    }
+
+    public void setMaxDetailedTabled(int maxDetailedTables) {
+<span class="nc" id="L432">        this.maxDetailedTables = new Integer(maxDetailedTables);</span>
+<span class="nc" id="L433">    }</span>
+
+    public int getMaxDetailedTables() {
+<span class="fc bfc" id="L436" title="All 2 branches covered.">        if (maxDetailedTables == null) {</span>
+<span class="fc" id="L437">            int max = 300; // default</span>
+            try {
+<span class="nc" id="L439">                max = Integer.parseInt(pullParam(&quot;-maxdet&quot;));</span>
+<span class="pc" id="L440">            } catch (Exception notSpecified) {}</span>
+
+<span class="fc" id="L442">            maxDetailedTables = new Integer(max);</span>
+        }
+
+<span class="fc" id="L445">        return maxDetailedTables.intValue();</span>
+    }
+
+    public String getConnectionPropertiesFile() {
+<span class="fc" id="L449">        return userConnectionPropertiesFile;</span>
+    }
+
+    /**
+     * Properties from this file (in key=value pair format) are passed to the
+     * database connection.&lt;br&gt;
+     * user (from -u) and password (from -p) will be passed in the
+     * connection properties if specified.
+     * @param propertiesFilename
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public void setConnectionPropertiesFile(String propertiesFilename) throws FileNotFoundException, IOException {
+<span class="nc bnc" id="L462" title="All 2 branches missed.">        if (userConnectionProperties == null)</span>
+<span class="nc" id="L463">            userConnectionProperties = new Properties();</span>
+<span class="nc" id="L464">        userConnectionProperties.load(new FileInputStream(propertiesFilename));</span>
+<span class="nc" id="L465">        userConnectionPropertiesFile = propertiesFilename;</span>
+<span class="nc" id="L466">    }</span>
+
+    /**
+     * Returns a {@link Properties} populated either from the properties file specified
+     * by {@link #setConnectionPropertiesFile(String)}, the properties specified by
+     * {@link #setConnectionProperties(String)} or not populated.
+
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public Properties getConnectionProperties() throws FileNotFoundException, IOException {
+<span class="fc bfc" id="L477" title="All 2 branches covered.">        if (userConnectionProperties == null) {</span>
+<span class="fc" id="L478">            String props = pullParam(&quot;-connprops&quot;);</span>
+<span class="pc bpc" id="L479" title="1 of 2 branches missed.">            if (props != null) {</span>
+<span class="nc bnc" id="L480" title="All 2 branches missed.">                if (props.indexOf(ESCAPED_EQUALS) != -1) {</span>
+<span class="nc" id="L481">                    setConnectionProperties(props);</span>
+                } else {
+<span class="nc" id="L483">                    setConnectionPropertiesFile(props);</span>
+                }
+            } else {
+<span class="fc" id="L486">                userConnectionProperties = new Properties();</span>
+            }
+        }
+
+<span class="fc" id="L490">        return userConnectionProperties;</span>
+    }
+
+    /**
+     * Specifies connection properties to use in the format:
+     * &lt;code&gt;key1\=value1;key2\=value2&lt;/code&gt;&lt;br&gt;
+     * user (from -u) and password (from -p) will be passed in the
+     * connection properties if specified.&lt;p&gt;
+     * This is an alternative form of passing connection properties than by file
+     * (see {@link #setConnectionPropertiesFile(String)})
+     *
+     * @param properties
+     */
+    public void setConnectionProperties(String properties) {
+<span class="nc" id="L504">        userConnectionProperties = new Properties();</span>
+
+<span class="nc" id="L506">        StringTokenizer tokenizer = new StringTokenizer(properties, &quot;;&quot;);</span>
+<span class="nc bnc" id="L507" title="All 2 branches missed.">        while (tokenizer.hasMoreElements()) {</span>
+<span class="nc" id="L508">            String pair = tokenizer.nextToken();</span>
+<span class="nc" id="L509">            int index = pair.indexOf(ESCAPED_EQUALS);</span>
+<span class="nc bnc" id="L510" title="All 2 branches missed.">            if (index != -1) {</span>
+<span class="nc" id="L511">                String key = pair.substring(0, index);</span>
+<span class="nc" id="L512">                String value = pair.substring(index + ESCAPED_EQUALS.length());</span>
+<span class="nc" id="L513">                userConnectionProperties.put(key, value);</span>
+            }
+<span class="nc" id="L515">        }</span>
+<span class="nc" id="L516">    }</span>
+
+    public void setDriverPath(String driverPath) {
+<span class="nc" id="L519">        this.driverPath = driverPath;</span>
+<span class="nc" id="L520">    }</span>
+
+    public String getDriverPath() {
+<span class="fc bfc" id="L523" title="All 2 branches covered.">        if (driverPath == null)</span>
+<span class="fc" id="L524">            driverPath = pullParam(&quot;-dp&quot;);</span>
+
+        // was previously -cp:
+<span class="fc bfc" id="L527" title="All 2 branches covered.">        if (driverPath == null)</span>
+<span class="fc" id="L528">            driverPath = pullParam(&quot;-cp&quot;);</span>
+
+<span class="fc" id="L530">        return driverPath;</span>
+    }
+
+    /**
+     * The filename of the cascading style sheet to use.
+     * Note that this file is parsed and used to determine characteristics
+     * of the generated diagrams, so it must contain specific settings that
+     * are documented within schemaSpy.css.&lt;p&gt;
+     *
+     * Defaults to &lt;code&gt;&quot;schemaSpy.css&quot;&lt;/code&gt;.
+     *
+     * @param css
+     */
+    public void setCss(String css) {
+<span class="nc" id="L544">        this.css = css;</span>
+<span class="nc" id="L545">    }</span>
+
+    public String getCss() {
+<span class="fc bfc" id="L548" title="All 2 branches covered.">        if (css == null) {</span>
+<span class="fc" id="L549">            css = pullParam(&quot;-css&quot;);</span>
+<span class="fc bfc" id="L550" title="All 2 branches covered.">            if (css == null)</span>
+<span class="fc" id="L551">                css = &quot;schemaSpy.css&quot;;</span>
+        }
+<span class="fc" id="L553">        return css;</span>
+    }
+
+    /**
+     * The font to use within diagrams.  Modify the .css to specify HTML fonts.
+     *
+     * @param font
+     */
+    public void setFont(String font) {
+<span class="nc" id="L562">        this.font = font;</span>
+<span class="nc" id="L563">    }</span>
+
+    /**
+     * @see #setFont(String)
+     */
+    public String getFont() {
+<span class="fc bfc" id="L569" title="All 2 branches covered.">        if (font == null) {</span>
+<span class="fc" id="L570">            font = pullParam(&quot;-font&quot;);</span>
+<span class="pc bpc" id="L571" title="1 of 2 branches missed.">            if (font == null)</span>
+<span class="fc" id="L572">                font = &quot;Helvetica&quot;;</span>
+        }
+<span class="fc" id="L574">        return font;</span>
+    }
+
+    /**
+     * The font size to use within diagrams.  This is the size of the font used for
+     * 'large' (e.g. not 'compact') diagrams.&lt;p&gt;
+     *
+     * Modify the .css to specify HTML font sizes.&lt;p&gt;
+     *
+     * Defaults to 11.
+     *
+     * @param fontSize
+     */
+    public void setFontSize(int fontSize) {
+<span class="nc" id="L588">        this.fontSize = new Integer(fontSize);</span>
+<span class="nc" id="L589">    }</span>
+
+    /**
+     * @see #setFontSize(int)
+
+     */
+    public int getFontSize() {
+<span class="fc bfc" id="L596" title="All 2 branches covered.">        if (fontSize == null) {</span>
+<span class="fc" id="L597">            int size = 11; // default</span>
+            try {
+<span class="nc" id="L599">                size = Integer.parseInt(pullParam(&quot;-fontsize&quot;));</span>
+<span class="pc" id="L600">            } catch (Exception notSpecified) {}</span>
+
+<span class="fc" id="L602">            fontSize = new Integer(size);</span>
+        }
+
+<span class="fc" id="L605">        return fontSize.intValue();</span>
+    }
+
+    /**
+     * The character set to use within HTML pages (defaults to &lt;code&gt;&quot;ISO-8859-1&quot;&lt;/code&gt;).
+     *
+     * @param charset
+     */
+    public void setCharset(String charset) {
+<span class="nc" id="L614">        this.charset = charset;</span>
+<span class="nc" id="L615">    }</span>
+
+    /**
+     * @see #setCharset(String)
+     */
+    public String getCharset() {
+<span class="fc bfc" id="L621" title="All 2 branches covered.">        if (charset == null) {</span>
+<span class="fc" id="L622">            charset = pullParam(&quot;-charset&quot;);</span>
+<span class="pc bpc" id="L623" title="1 of 2 branches missed.">            if (charset == null)</span>
+<span class="fc" id="L624">                charset = &quot;ISO-8859-1&quot;;</span>
+        }
+<span class="fc" id="L626">        return charset;</span>
+    }
+
+    /**
+     * Description of schema that gets display on main pages.
+     *
+     * @param description
+     */
+    public void setDescription(String description) {
+<span class="nc" id="L635">        this.description = description;</span>
+<span class="nc" id="L636">    }</span>
+
+    /**
+     * @see #setDescription(String)
+     */
+    public String getDescription() {
+<span class="fc bfc" id="L642" title="All 2 branches covered.">        if (description == null)</span>
+<span class="fc" id="L643">            description = pullParam(&quot;-desc&quot;);</span>
+<span class="fc" id="L644">        return description;</span>
+    }
+
+    /**
+     * Maximum number of threads to use when querying database metadata information.
+     *
+     * @param maxDbThreads
+     */
+    public void setMaxDbThreads(int maxDbThreads) {
+<span class="nc" id="L653">        this.maxDbThreads = new Integer(maxDbThreads);</span>
+<span class="nc" id="L654">    }</span>
+
+    /**
+     * @see #setMaxDbThreads(int)
+     * @throws InvalidConfigurationException if unable to load properties
+     */
+    public int getMaxDbThreads() throws InvalidConfigurationException {
+<span class="fc bfc" id="L661" title="All 2 branches covered.">        if (maxDbThreads == null) {</span>
+            Properties properties;
+            try {
+<span class="fc" id="L664">                properties = getDbProperties(getDbType());</span>
+<span class="nc" id="L665">            } catch (IOException exc) {</span>
+<span class="nc" id="L666">                throw new InvalidConfigurationException(&quot;Failed to load properties for &quot; + getDbType() + &quot;: &quot; + exc)</span>
+<span class="nc" id="L667">                                .setParamName(&quot;-type&quot;);</span>
+<span class="fc" id="L668">            }</span>
+
+<span class="fc" id="L670">            int max = Integer.MAX_VALUE;</span>
+<span class="fc" id="L671">            String threads = properties.getProperty(&quot;dbThreads&quot;);</span>
+<span class="pc bpc" id="L672" title="1 of 2 branches missed.">            if (threads == null)</span>
+<span class="fc" id="L673">                threads = properties.getProperty(&quot;dbthreads&quot;);</span>
+<span class="pc bpc" id="L674" title="1 of 2 branches missed.">            if (threads != null)</span>
+<span class="nc" id="L675">                max = Integer.parseInt(threads);</span>
+<span class="fc" id="L676">            threads = pullParam(&quot;-dbThreads&quot;);</span>
+<span class="pc bpc" id="L677" title="1 of 2 branches missed.">            if (threads == null)</span>
+<span class="fc" id="L678">                threads = pullParam(&quot;-dbthreads&quot;);</span>
+<span class="pc bpc" id="L679" title="1 of 2 branches missed.">            if (threads != null)</span>
+<span class="nc" id="L680">                max = Integer.parseInt(threads);</span>
+<span class="pc bpc" id="L681" title="1 of 2 branches missed.">            if (max &lt; 0)</span>
+<span class="nc" id="L682">                max = Integer.MAX_VALUE;</span>
+<span class="pc bpc" id="L683" title="1 of 2 branches missed.">            else if (max == 0)</span>
+<span class="nc" id="L684">                max = 1;</span>
+
+<span class="fc" id="L686">            maxDbThreads = new Integer(max);</span>
+        }
+
+<span class="fc" id="L689">        return maxDbThreads.intValue();</span>
+    }
+
+    public boolean isLogoEnabled() {
+<span class="fc bfc" id="L693" title="All 2 branches covered.">        if (logoEnabled == null)</span>
+<span class="pc bpc" id="L694" title="1 of 2 branches missed.">            logoEnabled = !options.remove(&quot;-nologo&quot;);</span>
+
+<span class="fc" id="L696">        return logoEnabled;</span>
+    }
+
+    /**
+     * Don't use this unless absolutely necessary as it screws up the layout
+     *
+     * @param enabled
+     */
+    public void setRankDirBugEnabled(boolean enabled) {
+<span class="nc" id="L705">        rankDirBugEnabled = enabled;</span>
+<span class="nc" id="L706">    }</span>
+
+    /**
+     * @see #setRankDirBugEnabled(boolean)
+     */
+    public boolean isRankDirBugEnabled() {
+<span class="fc bfc" id="L712" title="All 2 branches covered.">        if (rankDirBugEnabled == null)</span>
+<span class="fc" id="L713">            rankDirBugEnabled = options.remove(&quot;-rankdirbug&quot;);</span>
+
+<span class="fc" id="L715">        return rankDirBugEnabled;</span>
+    }
+
+    /**
+     * Look for Ruby on Rails-based naming conventions in
+     * relationships between logical foreign keys and primary keys.&lt;p&gt;
+     *
+     * Basically all tables have a primary key named &lt;code&gt;ID&lt;/code&gt;.
+     * All tables are named plural names.
+     * The columns that logically reference that &lt;code&gt;ID&lt;/code&gt; are the singular
+     * form of the table name suffixed with &lt;code&gt;_ID&lt;/code&gt;.&lt;p&gt;
+     *
+     * @param enabled
+     */
+    public void setRailsEnabled(boolean enabled) {
+<span class="nc" id="L730">        railsEnabled = enabled;</span>
+<span class="nc" id="L731">    }</span>
+
+    /**
+     * @see #setRailsEnabled(boolean)
+     *
+
+     */
+    public boolean isRailsEnabled() {
+<span class="fc bfc" id="L739" title="All 2 branches covered.">        if (railsEnabled == null)</span>
+<span class="fc" id="L740">            railsEnabled = options.remove(&quot;-rails&quot;);</span>
+
+<span class="fc" id="L742">        return railsEnabled;</span>
+    }
+
+    /**
+     * Allow Html In Comments - encode them unless otherwise specified
+     */
+    public void setEncodeCommentsEnabled(boolean enabled) {
+<span class="nc" id="L749">        encodeCommentsEnabled = enabled;</span>
+<span class="nc" id="L750">    }</span>
+
+    /**
+     * @see #setEncodeCommentsEnabled(boolean)
+     */
+    public boolean isEncodeCommentsEnabled() {
+<span class="fc bfc" id="L756" title="All 2 branches covered.">        if (encodeCommentsEnabled == null)</span>
+<span class="fc bfc" id="L757" title="All 2 branches covered.">            encodeCommentsEnabled = !options.remove(&quot;-ahic&quot;);</span>
+
+<span class="fc" id="L759">        return encodeCommentsEnabled;</span>
+    }
+
+    /**
+     * If enabled we'll attempt to query/render the number of rows that
+     * each table contains.&lt;p/&gt;
+     *
+     * Defaults to &lt;code&gt;true&lt;/code&gt; (enabled).
+     *
+     * @param enabled
+     */
+    public void setNumRowsEnabled(boolean enabled) {
+<span class="nc" id="L771">        numRowsEnabled = enabled;</span>
+<span class="nc" id="L772">    }</span>
+
+    /**
+     * @see #setNumRowsEnabled(boolean)
+
+     */
+    public boolean isNumRowsEnabled() {
+<span class="fc bfc" id="L779" title="All 2 branches covered.">        if (numRowsEnabled == null)</span>
+<span class="pc bpc" id="L780" title="1 of 2 branches missed.">            numRowsEnabled = !options.remove(&quot;-norows&quot;);</span>
+
+<span class="fc" id="L782">        return numRowsEnabled;</span>
+    }
+
+    /**
+     * If enabled we'll include views in the analysis.&lt;p/&gt;
+     *
+     * Defaults to &lt;code&gt;true&lt;/code&gt; (enabled).
+     *
+     * @param enabled
+     */
+    public void setViewsEnabled(boolean enabled) {
+<span class="nc" id="L793">        viewsEnabled = enabled;</span>
+<span class="nc" id="L794">    }</span>
+
+    /**
+     * @see #setViewsEnabled(boolean)
+
+     */
+    public boolean isViewsEnabled() {
+<span class="fc bfc" id="L801" title="All 2 branches covered.">        if (viewsEnabled == null)</span>
+<span class="pc bpc" id="L802" title="1 of 2 branches missed.">            viewsEnabled = !options.remove(&quot;-noviews&quot;);</span>
+
+<span class="fc" id="L804">        return viewsEnabled;</span>
+    }
+
+    /**
+     * Returns &lt;code&gt;true&lt;/code&gt; if metering should be embedded in
+     * the generated pages.&lt;p/&gt;
+     * Defaults to &lt;code&gt;false&lt;/code&gt; (disabled).
+
+     */
+    public boolean isMeterEnabled() {
+<span class="fc bfc" id="L814" title="All 2 branches covered.">        if (meterEnabled == null)</span>
+<span class="fc" id="L815">            meterEnabled = options.remove(&quot;-meter&quot;);</span>
+
+<span class="fc" id="L817">        return meterEnabled;</span>
+    }
+
+    /**
+     * Set the columns to exclude from all relationship diagrams.
+     *
+     * @param columnExclusions regular expression of the columns to
+     *        exclude
+     */
+    public void setColumnExclusions(String columnExclusions) {
+<span class="nc" id="L827">        this.columnExclusions = Pattern.compile(columnExclusions);</span>
+<span class="nc" id="L828">    }</span>
+
+    /**
+     * See {@link #setColumnExclusions(String)}
+
+     */
+    public Pattern getColumnExclusions() {
+<span class="fc bfc" id="L835" title="All 2 branches covered.">        if (columnExclusions == null) {</span>
+<span class="fc" id="L836">            String strExclusions = pullParam(&quot;-X&quot;);</span>
+<span class="pc bpc" id="L837" title="1 of 2 branches missed.">            if (strExclusions == null)</span>
+<span class="fc" id="L838">                strExclusions = &quot;[^.]&quot;;   // match nothing</span>
+
+<span class="fc" id="L840">            columnExclusions = Pattern.compile(strExclusions);</span>
+        }
+
+<span class="fc" id="L843">        return columnExclusions;</span>
+    }
+
+    /**
+     * Set the columns to exclude from relationship diagrams where the specified
+     * columns aren't directly referenced by the focal table.
+     *
+     * @param fullColumnExclusions regular expression of the columns to
+     *        exclude
+     */
+    public void setIndirectColumnExclusions(String fullColumnExclusions) {
+<span class="nc" id="L854">        indirectColumnExclusions = Pattern.compile(fullColumnExclusions);</span>
+<span class="nc" id="L855">    }</span>
+
+    /**
+     * @see #setIndirectColumnExclusions(String)
+     *
+
+     */
+    public Pattern getIndirectColumnExclusions() {
+<span class="fc bfc" id="L863" title="All 2 branches covered.">        if (indirectColumnExclusions == null) {</span>
+<span class="fc" id="L864">            String strExclusions = pullParam(&quot;-x&quot;);</span>
+<span class="pc bpc" id="L865" title="1 of 2 branches missed.">            if (strExclusions == null)</span>
+<span class="fc" id="L866">                strExclusions = &quot;[^.]&quot;;   // match nothing</span>
+
+<span class="fc" id="L868">            indirectColumnExclusions = Pattern.compile(strExclusions);</span>
+        }
+
+<span class="fc" id="L871">        return indirectColumnExclusions;</span>
+    }
+
+    /**
+     * Set the tables to include as a regular expression
+     * @param tableInclusions
+     */
+    public void setTableInclusions(String tableInclusions) {
+<span class="nc" id="L879">        this.tableInclusions = Pattern.compile(tableInclusions);</span>
+<span class="nc" id="L880">    }</span>
+
+    /**
+     * Get the regex {@link Pattern} for which tables to include in the analysis.
+     *
+
+     */
+    public Pattern getTableInclusions() {
+<span class="fc bfc" id="L888" title="All 2 branches covered.">        if (tableInclusions == null) {</span>
+<span class="fc" id="L889">            String strInclusions = pullParam(&quot;-i&quot;);</span>
+<span class="pc bpc" id="L890" title="1 of 2 branches missed.">            if (strInclusions == null)</span>
+<span class="fc" id="L891">                strInclusions = &quot;.*&quot;;     // match anything</span>
+
+            try {
+<span class="fc" id="L894">                tableInclusions = Pattern.compile(strInclusions);</span>
+<span class="nc" id="L895">            } catch (PatternSyntaxException badPattern) {</span>
+<span class="nc" id="L896">                throw new InvalidConfigurationException(badPattern).setParamName(&quot;-i&quot;);</span>
+<span class="fc" id="L897">            }</span>
+        }
+
+<span class="fc" id="L900">        return tableInclusions;</span>
+    }
+
+    /**
+     * Set the tables to exclude as a regular expression
+     * @param tableExclusions
+     */
+    public void setTableExclusions(String tableExclusions) {
+<span class="nc" id="L908">        this.tableExclusions = Pattern.compile(tableExclusions);</span>
+<span class="nc" id="L909">    }</span>
+
+    /**
+     * Get the regex {@link Pattern} for which tables to exclude from the analysis.
+     *
+
+     */
+    public Pattern getTableExclusions() {
+<span class="fc bfc" id="L917" title="All 2 branches covered.">        if (tableExclusions == null) {</span>
+<span class="fc" id="L918">            String strExclusions = pullParam(&quot;-I&quot;);</span>
+<span class="pc bpc" id="L919" title="1 of 2 branches missed.">            if (strExclusions == null)</span>
+<span class="fc" id="L920">                strExclusions = &quot;&quot;;  // match nothing</span>
+
+            try {
+<span class="fc" id="L923">                tableExclusions = Pattern.compile(strExclusions);</span>
+<span class="nc" id="L924">            } catch (PatternSyntaxException badPattern) {</span>
+<span class="nc" id="L925">                throw new InvalidConfigurationException(badPattern).setParamName(&quot;-I&quot;);</span>
+<span class="fc" id="L926">            }</span>
+        }
+
+<span class="fc" id="L929">        return tableExclusions;</span>
+    }
+
+    /**
+
+     */
+    public List&lt;String&gt; getSchemas() {
+<span class="pc bpc" id="L936" title="1 of 2 branches missed.">        if (schemas == null) {</span>
+<span class="fc" id="L937">            String tmp = pullParam(&quot;-schemas&quot;);</span>
+<span class="pc bpc" id="L938" title="1 of 2 branches missed.">            if (tmp == null)</span>
+<span class="fc" id="L939">                tmp = pullParam(&quot;-schemata&quot;);</span>
+<span class="pc bpc" id="L940" title="1 of 2 branches missed.">            if (tmp != null) {</span>
+<span class="nc" id="L941">                schemas = new ArrayList&lt;String&gt;();</span>
+
+<span class="nc bnc" id="L943" title="All 2 branches missed.">                for (String name : tmp.split(&quot;[ ,\&quot;]&quot;))</span>
+<span class="nc" id="L944">                    schemas.add(name);</span>
+
+<span class="nc bnc" id="L946" title="All 2 branches missed.">                if (schemas.isEmpty())</span>
+<span class="nc" id="L947">                    schemas = null;</span>
+            }
+        }
+
+<span class="fc" id="L951">        return schemas;</span>
+    }
+
+    /**
+     * Set the name of the {@link SqlFormatter SQL formatter} class to use to
+     * format SQL into HTML.&lt;p/&gt;
+     * The implementation of the class must be made available to the class
+     * loader, typically by specifying the path to its jar with &lt;em&gt;-dp&lt;/em&gt;
+     * ({@link #setDriverPath(String)}).
+     */
+    public void setSqlFormatter(String formatterClassName) {
+<span class="nc" id="L962">        sqlFormatterClass = formatterClassName;</span>
+<span class="nc" id="L963">        sqlFormatter = null;</span>
+<span class="nc" id="L964">    }</span>
+
+    /**
+     * Set the {@link SqlFormatter SQL formatter} to use to format
+     * SQL into HTML.
+     */
+    public void setSqlFormatter(SqlFormatter sqlFormatter) {
+<span class="nc" id="L971">        this.sqlFormatter = sqlFormatter;</span>
+<span class="nc bnc" id="L972" title="All 2 branches missed.">        if (sqlFormatter != null)</span>
+<span class="nc" id="L973">            sqlFormatterClass = sqlFormatter.getClass().getName();</span>
+<span class="nc" id="L974">    }</span>
+
+    /**
+     * Returns an implementation of {@link SqlFormatter SQL formatter} to use to format
+     * SQL into HTML.  The default implementation is {@link DefaultSqlFormatter}.
+     *
+
+     * @throws InvalidConfigurationException if unable to instantiate an instance
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public SqlFormatter getSqlFormatter() throws InvalidConfigurationException {
+<span class="fc bfc" id="L985" title="All 2 branches covered.">        if (sqlFormatter == null) {</span>
+<span class="pc bpc" id="L986" title="1 of 2 branches missed.">            if (sqlFormatterClass == null) {</span>
+<span class="fc" id="L987">                sqlFormatterClass = pullParam(&quot;-sqlFormatter&quot;);</span>
+
+<span class="pc bpc" id="L989" title="1 of 2 branches missed.">                if (sqlFormatterClass == null)</span>
+<span class="fc" id="L990">                    sqlFormatterClass = DefaultSqlFormatter.class.getName();</span>
+            }
+
+            try {
+<span class="fc" id="L994">                Class&lt;SqlFormatter&gt; clazz = (Class&lt;SqlFormatter&gt;)Class.forName(sqlFormatterClass);</span>
+<span class="fc" id="L995">                sqlFormatter = clazz.newInstance();</span>
+<span class="nc" id="L996">            } catch (Exception exc) {</span>
+<span class="nc" id="L997">                throw new InvalidConfigurationException(&quot;Failed to initialize instance of SQL formatter: &quot;, exc)</span>
+<span class="nc" id="L998">                            .setParamName(&quot;-sqlFormatter&quot;);</span>
+<span class="fc" id="L999">            }</span>
+        }
+
+<span class="fc" id="L1002">        return sqlFormatter;</span>
+    }
+
+    public void setEvaluateAllEnabled(boolean enabled) {
+<span class="nc" id="L1006">        evaluteAll = enabled;</span>
+<span class="nc" id="L1007">    }</span>
+
+    public boolean isEvaluateAllEnabled() {
+<span class="fc bfc" id="L1010" title="All 2 branches covered.">        if (evaluteAll == null)</span>
+<span class="fc" id="L1011">            evaluteAll = options.remove(&quot;-all&quot;);</span>
+<span class="fc" id="L1012">        return evaluteAll;</span>
+    }
+
+    /**
+     * Returns true if we're evaluating a bunch of schemas in one go and
+     * at this point we're evaluating a specific schema.
+     *
+ boolean
+     */
+    public boolean isOneOfMultipleSchemas() {
+        // set by MultipleSchemaAnalyzer
+<span class="fc" id="L1023">        return Boolean.getBoolean(&quot;oneofmultipleschemas&quot;);</span>
+    }
+
+    /**
+     * When -all (evaluateAll) is specified then this is the regular
+     * expression that determines which schemas to evaluate.
+     *
+     * @param schemaSpec
+     */
+    public void setSchemaSpec(String schemaSpec) {
+<span class="nc" id="L1033">        this.schemaSpec = schemaSpec;</span>
+<span class="nc" id="L1034">    }</span>
+
+    public String getSchemaSpec() {
+<span class="pc bpc" id="L1037" title="1 of 2 branches missed.">        if (schemaSpec == null)</span>
+<span class="fc" id="L1038">            schemaSpec = pullParam(&quot;-schemaSpec&quot;);</span>
+
+<span class="fc" id="L1040">        return schemaSpec;</span>
+    }
+
+    /**
+     * Set the renderer to use for the -Tpng[:renderer[:formatter]] dot option as specified
+     * at &lt;a href='http://www.graphviz.org/doc/info/command.html'&gt;
+     * http://www.graphviz.org/doc/info/command.html&lt;/a&gt;.&lt;p&gt;
+     * Note that the leading &quot;:&quot; is required while :formatter is optional.&lt;p&gt;
+     * The default renderer is typically GD.&lt;p&gt;
+     * Note that using {@link #setHighQuality(boolean)} is the preferred approach
+     * over using this method.
+     */
+    public void setRenderer(String renderer) {
+<span class="nc" id="L1053">        Dot.getInstance().setRenderer(renderer);</span>
+<span class="nc" id="L1054">    }</span>
+
+    /**
+     * @see #setRenderer(String)
+
+     */
+    public String getRenderer() {
+<span class="fc" id="L1061">        String renderer = pullParam(&quot;-renderer&quot;);</span>
+<span class="pc bpc" id="L1062" title="1 of 2 branches missed.">        if (renderer != null)</span>
+<span class="nc" id="L1063">            setRenderer(renderer);</span>
+
+<span class="fc" id="L1065">        return Dot.getInstance().getRenderer();</span>
+    }
+
+    /**
+     * If &lt;code&gt;false&lt;/code&gt; then generate output of &quot;lower quality&quot;
+     * than the default.
+     * Note that the default is intended to be &quot;higher quality&quot;,
+     * but various installations of Graphviz may have have different abilities.
+     * That is, some might not have the &quot;lower quality&quot; libraries and others might
+     * not have the &quot;higher quality&quot; libraries.&lt;p&gt;
+     * Higher quality output takes longer to generate and results in significantly
+     * larger image files (which take longer to download / display), but it generally
+     * looks better.
+     */
+    public void setHighQuality(boolean highQuality) {
+<span class="nc" id="L1080">        this.highQuality = highQuality;</span>
+<span class="nc bnc" id="L1081" title="All 2 branches missed.">        lowQuality = !highQuality;</span>
+<span class="nc" id="L1082">        Dot.getInstance().setHighQuality(highQuality);</span>
+<span class="nc" id="L1083">    }</span>
+
+    /**
+     * @see #setHighQuality(boolean)
+     */
+    public boolean isHighQuality() {
+<span class="fc bfc" id="L1089" title="All 2 branches covered.">        if (highQuality == null) {</span>
+<span class="fc" id="L1090">            highQuality = options.remove(&quot;-hq&quot;);</span>
+<span class="pc bpc" id="L1091" title="1 of 2 branches missed.">            if (highQuality) {</span>
+                // use whatever is the default unless explicitly specified otherwise
+<span class="nc" id="L1093">                Dot.getInstance().setHighQuality(highQuality);</span>
+            }
+        }
+
+<span class="fc" id="L1097">        highQuality = Dot.getInstance().isHighQuality();</span>
+<span class="fc" id="L1098">        return highQuality;</span>
+    }
+
+    /**
+     * @see #setHighQuality(boolean)
+     */
+    public boolean isLowQuality() {
+<span class="fc bfc" id="L1105" title="All 2 branches covered.">        if (lowQuality == null) {</span>
+<span class="fc" id="L1106">            lowQuality = options.remove(&quot;-lq&quot;);</span>
+<span class="pc bpc" id="L1107" title="1 of 2 branches missed.">            if (lowQuality) {</span>
+                // use whatever is the default unless explicitly specified otherwise
+<span class="nc bnc" id="L1109" title="All 2 branches missed.">                Dot.getInstance().setHighQuality(!lowQuality);</span>
+            }
+        }
+
+<span class="pc bpc" id="L1113" title="1 of 2 branches missed.">        lowQuality = !Dot.getInstance().isHighQuality();</span>
+<span class="fc" id="L1114">        return lowQuality;</span>
+    }
+
+    /**
+     * &lt;code&gt;true&lt;/code&gt; if we should display advertisements.
+     * Defaults to &lt;code&gt;true&lt;/code&gt;.&lt;p&gt;
+     * &lt;b&gt;Please do not disable ads unless absolutely necessary&lt;/b&gt;.
+     *
+
+     */
+    public void setAdsEnabled(boolean enabled) {
+<span class="nc" id="L1125">        adsEnabled = enabled;</span>
+<span class="nc" id="L1126">    }</span>
+
+    /**
+     * Returns &lt;code&gt;true&lt;/code&gt; if we should display advertisements.&lt;p&gt;
+     * &lt;b&gt;Please do not disable ads unless absolutely necessary&lt;/b&gt;.
+     *
+     * @deprecated will be removed
+     */
+    @Deprecated
+    public boolean isAdsEnabled() {
+<span class="fc bfc" id="L1136" title="All 2 branches covered.">        if (adsEnabled == null) {</span>
+<span class="pc bpc" id="L1137" title="1 of 2 branches missed.">            adsEnabled = !options.remove(&quot;-noads&quot;);</span>
+        }
+
+<span class="fc" id="L1140">        return adsEnabled ;</span>
+    }
+
+    /**
+     * Set the level of logging to perform.&lt;p/&gt;
+     * The levels in descending order are:
+     * &lt;ul&gt;
+     *  &lt;li&gt;&lt;code&gt;severe&lt;/code&gt; (highest - least detail)
+     *  &lt;li&gt;&lt;code&gt;warning&lt;/code&gt; (default)
+     *  &lt;li&gt;&lt;code&gt;info&lt;/code&gt;
+     *  &lt;li&gt;&lt;code&gt;config&lt;/code&gt;
+     *  &lt;li&gt;&lt;code&gt;fine&lt;/code&gt;
+     *  &lt;li&gt;&lt;code&gt;finer&lt;/code&gt;
+     *  &lt;li&gt;&lt;code&gt;finest&lt;/code&gt;  (lowest - most detail)
+     * &lt;/ul&gt;
+     *
+     * @param logLevel
+     */
+    public void setLogLevel(String logLevel) {
+<span class="pc bpc" id="L1159" title="1 of 2 branches missed.">        if (logLevel == null) {</span>
+<span class="fc" id="L1160">            this.logLevel = Level.WARNING;</span>
+<span class="fc" id="L1161">            return;</span>
+        }
+
+<span class="nc" id="L1164">        Map&lt;String, Level&gt; levels = new LinkedHashMap&lt;String, Level&gt;();</span>
+<span class="nc" id="L1165">        levels.put(&quot;severe&quot;, Level.SEVERE);</span>
+<span class="nc" id="L1166">        levels.put(&quot;warning&quot;, Level.WARNING);</span>
+<span class="nc" id="L1167">        levels.put(&quot;info&quot;, Level.INFO);</span>
+<span class="nc" id="L1168">        levels.put(&quot;config&quot;, Level.CONFIG);</span>
+<span class="nc" id="L1169">        levels.put(&quot;fine&quot;, Level.FINE);</span>
+<span class="nc" id="L1170">        levels.put(&quot;finer&quot;, Level.FINER);</span>
+<span class="nc" id="L1171">        levels.put(&quot;finest&quot;, Level.FINEST);</span>
+
+<span class="nc" id="L1173">        this.logLevel = levels.get(logLevel.toLowerCase());</span>
+<span class="nc bnc" id="L1174" title="All 2 branches missed.">        if (this.logLevel == null) {</span>
+<span class="nc" id="L1175">            throw new InvalidConfigurationException(&quot;Invalid logLevel: '&quot; + logLevel +</span>
+<span class="nc" id="L1176">                    &quot;'. Must be one of: &quot; + levels.keySet());</span>
+        }
+<span class="nc" id="L1178">    }</span>
+
+    /**
+     * Returns the level of logging to perform.
+     * See {@link #setLogLevel(String)}.
+     *
+
+     */
+    public Level getLogLevel() {
+<span class="fc bfc" id="L1187" title="All 2 branches covered.">        if (logLevel == null) {</span>
+<span class="fc" id="L1188">            setLogLevel(pullParam(&quot;-loglevel&quot;));</span>
+        }
+
+<span class="fc" id="L1191">        return logLevel;</span>
+    }
+
+    /**
+     * Returns &lt;code&gt;true&lt;/code&gt; if the options indicate that the user wants
+     * to see some help information.
+     *
+
+     */
+    public boolean isHelpRequired() {
+<span class="fc" id="L1201">        return helpRequired;</span>
+    }
+
+    public boolean isDbHelpRequired() {
+<span class="fc" id="L1205">        return dbHelpRequired;</span>
+    }
+
+    public static String getLoadedFromJar() {
+<span class="fc" id="L1209">        String classpath = System.getProperty(&quot;java.class.path&quot;);</span>
+        //return new StringTokenizer(classpath, File.pathSeparator).nextToken();
+<span class="fc" id="L1211">      String originalPath = new StringTokenizer(classpath, File.pathSeparator).nextToken();</span>
+<span class="fc" id="L1212">      String loadedFrom = null; </span>
+
+      /*
+       *Get the JAR file path from the URL. 
+       *We canot simply use location.getPath() because the returned value is invalid in Windows
+       * 
+       *First we try to get a File from the URL, returning the canonical path.
+       *If we cannot create a File from the URL we fall back to the original return value
+       * 
+       */
+<span class="fc" id="L1222">      URL location = Config.class.getProtectionDomain().getCodeSource().getLocation();</span>
+<span class="fc" id="L1223">      File urlFile = null; </span>
+      try
+      {
+        try
+        {
+<span class="fc" id="L1228">          urlFile= new File(location.toURI()); </span>
+        }
+<span class="nc" id="L1230">        catch (URISyntaxException use)</span>
+        {
+<span class="nc" id="L1232">          urlFile= new File(location.getPath()); </span>
+<span class="fc" id="L1233">        }</span>
+<span class="fc" id="L1234">        loadedFrom=urlFile.getCanonicalPath();</span>
+      }
+<span class="nc" id="L1236">      catch (IOException ioe)</span>
+      {
+	//Fallback to the original path returned 
+<span class="nc" id="L1239">        loadedFrom=originalPath;</span>
+<span class="fc" id="L1240">      }</span>
+<span class="fc" id="L1241">      return loadedFrom ;</span>
+    }
+
+    /**
+     * @param type
+
+     * @throws IOException
+     * @throws InvalidConfigurationException if db properties are incorrectly formed
+     */
+    public Properties getDbProperties(String type) throws IOException, InvalidConfigurationException {
+<span class="fc" id="L1251">        ResourceBundle bundle = null;</span>
+
+        try {
+<span class="fc" id="L1254">            File propertiesFile = new File(type);</span>
+<span class="nc" id="L1255">            bundle = new PropertyResourceBundle(new FileInputStream(propertiesFile));</span>
+<span class="nc" id="L1256">            dbPropertiesLoadedFrom = propertiesFile.getAbsolutePath();</span>
+<span class="fc" id="L1257">        } catch (FileNotFoundException notFoundOnFilesystemWithoutExtension) {</span>
+            try {
+<span class="fc" id="L1259">                File propertiesFile = new File(type + &quot;.properties&quot;);</span>
+<span class="nc" id="L1260">                bundle = new PropertyResourceBundle(new FileInputStream(propertiesFile));</span>
+<span class="nc" id="L1261">                dbPropertiesLoadedFrom = propertiesFile.getAbsolutePath();</span>
+<span class="fc" id="L1262">            } catch (FileNotFoundException notFoundOnFilesystemWithExtensionTackedOn) {</span>
+                try {
+<span class="nc" id="L1264">                    bundle = ResourceBundle.getBundle(type);</span>
+<span class="nc" id="L1265">                    dbPropertiesLoadedFrom = &quot;[&quot; + getLoadedFromJar() + &quot;]&quot; + File.separator + type + &quot;.properties&quot;;</span>
+<span class="fc" id="L1266">                } catch (Exception notInJarWithoutPath) {</span>
+                    try {
+<span class="fc" id="L1268">                        String path = TableOrderer.class.getPackage().getName() + &quot;.dbTypes.&quot; + type;</span>
+<span class="fc" id="L1269">                        path = path.replace('.', '/');</span>
+<span class="fc" id="L1270">                        bundle = ResourceBundle.getBundle(path);</span>
+<span class="fc" id="L1271">                        dbPropertiesLoadedFrom = &quot;[&quot; + getLoadedFromJar() + &quot;]/&quot; + path + &quot;.properties&quot;;</span>
+<span class="nc" id="L1272">                    } catch (Exception notInJar) {</span>
+<span class="nc" id="L1273">                        notInJar.printStackTrace();</span>
+<span class="nc" id="L1274">                        notFoundOnFilesystemWithExtensionTackedOn.printStackTrace();</span>
+<span class="nc" id="L1275">                        throw notFoundOnFilesystemWithoutExtension;</span>
+<span class="fc" id="L1276">                    }</span>
+<span class="nc" id="L1277">                }</span>
+<span class="nc" id="L1278">            }</span>
+<span class="nc" id="L1279">        }</span>
+
+<span class="fc" id="L1281">        Properties props = asProperties(bundle);</span>
+<span class="fc" id="L1282">        bundle = null;</span>
+<span class="fc" id="L1283">        String saveLoadedFrom = dbPropertiesLoadedFrom; // keep original thru recursion</span>
+
+        // bring in key/values pointed to by the include directive
+        // example: include.1=mysql::selectRowCountSql
+<span class="pc" id="L1287">        for (int i = 1; true; ++i) {</span>
+<span class="fc" id="L1288">            String include = (String)props.remove(&quot;include.&quot; + i);</span>
+<span class="pc bpc" id="L1289" title="1 of 2 branches missed.">            if (include == null)</span>
+<span class="fc" id="L1290">                break;</span>
+
+<span class="nc" id="L1292">            int separator = include.indexOf(&quot;::&quot;);</span>
+<span class="nc bnc" id="L1293" title="All 2 branches missed.">            if (separator == -1)</span>
+<span class="nc" id="L1294">                throw new InvalidConfigurationException(&quot;include directive in &quot; + dbPropertiesLoadedFrom + &quot; must have '::' between dbType and key&quot;);</span>
+
+<span class="nc" id="L1296">            String refdType = include.substring(0, separator).trim();</span>
+<span class="nc" id="L1297">            String refdKey = include.substring(separator + 2).trim();</span>
+
+            // recursively resolve the ref'd properties file and the ref'd key
+<span class="nc" id="L1300">            Properties refdProps = getDbProperties(refdType);</span>
+<span class="nc" id="L1301">            props.put(refdKey, refdProps.getProperty(refdKey));</span>
+        }
+
+        // bring in base properties files pointed to by the extends directive
+<span class="fc" id="L1305">        String baseDbType = (String)props.remove(&quot;extends&quot;);</span>
+<span class="pc bpc" id="L1306" title="1 of 2 branches missed.">        if (baseDbType != null) {</span>
+<span class="nc" id="L1307">            baseDbType = baseDbType.trim();</span>
+<span class="nc" id="L1308">            Properties baseProps = getDbProperties(baseDbType);</span>
+
+            // overlay our properties on top of the base's
+<span class="nc" id="L1311">            baseProps.putAll(props);</span>
+<span class="nc" id="L1312">            props = baseProps;</span>
+        }
+
+        // done with this level of recursion...restore original
+<span class="fc" id="L1316">        dbPropertiesLoadedFrom = saveLoadedFrom;</span>
+
+<span class="fc" id="L1318">        return props;</span>
+    }
+
+    protected String getDbPropertiesLoadedFrom() throws IOException {
+<span class="pc bpc" id="L1322" title="1 of 2 branches missed.">        if (dbPropertiesLoadedFrom == null)</span>
+<span class="nc" id="L1323">            getDbProperties(getDbType());</span>
+<span class="fc" id="L1324">        return dbPropertiesLoadedFrom;</span>
+    }
+
+    public List&lt;String&gt; getRemainingParameters()
+    {
+        try {
+<span class="fc" id="L1330">            populate();</span>
+<span class="nc" id="L1331">        } catch (IllegalArgumentException exc) {</span>
+<span class="nc" id="L1332">            throw new InvalidConfigurationException(exc);</span>
+<span class="nc" id="L1333">        } catch (IllegalAccessException exc) {</span>
+<span class="nc" id="L1334">            throw new InvalidConfigurationException(exc);</span>
+<span class="nc" id="L1335">        } catch (InvocationTargetException exc) {</span>
+<span class="nc bnc" id="L1336" title="All 2 branches missed.">            if (exc.getCause() instanceof InvalidConfigurationException)</span>
+<span class="nc" id="L1337">                throw (InvalidConfigurationException)exc.getCause();</span>
+<span class="nc" id="L1338">            throw new InvalidConfigurationException(exc.getCause());</span>
+<span class="nc" id="L1339">        } catch (IntrospectionException exc) {</span>
+<span class="nc" id="L1340">            throw new InvalidConfigurationException(exc);</span>
+<span class="fc" id="L1341">        }</span>
+
+<span class="fc" id="L1343">        return options;</span>
+    }
+
+    /**
+     * Options that are specific to a type of database.  E.g. things like &lt;code&gt;host&lt;/code&gt;,
+     * &lt;code&gt;port&lt;/code&gt; or &lt;code&gt;db&lt;/code&gt;, but &lt;b&gt;don't&lt;/b&gt; have a setter in this class.
+     *
+     * @param dbSpecificOptions
+     */
+    public void setDbSpecificOptions(Map&lt;String, String&gt; dbSpecificOptions) {
+<span class="nc" id="L1353">        this.dbSpecificOptions = dbSpecificOptions;</span>
+<span class="nc" id="L1354">        originalDbSpecificOptions = new HashMap&lt;String, String&gt;(dbSpecificOptions);</span>
+<span class="nc" id="L1355">    }</span>
+
+    public Map&lt;String, String&gt; getDbSpecificOptions() {
+<span class="fc bfc" id="L1358" title="All 2 branches covered.">        if (dbSpecificOptions ==  null)</span>
+<span class="fc" id="L1359">            dbSpecificOptions = new HashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L1360">        return dbSpecificOptions;</span>
+    }
+
+    /**
+     * Returns a {@link Properties} populated with the contents of &lt;code&gt;bundle&lt;/code&gt;
+     *
+     * @param bundle ResourceBundle
+ Properties
+     */
+    public static Properties asProperties(ResourceBundle bundle) {
+<span class="fc" id="L1370">        Properties props = new Properties();</span>
+<span class="fc" id="L1371">        Enumeration&lt;String&gt; iter = bundle.getKeys();</span>
+<span class="fc bfc" id="L1372" title="All 2 branches covered.">        while (iter.hasMoreElements()) {</span>
+<span class="fc" id="L1373">            String key = iter.nextElement();</span>
+<span class="fc" id="L1374">            props.put(key, bundle.getObject(key));</span>
+<span class="fc" id="L1375">        }</span>
+
+<span class="fc" id="L1377">        return props;</span>
+    }
+
+    /**
+     * 'Pull' the specified parameter from the collection of options. Returns
+     * null if the parameter isn't in the list and removes it if it is.
+     *
+     * @param paramId
+
+     */
+    private String pullParam(String paramId) {
+<span class="fc" id="L1388">        return pullParam(paramId, false, false);</span>
+    }
+
+    private String pullRequiredParam(String paramId) {
+<span class="fc" id="L1392">        return pullParam(paramId, true, false);</span>
+    }
+
+    /**
+     * @param paramId
+     * @param required
+     * @param dbTypeSpecific
+
+     * @throws MissingRequiredParameterException
+     */
+    private String pullParam(String paramId, boolean required, boolean dbTypeSpecific)
+                                throws MissingRequiredParameterException {
+<span class="fc" id="L1404">        int paramIndex = options.indexOf(paramId);</span>
+<span class="fc bfc" id="L1405" title="All 2 branches covered.">        if (paramIndex &lt; 0) {</span>
+<span class="pc bpc" id="L1406" title="1 of 2 branches missed.">            if (required)</span>
+<span class="nc" id="L1407">                throw new MissingRequiredParameterException(paramId, dbTypeSpecific);</span>
+<span class="fc" id="L1408">            return null;</span>
+        }
+<span class="fc" id="L1410">        options.remove(paramIndex);</span>
+<span class="fc" id="L1411">        String param = options.get(paramIndex).toString();</span>
+<span class="fc" id="L1412">        options.remove(paramIndex);</span>
+<span class="fc" id="L1413">        return param;</span>
+    }
+
+    /**
+     * Thrown to indicate that a required parameter is missing
+     */
+    public static class MissingRequiredParameterException extends RuntimeException {
+        private static final long serialVersionUID = 1L;
+        private final boolean dbTypeSpecific;
+
+        public MissingRequiredParameterException(String paramId, boolean dbTypeSpecific) {
+<span class="nc" id="L1424">            this(paramId, null, dbTypeSpecific);</span>
+<span class="nc" id="L1425">        }</span>
+
+        public MissingRequiredParameterException(String paramId, String description, boolean dbTypeSpecific) {
+<span class="nc bnc" id="L1428" title="All 4 branches missed.">            super(&quot;Required parameter '&quot; + paramId + &quot;' &quot; +</span>
+                    (description == null ? &quot;&quot; : &quot;(&quot; + description + &quot;) &quot;) +
+                    &quot;was not specified.&quot; +
+                    (dbTypeSpecific ? &quot;  It is required for this database type.&quot; : &quot;&quot;));
+<span class="nc" id="L1432">            this.dbTypeSpecific = dbTypeSpecific;</span>
+<span class="nc" id="L1433">        }</span>
+
+        public boolean isDbTypeSpecific() {
+<span class="nc" id="L1436">            return dbTypeSpecific;</span>
+        }
+    }
+
+    /**
+     * Allow an equal sign in args...like &quot;-o=foo.bar&quot;. Useful for things like
+     * Ant and Maven.
+     *
+     * @param args
+     *            List
+ List
+     */
+    protected List&lt;String&gt; fixupArgs(List&lt;String&gt; args) {
+<span class="fc" id="L1449">        List&lt;String&gt; expandedArgs = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc bfc" id="L1451" title="All 2 branches covered.">        for (String arg : args) {</span>
+<span class="fc" id="L1452">            int indexOfEquals = arg.indexOf('=');</span>
+<span class="pc bpc" id="L1453" title="1 of 4 branches missed.">            if (indexOfEquals != -1 &amp;&amp; indexOfEquals -1 != arg.indexOf(ESCAPED_EQUALS)) {</span>
+<span class="fc" id="L1454">                expandedArgs.add(arg.substring(0, indexOfEquals));</span>
+<span class="fc" id="L1455">                expandedArgs.add(arg.substring(indexOfEquals + 1));</span>
+            } else {
+<span class="fc" id="L1457">                expandedArgs.add(arg);</span>
+            }
+<span class="fc" id="L1459">        }</span>
+
+        // some OSes/JVMs do filename expansion with runtime.exec() and some don't,
+        // so MultipleSchemaAnalyzer has to surround params with double quotes...
+        // strip them here for the OSes/JVMs that don't do anything with the params
+<span class="fc" id="L1464">        List&lt;String&gt; unquotedArgs = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc bfc" id="L1466" title="All 2 branches covered.">        for (String arg : expandedArgs) {</span>
+<span class="pc bpc" id="L1467" title="3 of 4 branches missed.">            if (arg.startsWith(&quot;\&quot;&quot;) &amp;&amp; arg.endsWith(&quot;\&quot;&quot;))  // &quot;.*&quot; becomes .*</span>
+<span class="nc" id="L1468">                arg = arg.substring(1, arg.length() - 1);</span>
+<span class="fc" id="L1469">            unquotedArgs.add(arg);</span>
+<span class="fc" id="L1470">        }</span>
+
+<span class="fc" id="L1472">        return unquotedArgs;</span>
+    }
+
+    /**
+     * Call all the getters to populate all the lazy initialized stuff.
+     *
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     * @throws IntrospectionException
+     */
+    private void populate() throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, IntrospectionException {
+<span class="fc bfc" id="L1484" title="All 2 branches covered.">        if (!populating) { // prevent recursion</span>
+<span class="fc" id="L1485">            populating = true;</span>
+
+<span class="fc" id="L1487">            BeanInfo beanInfo = Introspector.getBeanInfo(Config.class);</span>
+<span class="fc" id="L1488">            PropertyDescriptor[] props = beanInfo.getPropertyDescriptors();</span>
+<span class="fc bfc" id="L1489" title="All 2 branches covered.">            for (int i = 0; i &lt; props.length; ++i) {</span>
+<span class="fc" id="L1490">                Method readMethod = props[i].getReadMethod();</span>
+<span class="fc bfc" id="L1491" title="All 2 branches covered.">                if (readMethod != null)</span>
+<span class="fc" id="L1492">                    readMethod.invoke(this, (Object[])null);</span>
+            }
+
+<span class="fc" id="L1495">            populating = false;</span>
+        }
+<span class="fc" id="L1497">    }</span>
+
+    public static Set&lt;String&gt; getBuiltInDatabaseTypes(String loadedFromJar) {
+<span class="nc" id="L1500">        Set&lt;String&gt; databaseTypes = new TreeSet&lt;String&gt;();</span>
+<span class="nc" id="L1501">        JarInputStream jar = null;</span>
+
+        try {
+<span class="nc" id="L1504">            jar = new JarInputStream(new FileInputStream(loadedFromJar));</span>
+            JarEntry entry;
+
+<span class="nc bnc" id="L1507" title="All 2 branches missed.">            while ((entry = jar.getNextJarEntry()) != null) {</span>
+<span class="nc" id="L1508">                String entryName = entry.getName();</span>
+<span class="nc" id="L1509">                int dotPropsIndex = entryName.indexOf(&quot;.properties&quot;);</span>
+<span class="nc bnc" id="L1510" title="All 2 branches missed.">                if (dotPropsIndex != -1)</span>
+<span class="nc" id="L1511">                    databaseTypes.add(entryName.substring(0, dotPropsIndex));</span>
+<span class="nc" id="L1512">            }</span>
+<span class="nc" id="L1513">        } catch (IOException exc) {</span>
+        } finally {
+<span class="nc bnc" id="L1515" title="All 2 branches missed.">            if (jar != null) {</span>
+                try {
+<span class="nc" id="L1517">                    jar.close();</span>
+<span class="nc" id="L1518">                } catch (IOException ignore) {}</span>
+            }
+        }
+
+<span class="nc" id="L1522">        return databaseTypes;</span>
+    }
+
+    protected void dumpUsage(String errorMessage, boolean detailedDb) {
+<span class="nc bnc" id="L1526" title="All 2 branches missed.">        if (errorMessage != null) {</span>
+<span class="nc" id="L1527">            System.out.flush();</span>
+<span class="nc" id="L1528">            System.err.println(&quot;*** &quot; + errorMessage + &quot; ***&quot;);</span>
+        } else {
+<span class="nc" id="L1530">            System.out.println(&quot;SchemaSpy generates an HTML representation of a database schema's relationships.&quot;);</span>
+        }
+
+<span class="nc" id="L1533">        System.err.flush();</span>
+<span class="nc" id="L1534">        System.out.println();</span>
+
+<span class="nc bnc" id="L1536" title="All 2 branches missed.">        if (!detailedDb) {</span>
+<span class="nc" id="L1537">            System.out.println(&quot;Usage:&quot;);</span>
+<span class="nc" id="L1538">            System.out.println(&quot; java -jar &quot; + getLoadedFromJar() + &quot; [options]&quot;);</span>
+<span class="nc" id="L1539">            System.out.println(&quot;   -t databaseType       type of database - defaults to ora&quot;);</span>
+<span class="nc" id="L1540">            System.out.println(&quot;                           use -dbhelp for a list of built-in types&quot;);</span>
+<span class="nc" id="L1541">            System.out.println(&quot;   -u user               connect to the database with this user id&quot;);</span>
+<span class="nc" id="L1542">            System.out.println(&quot;   -s schema             defaults to the specified user&quot;);</span>
+<span class="nc" id="L1543">            System.out.println(&quot;   -p password           defaults to no password&quot;);</span>
+<span class="nc" id="L1544">            System.out.println(&quot;   -o outputDirectory    directory to place the generated output in&quot;);</span>
+<span class="nc" id="L1545">            System.out.println(&quot;   -dp pathToDrivers     optional - looks for JDBC drivers here before looking&quot;);</span>
+<span class="nc" id="L1546">            System.out.println(&quot;                           in driverPath in [databaseType].properties.&quot;);</span>
+<span class="nc" id="L1547">            System.out.println(&quot;Go to http://schemaspy.sourceforge.net for a complete list/description&quot;);</span>
+<span class="nc" id="L1548">            System.out.println(&quot; of additional parameters.&quot;);</span>
+<span class="nc" id="L1549">            System.out.println();</span>
+        }
+
+<span class="nc bnc" id="L1552" title="All 2 branches missed.">        if (detailedDb) {</span>
+<span class="nc" id="L1553">            System.out.println(&quot;Built-in database types and their required connection parameters:&quot;);</span>
+<span class="nc bnc" id="L1554" title="All 2 branches missed.">            for (String type : getBuiltInDatabaseTypes(getLoadedFromJar())) {</span>
+<span class="nc" id="L1555">                new DbSpecificConfig(type).dumpUsage();</span>
+<span class="nc" id="L1556">            }</span>
+<span class="nc" id="L1557">            System.out.println();</span>
+        }
+
+<span class="nc bnc" id="L1560" title="All 2 branches missed.">        if (detailedDb) {</span>
+<span class="nc" id="L1561">            System.out.println(&quot;You can use your own database types by specifying the filespec of a .properties file with -t.&quot;);</span>
+<span class="nc" id="L1562">            System.out.println(&quot;Grab one out of &quot; + getLoadedFromJar() + &quot; and modify it to suit your needs.&quot;);</span>
+<span class="nc" id="L1563">            System.out.println();</span>
+        }
+
+<span class="nc" id="L1566">        System.out.println(&quot;Sample usage using the default database type (implied -t ora):&quot;);</span>
+<span class="nc" id="L1567">        System.out.println(&quot; java -jar schemaSpy.jar -db mydb -s myschema -u devuser -p password -o output&quot;);</span>
+<span class="nc" id="L1568">        System.out.println();</span>
+<span class="nc" id="L1569">        System.out.flush();</span>
+<span class="nc" id="L1570">    }</span>
+
+    /**
+     * Get the value of the specified parameter.
+     * Used for properties that are common to most db's, but aren't required.
+     *
+     * @param paramName
+
+     */
+    public String getParam(String paramName) {
+        try {
+<span class="fc" id="L1581">            BeanInfo beanInfo = Introspector.getBeanInfo(Config.class);</span>
+<span class="fc" id="L1582">            PropertyDescriptor[] props = beanInfo.getPropertyDescriptors();</span>
+<span class="pc bpc" id="L1583" title="1 of 2 branches missed.">            for (int i = 0; i &lt; props.length; ++i) {</span>
+<span class="fc" id="L1584">                PropertyDescriptor prop = props[i];</span>
+<span class="fc bfc" id="L1585" title="All 2 branches covered.">                if (prop.getName().equalsIgnoreCase(paramName)) {</span>
+<span class="fc" id="L1586">                    Object result = prop.getReadMethod().invoke(this, (Object[])null);</span>
+<span class="pc bpc" id="L1587" title="1 of 2 branches missed.">                    return result == null ? null : result.toString();</span>
+                }
+            }
+<span class="nc" id="L1590">        } catch (Exception failed) {</span>
+<span class="nc" id="L1591">            failed.printStackTrace();</span>
+<span class="nc" id="L1592">        }</span>
+
+<span class="nc" id="L1594">        return null;</span>
+    }
+
+    /**
+     * Return all of the configuration options as a List of Strings, with
+     * each parameter and its value as a separate element.
+     *
+
+     * @throws IOException
+     */
+    public List&lt;String&gt; asList() throws IOException {
+<span class="nc" id="L1605">        List&lt;String&gt; params = new ArrayList&lt;String&gt;();</span>
+
+<span class="nc bnc" id="L1607" title="All 2 branches missed.">        if (originalDbSpecificOptions != null) {</span>
+<span class="nc bnc" id="L1608" title="All 2 branches missed.">            for (String key : originalDbSpecificOptions.keySet()) {</span>
+<span class="nc" id="L1609">                String value = originalDbSpecificOptions.get(key);</span>
+<span class="nc bnc" id="L1610" title="All 2 branches missed.">                if (!key.startsWith(&quot;-&quot;))</span>
+<span class="nc" id="L1611">                    key = &quot;-&quot; + key;</span>
+<span class="nc" id="L1612">                params.add(key);</span>
+<span class="nc" id="L1613">                params.add(value);</span>
+<span class="nc" id="L1614">            }</span>
+        }
+<span class="nc bnc" id="L1616" title="All 2 branches missed.">        if (isEncodeCommentsEnabled())</span>
+<span class="nc" id="L1617">            params.add(&quot;-ahic&quot;);</span>
+<span class="nc bnc" id="L1618" title="All 2 branches missed.">        if (isEvaluateAllEnabled())</span>
+<span class="nc" id="L1619">            params.add(&quot;-all&quot;);</span>
+<span class="nc bnc" id="L1620" title="All 2 branches missed.">        if (!isHtmlGenerationEnabled())</span>
+<span class="nc" id="L1621">            params.add(&quot;-nohtml&quot;);</span>
+<span class="nc bnc" id="L1622" title="All 2 branches missed.">        if (!isImpliedConstraintsEnabled())</span>
+<span class="nc" id="L1623">            params.add(&quot;-noimplied&quot;);</span>
+<span class="nc bnc" id="L1624" title="All 2 branches missed.">        if (!isLogoEnabled())</span>
+<span class="nc" id="L1625">            params.add(&quot;-nologo&quot;);</span>
+<span class="nc bnc" id="L1626" title="All 2 branches missed.">        if (isMeterEnabled())</span>
+<span class="nc" id="L1627">            params.add(&quot;-meter&quot;);</span>
+<span class="nc bnc" id="L1628" title="All 2 branches missed.">        if (!isNumRowsEnabled())</span>
+<span class="nc" id="L1629">            params.add(&quot;-norows&quot;);</span>
+<span class="nc bnc" id="L1630" title="All 2 branches missed.">        if (!isViewsEnabled())</span>
+<span class="nc" id="L1631">            params.add(&quot;-noviews&quot;);</span>
+<span class="nc bnc" id="L1632" title="All 2 branches missed.">        if (isRankDirBugEnabled())</span>
+<span class="nc" id="L1633">            params.add(&quot;-rankdirbug&quot;);</span>
+<span class="nc bnc" id="L1634" title="All 2 branches missed.">        if (isRailsEnabled())</span>
+<span class="nc" id="L1635">            params.add(&quot;-rails&quot;);</span>
+<span class="nc bnc" id="L1636" title="All 2 branches missed.">        if (isSingleSignOn())</span>
+<span class="nc" id="L1637">            params.add(&quot;-sso&quot;);</span>
+<span class="nc bnc" id="L1638" title="All 2 branches missed.">        if (!isAdsEnabled())</span>
+<span class="nc" id="L1639">            params.add(&quot;-noads&quot;);</span>
+<span class="nc bnc" id="L1640" title="All 2 branches missed.">        if (isSchemaDisabled())</span>
+<span class="nc" id="L1641">            params.add(&quot;-noschema&quot;);</span>
+
+<span class="nc" id="L1643">        String value = getDriverPath();</span>
+<span class="nc bnc" id="L1644" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1645">            params.add(&quot;-dp&quot;);</span>
+<span class="nc" id="L1646">            params.add(value);</span>
+        }
+<span class="nc" id="L1648">        params.add(&quot;-css&quot;);</span>
+<span class="nc" id="L1649">        params.add(getCss());</span>
+<span class="nc" id="L1650">        params.add(&quot;-charset&quot;);</span>
+<span class="nc" id="L1651">        params.add(getCharset());</span>
+<span class="nc" id="L1652">        params.add(&quot;-font&quot;);</span>
+<span class="nc" id="L1653">        params.add(getFont());</span>
+<span class="nc" id="L1654">        params.add(&quot;-fontsize&quot;);</span>
+<span class="nc" id="L1655">        params.add(String.valueOf(getFontSize()));</span>
+<span class="nc" id="L1656">        params.add(&quot;-t&quot;);</span>
+<span class="nc" id="L1657">        params.add(getDbType());</span>
+<span class="nc" id="L1658">        params.add(&quot;-renderer&quot;);  // instead of -hq and/or -lq</span>
+<span class="nc" id="L1659">        params.add(getRenderer());</span>
+<span class="nc" id="L1660">        value = getDescription();</span>
+<span class="nc bnc" id="L1661" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1662">            params.add(&quot;-desc&quot;);</span>
+<span class="nc" id="L1663">            params.add(value);</span>
+        }
+<span class="nc" id="L1665">        value = getPassword();</span>
+<span class="nc bnc" id="L1666" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1667">            params.add(&quot;-p&quot;);</span>
+<span class="nc" id="L1668">            params.add(value);</span>
+        }
+<span class="nc bnc" id="L1670" title="All 2 branches missed.">        if (isPromptForPasswordEnabled())</span>
+<span class="nc" id="L1671">            params.add(&quot;-pfp&quot;);</span>
+<span class="nc" id="L1672">        value = getSchema();</span>
+<span class="nc bnc" id="L1673" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1674">            params.add(&quot;-s&quot;);</span>
+<span class="nc" id="L1675">            params.add(value);</span>
+        }
+<span class="nc" id="L1677">        value = getUser();</span>
+<span class="nc bnc" id="L1678" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1679">            params.add(&quot;-u&quot;);</span>
+<span class="nc" id="L1680">            params.add(value);</span>
+        }
+<span class="nc" id="L1682">        value = getConnectionPropertiesFile();</span>
+<span class="nc bnc" id="L1683" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1684">            params.add(&quot;-connprops&quot;);</span>
+<span class="nc" id="L1685">            params.add(value);</span>
+        } else {
+<span class="nc" id="L1687">            Properties props = getConnectionProperties();</span>
+<span class="nc bnc" id="L1688" title="All 2 branches missed.">            if (!props.isEmpty() ) {</span>
+<span class="nc" id="L1689">                params.add(&quot;-connprops&quot;);</span>
+<span class="nc" id="L1690">                StringBuilder buf = new StringBuilder();</span>
+<span class="nc bnc" id="L1691" title="All 2 branches missed.">                for (Entry&lt;Object, Object&gt; entry : props.entrySet()) {</span>
+<span class="nc" id="L1692">                    buf.append(entry.getKey());</span>
+<span class="nc" id="L1693">                    buf.append(ESCAPED_EQUALS);</span>
+<span class="nc" id="L1694">                    buf.append(entry.getValue());</span>
+<span class="nc" id="L1695">                    buf.append(';');</span>
+<span class="nc" id="L1696">                }</span>
+<span class="nc" id="L1697">                params.add(buf.toString());</span>
+            }
+        }
+<span class="nc" id="L1700">        value = getDb();</span>
+<span class="nc bnc" id="L1701" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1702">            params.add(&quot;-db&quot;);</span>
+<span class="nc" id="L1703">            params.add(value);</span>
+        }
+<span class="nc" id="L1705">        value = getHost();</span>
+<span class="nc bnc" id="L1706" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1707">            params.add(&quot;-host&quot;);</span>
+<span class="nc" id="L1708">            params.add(value);</span>
+        }
+<span class="nc bnc" id="L1710" title="All 2 branches missed.">        if (getPort() != null) {</span>
+<span class="nc" id="L1711">            params.add(&quot;-port&quot;);</span>
+<span class="nc" id="L1712">            params.add(getPort().toString());</span>
+        }
+<span class="nc" id="L1714">        value = getServer();</span>
+<span class="nc bnc" id="L1715" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1716">            params.add(&quot;-server&quot;);</span>
+<span class="nc" id="L1717">            params.add(value);</span>
+        }
+<span class="nc" id="L1719">        value = getMeta();</span>
+<span class="nc bnc" id="L1720" title="All 2 branches missed.">        if (value != null) {</span>
+<span class="nc" id="L1721">            params.add(&quot;-meta&quot;);</span>
+<span class="nc" id="L1722">            params.add(value);</span>
+        }
+<span class="nc bnc" id="L1724" title="All 2 branches missed.">        if (getGraphvizDir() != null) {</span>
+<span class="nc" id="L1725">            params.add(&quot;-gv&quot;);</span>
+<span class="nc" id="L1726">            params.add(getGraphvizDir().toString());</span>
+        }
+<span class="nc" id="L1728">        params.add(&quot;-loglevel&quot;);</span>
+<span class="nc" id="L1729">        params.add(getLogLevel().toString().toLowerCase());</span>
+<span class="nc" id="L1730">        params.add(&quot;-sqlFormatter&quot;);</span>
+<span class="nc" id="L1731">        params.add(getSqlFormatter().getClass().getName());</span>
+<span class="nc" id="L1732">        params.add(&quot;-i&quot;);</span>
+<span class="nc" id="L1733">        params.add(getTableInclusions().pattern());</span>
+<span class="nc" id="L1734">        params.add(&quot;-I&quot;);</span>
+<span class="nc" id="L1735">        params.add(getTableExclusions().pattern());</span>
+<span class="nc" id="L1736">        params.add(&quot;-x&quot;);</span>
+<span class="nc" id="L1737">        params.add(getColumnExclusions().pattern());</span>
+<span class="nc" id="L1738">        params.add(&quot;-X&quot;);</span>
+<span class="nc" id="L1739">        params.add(getIndirectColumnExclusions().pattern());</span>
+<span class="nc" id="L1740">        params.add(&quot;-dbthreads&quot;);</span>
+<span class="nc" id="L1741">        params.add(String.valueOf(getMaxDbThreads()));</span>
+<span class="nc" id="L1742">        params.add(&quot;-maxdet&quot;);</span>
+<span class="nc" id="L1743">        params.add(String.valueOf(getMaxDetailedTables()));</span>
+<span class="nc" id="L1744">        params.add(&quot;-o&quot;);</span>
+<span class="nc" id="L1745">        params.add(getOutputDir().toString());</span>
+
+<span class="nc" id="L1747">        return params;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

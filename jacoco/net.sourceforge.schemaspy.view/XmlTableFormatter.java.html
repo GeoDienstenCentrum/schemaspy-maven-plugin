@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlTableFormatter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.view</a> &gt; <span class="el_source">XmlTableFormatter.java</span></div><h1>XmlTableFormatter.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.view;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.regex.Pattern;
+import net.sourceforge.schemaspy.model.ForeignKeyConstraint;
+import net.sourceforge.schemaspy.model.Table;
+import net.sourceforge.schemaspy.model.TableColumn;
+import net.sourceforge.schemaspy.model.TableIndex;
+import net.sourceforge.schemaspy.util.DOMUtil;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
+/**
+ * Formats {@link Table}s into an XML DOM tree.
+ *
+ * @author John Currier
+ */
+public class XmlTableFormatter {
+<span class="fc" id="L42">    private static final XmlTableFormatter instance = new XmlTableFormatter();</span>
+
+    // valid chars came from http://www.w3.org/TR/REC-xml/#charsets
+    // and attempting to match 0x10000-0x10FFFF with the \p Unicode escapes
+    // (from http://www.regular-expressions.info/unicode.html)
+<span class="fc" id="L47">    private static final Pattern validXmlChars =</span>
+<span class="fc" id="L48">        Pattern.compile(&quot;^[ -\uD7FF\uE000-\uFFFD\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*$&quot;);</span>
+
+    /**
+     * Singleton...don't allow instantiation
+     */
+    private XmlTableFormatter() {}
+
+    /**
+     * Singleton accessor
+     *
+     * @return
+     */
+    public static XmlTableFormatter getInstance() {
+<span class="fc" id="L61">        return instance;</span>
+    }
+
+    /**
+     * Append the specified tables to the XML node
+     *
+     * @param schemaNode
+     * @param tables
+     */
+    public void appendTables(Element schemaNode, Collection&lt;Table&gt; tables) {
+<span class="fc" id="L71">        Set&lt;Table&gt; byName = new TreeSet&lt;Table&gt;(new Comparator&lt;Table&gt;() {</span>
+            public int compare(Table table1, Table table2) {
+<span class="fc" id="L73">                return table1.getName().compareToIgnoreCase(table2.getName());</span>
+            }
+        });
+<span class="fc" id="L76">        byName.addAll(tables);</span>
+
+<span class="fc" id="L78">        Document document = schemaNode.getOwnerDocument();</span>
+<span class="fc" id="L79">        Element tablesNode = document.createElement(&quot;tables&quot;);</span>
+<span class="fc" id="L80">        schemaNode.appendChild(tablesNode);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        for (Table table : byName)</span>
+<span class="fc" id="L82">            appendTable(tablesNode, table);</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Append table details to the XML node
+     *
+     * @param tablesNode
+     * @param table
+     */
+    private void appendTable(Element tablesNode, Table table) {
+<span class="fc" id="L92">        Document document = tablesNode.getOwnerDocument();</span>
+<span class="fc" id="L93">        Element tableNode = document.createElement(&quot;table&quot;);</span>
+<span class="fc" id="L94">        tablesNode.appendChild(tableNode);</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if (table.getId() != null)</span>
+<span class="nc" id="L96">            DOMUtil.appendAttribute(tableNode, &quot;id&quot;, String.valueOf(table.getId()));</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if (table.getSchema() != null)</span>
+<span class="fc" id="L98">            DOMUtil.appendAttribute(tableNode, &quot;schema&quot;, table.getSchema());</span>
+<span class="fc" id="L99">        DOMUtil.appendAttribute(tableNode, &quot;name&quot;, table.getName());</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        if (table.getNumRows() != -1)</span>
+<span class="fc" id="L101">            DOMUtil.appendAttribute(tableNode, &quot;numRows&quot;, String.valueOf(table.getNumRows()));</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        DOMUtil.appendAttribute(tableNode, &quot;type&quot;, table.isView() ? &quot;VIEW&quot; : &quot;TABLE&quot;);</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">        DOMUtil.appendAttribute(tableNode, &quot;remarks&quot;, table.getComments() == null ? &quot;&quot; : table.getComments());</span>
+<span class="fc" id="L104">        appendColumns(tableNode, table);</span>
+<span class="fc" id="L105">        appendPrimaryKeys(tableNode, table);</span>
+<span class="fc" id="L106">        appendIndexes(tableNode, table);</span>
+<span class="fc" id="L107">        appendCheckConstraints(tableNode, table);</span>
+<span class="fc" id="L108">        appendView(tableNode, table);</span>
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Append all columns in the table to the XML node
+     *
+     * @param tableNode
+     * @param table
+     */
+    private void appendColumns(Element tableNode, Table table) {
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        for (TableColumn column : table.getColumns()) {</span>
+<span class="fc" id="L119">            appendColumn(tableNode, column);</span>
+<span class="fc" id="L120">        }</span>
+<span class="fc" id="L121">    }</span>
+
+    /**
+     * Append column details to the XML node
+     *
+     * @param tableNode
+     * @param column
+     * @return
+     */
+    private Node appendColumn(Node tableNode, TableColumn column) {
+<span class="fc" id="L131">        Document document = tableNode.getOwnerDocument();</span>
+<span class="fc" id="L132">        Node columnNode = document.createElement(&quot;column&quot;);</span>
+<span class="fc" id="L133">        tableNode.appendChild(columnNode);</span>
+
+<span class="fc" id="L135">        DOMUtil.appendAttribute(columnNode, &quot;id&quot;, String.valueOf(column.getId()));</span>
+<span class="fc" id="L136">        DOMUtil.appendAttribute(columnNode, &quot;name&quot;, column.getName());</span>
+<span class="fc" id="L137">        DOMUtil.appendAttribute(columnNode, &quot;type&quot;, column.getType());</span>
+<span class="fc" id="L138">        DOMUtil.appendAttribute(columnNode, &quot;size&quot;, String.valueOf(column.getLength()));</span>
+<span class="fc" id="L139">        DOMUtil.appendAttribute(columnNode, &quot;digits&quot;, String.valueOf(column.getDecimalDigits()));</span>
+<span class="fc" id="L140">        DOMUtil.appendAttribute(columnNode, &quot;nullable&quot;, String.valueOf(column.isNullable()));</span>
+<span class="fc" id="L141">        DOMUtil.appendAttribute(columnNode, &quot;autoUpdated&quot;, String.valueOf(column.isAutoUpdated()));</span>
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">        if (column.getDefaultValue() != null) {</span>
+<span class="nc" id="L143">            String defaultValue = column.getDefaultValue().toString();</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">            if (isBinary(defaultValue)) {</span>
+                // we're run into a binary default value, convert it to its hex equivalent
+<span class="nc" id="L146">                defaultValue = asBinary(defaultValue);</span>
+                // and indicate that it's been converted
+<span class="nc" id="L148">                DOMUtil.appendAttribute(columnNode, &quot;defaultValueIsBinary&quot;, &quot;true&quot;);</span>
+            }
+<span class="nc" id="L150">            DOMUtil.appendAttribute(columnNode, &quot;defaultValue&quot;, defaultValue);</span>
+        }
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        DOMUtil.appendAttribute(columnNode, &quot;remarks&quot;, column.getComments() == null ? &quot;&quot; : column.getComments());</span>
+
+<span class="fc bfc" id="L154" title="All 2 branches covered.">        for (TableColumn childColumn : column.getChildren()) {</span>
+<span class="fc" id="L155">            Node childNode = document.createElement(&quot;child&quot;);</span>
+<span class="fc" id="L156">            columnNode.appendChild(childNode);</span>
+<span class="fc" id="L157">            ForeignKeyConstraint constraint = column.getChildConstraint(childColumn);</span>
+<span class="fc" id="L158">            DOMUtil.appendAttribute(childNode, &quot;foreignKey&quot;, constraint.getName());</span>
+<span class="fc" id="L159">            DOMUtil.appendAttribute(childNode, &quot;table&quot;, childColumn.getTable().getName());</span>
+<span class="fc" id="L160">            DOMUtil.appendAttribute(childNode, &quot;column&quot;, childColumn.getName());</span>
+<span class="fc" id="L161">            DOMUtil.appendAttribute(childNode, &quot;implied&quot;, String.valueOf(constraint.isImplied()));</span>
+<span class="fc" id="L162">            DOMUtil.appendAttribute(childNode, &quot;onDeleteCascade&quot;, String.valueOf(constraint.isCascadeOnDelete()));</span>
+<span class="fc" id="L163">        }</span>
+
+<span class="fc bfc" id="L165" title="All 2 branches covered.">        for (TableColumn parentColumn : column.getParents()) {</span>
+<span class="fc" id="L166">            Node parentNode = document.createElement(&quot;parent&quot;);</span>
+<span class="fc" id="L167">            columnNode.appendChild(parentNode);</span>
+<span class="fc" id="L168">            ForeignKeyConstraint constraint = column.getParentConstraint(parentColumn);</span>
+<span class="fc" id="L169">            DOMUtil.appendAttribute(parentNode, &quot;foreignKey&quot;, constraint.getName());</span>
+<span class="fc" id="L170">            DOMUtil.appendAttribute(parentNode, &quot;table&quot;, parentColumn.getTable().getName());</span>
+<span class="fc" id="L171">            DOMUtil.appendAttribute(parentNode, &quot;column&quot;, parentColumn.getName());</span>
+<span class="fc" id="L172">            DOMUtil.appendAttribute(parentNode, &quot;implied&quot;, String.valueOf(constraint.isImplied()));</span>
+<span class="fc" id="L173">            DOMUtil.appendAttribute(parentNode, &quot;onDeleteCascade&quot;, String.valueOf(constraint.isCascadeOnDelete()));</span>
+<span class="fc" id="L174">        }</span>
+
+<span class="fc" id="L176">        return columnNode;</span>
+    }
+
+    /**
+     * Append primary key details to the XML node
+     *
+     * @param tableNode
+     * @param table
+     */
+    private void appendPrimaryKeys(Element tableNode, Table table) {
+<span class="fc" id="L186">        Document document = tableNode.getOwnerDocument();</span>
+<span class="fc" id="L187">        int index = 1;</span>
+
+<span class="fc bfc" id="L189" title="All 2 branches covered.">        for (TableColumn primaryKeyColumn : table.getPrimaryColumns()) {</span>
+<span class="fc" id="L190">            Node primaryKeyNode = document.createElement(&quot;primaryKey&quot;);</span>
+<span class="fc" id="L191">            tableNode.appendChild(primaryKeyNode);</span>
+
+<span class="fc" id="L193">            DOMUtil.appendAttribute(primaryKeyNode, &quot;column&quot;, primaryKeyColumn.getName());</span>
+<span class="fc" id="L194">            DOMUtil.appendAttribute(primaryKeyNode, &quot;sequenceNumberInPK&quot;, String.valueOf(index++));</span>
+<span class="fc" id="L195">        }</span>
+<span class="fc" id="L196">    }</span>
+
+    /**
+     * Append check constraint details to the XML node
+     *
+     * @param tableNode
+     * @param table
+     */
+    private void appendCheckConstraints(Element tableNode, Table table) {
+<span class="fc" id="L205">        Document document = tableNode.getOwnerDocument();</span>
+<span class="fc" id="L206">        Map&lt;String, String&gt; constraints = table.getCheckConstraints();</span>
+<span class="pc bpc" id="L207" title="2 of 4 branches missed.">        if (constraints != null &amp;&amp; !constraints.isEmpty()) {</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">            for (String name : constraints.keySet()) {</span>
+<span class="nc" id="L209">                Node constraintNode = document.createElement(&quot;checkConstraint&quot;);</span>
+<span class="nc" id="L210">                tableNode.appendChild(constraintNode);</span>
+
+<span class="nc" id="L212">                DOMUtil.appendAttribute(constraintNode, &quot;name&quot;, name);</span>
+<span class="nc" id="L213">                DOMUtil.appendAttribute(constraintNode, &quot;constraint&quot;, constraints.get(name).toString());</span>
+<span class="nc" id="L214">            }</span>
+        }
+<span class="fc" id="L216">    }</span>
+
+    /**
+     * Append index details to the XML node
+     *
+     * @param tableNode
+     * @param table
+     */
+    private void appendIndexes(Node tableNode, Table table) {
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">        boolean showId = table.getId() != null;</span>
+<span class="fc" id="L226">        Set&lt;TableIndex&gt; indexes = table.getIndexes();</span>
+<span class="pc bpc" id="L227" title="2 of 4 branches missed.">        if (indexes != null &amp;&amp; !indexes.isEmpty()) {</span>
+<span class="fc" id="L228">            indexes = new TreeSet&lt;TableIndex&gt;(indexes); // sort primary keys first</span>
+<span class="fc" id="L229">            Document document = tableNode.getOwnerDocument();</span>
+
+<span class="fc bfc" id="L231" title="All 2 branches covered.">            for (TableIndex index : indexes) {</span>
+<span class="fc" id="L232">                Node indexNode = document.createElement(&quot;index&quot;);</span>
+
+<span class="pc bpc" id="L234" title="1 of 2 branches missed.">                if (showId)</span>
+<span class="nc" id="L235">                    DOMUtil.appendAttribute(indexNode, &quot;id&quot;, String.valueOf(index.getId()));</span>
+<span class="fc" id="L236">                DOMUtil.appendAttribute(indexNode, &quot;name&quot;, index.getName());</span>
+<span class="fc" id="L237">                DOMUtil.appendAttribute(indexNode, &quot;unique&quot;, String.valueOf(index.isUnique()));</span>
+
+<span class="fc bfc" id="L239" title="All 2 branches covered.">                for (TableColumn column : index.getColumns()) {</span>
+<span class="fc" id="L240">                    Node columnNode = document.createElement(&quot;column&quot;);</span>
+
+<span class="fc" id="L242">                    DOMUtil.appendAttribute(columnNode, &quot;name&quot;, column.getName());</span>
+<span class="fc" id="L243">                    DOMUtil.appendAttribute(columnNode, &quot;ascending&quot;, String.valueOf(index.isAscending(column)));</span>
+<span class="fc" id="L244">                    indexNode.appendChild(columnNode);</span>
+<span class="fc" id="L245">                }</span>
+<span class="fc" id="L246">                tableNode.appendChild(indexNode);</span>
+<span class="fc" id="L247">            }</span>
+        }
+<span class="fc" id="L249">    }</span>
+
+    /**
+     * Append view SQL to the XML node
+     *
+     * @param tableNode
+     * @param table
+     */
+    private void appendView(Element tableNode, Table table) {
+        String sql;
+<span class="pc bpc" id="L259" title="3 of 4 branches missed.">        if (table.isView() &amp;&amp; (sql = table.getViewSql()) != null) {</span>
+<span class="nc" id="L260">            DOMUtil.appendAttribute(tableNode, &quot;viewSql&quot;, sql);</span>
+        }
+<span class="fc" id="L262">    }</span>
+
+    /**
+     * Returns &lt;code&gt;true&lt;/code&gt; if the string contains binary data
+     * (chars that are invalid for XML) per http://www.w3.org/TR/REC-xml/#charsets
+     *
+     * @param str
+     * @return
+     */
+    private static boolean isBinary(String str) {
+<span class="nc bnc" id="L272" title="All 2 branches missed.">        return !validXmlChars.matcher(str).matches();</span>
+    }
+
+    /**
+     * Turns a string into its hex equivalent.
+     * Intended to be used when {@link #isBinary(String)} returns &lt;code&gt;true&lt;/code&gt;.
+     *
+     * @param str
+     * @return
+     */
+    private String asBinary(String str) {
+<span class="nc" id="L283">        byte[] bytes = str.getBytes();</span>
+<span class="nc" id="L284">        StringBuilder buf = new StringBuilder(bytes.length * 2);</span>
+<span class="nc bnc" id="L285" title="All 2 branches missed.">        for (int i = 0; i &lt; bytes.length; ++i) {</span>
+<span class="nc" id="L286">            buf.append(String.format(&quot;%02X&quot;, bytes[i]));</span>
+        }
+<span class="nc" id="L288">        return buf.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

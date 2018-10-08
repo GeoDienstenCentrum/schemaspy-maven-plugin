@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HtmlTablePage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.view</a> &gt; <span class="el_source">HtmlTablePage.java</span></div><h1>HtmlTablePage.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.view;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import net.sourceforge.schemaspy.Config;
+import net.sourceforge.schemaspy.model.Database;
+import net.sourceforge.schemaspy.model.ForeignKeyConstraint;
+import net.sourceforge.schemaspy.model.Table;
+import net.sourceforge.schemaspy.model.TableColumn;
+import net.sourceforge.schemaspy.model.TableIndex;
+import net.sourceforge.schemaspy.model.View;
+import net.sourceforge.schemaspy.util.CaseInsensitiveMap;
+import net.sourceforge.schemaspy.util.HtmlEncoder;
+import net.sourceforge.schemaspy.util.LineWriter;
+
+/**
+ * The page that contains the details of a specific table or view
+ *
+ * @author John Currier
+ */
+public class HtmlTablePage extends HtmlFormatter {
+<span class="fc" id="L47">    private static final HtmlTablePage instance = new HtmlTablePage();</span>
+<span class="fc" id="L48">    private int columnCounter = 0;</span>
+
+<span class="fc" id="L50">    private final Map&lt;String, String&gt; defaultValueAliases = new HashMap&lt;String, String&gt;();</span>
+    {
+<span class="fc" id="L52">        defaultValueAliases.put(&quot;CURRENT TIMESTAMP&quot;, &quot;now&quot;); // DB2</span>
+<span class="fc" id="L53">        defaultValueAliases.put(&quot;CURRENT TIME&quot;, &quot;now&quot;);      // DB2</span>
+<span class="fc" id="L54">        defaultValueAliases.put(&quot;CURRENT DATE&quot;, &quot;now&quot;);      // DB2</span>
+<span class="fc" id="L55">        defaultValueAliases.put(&quot;SYSDATE&quot;, &quot;now&quot;);           // Oracle</span>
+<span class="fc" id="L56">        defaultValueAliases.put(&quot;CURRENT_DATE&quot;, &quot;now&quot;);      // Oracle</span>
+    }
+
+    /**
+     * Singleton: Don't allow instantiation
+     */
+<span class="fc" id="L62">    private HtmlTablePage() {</span>
+<span class="fc" id="L63">    }</span>
+
+    /**
+     * Singleton accessor
+     *
+     * @return the singleton instance
+     */
+    public static HtmlTablePage getInstance() {
+<span class="fc" id="L71">        return instance;</span>
+    }
+
+    public WriteStats write(Database db, Table table, boolean hasOrphans, File outputDir, WriteStats stats, LineWriter out) throws IOException {
+<span class="fc" id="L75">        File diagramsDir = new File(outputDir, &quot;diagrams&quot;);</span>
+<span class="fc" id="L76">        boolean hasImplied = generateDots(table, diagramsDir, stats);</span>
+
+<span class="fc" id="L78">        writeHeader(db, table, null, hasOrphans, out);</span>
+<span class="fc" id="L79">        out.writeln(&quot;&lt;table width='100%' border='0'&gt;&quot;);</span>
+<span class="fc" id="L80">        out.writeln(&quot;&lt;tr valign='top'&gt;&lt;td class='container' align='left' valign='top'&gt;&quot;);</span>
+<span class="fc" id="L81">        writeHeader(table, hasImplied, out);</span>
+<span class="fc" id="L82">        out.writeln(&quot;&lt;/td&gt;&lt;td class='container' rowspan='2' align='right' valign='top'&gt;&quot;);</span>
+<span class="fc" id="L83">        writeLegend(true, out);</span>
+<span class="fc" id="L84">        out.writeln(&quot;&lt;/td&gt;&lt;tr valign='top'&gt;&lt;td class='container' align='left' valign='top'&gt;&quot;);</span>
+<span class="fc" id="L85">        writeMainTable(table, out);</span>
+<span class="fc" id="L86">        writeNumRows(db, table, out);</span>
+<span class="fc" id="L87">        out.writeln(&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;);</span>
+<span class="fc" id="L88">        writeCheckConstraints(table, out);</span>
+<span class="fc" id="L89">        writeIndexes(table, out);</span>
+<span class="fc" id="L90">        writeView(table, db, out);</span>
+<span class="fc" id="L91">        writeDiagram(table, stats, diagramsDir, out);</span>
+<span class="fc" id="L92">        writeFooter(out);</span>
+
+<span class="fc" id="L94">        return stats;</span>
+    }
+
+    private void writeHeader(Table table, boolean hasImplied, LineWriter html) throws IOException {
+<span class="fc" id="L98">        html.writeln(&quot;&lt;form name='options' action=''&gt;&quot;);</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        if (hasImplied) {</span>
+<span class="nc" id="L100">            html.write(&quot; &lt;label for='implied'&gt;&lt;input type=checkbox id='implied'&quot;);</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (table.isOrphan(false))</span>
+<span class="nc" id="L102">                html.write(&quot; checked&quot;);</span>
+<span class="nc" id="L103">            html.writeln(&quot;&gt;Implied relationships&lt;/label&gt;&quot;);</span>
+        }
+
+        // initially show comments if any of the columns contain comments
+<span class="fc" id="L107">        boolean showCommentsInitially = false;</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        for (TableColumn column : table.getColumns()) {</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            if (column.getComments() != null) {</span>
+<span class="nc" id="L110">                showCommentsInitially = true;</span>
+<span class="nc" id="L111">                break;</span>
+            }
+<span class="fc" id="L113">        }</span>
+
+<span class="fc" id="L115">        html.writeln(&quot; &lt;label for='showRelatedCols'&gt;&lt;input type=checkbox id='showRelatedCols'&gt;Related columns&lt;/label&gt;&quot;);</span>
+<span class="fc" id="L116">        html.writeln(&quot; &lt;label for='showConstNames'&gt;&lt;input type=checkbox id='showConstNames'&gt;Constraints&lt;/label&gt;&quot;);</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">        html.writeln(&quot; &lt;label for='showComments'&gt;&lt;input type=checkbox &quot; + (showCommentsInitially  ? &quot;checked &quot; : &quot;&quot;) + &quot;id='showComments'&gt;Comments&lt;/label&gt;&quot;);</span>
+<span class="fc" id="L118">        html.writeln(&quot; &lt;label for='showLegend'&gt;&lt;input type=checkbox checked id='showLegend'&gt;Legend&lt;/label&gt;&quot;);</span>
+<span class="fc" id="L119">        html.writeln(&quot;&lt;/form&gt;&quot;);</span>
+<span class="fc" id="L120">    }</span>
+
+    public void writeMainTable(Table table, LineWriter out) throws IOException {
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        HtmlColumnsPage.getInstance().writeMainTableHeader(table.getId() != null, null, out);</span>
+
+<span class="fc" id="L125">        out.writeln(&quot;&lt;tbody valign='top'&gt;&quot;);</span>
+<span class="fc" id="L126">        Set&lt;TableColumn&gt; primaries = new HashSet&lt;TableColumn&gt;(table.getPrimaryColumns());</span>
+<span class="fc" id="L127">        Set&lt;TableColumn&gt; indexedColumns = new HashSet&lt;TableColumn&gt;();</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        for (TableIndex index : table.getIndexes()) {</span>
+<span class="fc" id="L129">            indexedColumns.addAll(index.getColumns());</span>
+<span class="fc" id="L130">        }</span>
+
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">        boolean showIds = table.getId() != null;</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        for (TableColumn column : table.getColumns()) {</span>
+<span class="fc" id="L134">            writeColumn(column, null, primaries, indexedColumns, false, showIds, out);</span>
+<span class="fc" id="L135">        }</span>
+<span class="fc" id="L136">        out.writeln(&quot;&lt;/table&gt;&quot;);</span>
+<span class="fc" id="L137">    }</span>
+
+    public void writeColumn(TableColumn column, String tableName, Set&lt;TableColumn&gt; primaries, Set&lt;TableColumn&gt; indexedColumns, boolean slim, boolean showIds, LineWriter out) throws IOException {
+<span class="fc bfc" id="L140" title="All 2 branches covered.">        boolean even = columnCounter++ % 2 == 0;</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        if (even)</span>
+<span class="fc" id="L142">            out.writeln(&quot;&lt;tr class='even'&gt;&quot;);</span>
+        else
+<span class="fc" id="L144">            out.writeln(&quot;&lt;tr class='odd'&gt;&quot;);</span>
+
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">        if (showIds) {</span>
+<span class="nc" id="L147">            out.write(&quot; &lt;td class='detail' align='right'&gt;&quot;);</span>
+<span class="nc" id="L148">            out.write(String.valueOf(column.getId()));</span>
+<span class="nc" id="L149">            out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+        }
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        if (tableName != null) {</span>
+<span class="fc" id="L152">            out.write(&quot; &lt;td class='detail'&gt;&lt;a href='tables/&quot;);</span>
+<span class="fc" id="L153">            out.write(encodeHref(tableName));</span>
+<span class="fc" id="L154">            out.write(&quot;.html'&gt;&quot;);</span>
+<span class="fc" id="L155">            out.write(tableName);</span>
+<span class="fc" id="L156">            out.writeln(&quot;&lt;/a&gt;&lt;/td&gt;&quot;);</span>
+        }
+<span class="fc bfc" id="L158" title="All 2 branches covered.">        if (primaries.contains(column))</span>
+<span class="fc" id="L159">            out.write(&quot; &lt;td class='primaryKey' title='Primary Key'&gt;&quot;);</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">        else if (indexedColumns.contains(column))</span>
+<span class="fc" id="L161">            out.write(&quot; &lt;td class='indexedColumn' title='Indexed'&gt;&quot;);</span>
+        else
+<span class="fc" id="L163">            out.write(&quot; &lt;td class='detail'&gt;&quot;);</span>
+<span class="fc" id="L164">        out.write(column.getName());</span>
+<span class="fc" id="L165">        out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="fc" id="L166">        out.write(&quot; &lt;td class='detail'&gt;&quot;);</span>
+<span class="fc" id="L167">        out.write(column.getType().toLowerCase());</span>
+<span class="fc" id="L168">        out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="fc" id="L169">        out.write(&quot; &lt;td class='detail' align='right'&gt;&quot;);</span>
+<span class="fc" id="L170">        out.write(column.getDetailedSize());</span>
+<span class="fc" id="L171">        out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="fc" id="L172">        out.write(&quot; &lt;td class='detail' align='center'&quot;);</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">        if (column.isNullable())</span>
+<span class="fc" id="L174">            out.write(&quot; title='nullable'&gt;&amp;nbsp;&amp;radic;&amp;nbsp;&quot;);</span>
+        else
+<span class="fc" id="L176">            out.write(&quot;&gt;&quot;);</span>
+<span class="fc" id="L177">        out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="fc" id="L178">        out.write(&quot; &lt;td class='detail' align='center'&quot;);</span>
+<span class="pc bpc" id="L179" title="1 of 2 branches missed.">        if (column.isAutoUpdated()) {</span>
+<span class="nc" id="L180">            out.write(&quot; title='Automatically updated by the database'&gt;&amp;nbsp;&amp;radic;&amp;nbsp;&quot;);</span>
+        } else {
+<span class="fc" id="L182">            out.write(&quot;&gt;&quot;);</span>
+        }
+<span class="fc" id="L184">        out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+
+<span class="fc" id="L186">        Object defaultValue = column.getDefaultValue();</span>
+<span class="pc bpc" id="L187" title="1 of 4 branches missed.">        if (defaultValue != null || column.isNullable()) {</span>
+<span class="fc" id="L188">            Object alias = defaultValueAliases.get(String.valueOf(defaultValue).trim());</span>
+<span class="pc bpc" id="L189" title="1 of 2 branches missed.">            if (alias != null) {</span>
+<span class="nc" id="L190">                out.write(&quot; &lt;td class='detail' align='right' title='&quot;);</span>
+<span class="nc" id="L191">                out.write(String.valueOf(defaultValue));</span>
+<span class="nc" id="L192">                out.write(&quot;'&gt;&lt;i&gt;&quot;);</span>
+<span class="nc" id="L193">                out.write(alias.toString());</span>
+<span class="nc" id="L194">                out.writeln(&quot;&lt;/i&gt;&lt;/td&gt;&quot;);</span>
+            } else {
+<span class="fc" id="L196">                out.write(&quot; &lt;td class='detail' align='right'&gt;&quot;);</span>
+<span class="fc" id="L197">                out.write(String.valueOf(defaultValue));</span>
+<span class="fc" id="L198">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+            }
+<span class="fc" id="L200">        } else {</span>
+<span class="fc" id="L201">            out.writeln(&quot; &lt;td class='detail'&gt;&lt;/td&gt;&quot;);</span>
+        }
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        if (!slim) {</span>
+<span class="fc" id="L204">            out.write(&quot; &lt;td class='detail'&gt;&quot;);</span>
+<span class="pc bpc" id="L205" title="1 of 2 branches missed.">            String path = tableName == null ? &quot;&quot; : &quot;tables/&quot;;</span>
+<span class="fc" id="L206">            writeRelatives(column, false, path, even, out);</span>
+<span class="fc" id="L207">            out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="fc" id="L208">            out.write(&quot; &lt;td class='detail'&gt;&quot;);</span>
+<span class="fc" id="L209">            writeRelatives(column, true, path, even, out);</span>
+<span class="fc" id="L210">            out.writeln(&quot; &lt;/td&gt;&quot;);</span>
+        }
+<span class="fc" id="L212">        out.write(&quot; &lt;td class='comment detail'&gt;&quot;);</span>
+<span class="fc" id="L213">        String comments = column.getComments();</span>
+<span class="pc bpc" id="L214" title="1 of 2 branches missed.">        if (comments != null) {</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">            if (encodeComments)</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">                for (int i = 0; i &lt; comments.length(); ++i)</span>
+<span class="nc" id="L217">                    out.write(HtmlEncoder.encodeToken(comments.charAt(i)));</span>
+            else
+<span class="nc" id="L219">                out.write(comments);</span>
+        }
+<span class="fc" id="L221">        out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="fc" id="L222">        out.writeln(&quot;&lt;/tr&gt;&quot;);</span>
+<span class="fc" id="L223">    }</span>
+
+    /**
+     * Write our relatives
+     * @param tableName String
+     * @param baseRelative TableColumn
+     * @param dumpParents boolean
+     * @param out LineWriter
+     * @throws IOException
+     */
+    private void writeRelatives(TableColumn baseRelative, boolean dumpParents, String path, boolean even, LineWriter out) throws IOException {
+<span class="fc bfc" id="L234" title="All 2 branches covered.">        Set&lt;TableColumn&gt; columns = dumpParents ? baseRelative.getParents() : baseRelative.getChildren();</span>
+<span class="fc" id="L235">        final int numColumns = columns.size();</span>
+<span class="fc bfc" id="L236" title="All 2 branches covered.">        final String evenOdd = (even ? &quot;even&quot; : &quot;odd&quot;);</span>
+
+<span class="fc bfc" id="L238" title="All 2 branches covered.">        if (numColumns &gt; 0) {</span>
+<span class="fc" id="L239">            out.newLine();</span>
+<span class="fc" id="L240">            out.writeln(&quot;  &lt;table border='0' width='100%' cellspacing='0' cellpadding='0'&gt;&quot;);</span>
+        }
+
+<span class="fc bfc" id="L243" title="All 2 branches covered.">        for (TableColumn column : columns) {</span>
+<span class="fc" id="L244">            String columnTableName = column.getTable().getName();</span>
+<span class="fc bfc" id="L245" title="All 2 branches covered.">            ForeignKeyConstraint constraint = dumpParents ? column.getChildConstraint(baseRelative) : column.getParentConstraint(baseRelative);</span>
+<span class="pc bpc" id="L246" title="1 of 2 branches missed.">            if (constraint.isImplied())</span>
+<span class="nc" id="L247">                out.writeln(&quot;   &lt;tr class='impliedRelationship relative &quot; + evenOdd + &quot;' valign='top'&gt;&quot;);</span>
+            else
+<span class="fc" id="L249">                out.writeln(&quot;   &lt;tr class='relative &quot; + evenOdd + &quot;' valign='top'&gt;&quot;);</span>
+<span class="fc" id="L250">            out.write(&quot;    &lt;td class='relatedTable detail' title=\&quot;&quot;);</span>
+<span class="fc" id="L251">            out.write(constraint.toString());</span>
+<span class="fc" id="L252">            out.write(&quot;\&quot;&gt;&quot;);</span>
+<span class="fc" id="L253">            out.write(&quot;&lt;a href='&quot;);</span>
+<span class="pc bpc" id="L254" title="3 of 4 branches missed.">            if (!column.getTable().isRemote() || Config.getInstance().isOneOfMultipleSchemas()) {</span>
+<span class="fc" id="L255">                out.write(path);</span>
+<span class="pc bpc" id="L256" title="1 of 2 branches missed.">                if (column.getTable().isRemote()) {</span>
+<span class="nc" id="L257">                    out.write(&quot;../../&quot; + column.getTable().getSchema() + &quot;/tables/&quot;);</span>
+                }
+<span class="fc" id="L259">                out.write(encodeHref(columnTableName));</span>
+<span class="fc" id="L260">                out.write(&quot;.html&quot;);</span>
+            }
+<span class="fc" id="L262">            out.write(&quot;'&gt;&quot;);</span>
+<span class="fc" id="L263">            out.write(columnTableName);</span>
+<span class="fc" id="L264">            out.write(&quot;&lt;/a&gt;&quot;);</span>
+<span class="fc" id="L265">            out.write(&quot;&lt;span class='relatedKey'&gt;.&quot;);</span>
+<span class="fc" id="L266">            out.write(column.getName());</span>
+<span class="fc" id="L267">            out.writeln(&quot;&lt;/span&gt;&quot;);</span>
+<span class="fc" id="L268">            out.writeln(&quot;    &lt;/td&gt;&quot;);</span>
+
+<span class="fc" id="L270">            out.write(&quot;    &lt;td class='constraint detail'&gt;&quot;);</span>
+<span class="fc" id="L271">            out.write(constraint.getName());</span>
+<span class="fc" id="L272">            String ruleText = constraint.getDeleteRuleDescription();</span>
+<span class="pc bpc" id="L273" title="1 of 2 branches missed.">            if (ruleText.length() &gt; 0)</span>
+            {
+<span class="fc" id="L275">                String ruleAlias = constraint.getDeleteRuleAlias();</span>
+<span class="fc" id="L276">                out.write(&quot;&lt;span title='&quot; + ruleText + &quot;'&gt;&amp;nbsp;&quot; + ruleAlias + &quot;&lt;/span&gt;&quot;);</span>
+            }
+<span class="fc" id="L278">            out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+
+<span class="fc" id="L280">            out.writeln(&quot;   &lt;/tr&gt;&quot;);</span>
+<span class="fc" id="L281">        }</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">        if (numColumns &gt; 0) {</span>
+<span class="fc" id="L283">            out.writeln(&quot;  &lt;/table&gt;&quot;);</span>
+        }
+<span class="fc" id="L285">    }</span>
+
+    private void writeNumRows(Database db, Table table, LineWriter out) throws IOException {
+<span class="fc" id="L288">        out.write(&quot;&lt;p title='&quot; + table.getColumns().size() + &quot; columns'&gt;&quot;);</span>
+<span class="pc bpc" id="L289" title="2 of 4 branches missed.">        if (displayNumRows &amp;&amp; !table.isView()) {</span>
+<span class="fc" id="L290">            out.write(&quot;Table contained &quot; + NumberFormat.getIntegerInstance().format(table.getNumRows()) + &quot; rows at &quot;);</span>
+        } else {
+<span class="nc" id="L292">            out.write(&quot;Analyzed at &quot;);</span>
+        }
+<span class="fc" id="L294">        out.write(db.getConnectTime());</span>
+<span class="fc" id="L295">        out.writeln(&quot;&lt;p/&gt;&quot;);</span>
+<span class="fc" id="L296">    }</span>
+
+    private void writeCheckConstraints(Table table, LineWriter out) throws IOException {
+<span class="fc" id="L299">        Map&lt;String, String&gt; constraints = table.getCheckConstraints();</span>
+<span class="pc bpc" id="L300" title="2 of 4 branches missed.">        if (constraints != null &amp;&amp; !constraints.isEmpty()) {</span>
+<span class="nc" id="L301">            out.writeln(&quot;&lt;div class='indent'&gt;&quot;);</span>
+<span class="nc" id="L302">            out.writeln(&quot;&lt;b&gt;Requirements (check constraints):&lt;/b&gt;&quot;);</span>
+<span class="nc" id="L303">            out.writeln(&quot;&lt;table class='dataTable' border='1' rules='groups'&gt;&lt;colgroup&gt;&lt;colgroup&gt;&quot;);</span>
+<span class="nc" id="L304">            out.writeln(&quot;&lt;thead&gt;&quot;);</span>
+<span class="nc" id="L305">            out.writeln(&quot; &lt;tr&gt;&quot;);</span>
+<span class="nc" id="L306">            out.writeln(&quot;  &lt;th&gt;Constraint&lt;/th&gt;&quot;);</span>
+<span class="nc" id="L307">            out.writeln(&quot;  &lt;th class='constraint' style='text-align:left;'&gt;Constraint Name&lt;/th&gt;&quot;);</span>
+<span class="nc" id="L308">            out.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L309">            out.writeln(&quot;&lt;/thead&gt;&quot;);</span>
+<span class="nc" id="L310">            out.writeln(&quot;&lt;tbody&gt;&quot;);</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">            for (String name : constraints.keySet()) {</span>
+<span class="nc" id="L312">                out.writeln(&quot; &lt;tr&gt;&quot;);</span>
+<span class="nc" id="L313">                out.write(&quot;  &lt;td class='detail'&gt;&quot;);</span>
+<span class="nc" id="L314">                out.write(HtmlEncoder.encodeString(constraints.get(name).toString()));</span>
+<span class="nc" id="L315">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L316">                out.write(&quot;  &lt;td class='constraint' style='text-align:left;'&gt;&quot;);</span>
+<span class="nc" id="L317">                out.write(name);</span>
+<span class="nc" id="L318">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+<span class="nc" id="L319">                out.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="nc" id="L320">            }</span>
+<span class="nc" id="L321">            out.writeln(&quot;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;&quot;);</span>
+        }
+<span class="fc" id="L323">    }</span>
+
+    private void writeIndexes(Table table, LineWriter out) throws IOException {
+<span class="pc bpc" id="L326" title="1 of 2 branches missed.">        boolean showId = table.getId() != null;</span>
+<span class="fc" id="L327">        Set&lt;TableIndex&gt; indexes = table.getIndexes();</span>
+<span class="pc bpc" id="L328" title="2 of 4 branches missed.">        if (indexes != null &amp;&amp; !indexes.isEmpty()) {</span>
+            // see if we've got any strangeness so we can have the correct number of colgroups
+<span class="fc" id="L330">            boolean containsAnomalies = false;</span>
+<span class="fc bfc" id="L331" title="All 2 branches covered.">            for (TableIndex index : indexes) {</span>
+<span class="fc" id="L332">                containsAnomalies = index.isUniqueNullable();</span>
+<span class="pc bpc" id="L333" title="1 of 2 branches missed.">                if (containsAnomalies)</span>
+<span class="nc" id="L334">                    break;</span>
+<span class="fc" id="L335">            }</span>
+
+<span class="fc" id="L337">            out.writeln(&quot;&lt;div class='indent'&gt;&quot;);</span>
+<span class="fc" id="L338">            out.writeln(&quot;&lt;b&gt;Indexes:&lt;/b&gt;&quot;);</span>
+<span class="pc bpc" id="L339" title="2 of 4 branches missed.">            out.writeln(&quot;&lt;table class='dataTable' border='1' rules='groups'&gt;&lt;colgroup&gt;&lt;colgroup&gt;&lt;colgroup&gt;&lt;colgroup&gt;&quot; + (showId ? &quot;&lt;colgroup&gt;&quot; : &quot;&quot;) + (containsAnomalies ? &quot;&lt;colgroup&gt;&quot; : &quot;&quot;));</span>
+<span class="fc" id="L340">            out.writeln(&quot;&lt;thead&gt;&quot;);</span>
+<span class="fc" id="L341">            out.writeln(&quot; &lt;tr&gt;&quot;);</span>
+<span class="pc bpc" id="L342" title="1 of 2 branches missed.">            if (showId)</span>
+<span class="nc" id="L343">                out.writeln(&quot;  &lt;th&gt;ID&lt;/th&gt;&quot;);</span>
+<span class="fc" id="L344">            out.writeln(&quot;  &lt;th&gt;Column(s)&lt;/th&gt;&quot;);</span>
+<span class="fc" id="L345">            out.writeln(&quot;  &lt;th&gt;Type&lt;/th&gt;&quot;);</span>
+<span class="fc" id="L346">            out.writeln(&quot;  &lt;th&gt;Sort&lt;/th&gt;&quot;);</span>
+<span class="fc" id="L347">            out.writeln(&quot;  &lt;th class='constraint' style='text-align:left;'&gt;Constraint Name&lt;/th&gt;&quot;);</span>
+<span class="pc bpc" id="L348" title="1 of 2 branches missed.">            if (containsAnomalies)</span>
+<span class="nc" id="L349">                out.writeln(&quot;  &lt;th&gt;Anomalies&lt;/th&gt;&quot;);</span>
+<span class="fc" id="L350">            out.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="fc" id="L351">            out.writeln(&quot;&lt;/thead&gt;&quot;);</span>
+<span class="fc" id="L352">            out.writeln(&quot;&lt;tbody&gt;&quot;);</span>
+
+<span class="fc" id="L354">            indexes = new TreeSet&lt;TableIndex&gt;(indexes); // sort primary keys first</span>
+
+<span class="fc bfc" id="L356" title="All 2 branches covered.">            for (TableIndex index : indexes) {</span>
+<span class="fc" id="L357">                out.writeln(&quot; &lt;tr&gt;&quot;);</span>
+
+<span class="pc bpc" id="L359" title="1 of 2 branches missed.">                if (showId) {</span>
+<span class="nc" id="L360">                    out.write(&quot;  &lt;td class='detail' align='right'&gt;&quot;);</span>
+<span class="nc" id="L361">                    out.write(String.valueOf(index.getId()));</span>
+<span class="nc" id="L362">                    out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+                }
+
+<span class="fc bfc" id="L365" title="All 2 branches covered.">                if (index.isPrimaryKey())</span>
+<span class="fc" id="L366">                    out.write(&quot;  &lt;td class='primaryKey'&gt;&quot;);</span>
+                else
+<span class="fc" id="L368">                    out.write(&quot;  &lt;td class='indexedColumn'&gt;&quot;);</span>
+<span class="fc" id="L369">                String columns = index.getColumnsAsString();</span>
+<span class="pc bpc" id="L370" title="1 of 2 branches missed.">                if (columns.startsWith(&quot;+&quot;))</span>
+<span class="nc" id="L371">                    columns = columns.substring(1);</span>
+<span class="fc" id="L372">                out.write(columns);</span>
+<span class="fc" id="L373">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+
+<span class="fc" id="L375">                out.write(&quot;  &lt;td class='detail'&gt;&quot;);</span>
+<span class="fc" id="L376">                out.write(index.getType());</span>
+<span class="fc" id="L377">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+
+<span class="fc" id="L379">                out.write(&quot;  &lt;td class='detail' style='text-align:left;'&gt;&quot;);</span>
+<span class="fc" id="L380">                Iterator&lt;TableColumn&gt; columnsIter = index.getColumns().iterator();</span>
+<span class="fc bfc" id="L381" title="All 2 branches covered.">                while (columnsIter.hasNext()) {</span>
+<span class="fc" id="L382">                    TableColumn column = columnsIter.next();</span>
+<span class="pc bpc" id="L383" title="1 of 2 branches missed.">                    if (index.isAscending(column))</span>
+<span class="fc" id="L384">                        out.write(&quot;&lt;span title='Ascending'&gt;Asc&lt;/span&gt;&quot;);</span>
+                    else
+<span class="nc" id="L386">                        out.write(&quot;&lt;span title='Descending'&gt;Desc&lt;/span&gt;&quot;);</span>
+<span class="pc bpc" id="L387" title="1 of 2 branches missed.">                    if (columnsIter.hasNext())</span>
+<span class="nc" id="L388">                        out.write(&quot;/&quot;);</span>
+<span class="fc" id="L389">                }</span>
+<span class="fc" id="L390">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+
+<span class="fc" id="L392">                out.write(&quot;  &lt;td class='constraint' style='text-align:left;'&gt;&quot;);</span>
+<span class="fc" id="L393">                out.write(index.getName());</span>
+<span class="fc" id="L394">                out.writeln(&quot;&lt;/td&gt;&quot;);</span>
+
+<span class="pc bpc" id="L396" title="1 of 2 branches missed.">                if (index.isUniqueNullable()) {</span>
+<span class="nc bnc" id="L397" title="All 2 branches missed.">                    if (index.getColumns().size() == 1)</span>
+<span class="nc" id="L398">                        out.writeln(&quot;  &lt;td class='detail'&gt;This unique column is also nullable&lt;/td&gt;&quot;);</span>
+                    else
+<span class="nc" id="L400">                        out.writeln(&quot;  &lt;td class='detail'&gt;These unique columns are also nullable&lt;/td&gt;&quot;);</span>
+<span class="pc bpc" id="L401" title="1 of 2 branches missed.">                } else if (containsAnomalies) {</span>
+<span class="nc" id="L402">                    out.writeln(&quot;  &lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;);</span>
+                }
+<span class="fc" id="L404">                out.writeln(&quot; &lt;/tr&gt;&quot;);</span>
+<span class="fc" id="L405">            }</span>
+<span class="fc" id="L406">            out.writeln(&quot;&lt;/table&gt;&quot;);</span>
+<span class="fc" id="L407">            out.writeln(&quot;&lt;/div&gt;&quot;);</span>
+        }
+<span class="fc" id="L409">    }</span>
+
+    private void writeView(Table table, Database db, LineWriter out) throws IOException {
+        String sql;
+<span class="pc bpc" id="L413" title="3 of 4 branches missed.">        if (table.isView() &amp;&amp; (sql = table.getViewSql()) != null) {</span>
+<span class="nc" id="L414">            Map&lt;String, Table&gt; tables = new CaseInsensitiveMap&lt;Table&gt;();</span>
+
+<span class="nc bnc" id="L416" title="All 2 branches missed.">            for (Table t : db.getTables())</span>
+<span class="nc" id="L417">                tables.put(t.getName(), t);</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">            for (View v : db.getViews())</span>
+<span class="nc" id="L419">                tables.put(v.getName(), v);</span>
+
+<span class="nc" id="L421">            Set&lt;Table&gt; references = new TreeSet&lt;Table&gt;();</span>
+<span class="nc" id="L422">            String formatted = Config.getInstance().getSqlFormatter().format(sql, db, references);</span>
+
+<span class="nc" id="L424">            out.writeln(&quot;&lt;div class='indent spacer'&gt;&quot;);</span>
+<span class="nc" id="L425">            out.writeln(&quot;  View Definition:&quot;);</span>
+<span class="nc" id="L426">            out.writeln(formatted);</span>
+<span class="nc" id="L427">            out.writeln(&quot;&lt;/div&gt;&quot;);</span>
+<span class="nc" id="L428">            out.writeln(&quot;&lt;div class='spacer'&gt;&amp;nbsp;&lt;/div&gt;&quot;);</span>
+
+<span class="nc bnc" id="L430" title="All 2 branches missed.">            if (!references.isEmpty()) {</span>
+<span class="nc" id="L431">                out.writeln(&quot;&lt;div class='indent'&gt;&quot;);</span>
+<span class="nc" id="L432">                out.writeln(&quot;  Possibly Referenced Tables/Views:&quot;);</span>
+<span class="nc" id="L433">                out.writeln(&quot;  &lt;div class='viewReferences'&gt;&quot;);</span>
+<span class="nc" id="L434">                out.write(&quot;  &quot;);</span>
+<span class="nc bnc" id="L435" title="All 2 branches missed.">                for (Table t : references) {</span>
+<span class="nc" id="L436">                    out.write(&quot;&lt;a href='&quot;);</span>
+<span class="nc" id="L437">                    out.write(encodeHref(t.getName()));</span>
+<span class="nc" id="L438">                    out.write(&quot;.html'&gt;&quot;);</span>
+<span class="nc" id="L439">                    out.write(t.getName());</span>
+<span class="nc" id="L440">                    out.write(&quot;&lt;/a&gt;&amp;nbsp;&quot;);</span>
+<span class="nc" id="L441">                }</span>
+
+<span class="nc" id="L443">                out.writeln(&quot;  &lt;/div&gt;&quot;);</span>
+<span class="nc" id="L444">                out.writeln(&quot;&lt;/div&gt;&lt;p/&gt;&quot;);</span>
+            }
+
+        }
+<span class="fc" id="L448">    }</span>
+
+    /**
+     * Generate the .dot file(s) to represent the specified table's relationships.
+     *
+     * Generates a &lt;TABLENAME&gt;.dot if the table has real relatives.
+     *
+     * Also generates a &lt;TABLENAME&gt;..implied2degrees.dot if the table has implied relatives within
+     * two degrees of separation.
+     *
+     * @param table Table
+     * @param diagramsDir File
+     * @throws IOException
+     * @return boolean &lt;code&gt;true&lt;/code&gt; if the table has implied relatives within two
+     *                 degrees of separation.
+     */
+    private boolean generateDots(Table table, File diagramDir, WriteStats stats) throws IOException {
+<span class="fc" id="L465">        File oneDegreeDotFile = new File(diagramDir, table.getName() + &quot;.1degree.dot&quot;);</span>
+<span class="fc" id="L466">        File oneDegreeDiagramFile = new File(diagramDir, table.getName() + &quot;.1degree.png&quot;);</span>
+<span class="fc" id="L467">        File twoDegreesDotFile = new File(diagramDir, table.getName() + &quot;.2degrees.dot&quot;);</span>
+<span class="fc" id="L468">        File twoDegreesDiagramFile = new File(diagramDir, table.getName() + &quot;.2degrees.png&quot;);</span>
+<span class="fc" id="L469">        File impliedDotFile = new File(diagramDir, table.getName() + &quot;.implied2degrees.dot&quot;);</span>
+<span class="fc" id="L470">        File impliedDiagramFile = new File(diagramDir, table.getName() + &quot;.implied2degrees.png&quot;);</span>
+
+        // delete before we start because we'll use the existence of these files to determine
+        // if they should be turned into pngs &amp; presented
+<span class="fc" id="L474">        oneDegreeDotFile.delete();</span>
+<span class="fc" id="L475">        oneDegreeDiagramFile.delete();</span>
+<span class="fc" id="L476">        twoDegreesDotFile.delete();</span>
+<span class="fc" id="L477">        twoDegreesDiagramFile.delete();</span>
+<span class="fc" id="L478">        impliedDotFile.delete();</span>
+<span class="fc" id="L479">        impliedDiagramFile.delete();</span>
+
+<span class="pc bpc" id="L481" title="1 of 2 branches missed.">        if (table.getMaxChildren() + table.getMaxParents() &gt; 0) {</span>
+            Set&lt;ForeignKeyConstraint&gt; impliedConstraints;
+
+<span class="fc" id="L484">            DotFormatter formatter = DotFormatter.getInstance();</span>
+<span class="fc" id="L485">            LineWriter dotOut = new LineWriter(oneDegreeDotFile, Config.DOT_CHARSET);</span>
+<span class="fc" id="L486">            WriteStats oneStats = new WriteStats(stats);</span>
+<span class="fc" id="L487">            formatter.writeRealRelationships(table, false, oneStats, dotOut);</span>
+<span class="fc" id="L488">            dotOut.close();</span>
+
+<span class="fc" id="L490">            dotOut = new LineWriter(twoDegreesDotFile, Config.DOT_CHARSET);</span>
+<span class="fc" id="L491">            WriteStats twoStats = new WriteStats(stats);</span>
+<span class="fc" id="L492">            impliedConstraints = formatter.writeRealRelationships(table, true, twoStats, dotOut);</span>
+<span class="fc" id="L493">            dotOut.close();</span>
+
+<span class="pc bpc" id="L495" title="1 of 2 branches missed.">            if (oneStats.getNumTablesWritten() + oneStats.getNumViewsWritten() == twoStats.getNumTablesWritten() + twoStats.getNumViewsWritten()) {</span>
+<span class="nc" id="L496">                twoDegreesDotFile.delete(); // no different than before, so don't show it</span>
+            }
+
+<span class="pc bpc" id="L499" title="1 of 2 branches missed.">            if (!impliedConstraints.isEmpty()) {</span>
+<span class="nc" id="L500">                dotOut = new LineWriter(impliedDotFile, Config.DOT_CHARSET);</span>
+<span class="nc" id="L501">                formatter.writeAllRelationships(table, true, stats, dotOut);</span>
+<span class="nc" id="L502">                dotOut.close();</span>
+<span class="nc" id="L503">                return true;</span>
+            }
+        }
+
+<span class="fc" id="L507">        return false;</span>
+    }
+
+    private void writeDiagram(Table table, WriteStats stats, File diagramsDir, LineWriter html) throws IOException {
+<span class="pc bpc" id="L511" title="1 of 2 branches missed.">        if (table.getMaxChildren() + table.getMaxParents() &gt; 0) {</span>
+<span class="fc" id="L512">            html.writeln(&quot;&lt;table width='100%' border='0'&gt;&lt;tr&gt;&lt;td class='container'&gt;&quot;);</span>
+<span class="pc bpc" id="L513" title="1 of 2 branches missed.">            if (HtmlTableDiagrammer.getInstance().write(table, diagramsDir, html)) {</span>
+<span class="fc" id="L514">                html.writeln(&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;);</span>
+<span class="fc" id="L515">                writeExcludedColumns(stats.getExcludedColumns(), table, html);</span>
+            } else {
+<span class="nc" id="L517">                html.writeln(&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&quot;);</span>
+<span class="nc" id="L518">                writeInvalidGraphvizInstallation(html);</span>
+            }
+        }
+<span class="fc" id="L521">    }</span>
+
+    @Override
+    protected String getPathToRoot() {
+<span class="fc" id="L525">        return &quot;../&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

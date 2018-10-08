@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DirectoryCellEditor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">net.sourceforge.schemaspy.ui</a> &gt; <span class="el_source">DirectoryCellEditor.java</span></div><h1>DirectoryCellEditor.java</h1><pre class="source lang-java linenums">/*
+ * This file is a part of the SchemaSpy project (http://schemaspy.sourceforge.net).
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 John Currier
+ *
+ * SchemaSpy is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * SchemaSpy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+package net.sourceforge.schemaspy.ui;
+
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.AbstractCellEditor;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+
+public class DirectoryCellEditor extends AbstractCellEditor implements TableCellEditor, TableCellRenderer {
+    private static final long serialVersionUID = 1L;
+    private final DbConfigTableModel model;
+    private final JTextField dirField;
+    private final JPanel editor;
+    private File selectedDir;
+    private int selectedRow;
+    private int selectedColumn;
+
+<span class="nc" id="L49">    public DirectoryCellEditor(final DbConfigTableModel model, File startingDir) {</span>
+<span class="nc" id="L50">        this.model = model;</span>
+<span class="nc" id="L51">        dirField = new JTextField();</span>
+<span class="nc" id="L52">        dirField.getDocument().addDocumentListener(new DocumentListener() {</span>
+            public void insertUpdate(DocumentEvent evt) {
+<span class="nc" id="L54">                model.setValueAt(new File(dirField.getText()), selectedRow, selectedColumn);</span>
+<span class="nc" id="L55">            }</span>
+
+            public void removeUpdate(DocumentEvent evt) {
+<span class="nc" id="L58">            }</span>
+
+            public void changedUpdate(DocumentEvent evt) {
+<span class="nc" id="L61">                model.setValueAt(new File(dirField.getText()), selectedRow, selectedColumn);</span>
+<span class="nc" id="L62">            }</span>
+        });
+<span class="nc" id="L64">        dirField.setBorder(null);</span>
+
+<span class="nc" id="L66">        final JFileChooser dirSelector = new JFileChooser(startingDir);</span>
+<span class="nc" id="L67">        dirSelector.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);</span>
+
+<span class="nc" id="L69">        JButton browseButton = new JButton(&quot;...&quot;);</span>
+<span class="nc" id="L70">        browseButton.setPreferredSize(new Dimension(12, 12));</span>
+<span class="nc" id="L71">        browseButton.setMinimumSize(browseButton.getPreferredSize());</span>
+<span class="nc" id="L72">        browseButton.addActionListener(new ActionListener() {</span>
+            public void actionPerformed(ActionEvent action) {
+<span class="nc" id="L74">                dirSelector.setCurrentDirectory(new File(dirField.getText()));</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                if (dirSelector.showOpenDialog((JButton)action.getSource()) == JFileChooser.APPROVE_OPTION) {</span>
+<span class="nc" id="L76">                    dirField.setText(dirSelector.getSelectedFile().getPath());</span>
+                }
+<span class="nc" id="L78">            }</span>
+        });
+
+<span class="nc" id="L81">        editor = new JPanel();</span>
+<span class="nc" id="L82">        editor.setLayout(new GridBagLayout());</span>
+
+<span class="nc" id="L84">        GridBagConstraints constraints = new GridBagConstraints();</span>
+<span class="nc" id="L85">        constraints.weightx = 1.0;</span>
+<span class="nc" id="L86">        constraints.fill = GridBagConstraints.HORIZONTAL;</span>
+<span class="nc" id="L87">        editor.add(dirField, constraints);</span>
+
+<span class="nc" id="L89">        constraints = new GridBagConstraints();</span>
+<span class="nc" id="L90">        constraints.insets = new Insets(0, 0, 0, 1);</span>
+<span class="nc" id="L91">        editor.add(browseButton, constraints);</span>
+<span class="nc" id="L92">    }</span>
+
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+<span class="nc" id="L95">        selectedRow = row;</span>
+<span class="nc" id="L96">        selectedColumn = column;</span>
+<span class="nc" id="L97">        selectedDir = (File)value;</span>
+
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        dirField.setText(selectedDir == null ? null : selectedDir.toString());</span>
+<span class="nc" id="L100">        editor.setToolTipText(model.getDescription(row));</span>
+<span class="nc" id="L101">        return editor;</span>
+    }
+
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+<span class="nc" id="L105">        return getTableCellEditorComponent(table, value, isSelected, row, column);</span>
+    }
+
+    public Object getCellEditorValue() {
+<span class="nc" id="L109">        return model.getValueAt(selectedRow, selectedColumn);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
