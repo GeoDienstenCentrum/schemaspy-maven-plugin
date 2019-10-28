@@ -93,6 +93,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven-libs.version>3.6.2</maven-libs.version>
         <maven-libs.annotations.version>3.6.0</maven-libs.annotations.version>
+        <apache.derby.version>10.15.1.3</apache.derby.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
         <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
@@ -155,7 +156,13 @@
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.15.1.3</version>
+            <version>${apache.derby.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbytools</artifactId>
+            <version>${apache.derby.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
