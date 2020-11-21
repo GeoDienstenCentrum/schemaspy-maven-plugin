@@ -649,7 +649,7 @@
                 <!-- should be environment provided -->
                 <repoToken />
                 <!-- could also be NONE, see https://issues.apache.org/jira/browse/SUREFIRE-861 -->
-                <surefire.excludes.files />
+                <surefire.excludes.files>**/OracleExternalDatabaseTest.java</surefire.excludes.files>
             </properties>
             <build>
                 <plugins>
