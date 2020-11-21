@@ -657,9 +657,9 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <argLine>${surefireArgLine}</argLine>
-                            <excludes>
-                                <exclude>**/OracleExternalDatabaseTest.java</exclude>
-                            </excludes>
+<!--                            <excludes>-->
+<!--                                <exclude>**/OracleExternalDatabaseTest.java</exclude>-->
+<!--                            </excludes>-->
                         </configuration>
                     </plugin>
                     <plugin>
