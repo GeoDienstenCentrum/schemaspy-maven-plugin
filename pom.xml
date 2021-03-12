@@ -87,8 +87,11 @@
     </distributionManagement>
 
     <properties>
-        <project.build.sourceVersion>1.8</project.build.sourceVersion>
-        <project.build.targetVersion>1.8</project.build.targetVersion>
+        <java.version>1.8</java.version>
+        <project.build.sourceVersion>${java.version}</project.build.sourceVersion>
+        <project.build.targetVersion>${java.version}</project.build.targetVersion>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <surefire.excludes.files>**/*ExternalDatabaseTest.java</surefire.excludes.files>
@@ -100,7 +103,7 @@
         <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-        <dependency-check-maven.version>6.1.1</dependency-check-maven.version>
+        <dependency-check-maven.version>6.1.2</dependency-check-maven.version>
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-pmd-plugin.version>3.14.0</maven-pmd-plugin.version>
@@ -295,6 +298,15 @@
             <plugin>
                 <artifactId>maven-scm-publish-plugin</artifactId>
                 <version>3.1.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependency-check-maven.version}</version>
+                <configuration>
+                    <name>OWASP Dependency Check</name>
+                    <formats>ALL</formats>
+                </configuration>
             </plugin>
         </plugins>
         </pluginManagement>
