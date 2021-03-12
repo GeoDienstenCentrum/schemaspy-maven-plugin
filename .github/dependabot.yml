@@ -5,7 +5,18 @@ updates:
   schedule:
     interval: weekly
     time: "04:00"
-    timezone: Europe/Amsterdam
+    day: "saturday"
+    timezone: "Europe/Amsterdam"
   open-pull-requests-limit: 10
   assignees:
   - mprins
+
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "weekly"
+    day: "saturday"
+    time: "21:00"
+    timezone: "Europe/Amsterdam"
+  labels:
+    - build-infra

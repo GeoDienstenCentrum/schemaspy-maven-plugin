@@ -50,7 +50,7 @@ Configuration
    * HSQLDB
    * PostgreSQL
    * MS SQLServer using the Microsoft JDBC driver (mssql-jdbc)
-  Others, such as DB2, Oracle and Firebird, don't have drivers in the repositories.
+  Others, such as Firebird, don't have drivers in the repositories.
 
   In this case, add a dependency for the driver you need to the plugin configuration in the <<<\<build\>>>>
   section of your pom.xml:

@@ -92,9 +92,6 @@ but it keeps crashing on me.
 </project>
 +-----+
 
- For MSSQL Server, the mssql-jtds will use the open source JTDS driver for this database.
-  
-
  * SchemaSpy reports are cool, but I don't like the colors. Can I change them?
 
  Sure. Just use the  <<<\<cssStylesheet\>>>> configuration option. The default one 

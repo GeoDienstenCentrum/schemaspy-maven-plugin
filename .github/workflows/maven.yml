@@ -1,0 +1,115 @@
+name: Maven CI
+
+on:
+  push:
+  #pull_request:
+
+env:
+  MAVEN_OPTS: -Djava.awt.headless=true
+  PGPASSWORD: postgres
+  PGUSER: postgres
+  PGDATABASE: postgres
+
+jobs:
+  build:
+    name: Test Java  ${{ matrix.java }} / Maven ${{ matrix.maven }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 8, 11 ]
+        #java: [ 8 ]
+        maven: [ "3.6.3", "3.5.4", "3.3.9"]
+        #maven: [ "3.6.3" ]
+      fail-fast: false
+
+    services:
+      postgres:
+        image: postgis/postgis:12-3.1
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 15s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4
+        with:
+          maven-version: ${{ matrix.maven }}
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+
+      - name: Startup databases
+        run: |
+          build/ci/start-oracle.sh
+          build/ci/start-mysql.sh 8
+          build/ci/start-mssql.sh 2019-latest
+
+      - name: Install extra software
+        run: sudo apt install -y --no-install-recommends graphviz
+
+      - name: Build with Maven
+        run: mvn install -Dmaven.test.skip=true -B -V -fae -q
+
+      - name: Setup databases
+        run: |
+          psql -U postgres -h localhost -c 'CREATE DATABASE test;'
+          psql -U postgres -h localhost -d test -f ./src/test/resources/sql/pgsql.sql
+          docker exec -i mysql1 mysql -uroot -pmysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+          docker exec -i mysql1 mysql -uroot -pmysql test < ./src/test/resources/sql/mysql.sql
+          docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password12!' -d 'master' -Q 'CREATE DATABASE test'
+          docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password12!' -d 'test' -i /checkout/src/test/resources/sql/mssql.sql
+          docker exec -i schemaspy /opt/oracle/product/18c/dbhomeXE/bin/sqlplus -l system/oracle@//localhost:1521/XE < build/ci/create_oracle_user.sql
+          docker exec -i schemaspy /opt/oracle/product/18c/dbhomeXE/bin/sqlplus -l schemaspy/schemaspy@//localhost:1521/XE < ./src/test/resources/sql/oracle.sql
+
+      - name: Test
+        run: |
+          mvn -e -B -fae -Ptravis clean test -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dfailsafe.useFile=false
+          mvn -e -B -fae -Ptravis jacoco:report coveralls:report -q -Dlicense.skip=true -DrepoToken=$GITHUB_TOKEN -DserviceName=github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      # https://github.com/marketplace/actions/coveralls-github-action
+#      - name: Report test coverage
+#        uses: coverallsapp/github-action@v1.1.2
+#        with:
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  docs:
+    name: Check Javadoc for Java 8
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: JavaDoc
+        run: mvn javadoc:javadoc
+
+      - name: Test JavaDoc
+        run: mvn javadoc:test-javadoc

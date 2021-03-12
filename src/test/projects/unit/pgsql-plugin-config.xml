@@ -38,6 +38,7 @@ under the License.
               <database>test</database>
               <schema>public</schema>
               <user>postgres</user>
+              <password>postgres</password>
               <host>127.0.0.1</host>
               <port>5432</port>
               <outputDirectory>target/reports/pgsql-test</outputDirectory>

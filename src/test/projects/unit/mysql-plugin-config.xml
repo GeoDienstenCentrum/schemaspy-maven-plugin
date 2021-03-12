@@ -38,6 +38,7 @@ under the License.
               <database>test</database>
               <schema>test</schema>
               <user>root</user>
+              <password>mysql</password>
               <host>127.0.0.1</host>
               <outputDirectory>target/reports/mysql-test</outputDirectory>
               <schemaDescription>Maven Plugin SchemaSpy test</schemaDescription>
