@@ -1,6 +1,9 @@
 package com.wakaleo.schemaspy;
 
-import com.wakaleo.schemaspy.util.JDBCHelper;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import net.sourceforge.schemaspy.Config;
 import net.sourceforge.schemaspy.SchemaAnalyzer;
 import org.apache.maven.doxia.siterenderer.Renderer;
@@ -11,11 +14,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * The SchemaSpy Maven plugin report.
@@ -42,7 +40,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * The output directory for the intermediate report.
      *
      */
-    @Parameter (property = "targetDirectory", defaultValue="${project.build.directory}")
+    @Parameter(property = "targetDirectory", defaultValue = "${project.build.directory}")
     private File targetDirectory;
 
     /**
@@ -52,7 +50,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * will be generated.
      *
      */
-    @Parameter(property="outputDirectory", defaultValue="${project.build.directory}/site")
+    @Parameter(property = "outputDirectory", defaultValue = "${project.build.directory}/site")
     private String outputDirectory;
 
     /**
@@ -76,8 +74,6 @@ public class SchemaSpyReport extends AbstractMavenReport {
 
     /**
      * The host address of the database being analysed.
-     *
-     * @parameter host
      */
     @Parameter(property = "host")
     private String host;
@@ -99,7 +95,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
 //     *
 //     * @todo Would it be possible to guess the database type from the form of
 //     *       the URL?
-//         */
+//     */
 //    @Parameter
 //    private String jdbcUrl;
 
@@ -269,6 +265,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      */
     @Parameter(property = "noSchema")
     private Boolean noSchema;
+
     /**
      * Don't query or display row counts.
      */
@@ -293,18 +290,20 @@ public class SchemaSpyReport extends AbstractMavenReport {
 
     /**
      * Don't generate ads in reports.
+     *
      * @deprecated will be removed
      */
     @Deprecated
-    @Parameter(property = "noAds", defaultValue ="true")
+    @Parameter(property = "noAds", defaultValue = "true")
     private Boolean noAds;
 
     /**
      * Don't generate sourceforge logos in reports.
+     *
      * @deprecated will be removed
      */
     @Deprecated
-    @Parameter(property = "noLogo", defaultValue ="true")
+    @Parameter(property = "noLogo", defaultValue = "true")
     private Boolean noLogo;
 
     /**
@@ -312,7 +311,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      *
      * @since 5.0.4
      */
-    @Parameter(property = "runOnExecutionRoot", defaultValue ="false")
+    @Parameter(property = "runOnExecutionRoot", defaultValue = "false")
     protected boolean runOnExecutionRoot = false;
 
     /**
@@ -385,7 +384,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      *            the language of the report - currently ignored.
      */
     @Override
-    protected void executeReport(Locale locale) throws MavenReportException {
+    protected void executeReport(final Locale locale) throws MavenReportException {
 
         //
         // targetDirectory should be set by the maven framework. This is
@@ -408,7 +407,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
             outputDir.mkdirs();
         }
         String schemaSpyDirectory = outputDir.getAbsolutePath();
-        List<String> argList = new ArrayList<String>();
+        List<String> argList = new ArrayList<>();
 
 //        if ((jdbcUrl != null) && (databaseType == null)) {
 //            databaseType = JDBCHelper.extractDatabaseType(jdbcUrl);
@@ -446,7 +445,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
         addFlagToArguments(argList, "-nologo", noLogo);
 //        addToArguments(argList, "-jdbcUrl", jdbcUrl);
 
-        String[] args = (String[]) argList.toArray(new String[0]);
+        String[] args = argList.toArray(new String[0]);
         getLog().info("Generating SchemaSpy report with parameters:");
         for (String arg : args) {
             getLog().info(arg);
@@ -478,32 +477,29 @@ public class SchemaSpyReport extends AbstractMavenReport {
         return siteRenderer;
     }
 
-    /**
-     * Describes the report.
-     */
-    public String getDescription(Locale locale) {
+    @Override
+    public String getDescription(final Locale locale) {
         return "SchemaSpy database documentation";
     }
 
-    /**
-     * Not really sure what this does ;-).
-     */
-    public String getName(Locale locale) {
+    @Override
+    public String getName(final Locale locale) {
         return "SchemaSpy";
     }
 
+    @Override
     public String getOutputName() {
         return "schemaspy/index";
     }
 
     /**
-     * Always return true as we're using the report generated by SchemaSpy
+     * Always return {@code true} as we're using the report generated by SchemaSpy
      * rather than creating our own report.
      *
-     * @return true
+     * @return {@code true}
      */
+    @Override
     public boolean isExternalReport() {
         return true;
     }
-
 }

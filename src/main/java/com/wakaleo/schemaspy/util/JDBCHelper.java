@@ -6,7 +6,6 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-
 package com.wakaleo.schemaspy.util;
 
 /**
@@ -15,38 +14,39 @@ package com.wakaleo.schemaspy.util;
  *
  * @author john
  */
-public class JDBCHelper {
+public final class JDBCHelper {
 
     /** Creates a new instance of JDBCHelper. */
     private JDBCHelper() {
     }
 
     /**
-     * A map of JDBC prefixes and database types.
-     * Used to determine the database type based on a JDBC URL.
+     * A map of JDBC prefixes and database types. Used to determine the database type based on a JDBC
+     * URL.
      */
-    private static final String[][] DATABASE_TYPES_MAP
-          = {{"jdbc:derby:", "derby" },
-            {"jdbc:db2:", "db2"},
-            {"jdbc:firebirdsql:", "firebirdsql"},
-            {"jdbc:hsqldb:hsql:", "hsqldb" },
-            {"jdbc:informix-sqli:", "informix-sqli" },
-            {"jdbc:microsoft:sqlserver:", "mssql" },
-            {"jdbc:jtds:", "mssql-jtds" },
-            {"jdbc:mysql:", "mysql" },
-            {"jdbc:oracle:oci8:", "ora" },
-            {"jdbc:oracle:thin:", "orathin" },
-            {"jdbc:postgresql:", "pgsql" },
-            {"jdbc:sybase:Tds:", "sybase" }};
+    private static final String[][] DATABASE_TYPES_MAP = {
+        {"jdbc:derby:", "derby"},
+        {"jdbc:db2:", "db2"},
+        {"jdbc:firebirdsql:", "firebirdsql"},
+        {"jdbc:hsqldb:hsql:", "hsqldb"},
+        {"jdbc:informix-sqli:", "informix-sqli"},
+        {"jdbc:microsoft:sqlserver:", "mssql"},
+        {"jdbc:jtds:", "mssql-jtds"},
+        {"jdbc:mysql:", "mysql"},
+        {"jdbc:oracle:oci8:", "ora"},
+        {"jdbc:oracle:thin:", "orathin"},
+        {"jdbc:postgresql:", "pgsql"},
+        {"jdbc:sybase:Tds:", "sybase"}
+    };
 
     /**
-     * Find the matching SchemaSpy database type from a JDBC URL.
-     * If none match, <code>null</code> is returned.
+     * Find the matching SchemaSpy database type from a JDBC URL. If none match, {@code null} is
+     * returned.
+     *
      * @param jdbcUrl a valid JDBC url for the target database
      * @return the type of the database for this JDBC URL
      */
-    public static final String extractDatabaseType(final String jdbcUrl) {
-
+    public static String extractDatabaseType(final String jdbcUrl) {
         String result = null;
         for (String[] databaseTypeEntry : DATABASE_TYPES_MAP) {
             String jdbcPrefix = databaseTypeEntry[0];
