@@ -127,6 +127,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <!-- to override the version that comes with maven-reporting-impl -->
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-sink-api</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.maven.reporting</groupId>
             <artifactId>maven-reporting-impl</artifactId>
             <version>3.0.0</version>
@@ -707,7 +713,6 @@
         <profile>
             <id>release</id>
             <properties>
-                <debug>false</debug>
             </properties>
             <build>
                 <plugins>
@@ -723,6 +728,7 @@
                             <gpgArguments>
                                 <arg>--verbose</arg>
                             </gpgArguments>
+                            <useAgent>true</useAgent>
                         </configuration>
                         <executions>
                             <execution>
