@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SchemaSpyReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">com.wakaleo.schemaspy</a> &gt; <span class="el_source">SchemaSpyReport.java</span></div><h1>SchemaSpyReport.java</h1><pre class="source lang-java linenums">package com.wakaleo.schemaspy;
 
-import com.wakaleo.schemaspy.util.JDBCHelper;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import net.sourceforge.schemaspy.Config;
 import net.sourceforge.schemaspy.SchemaAnalyzer;
 import org.apache.maven.doxia.siterenderer.Renderer;
@@ -11,11 +14,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * The SchemaSpy Maven plugin report.
@@ -36,13 +34,13 @@ import java.util.Locale;
  *
  */
 @Mojo(name = &quot;schemaspy&quot;, defaultPhase = LifecyclePhase.SITE, threadSafe = false)
-<span class="fc" id="L39">public class SchemaSpyReport extends AbstractMavenReport {</span>
+<span class="fc" id="L37">public class SchemaSpyReport extends AbstractMavenReport {</span>
 
     /**
      * The output directory for the intermediate report.
      *
      */
-    @Parameter (defaultValue=&quot;${project.build.directory}&quot;)
+    @Parameter(property = &quot;targetDirectory&quot;, defaultValue = &quot;${project.build.directory}&quot;)
     private File targetDirectory;
 
     /**
@@ -52,7 +50,7 @@ import java.util.Locale;
      * will be generated.
      *
      */
-    @Parameter(defaultValue=&quot;${project.build.directory}/site&quot;, property=&quot;outputDirectory&quot;)
+    @Parameter(property = &quot;outputDirectory&quot;, defaultValue = &quot;${project.build.directory}/site&quot;)
     private String outputDirectory;
 
     /**
@@ -71,37 +69,35 @@ import java.util.Locale;
     /**
      * The name of the database being analysed.
      */
-    @Parameter (required = true)
+    @Parameter (property = &quot;database&quot;, required = true)
     private String database;
 
     /**
      * The host address of the database being analysed.
-     *
-     * @parameter host
      */
-    @Parameter
+    @Parameter(property = &quot;host&quot;)
     private String host;
 
     /**
      * The port, required by some drivers.
      */
-    @Parameter
+    @Parameter(property = &quot;port&quot;)
     private String port;
 
-    /**
-     * The JDBC URL to be used to connect to the database. Rather than defining
-     * the database and host names and letting SchemaSpy build the URL, you can
-     * alternatively specify the complete JDBC URL using this parameter. If this
-     * parameter is defined, it will override the host address (which, as a
-     * result, is not needed). Note that you still need to specify the database
-     * type, since SchemaSpy uses its own database properties file for extra
-     * information about each database.
-     *
-     * @todo Would it be possible to guess the database type from the form of
-     *       the URL?
-         */
-    @Parameter
-    private String jdbcUrl;
+//    /**
+//     * The JDBC URL to be used to connect to the database. Rather than defining
+//     * the database and host names and letting SchemaSpy build the URL, you can
+//     * alternatively specify the complete JDBC URL using this parameter. If this
+//     * parameter is defined, it will override the host address (which, as a
+//     * result, is not needed). Note that you still need to specify the database
+//     * type, since SchemaSpy uses its own database properties file for extra
+//     * information about each database.
+//     *
+//     * @todo Would it be possible to guess the database type from the form of
+//     *       the URL?
+//     */
+//    @Parameter
+//    private String jdbcUrl;
 
     /**
      * The type of database being analysed - defaults to ora.
@@ -112,19 +108,19 @@ import java.util.Locale;
     /**
      * Connect to the database with this user id.
      */
-    @Parameter
+    @Parameter(property = &quot;user&quot;)
     private String user;
 
     /**
      * Database schema to use - defaults to the specified user.
      */
-    @Parameter
+    @Parameter(property = &quot;schema&quot;)
     private String schema;
 
     /**
      * Database password to use - defaults to none.
      */
-    @Parameter
+    @Parameter(property = &quot;password&quot;)
     private String password;
 
     /**
@@ -132,7 +128,7 @@ import java.util.Locale;
      * than using the application classpath. Useful if your database has a
      * non-O/S driver not bundled with the plugin.
      */
-    @Parameter
+    @Parameter(property = &quot;pathToDrivers&quot;)
     private String pathToDrivers;
 
     /**
@@ -141,7 +137,7 @@ import java.util.Locale;
      * backslash. NOTE: This field doesn't seem to be used by SchemaSpy in the
      * current version.
      */
-    @Parameter
+    @Parameter(property = &quot;schemaDescription&quot;)
     private String schemaDescription;
 
     /**
@@ -151,7 +147,7 @@ import java.util.Locale;
      * their names or that start with 'library'. You might want to use
      * &quot;description&quot; with this option to describe the subset of tables.
      */
-    @Parameter
+    @Parameter(property = &quot;includeTableNamesRegex&quot;)
     private String includeTableNamesRegex;
 
     /**
@@ -162,7 +158,7 @@ import java.util.Locale;
      * Note that each column name regular expression must be surround by ()'s
      * and separated from other column names by a |.
      */
-    @Parameter
+    @Parameter(property = &quot;excludeColumnNamesRegex&quot;)
     private String excludeColumnNamesRegex;
 
     /**
@@ -170,7 +166,7 @@ import java.util.Locale;
      * encoded so that it's rendered as text. This option allows it to be
      * rendered as HTML.
      */
-    @Parameter
+    @Parameter(property = &quot;allowHtmlInComments&quot;)
     private Boolean allowHtmlInComments;
 
     /**
@@ -180,27 +176,27 @@ import java.util.Locale;
      * @deprecated this seems to no longer be a supported option in SchemaSpy
      */
     @Deprecated
-    @Parameter
+    @Parameter(property = &quot;commentsInitiallyDisplayed&quot;)
     private Boolean commentsInitiallyDisplayed;
 
     /**
      * Don't include implied foreign key relationships in the generated table
      * details.
      */
-    @Parameter
+    @Parameter(property = &quot;noImplied&quot;)
     private Boolean noImplied;
 
     /**
      * Only generate files needed for insertion/deletion of data (e.g. for
      * scripts).
      */
-    @Parameter
+    @Parameter(property = &quot;noHtml&quot;)
     private Boolean noHtml;
 
     /**
      * Detail of execution logging.
      */
-    @Parameter
+    @Parameter(property = &quot;logLevel&quot;)
     private String logLevel;
 
     /**
@@ -212,21 +208,21 @@ import java.util.Locale;
      * seem to only work with the first method, so don't use this parameter
      * unless you have to.
      */
-    @Parameter
+    @Parameter(property = &quot;useDriverManager&quot;)
     private Boolean useDriverManager;
 
     /**
      * The CSS Stylesheet. Allows you to override the default SchemaSpyCSS
      * stylesheet.
      */
-    @Parameter
+    @Parameter(property = &quot;cssStylesheet&quot;)
     private String cssStylesheet;
 
     /**
      * Single Sign-On. Don't require a user to be specified with -user to
      * simplify configuration when running in a single sign-on environment.
      */
-    @Parameter
+    @Parameter(property = &quot;singleSignOn&quot;)
     private Boolean singleSignOn;
 
     /**
@@ -235,7 +231,7 @@ import java.util.Locale;
      * That is, some might not have the &quot;lower quality&quot; libraries and others might not have
      * the &quot;higher quality&quot; libraries.
      */
-    @Parameter
+    @Parameter(property = &quot;lowQuality&quot;)
     private Boolean lowQuality;
 
     /**
@@ -244,7 +240,7 @@ import java.util.Locale;
      * That is, some might not have the &quot;lower quality&quot; libraries and others might not have
      * the &quot;higher quality&quot; libraries.
      */
-    @Parameter
+    @Parameter(property = &quot;highQuality&quot;)
     private Boolean highQuality;
 
     /**
@@ -252,7 +248,7 @@ import java.util.Locale;
      * evaluated and allows for traversal of cross-schema foreign key relationships.
      * Use with -schemaSpec &quot;schemaRegularExpression&quot; to narrow-down the schemas to include.
      */
-    @Parameter
+    @Parameter(property = &quot;showAllSchemas&quot;)
     private Boolean showAllSchemas;
 
     /**
@@ -261,24 +257,25 @@ import java.util.Locale;
      * interrogating the database's metadata. Can be used with databases like MySQL where a
      * database isn't composed of multiple schemas.
      */
-    @Parameter
+    @Parameter(property = &quot;schemas&quot;)
     private String schemas;
 
     /**
      * No schema required for this database (e.g. derby).
      */
-    @Parameter
+    @Parameter(property = &quot;noSchema&quot;)
     private Boolean noSchema;
+
     /**
      * Don't query or display row counts.
      */
-    @Parameter
+    @Parameter(property = &quot;noRows&quot;)
     private Boolean noRows;
 
     /**
      * Don't query or display row counts.
      */
-    @Parameter
+    @Parameter(property = &quot;noViews&quot;)
     private Boolean noViews;
 
     /**
@@ -288,23 +285,25 @@ import java.util.Locale;
      * 
      * May also be a file name, useful for hiding connection properties from public logs. 
      */
-    @Parameter
+    @Parameter(property = &quot;connprops&quot;)
     private String connprops;
 
     /**
      * Don't generate ads in reports.
+     *
      * @deprecated will be removed
      */
     @Deprecated
-    @Parameter(defaultValue =&quot;true&quot;)
+    @Parameter(property = &quot;noAds&quot;, defaultValue = &quot;true&quot;)
     private Boolean noAds;
 
     /**
      * Don't generate sourceforge logos in reports.
+     *
      * @deprecated will be removed
      */
     @Deprecated
-    @Parameter(defaultValue =&quot;true&quot;)
+    @Parameter(property = &quot;noLogo&quot;, defaultValue = &quot;true&quot;)
     private Boolean noLogo;
 
     /**
@@ -312,18 +311,18 @@ import java.util.Locale;
      *
      * @since 5.0.4
      */
-<span class="fc" id="L315">    @Parameter(defaultValue =&quot;false&quot;)</span>
+<span class="fc" id="L314">    @Parameter(property = &quot;runOnExecutionRoot&quot;, defaultValue = &quot;false&quot;)</span>
     protected boolean runOnExecutionRoot = false;
 
     /**
      * The SchemaSpy analyser that generates the actual report.
      * Can be overridden for testing purposes.
      */
-<span class="fc" id="L322">    SchemaAnalyzer analyzer = new SchemaAnalyzer();</span>
+<span class="fc" id="L321">    SchemaAnalyzer analyzer = new SchemaAnalyzer();</span>
 
     protected void setSchemaAnalyzer(SchemaAnalyzer analyzer) {
-<span class="fc" id="L325">        this.analyzer = analyzer;</span>
-<span class="fc" id="L326">    }</span>
+<span class="fc" id="L324">        this.analyzer = analyzer;</span>
+<span class="fc" id="L325">    }</span>
 
     /**
      * Convenience method used to build the schemaspy command line parameters.
@@ -337,10 +336,10 @@ import java.util.Locale;
      */
     private void addToArguments(final List&lt;String&gt; argList,
             final String parameter, final Boolean value) {
-<span class="pc bpc" id="L340" title="3 of 4 branches missed.">        if ((value != null) &amp;&amp; (value)) {</span>
-<span class="nc" id="L341">            argList.add(parameter + &quot;=&quot; + value);</span>
+<span class="pc bpc" id="L339" title="3 of 4 branches missed.">        if ((value != null) &amp;&amp; (value)) {</span>
+<span class="nc" id="L340">            argList.add(parameter + &quot;=&quot; + value);</span>
         }
-<span class="fc" id="L343">    }</span>
+<span class="fc" id="L342">    }</span>
 
     /**
      * Convenience method used to build the schemaspy command line parameters.
@@ -354,10 +353,10 @@ import java.util.Locale;
      */
     private void addFlagToArguments(final List&lt;String&gt; argList,
             final String parameter, final Boolean value) {
-<span class="fc bfc" id="L357" title="All 4 branches covered.">        if ((value != null) &amp;&amp; (value)) {</span>
-<span class="fc" id="L358">            argList.add(parameter);</span>
+<span class="fc bfc" id="L356" title="All 4 branches covered.">        if ((value != null) &amp;&amp; (value)) {</span>
+<span class="fc" id="L357">            argList.add(parameter);</span>
         }
-<span class="fc" id="L360">    }</span>
+<span class="fc" id="L359">    }</span>
 
     /**
      * Convenience method used to build the schemaspy command line parameters.
@@ -371,10 +370,10 @@ import java.util.Locale;
      */
     private void addToArguments(final List&lt;String&gt; argList,
             final String parameter, final String value) {
-<span class="fc bfc" id="L374" title="All 2 branches covered.">        if (value != null) {</span>
-<span class="fc" id="L375">            argList.add(parameter + &quot;=&quot; + value);</span>
+<span class="fc bfc" id="L373" title="All 2 branches covered.">        if (value != null) {</span>
+<span class="fc" id="L374">            argList.add(parameter + &quot;=&quot; + value);</span>
         }
-<span class="fc" id="L377">    }</span>
+<span class="fc" id="L376">    }</span>
 
     /**
      * Generate the Schemaspy report.
@@ -385,128 +384,123 @@ import java.util.Locale;
      *            the language of the report - currently ignored.
      */
     @Override
-    protected void executeReport(Locale locale) throws MavenReportException {
+    protected void executeReport(final Locale locale) throws MavenReportException {
 
         //
         // targetDirectory should be set by the maven framework. This is
         // jusr for unit testing purposes
         //
-<span class="pc bpc" id="L394" title="1 of 2 branches missed.">        if (targetDirectory == null) {</span>
-<span class="fc" id="L395">            targetDirectory = new File(&quot;target&quot;);</span>
+<span class="pc bpc" id="L393" title="1 of 2 branches missed.">        if (targetDirectory == null) {</span>
+<span class="fc" id="L394">            targetDirectory = new File(&quot;target&quot;);</span>
         }
 
-<span class="fc" id="L398">        targetDirectory.mkdirs();</span>
-<span class="fc" id="L399">        File siteDir = new File(targetDirectory, &quot;site&quot;);</span>
-<span class="fc" id="L400">        siteDir.mkdirs();</span>
-<span class="fc" id="L401">        File outputDir = null;</span>
-<span class="pc bpc" id="L402" title="1 of 2 branches missed.">        if (outputDirectory == null) {</span>
-<span class="nc" id="L403">            outputDir = new File(siteDir, &quot;schemaspy&quot;);</span>
-<span class="nc" id="L404">            outputDir.mkdirs();</span>
-<span class="nc" id="L405">            outputDirectory = outputDir.getAbsolutePath();</span>
+<span class="fc" id="L397">        targetDirectory.mkdirs();</span>
+<span class="fc" id="L398">        File siteDir = new File(targetDirectory, &quot;site&quot;);</span>
+<span class="fc" id="L399">        siteDir.mkdirs();</span>
+<span class="fc" id="L400">        File outputDir = null;</span>
+<span class="pc bpc" id="L401" title="1 of 2 branches missed.">        if (outputDirectory == null) {</span>
+<span class="nc" id="L402">            outputDir = new File(siteDir, &quot;schemaspy&quot;);</span>
+<span class="nc" id="L403">            outputDir.mkdirs();</span>
+<span class="nc" id="L404">            outputDirectory = outputDir.getAbsolutePath();</span>
         } else {
-<span class="fc" id="L407">            outputDir = new File(new File(outputDirectory), &quot;schemaspy&quot;);</span>
-<span class="fc" id="L408">            outputDir.mkdirs();</span>
+<span class="fc" id="L406">            outputDir = new File(new File(outputDirectory), &quot;schemaspy&quot;);</span>
+<span class="fc" id="L407">            outputDir.mkdirs();</span>
         }
-<span class="fc" id="L410">        String schemaSpyDirectory = outputDir.getAbsolutePath();</span>
-<span class="fc" id="L411">        List&lt;String&gt; argList = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L409">        String schemaSpyDirectory = outputDir.getAbsolutePath();</span>
+<span class="fc" id="L410">        List&lt;String&gt; argList = new ArrayList&lt;&gt;();</span>
 
-<span class="pc bpc" id="L413" title="1 of 4 branches missed.">        if ((jdbcUrl != null) &amp;&amp; (databaseType == null)) {</span>
-<span class="fc" id="L414">            databaseType = JDBCHelper.extractDatabaseType(jdbcUrl);</span>
-        }
-<span class="fc" id="L416">        addToArguments(argList, &quot;-dp&quot;, pathToDrivers);</span>
-<span class="fc" id="L417">        addToArguments(argList, &quot;-db&quot;, database);</span>
-<span class="fc" id="L418">        addToArguments(argList, &quot;-host&quot;, host);</span>
-<span class="fc" id="L419">        addToArguments(argList, &quot;-port&quot;, port);</span>
-<span class="fc" id="L420">        addToArguments(argList, &quot;-t&quot;, databaseType);</span>
-<span class="fc" id="L421">        addToArguments(argList, &quot;-u&quot;, user);</span>
-<span class="fc" id="L422">        addToArguments(argList, &quot;-p&quot;, password);</span>
-<span class="fc" id="L423">        addToArguments(argList, &quot;-s&quot;, schema);</span>
-<span class="fc" id="L424">        addToArguments(argList, &quot;-o&quot;, schemaSpyDirectory);</span>
-<span class="fc" id="L425">        addToArguments(argList, &quot;-desc&quot;, schemaDescription);</span>
-<span class="fc" id="L426">        addToArguments(argList, &quot;-i&quot;, includeTableNamesRegex);</span>
-<span class="fc" id="L427">        addToArguments(argList, &quot;-x&quot;, excludeColumnNamesRegex);</span>
-<span class="fc" id="L428">        addFlagToArguments(argList, &quot;-ahic&quot;, allowHtmlInComments);</span>
-<span class="fc" id="L429">        addFlagToArguments(argList, &quot;-noimplied&quot;, noImplied);</span>
-<span class="fc" id="L430">        addFlagToArguments(argList, &quot;-nohtml&quot;, noHtml);</span>
-<span class="fc" id="L431">        addToArguments(argList, &quot;-loglevel&quot;, logLevel);</span>
-<span class="fc" id="L432">        addFlagToArguments(argList, &quot;-norows&quot;, noRows);</span>
-<span class="fc" id="L433">        addFlagToArguments(argList, &quot;-noviews&quot;, noViews);</span>
-<span class="fc" id="L434">        addFlagToArguments(argList, &quot;-noschema&quot;, noSchema);</span>
-<span class="fc" id="L435">        addFlagToArguments(argList, &quot;-all&quot;, showAllSchemas);</span>
-<span class="fc" id="L436">        addToArguments(argList, &quot;-schemas&quot;, schemas);</span>
+//        if ((jdbcUrl != null) &amp;&amp; (databaseType == null)) {
+//            databaseType = JDBCHelper.extractDatabaseType(jdbcUrl);
+//        }
+<span class="fc" id="L415">        addToArguments(argList, &quot;-dp&quot;, pathToDrivers);</span>
+<span class="fc" id="L416">        addToArguments(argList, &quot;-db&quot;, database);</span>
+<span class="fc" id="L417">        addToArguments(argList, &quot;-host&quot;, host);</span>
+<span class="fc" id="L418">        addToArguments(argList, &quot;-port&quot;, port);</span>
+<span class="fc" id="L419">        addToArguments(argList, &quot;-t&quot;, databaseType);</span>
+<span class="fc" id="L420">        addToArguments(argList, &quot;-u&quot;, user);</span>
+<span class="fc" id="L421">        addToArguments(argList, &quot;-p&quot;, password);</span>
+<span class="fc" id="L422">        addToArguments(argList, &quot;-s&quot;, schema);</span>
+<span class="fc" id="L423">        addToArguments(argList, &quot;-o&quot;, schemaSpyDirectory);</span>
+<span class="fc" id="L424">        addToArguments(argList, &quot;-desc&quot;, schemaDescription);</span>
+<span class="fc" id="L425">        addToArguments(argList, &quot;-i&quot;, includeTableNamesRegex);</span>
+<span class="fc" id="L426">        addToArguments(argList, &quot;-x&quot;, excludeColumnNamesRegex);</span>
+<span class="fc" id="L427">        addFlagToArguments(argList, &quot;-ahic&quot;, allowHtmlInComments);</span>
+<span class="fc" id="L428">        addFlagToArguments(argList, &quot;-noimplied&quot;, noImplied);</span>
+<span class="fc" id="L429">        addFlagToArguments(argList, &quot;-nohtml&quot;, noHtml);</span>
+<span class="fc" id="L430">        addToArguments(argList, &quot;-loglevel&quot;, logLevel);</span>
+<span class="fc" id="L431">        addFlagToArguments(argList, &quot;-norows&quot;, noRows);</span>
+<span class="fc" id="L432">        addFlagToArguments(argList, &quot;-noviews&quot;, noViews);</span>
+<span class="fc" id="L433">        addFlagToArguments(argList, &quot;-noschema&quot;, noSchema);</span>
+<span class="fc" id="L434">        addFlagToArguments(argList, &quot;-all&quot;, showAllSchemas);</span>
+<span class="fc" id="L435">        addToArguments(argList, &quot;-schemas&quot;, schemas);</span>
 
-<span class="fc" id="L438">        addToArguments(argList, &quot;-useDriverManager&quot;, useDriverManager);</span>
-<span class="fc" id="L439">        addToArguments(argList, &quot;-css&quot;, cssStylesheet);</span>
-<span class="fc" id="L440">        addFlagToArguments(argList, &quot;-sso&quot;, singleSignOn);</span>
-<span class="fc" id="L441">        addFlagToArguments(argList, &quot;-lq&quot;, lowQuality);</span>
-<span class="fc" id="L442">        addFlagToArguments(argList, &quot;-hq&quot;, highQuality);</span>
-<span class="fc" id="L443">        addToArguments(argList, &quot;-connprops&quot;, connprops);</span>
-<span class="fc" id="L444">        addFlagToArguments(argList, &quot;-cid&quot;, commentsInitiallyDisplayed);</span>
-<span class="fc" id="L445">        addFlagToArguments(argList, &quot;-noads&quot;, noAds);</span>
-<span class="fc" id="L446">        addFlagToArguments(argList, &quot;-nologo&quot;, noLogo);</span>
-        /*
-        addToArguments(argList, &quot;-jdbcUrl&quot;, jdbcUrl);
-        */
+<span class="fc" id="L437">        addToArguments(argList, &quot;-useDriverManager&quot;, useDriverManager);</span>
+<span class="fc" id="L438">        addToArguments(argList, &quot;-css&quot;, cssStylesheet);</span>
+<span class="fc" id="L439">        addFlagToArguments(argList, &quot;-sso&quot;, singleSignOn);</span>
+<span class="fc" id="L440">        addFlagToArguments(argList, &quot;-lq&quot;, lowQuality);</span>
+<span class="fc" id="L441">        addFlagToArguments(argList, &quot;-hq&quot;, highQuality);</span>
+<span class="fc" id="L442">        addToArguments(argList, &quot;-connprops&quot;, connprops);</span>
+<span class="fc" id="L443">        addFlagToArguments(argList, &quot;-cid&quot;, commentsInitiallyDisplayed);</span>
+<span class="fc" id="L444">        addFlagToArguments(argList, &quot;-noads&quot;, noAds);</span>
+<span class="fc" id="L445">        addFlagToArguments(argList, &quot;-nologo&quot;, noLogo);</span>
+//        addToArguments(argList, &quot;-jdbcUrl&quot;, jdbcUrl);
 
-<span class="fc" id="L451">        String[] args = (String[]) argList.toArray(new String[0]);</span>
-<span class="fc" id="L452">        getLog().info(&quot;Generating SchemaSpy report with parameters:&quot;);</span>
-<span class="fc bfc" id="L453" title="All 2 branches covered.">        for (String arg : args) {</span>
-<span class="fc" id="L454">            getLog().info(arg);</span>
+<span class="fc" id="L448">        String[] args = argList.toArray(new String[0]);</span>
+<span class="fc" id="L449">        getLog().info(&quot;Generating SchemaSpy report with parameters:&quot;);</span>
+<span class="fc bfc" id="L450" title="All 2 branches covered.">        for (String arg : args) {</span>
+<span class="fc" id="L451">            getLog().info(arg);</span>
         }
         try {
-<span class="fc" id="L457">            analyzer.analyze(new Config(args));</span>
-<span class="nc" id="L458">        } catch (Exception e) {</span>
-<span class="nc" id="L459">            throw new MavenReportException(e.getMessage(), e);</span>
-<span class="fc" id="L460">        }</span>
-<span class="fc" id="L461">    }</span>
+<span class="fc" id="L454">            analyzer.analyze(new Config(args));</span>
+<span class="nc" id="L455">        } catch (Exception e) {</span>
+<span class="nc" id="L456">            throw new MavenReportException(e.getMessage(), e);</span>
+<span class="fc" id="L457">        }</span>
+<span class="fc" id="L458">    }</span>
 
     @Override
     public boolean canGenerateReport() {
-<span class="nc bnc" id="L465" title="All 4 branches missed.">        return !runOnExecutionRoot || project.isExecutionRoot();</span>
+<span class="nc bnc" id="L462" title="All 4 branches missed.">        return !runOnExecutionRoot || project.isExecutionRoot();</span>
     }
 
     @Override
     protected String getOutputDirectory() {
-<span class="nc" id="L470">        return outputDirectory;</span>
+<span class="nc" id="L467">        return outputDirectory;</span>
     }
 
     @Override
     protected MavenProject getProject() {
-<span class="nc" id="L475">        return project;</span>
+<span class="nc" id="L472">        return project;</span>
     }
 
     @Override
     protected Renderer getSiteRenderer() {
-<span class="nc" id="L480">        return siteRenderer;</span>
+<span class="nc" id="L477">        return siteRenderer;</span>
     }
 
-    /**
-     * Describes the report.
-     */
-    public String getDescription(Locale locale) {
-<span class="nc" id="L487">        return &quot;SchemaSpy database documentation&quot;;</span>
+    @Override
+    public String getDescription(final Locale locale) {
+<span class="nc" id="L482">        return &quot;SchemaSpy database documentation&quot;;</span>
     }
 
-    /**
-     * Not really sure what this does ;-).
-     */
-    public String getName(Locale locale) {
-<span class="nc" id="L494">        return &quot;SchemaSpy&quot;;</span>
+    @Override
+    public String getName(final Locale locale) {
+<span class="nc" id="L487">        return &quot;SchemaSpy&quot;;</span>
     }
 
+    @Override
     public String getOutputName() {
-<span class="nc" id="L498">        return &quot;schemaspy/index&quot;;</span>
+<span class="nc" id="L492">        return &quot;schemaspy/index&quot;;</span>
     }
 
     /**
-     * Always return true as we're using the report generated by SchemaSpy
+     * Always return {@code true} as we're using the report generated by SchemaSpy
      * rather than creating our own report.
      *
-     * @return true
+     * @return {@code true}
      */
+    @Override
     public boolean isExternalReport() {
-<span class="nc" id="L508">        return true;</span>
+<span class="nc" id="L503">        return true;</span>
     }
-
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
