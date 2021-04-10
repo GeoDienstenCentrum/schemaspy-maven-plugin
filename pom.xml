@@ -201,7 +201,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>9.3.0.jre8-preview</version>
+            <version>9.3.0.jre15-preview</version>
             <optional>true</optional>
         </dependency>
         <dependency>
