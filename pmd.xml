@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.29.0" timestamp="2021-05-03T10:26:34.714">
+<file name="/home/mark/dev/projects/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/SchemaSpyReport.java">
+<violation beginline="339" endline="339" begincolumn="14" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="339" endline="339" begincolumn="33" endcolumn="37" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="356" endline="356" begincolumn="14" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addFlagToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="356" endline="356" begincolumn="33" endcolumn="37" rule="UselessParentheses" ruleset="Code Style" package="com.wakaleo.schemaspy" class="SchemaSpyReport" method="addFlagToArguments" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>
