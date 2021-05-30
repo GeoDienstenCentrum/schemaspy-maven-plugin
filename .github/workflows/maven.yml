@@ -2,7 +2,7 @@ name: Maven CI
 
 on:
   push:
-  #pull_request:
+  pull_request:
 
 env:
   MAVEN_OPTS: -Djava.awt.headless=true
@@ -36,12 +36,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Cache Maven repository
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          key: maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ runner.os }}-maven-
+            maven-
 
       - name: Set up Maven
         uses: stCarolas/setup-maven@v4.1
@@ -96,12 +96,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Cache Maven repository
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          key: maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ runner.os }}-maven-
+            maven-
 
       - name: Set up JDK
         uses: actions/setup-java@v2
