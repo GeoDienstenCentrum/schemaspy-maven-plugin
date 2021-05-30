@@ -9,21 +9,23 @@ jobs:
     strategy:
       matrix:
         java: [ 8 ]
+        java_dist: ["adopt"]
 
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/cache@v2.1.6
+      - uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          key: maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ runner.os }}-maven-
+            maven-
 
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: ${{ matrix.java }}
+          distribution: ${{ matrix.java_dist }}
 
       - name: OWASP Dependency Check
         continue-on-error: true
