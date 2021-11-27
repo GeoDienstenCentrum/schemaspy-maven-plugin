@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.wakaleo.schemaspy"},{"l":"com.wakaleo.schemaspy.util"},{"l":"net.sourceforge.schemaspy"},{"l":"net.sourceforge.schemaspy.model"},{"l":"net.sourceforge.schemaspy.model.xml"},{"l":"net.sourceforge.schemaspy.ui"},{"l":"net.sourceforge.schemaspy.util"},{"l":"net.sourceforge.schemaspy.view"}]

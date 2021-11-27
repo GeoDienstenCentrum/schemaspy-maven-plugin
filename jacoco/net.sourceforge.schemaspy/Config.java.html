@@ -1425,10 +1425,10 @@ public class Config
 <span class="nc" id="L1425">        }</span>
 
         public MissingRequiredParameterException(String paramId, String description, boolean dbTypeSpecific) {
-<span class="nc bnc" id="L1428" title="All 4 branches missed.">            super(&quot;Required parameter '&quot; + paramId + &quot;' &quot; +</span>
-                    (description == null ? &quot;&quot; : &quot;(&quot; + description + &quot;) &quot;) +
+<span class="nc" id="L1428">            super(&quot;Required parameter '&quot; + paramId + &quot;' &quot; +</span>
+<span class="nc bnc" id="L1429" title="All 2 branches missed.">                    (description == null ? &quot;&quot; : &quot;(&quot; + description + &quot;) &quot;) +</span>
                     &quot;was not specified.&quot; +
-                    (dbTypeSpecific ? &quot;  It is required for this database type.&quot; : &quot;&quot;));
+<span class="nc bnc" id="L1431" title="All 2 branches missed.">                    (dbTypeSpecific ? &quot;  It is required for this database type.&quot; : &quot;&quot;));</span>
 <span class="nc" id="L1432">            this.dbTypeSpecific = dbTypeSpecific;</span>
 <span class="nc" id="L1433">        }</span>
 
@@ -1747,4 +1747,4 @@ public class Config
 <span class="nc" id="L1747">        return params;</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

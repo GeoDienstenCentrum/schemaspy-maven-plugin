@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-SchemaSpy Maven Plugin,com.wakaleo.schemaspy,HelpMojo,856,0,108,0,153,0,70,0,16,0
+SchemaSpy Maven Plugin,com.wakaleo.schemaspy,HelpMojo,854,0,108,0,153,0,70,0,16,0
 SchemaSpy Maven Plugin,com.wakaleo.schemaspy,SchemaSpyReport,66,311,9,11,14,61,14,10,8,6
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,XmlTableFormatter.new Comparator() {...},0,12,0,0,0,2,0,2,0,2
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,HtmlColumnsPage.ByTypeComparator,0,30,0,2,0,6,0,3,0,2
@@ -36,7 +36,7 @@ SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,HtmlTablePage,381,1044,61,
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,HtmlColumnsPage.ByColumnComparator,0,22,0,2,0,5,0,3,0,2
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,HtmlMainIndexPage,99,697,33,33,23,165,28,13,0,8
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,Database.BasicTableMeta,0,24,0,0,0,8,0,1,0,1
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,Table,857,936,139,95,185,232,109,65,14,43
+SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,Table,857,936,139,95,185,233,109,65,14,43
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,ExplicitRemoteTable,22,0,0,0,6,0,3,0,3,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,TableIndex,33,174,14,26,8,44,13,21,1,13
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,Database,1076,550,146,36,257,135,88,35,4,28
@@ -61,22 +61,20 @@ SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model,Database.ThreadedTableCre
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,DbSpecificOption,6,28,0,0,2,11,2,5,2,5
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,PasswordReader.Masker,46,0,2,0,15,0,4,0,3,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,Version,27,94,9,9,7,23,8,6,1,4
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,ConnectionURLBuilder,63,156,7,9,10,29,7,6,1,4
+SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,ConnectionURLBuilder,64,156,7,9,10,29,7,6,1,4
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,PasswordReader.IOError,7,0,0,0,3,0,1,0,1,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,CaseInsensitiveMap,33,15,2,0,9,3,4,3,3,3
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,HtmlEncoder,75,0,4,0,14,0,6,0,4,0
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,URLEncoder,5,47,1,3,2,11,1,3,0,2
+SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,URLEncoder,5,47,1,3,3,11,1,3,0,2
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,DbSpecificConfig,80,81,4,8,10,23,5,7,3,3
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,PasswordReader,135,0,17,0,43,0,12,0,3,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,Inflection,382,0,20,0,102,0,23,0,13,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,Dot,204,403,31,31,37,76,29,21,4,15
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,ConsolePasswordReader,59,0,0,0,9,0,2,0,2,0
+SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,ConsolePasswordReader,58,0,0,0,9,0,2,0,2,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,Dot.ProcessOutputReader,30,29,5,1,6,9,3,2,0,2
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,LogFormatter,30,149,7,7,8,32,7,3,0,3
+SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,LogFormatter,29,152,7,7,8,32,7,4,0,4
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,Dot.DotFailure,7,0,0,0,3,0,1,0,1,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,DOMUtil,8,48,1,1,3,14,2,2,1,2
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,LogFormatter.new ThreadLocal() {...},0,7,0,0,0,2,0,2,0,2
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,LogFormatter.new ThreadLocal() {...},0,10,0,0,0,3,0,2,0,2
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,ResourceWriter,14,49,1,3,1,15,1,5,0,4
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.util,LineWriter,33,49,0,0,11,14,4,6,4,6
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.model.xml,SchemaMeta,267,0,18,0,56,0,15,0,6,0
@@ -103,7 +101,7 @@ SchemaSpy Maven Plugin,net.sourceforge.schemaspy,TableOrderer,82,190,13,21,24,54
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy,DbAnalyzer,353,372,58,48,72,81,43,26,6,10
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy,SchemaAnalyzer,759,1130,93,63,136,218,72,11,2,3
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy,TableOrderer.new Comparator() {...},0,25,2,2,0,7,2,2,0,2
-SchemaSpy Maven Plugin,net.sourceforge.schemaspy,Config.MissingRequiredParameterException,48,0,4,0,6,0,5,0,3,0
+SchemaSpy Maven Plugin,net.sourceforge.schemaspy,Config.MissingRequiredParameterException,48,0,4,0,8,0,5,0,3,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy,Revision,87,25,5,3,23,13,5,4,1,4
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy,TableOrderer.new Comparator() {...},28,0,2,0,5,0,3,0,2,0
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy,Main,100,0,12,0,25,0,8,0,2,0
