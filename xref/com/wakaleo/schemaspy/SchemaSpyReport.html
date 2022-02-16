@@ -42,7 +42,7 @@
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> *           relational database.</em>
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  @Mojo(name = <span class="jxr_string">"schemaspy"</span>, defaultPhase = LifecyclePhase.SITE, threadSafe = false)
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  @Mojo(name = <span class="jxr_string">"schemaspy"</span>, defaultPhase = LifecyclePhase.SITE)
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="SchemaSpyReport" href="../../../com/wakaleo/schemaspy/SchemaSpyReport.html#SchemaSpyReport">SchemaSpyReport</a> <strong class="jxr_keyword">extends</strong> AbstractMavenReport {
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>      <em class="jxr_javadoccomment">/**</em>
@@ -111,7 +111,7 @@
 <a class="jxr_linenumber" name="L103" href="#L103">103</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L104" href="#L104">104</a> <em class="jxr_javadoccomment">     * The type of database being analysed - defaults to ora.</em>
 <a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L106" href="#L106">106</a>     @Parameter (property =<span class="jxr_string">"databaseType"</span>)
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>     @Parameter (property = <span class="jxr_string">"databaseType"</span>)
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>     <strong class="jxr_keyword">private</strong> String databaseType;
 <a class="jxr_linenumber" name="L108" href="#L108">108</a> 
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>     <em class="jxr_javadoccomment">/**</em>
@@ -329,7 +329,7 @@
 <a class="jxr_linenumber" name="L321" href="#L321">321</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L322" href="#L322">322</a>     <a name="SchemaAnalyzer" href="../../../net/sourceforge/schemaspy/SchemaAnalyzer.html#SchemaAnalyzer">SchemaAnalyzer</a> analyzer = <strong class="jxr_keyword">new</strong> <a name="SchemaAnalyzer" href="../../../net/sourceforge/schemaspy/SchemaAnalyzer.html#SchemaAnalyzer">SchemaAnalyzer</a>();
 <a class="jxr_linenumber" name="L323" href="#L323">323</a> 
-<a class="jxr_linenumber" name="L324" href="#L324">324</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> setSchemaAnalyzer(<a name="SchemaAnalyzer" href="../../../net/sourceforge/schemaspy/SchemaAnalyzer.html#SchemaAnalyzer">SchemaAnalyzer</a> analyzer) {
+<a class="jxr_linenumber" name="L324" href="#L324">324</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> setSchemaAnalyzer(<strong class="jxr_keyword">final</strong> <a name="SchemaAnalyzer" href="../../../net/sourceforge/schemaspy/SchemaAnalyzer.html#SchemaAnalyzer">SchemaAnalyzer</a> analyzer) {
 <a class="jxr_linenumber" name="L325" href="#L325">325</a>         <strong class="jxr_keyword">this</strong>.analyzer = analyzer;
 <a class="jxr_linenumber" name="L326" href="#L326">326</a>     }
 <a class="jxr_linenumber" name="L327" href="#L327">327</a> 
