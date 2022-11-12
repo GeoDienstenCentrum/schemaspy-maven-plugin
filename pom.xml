@@ -97,7 +97,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <surefire.excludes.files>**/*ExternalDatabaseTest.java</surefire.excludes.files>
         <maven-libs.version>3.8.6</maven-libs.version>
-        <maven-libs.annotations.version>3.6.4</maven-libs.annotations.version>
+        <maven-libs.annotations.version>3.7.0</maven-libs.annotations.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
         <versions-maven-plugin.version>2.13.0</versions-maven-plugin.version>
         <maven-plugin-plugin.version>3.6.4</maven-plugin-plugin.version>
