@@ -100,7 +100,7 @@
         <maven-libs.annotations.version>3.7.0</maven-libs.annotations.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
         <versions-maven-plugin.version>2.13.0</versions-maven-plugin.version>
-        <maven-plugin-plugin.version>3.6.4</maven-plugin-plugin.version>
+        <maven-plugin-plugin.version>3.7.0</maven-plugin-plugin.version>
         <maven-project-info-reports-plugin.version>3.4.1</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
@@ -415,6 +415,7 @@
                 <configuration>
                     <goalPrefix>schemaspy</goalPrefix>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+                    <helpPackageName>com.wakaleo.schemaspy</helpPackageName>
                 </configuration>
                 <executions>
                     <execution>
