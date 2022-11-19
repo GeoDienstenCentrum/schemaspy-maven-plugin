@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Oracle XE 18.0.0.0
+# Oracle XE 21
 # this docker image has the following users/credentials (user/password = system/oracle)
-docker pull imnotjames/oracle-xe:18c
+docker pull ghcr.io/gvenzl/oracle-xe:21.3.0
 
 # start the dockerized oracle-xe instance
 # this container can be stopped using:
 #
 #    docker stop schemaspy
 #
-docker run --rm -p 1521:1521 --cpus=2 --name schemaspy -h schemaspy -d imnotjames/oracle-xe:18c
+docker run --rm -p 1521:1521 --name schemaspy -h schemaspy -e ORACLE_PASSWORD=oracle -d ghcr.io/gvenzl/oracle-xe:21.3.0
 
 printf "\n\nStarting Oracle XE container, this could take a few minutes..."
 printf "\nWaiting for Oracle XE database to start up.... "

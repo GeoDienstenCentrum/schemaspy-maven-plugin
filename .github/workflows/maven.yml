@@ -2,6 +2,7 @@ name: Maven CI
 
 on:
   push:
+    branches: [ master ]
   pull_request:
 
 env:
@@ -78,8 +79,8 @@ jobs:
           docker exec -i mysql1 mysql -uroot -pmysql test < ./src/test/resources/sql/mysql.sql
           docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password12!' -d 'master' -Q 'CREATE DATABASE test'
           docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password12!' -d 'test' -i /checkout/src/test/resources/sql/mssql.sql
-          docker exec -i schemaspy /opt/oracle/product/18c/dbhomeXE/bin/sqlplus -l system/oracle@//localhost:1521/XE < build/ci/create_oracle_user.sql
-          docker exec -i schemaspy /opt/oracle/product/18c/dbhomeXE/bin/sqlplus -l schemaspy/schemaspy@//localhost:1521/XE < ./src/test/resources/sql/oracle.sql
+          docker exec -i schemaspy sqlplus -l system/oracle@//localhost:1521/XE < build/ci/create_oracle_user.sql
+          docker exec -i schemaspy sqlplus -l schemaspy/schemaspy@//localhost:1521/XE < src/test/resources/sql/oracle.sql
 
       - name: Test
         run: |
