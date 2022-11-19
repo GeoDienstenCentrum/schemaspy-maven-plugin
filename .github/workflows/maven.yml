@@ -61,7 +61,7 @@ jobs:
 
       - name: Startup databases
         run: |
-          build/ci/start-oracle.sh
+          build/ci/start-oracle.sh 21.3.0
           build/ci/start-mysql.sh 8
           build/ci/start-mssql.sh 2019-latest
 
