@@ -99,7 +99,7 @@
         <maven-libs.version>3.8.6</maven-libs.version>
         <maven-libs.annotations.version>3.7.0</maven-libs.annotations.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
-        <versions-maven-plugin.version>2.14.1</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.14.2</versions-maven-plugin.version>
         <maven-plugin-plugin.version>3.7.0</maven-plugin-plugin.version>
         <maven-project-info-reports-plugin.version>3.4.1</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
