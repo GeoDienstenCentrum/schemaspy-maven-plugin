@@ -20,15 +20,15 @@ jobs:
       matrix:        
         java: [ 8, 11 ]
         java_dist: ["temurin"]
-        maven: [ "3.5.4", "3.6.3", "3.8.6" ]
+        maven: [ "3.5.4", "3.6.3", "3.8.7" ]
         include:
           - java: 17
             java_dist: "temurin"
-            maven: "3.8.6"
+            maven: "3.8.7"
 
     services:
       postgres:
-        image: postgis/postgis:14-3.3
+        image: postgis/postgis:15-3.3
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
