@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HelpMojo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">com.wakaleo.schemaspy</a> &gt; <span class="el_source">HelpMojo.java</span></div><h1>HelpMojo.java</h1><pre class="source lang-java linenums">package com.wakaleo.schemaspy;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang=""><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HelpMojo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">com.wakaleo.schemaspy</a> &gt; <span class="el_source">HelpMojo.java</span></div><h1>HelpMojo.java</h1><pre class="source lang-java linenums">package com.wakaleo.schemaspy;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -24,8 +24,8 @@ import java.util.List;
  * Call &lt;code&gt;mvn schemaspy:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.
  * @author maven-plugin-tools
  */
-<span class="fc" id="L27">@Mojo( name = &quot;help&quot;, requiresProject = false, threadSafe = true )</span>
-public class HelpMojo
+@Mojo( name = &quot;help&quot;, requiresProject = false, threadSafe = true )
+<span class="fc" id="L28">public class HelpMojo</span>
     extends AbstractMojo
 {
     /**
@@ -64,25 +64,29 @@ public class HelpMojo
 
     private Document build()
         throws MojoExecutionException
-<span class="fc" id="L67">    {</span>
+    {
 <span class="fc" id="L68">        getLog().debug( &quot;load plugin-help.xml: &quot; + PLUGIN_HELP_PATH );</span>
-        try ( InputStream is = getClass().getResourceAsStream( PLUGIN_HELP_PATH ) )
-<span class="fc" id="L70">        {</span>
-<span class="fc" id="L71">            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();</span>
-<span class="fc" id="L72">            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();</span>
-            return dBuilder.parse( is );
-<span class="nc" id="L74">        }</span>
-        catch ( IOException e )
-<span class="nc" id="L76">        {</span>
-            throw new MojoExecutionException( e.getMessage(), e );
-<span class="nc" id="L78">        }</span>
-        catch ( ParserConfigurationException e )
-<span class="nc" id="L80">        {</span>
-            throw new MojoExecutionException( e.getMessage(), e );
-<span class="nc" id="L82">        }</span>
-        catch ( SAXException e )
-<span class="nc" id="L84">        {</span>
-            throw new MojoExecutionException( e.getMessage(), e );
+<span class="fc" id="L69">        try ( InputStream is = getClass().getResourceAsStream( PLUGIN_HELP_PATH ) )</span>
+        {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">            if ( is == null )</span>
+            {
+<span class="nc" id="L73">                throw new MojoExecutionException( &quot;Could not find plugin descriptor at &quot; + PLUGIN_HELP_PATH );</span>
+            }
+<span class="fc" id="L75">            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();</span>
+<span class="fc" id="L76">            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();</span>
+<span class="fc" id="L77">            return dBuilder.parse( is );</span>
+        }
+<span class="nc" id="L79">        catch ( IOException e )</span>
+        {
+<span class="nc" id="L81">            throw new MojoExecutionException( e.getMessage(), e );</span>
+        }
+<span class="nc" id="L83">        catch ( ParserConfigurationException e )</span>
+        {
+<span class="nc" id="L85">            throw new MojoExecutionException( e.getMessage(), e );</span>
+        }
+<span class="nc" id="L87">        catch ( SAXException e )</span>
+        {
+<span class="nc" id="L89">            throw new MojoExecutionException( e.getMessage(), e );</span>
         }
     }
 
@@ -92,203 +96,203 @@ public class HelpMojo
     @Override
     public void execute()
         throws MojoExecutionException
-<span class="pc bpc" id="L95" title="1 of 2 branches missed.">    {</span>
-        if ( lineLength &lt;= 0 )
-<span class="fc" id="L97">        {</span>
-<span class="fc" id="L98">            getLog().warn( &quot;The parameter 'lineLength' should be positive, using '80' as default.&quot; );</span>
-            lineLength = DEFAULT_LINE_LENGTH;
-<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        }</span>
-        if ( indentSize &lt;= 0 )
-<span class="fc" id="L102">        {</span>
-<span class="fc" id="L103">            getLog().warn( &quot;The parameter 'indentSize' should be positive, using '2' as default.&quot; );</span>
-            indentSize = 2;
+    {
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        if ( lineLength &lt;= 0 )</span>
+        {
+<span class="fc" id="L102">            getLog().warn( &quot;The parameter 'lineLength' should be positive, using '80' as default.&quot; );</span>
+<span class="fc" id="L103">            lineLength = DEFAULT_LINE_LENGTH;</span>
         }
-<span class="fc" id="L106"></span>
-        Document doc = build();
-<span class="fc" id="L108"></span>
-<span class="fc" id="L109">        StringBuilder sb = new StringBuilder();</span>
-        Node plugin = getSingleChild( doc, &quot;plugin&quot; );
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        if ( indentSize &lt;= 0 )</span>
+        {
+<span class="fc" id="L107">            getLog().warn( &quot;The parameter 'indentSize' should be positive, using '2' as default.&quot; );</span>
+<span class="fc" id="L108">            indentSize = 2;</span>
+        }
 
-<span class="fc" id="L112"></span>
-<span class="fc" id="L113">        String name = getValue( plugin, &quot;name&quot; );</span>
-<span class="fc" id="L114">        String version = getValue( plugin, &quot;version&quot; );</span>
-<span class="pc bpc" id="L115" title="2 of 4 branches missed.">        String id = getValue( plugin, &quot;groupId&quot; ) + &quot;:&quot; + getValue( plugin, &quot;artifactId&quot; ) + &quot;:&quot; + version;</span>
-        if ( isNotEmpty( name ) &amp;&amp; !name.contains( id ) )
-<span class="fc" id="L117">        {</span>
-            append( sb, name + &quot; &quot; + version, 0 );
+<span class="fc" id="L111">        Document doc = build();</span>
+
+<span class="fc" id="L113">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L114">        Node plugin = getSingleChild( doc, &quot;plugin&quot; );</span>
+
+
+<span class="fc" id="L117">        String name = getValue( plugin, &quot;name&quot; );</span>
+<span class="fc" id="L118">        String version = getValue( plugin, &quot;version&quot; );</span>
+<span class="fc" id="L119">        String id = getValue( plugin, &quot;groupId&quot; ) + &quot;:&quot; + getValue( plugin, &quot;artifactId&quot; ) + &quot;:&quot; + version;</span>
+<span class="pc bpc" id="L120" title="2 of 4 branches missed.">        if ( isNotEmpty( name ) &amp;&amp; !name.contains( id ) )</span>
+        {
+<span class="fc" id="L122">            append( sb, name + &quot; &quot; + version, 0 );</span>
         }
         else
-<span class="nc bnc" id="L121" title="All 2 branches missed.">        {</span>
-            if ( isNotEmpty( name ) )
-<span class="nc" id="L123">            {</span>
-                append( sb, name, 0 );
+        {
+<span class="nc bnc" id="L126" title="All 2 branches missed.">            if ( isNotEmpty( name ) )</span>
+            {
+<span class="nc" id="L128">                append( sb, name, 0 );</span>
             }
             else
-<span class="nc" id="L127">            {</span>
-                append( sb, id, 0 );
+            {
+<span class="nc" id="L132">                append( sb, id, 0 );</span>
             }
-<span class="fc" id="L130">        }</span>
-<span class="fc" id="L131">        append( sb, getValue( plugin, &quot;description&quot; ), 1 );</span>
-        append( sb, &quot;&quot;, 0 );
+        }
+<span class="fc" id="L135">        append( sb, getValue( plugin, &quot;description&quot; ), 1 );</span>
+<span class="fc" id="L136">        append( sb, &quot;&quot;, 0 );</span>
 
-<span class="fc" id="L134">        //&lt;goalPrefix&gt;plugin&lt;/goalPrefix&gt;</span>
-        String goalPrefix = getValue( plugin, &quot;goalPrefix&quot; );
-<span class="fc" id="L136"></span>
-        Node mojos1 = getSingleChild( plugin, &quot;mojos&quot; );
-<span class="fc" id="L138"></span>
-        List&lt;Node&gt; mojos = findNamedChild( mojos1, &quot;mojo&quot; );
-<span class="pc bpc" id="L140" title="3 of 4 branches missed."></span>
-        if ( goal == null || goal.length() &lt;= 0 )
-<span class="pc bpc" id="L142" title="1 of 2 branches missed.">        {</span>
-<span class="fc" id="L143">            append( sb, &quot;This plugin has &quot; + mojos.size() + ( mojos.size() &gt; 1 ? &quot; goals:&quot; : &quot; goal:&quot; ), 0 );</span>
-            append( sb, &quot;&quot;, 0 );
+        //&lt;goalPrefix&gt;plugin&lt;/goalPrefix&gt;
+<span class="fc" id="L139">        String goalPrefix = getValue( plugin, &quot;goalPrefix&quot; );</span>
+
+<span class="fc" id="L141">        Node mojos1 = getSingleChild( plugin, &quot;mojos&quot; );</span>
+
+<span class="fc" id="L143">        List&lt;Node&gt; mojos = findNamedChild( mojos1, &quot;mojo&quot; );</span>
+
+<span class="pc bpc" id="L145" title="3 of 4 branches missed.">        if ( goal == null || goal.length() &lt;= 0 )</span>
+        {
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">            append( sb, &quot;This plugin has &quot; + mojos.size() + ( mojos.size() &gt; 1 ? &quot; goals:&quot; : &quot; goal:&quot; ), 0 );</span>
+<span class="fc" id="L148">            append( sb, &quot;&quot;, 0 );</span>
         }
-<span class="fc bfc" id="L146" title="All 2 branches covered."></span>
-        for ( Node mojo : mojos )
-<span class="fc" id="L148">        {</span>
-<span class="fc" id="L149">            writeGoal( sb, goalPrefix, (Element) mojo );</span>
+
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        for ( Node mojo : mojos )</span>
+        {
+<span class="fc" id="L153">            writeGoal( sb, goalPrefix, (Element) mojo );</span>
+<span class="fc" id="L154">        }</span>
+
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        if ( getLog().isInfoEnabled() )</span>
+        {
+<span class="fc" id="L158">            getLog().info( sb.toString() );</span>
         }
-<span class="pc bpc" id="L151" title="1 of 2 branches missed."></span>
-        if ( getLog().isInfoEnabled() )
-<span class="fc" id="L153">        {</span>
-            getLog().info( sb.toString() );
-<span class="fc" id="L155">        }</span>
-    }
+<span class="fc" id="L160">    }</span>
 
 
     private static boolean isNotEmpty( String string )
-<span class="pc bpc" id="L160" title="2 of 4 branches missed.">    {</span>
-        return string != null &amp;&amp; string.length() &gt; 0;
+    {
+<span class="pc bpc" id="L165" title="2 of 4 branches missed.">        return string != null &amp;&amp; string.length() &gt; 0;</span>
     }
 
     private static String getValue( Node node, String elementName )
         throws MojoExecutionException
-<span class="fc" id="L166">    {</span>
-        return getSingleChild( node, elementName ).getTextContent();
+    {
+<span class="fc" id="L171">        return getSingleChild( node, elementName ).getTextContent();</span>
     }
 
     private static Node getSingleChild( Node node, String elementName )
         throws MojoExecutionException
-<span class="fc" id="L172">    {</span>
-<span class="pc bpc" id="L173" title="1 of 2 branches missed.">        List&lt;Node&gt; namedChild = findNamedChild( node, elementName );</span>
-        if ( namedChild.isEmpty() )
-<span class="nc" id="L175">        {</span>
-            throw new MojoExecutionException( &quot;Could not find &quot; + elementName + &quot; in plugin-help.xml&quot; );
-<span class="pc bpc" id="L177" title="1 of 2 branches missed.">        }</span>
-        if ( namedChild.size() &gt; 1 )
-<span class="nc" id="L179">        {</span>
-            throw new MojoExecutionException( &quot;Multiple &quot; + elementName + &quot; in plugin-help.xml&quot; );
-<span class="fc" id="L181">        }</span>
-        return namedChild.get( 0 );
+    {
+<span class="fc" id="L177">        List&lt;Node&gt; namedChild = findNamedChild( node, elementName );</span>
+<span class="pc bpc" id="L178" title="1 of 2 branches missed.">        if ( namedChild.isEmpty() )</span>
+        {
+<span class="nc" id="L180">            throw new MojoExecutionException( &quot;Could not find &quot; + elementName + &quot; in plugin-help.xml&quot; );</span>
+        }
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">        if ( namedChild.size() &gt; 1 )</span>
+        {
+<span class="nc" id="L184">            throw new MojoExecutionException( &quot;Multiple &quot; + elementName + &quot; in plugin-help.xml&quot; );</span>
+        }
+<span class="fc" id="L186">        return namedChild.get( 0 );</span>
     }
 
     private static List&lt;Node&gt; findNamedChild( Node node, String elementName )
-<span class="fc" id="L186">    {</span>
-<span class="fc" id="L187">        List&lt;Node&gt; result = new ArrayList&lt;Node&gt;();</span>
-<span class="fc bfc" id="L188" title="All 2 branches covered.">        NodeList childNodes = node.getChildNodes();</span>
-        for ( int i = 0; i &lt; childNodes.getLength(); i++ )
-<span class="fc" id="L190">        {</span>
-<span class="fc bfc" id="L191" title="All 2 branches covered.">            Node item = childNodes.item( i );</span>
-            if ( elementName.equals( item.getNodeName() ) )
-<span class="fc" id="L193">            {</span>
-                result.add( item );
+    {
+<span class="fc" id="L191">        List&lt;Node&gt; result = new ArrayList&lt;Node&gt;();</span>
+<span class="fc" id="L192">        NodeList childNodes = node.getChildNodes();</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">        for ( int i = 0; i &lt; childNodes.getLength(); i++ )</span>
+        {
+<span class="fc" id="L195">            Node item = childNodes.item( i );</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">            if ( elementName.equals( item.getNodeName() ) )</span>
+            {
+<span class="fc" id="L198">                result.add( item );</span>
             }
-<span class="fc" id="L196">        }</span>
-        return result;
+        }
+<span class="fc" id="L201">        return result;</span>
     }
 
     private static Node findSingleChild( Node node, String elementName )
         throws MojoExecutionException
-<span class="fc" id="L202">    {</span>
-<span class="fc bfc" id="L203" title="All 2 branches covered.">        List&lt;Node&gt; elementsByTagName = findNamedChild( node, elementName );</span>
-        if ( elementsByTagName.isEmpty() )
-<span class="fc" id="L205">        {</span>
-            return null;
-<span class="pc bpc" id="L207" title="1 of 2 branches missed.">        }</span>
-        if ( elementsByTagName.size() &gt; 1 )
-<span class="nc" id="L209">        {</span>
-            throw new MojoExecutionException( &quot;Multiple &quot; + elementName + &quot;in plugin-help.xml&quot; );
-<span class="fc" id="L211">        }</span>
-        return elementsByTagName.get( 0 );
+    {
+<span class="fc" id="L207">        List&lt;Node&gt; elementsByTagName = findNamedChild( node, elementName );</span>
+<span class="fc bfc" id="L208" title="All 2 branches covered.">        if ( elementsByTagName.isEmpty() )</span>
+        {
+<span class="fc" id="L210">            return null;</span>
+        }
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">        if ( elementsByTagName.size() &gt; 1 )</span>
+        {
+<span class="nc" id="L214">            throw new MojoExecutionException( &quot;Multiple &quot; + elementName + &quot;in plugin-help.xml&quot; );</span>
+        }
+<span class="fc" id="L216">        return elementsByTagName.get( 0 );</span>
     }
 
     private void writeGoal( StringBuilder sb, String goalPrefix, Element mojo )
         throws MojoExecutionException
-<span class="fc" id="L217">    {</span>
-<span class="fc" id="L218">        String mojoGoal = getValue( mojo, &quot;goal&quot; );</span>
-<span class="fc" id="L219">        Node configurationElement = findSingleChild( mojo, &quot;configuration&quot; );</span>
-<span class="pc bpc" id="L220" title="5 of 6 branches missed.">        Node description = findSingleChild( mojo, &quot;description&quot; );</span>
-        if ( goal == null || goal.length() &lt;= 0 || mojoGoal.equals( goal ) )
-<span class="fc" id="L222">        {</span>
-<span class="fc" id="L223">            append( sb, goalPrefix + &quot;:&quot; + mojoGoal, 0 );</span>
-<span class="pc bpc" id="L224" title="3 of 4 branches missed.">            Node deprecated = findSingleChild( mojo, &quot;deprecated&quot; );</span>
-            if ( ( deprecated != null ) &amp;&amp; isNotEmpty( deprecated.getTextContent() ) )
-<span class="nc" id="L226">            {</span>
-<span class="nc bnc" id="L227" title="All 4 branches missed.">                append( sb, &quot;Deprecated. &quot; + deprecated.getTextContent(), 1 );</span>
-                if ( detail &amp;&amp; description != null )
-<span class="nc" id="L229">                {</span>
-<span class="nc" id="L230">                    append( sb, &quot;&quot;, 0 );</span>
-                    append( sb, description.getTextContent(), 1 );
-                }
-<span class="pc bpc" id="L233" title="1 of 2 branches missed.">            }</span>
-            else if ( description != null )
-<span class="fc" id="L235">            {</span>
-                append( sb, description.getTextContent(), 1 );
-<span class="fc" id="L237">            }</span>
-            append( sb, &quot;&quot;, 0 );
-<span class="pc bpc" id="L239" title="1 of 2 branches missed."></span>
-            if ( detail )
-<span class="nc" id="L241">            {</span>
-<span class="nc" id="L242">                Node parametersNode = getSingleChild( mojo, &quot;parameters&quot; );</span>
-<span class="nc" id="L243">                List&lt;Node&gt; parameters = findNamedChild( parametersNode, &quot;parameter&quot; );</span>
-<span class="nc" id="L244">                append( sb, &quot;Available parameters:&quot;, 1 );</span>
-                append( sb, &quot;&quot;, 0 );
-<span class="nc bnc" id="L246" title="All 2 branches missed."></span>
-                for ( Node parameter : parameters )
-<span class="nc" id="L248">                {</span>
-<span class="nc" id="L249">                    writeParameter( sb, parameter, configurationElement );</span>
+    {
+<span class="fc" id="L222">        String mojoGoal = getValue( mojo, &quot;goal&quot; );</span>
+<span class="fc" id="L223">        Node configurationElement = findSingleChild( mojo, &quot;configuration&quot; );</span>
+<span class="fc" id="L224">        Node description = findSingleChild( mojo, &quot;description&quot; );</span>
+<span class="pc bpc" id="L225" title="5 of 6 branches missed.">        if ( goal == null || goal.length() &lt;= 0 || mojoGoal.equals( goal ) )</span>
+        {
+<span class="fc" id="L227">            append( sb, goalPrefix + &quot;:&quot; + mojoGoal, 0 );</span>
+<span class="fc" id="L228">            Node deprecated = findSingleChild( mojo, &quot;deprecated&quot; );</span>
+<span class="pc bpc" id="L229" title="3 of 4 branches missed.">            if ( ( deprecated != null ) &amp;&amp; isNotEmpty( deprecated.getTextContent() ) )</span>
+            {
+<span class="nc" id="L231">                append( sb, &quot;Deprecated. &quot; + deprecated.getTextContent(), 1 );</span>
+<span class="nc bnc" id="L232" title="All 4 branches missed.">                if ( detail &amp;&amp; description != null )</span>
+                {
+<span class="nc" id="L234">                    append( sb, &quot;&quot;, 0 );</span>
+<span class="nc" id="L235">                    append( sb, description.getTextContent(), 1 );</span>
                 }
             }
-<span class="fc" id="L252">        }</span>
-    }
+<span class="pc bpc" id="L238" title="1 of 2 branches missed.">            else if ( description != null )</span>
+            {
+<span class="fc" id="L240">                append( sb, description.getTextContent(), 1 );</span>
+            }
+<span class="fc" id="L242">            append( sb, &quot;&quot;, 0 );</span>
+
+<span class="pc bpc" id="L244" title="1 of 2 branches missed.">            if ( detail )</span>
+            {
+<span class="nc" id="L246">                Node parametersNode = getSingleChild( mojo, &quot;parameters&quot; );</span>
+<span class="nc" id="L247">                List&lt;Node&gt; parameters = findNamedChild( parametersNode, &quot;parameter&quot; );</span>
+<span class="nc" id="L248">                append( sb, &quot;Available parameters:&quot;, 1 );</span>
+<span class="nc" id="L249">                append( sb, &quot;&quot;, 0 );</span>
+
+<span class="nc bnc" id="L251" title="All 2 branches missed.">                for ( Node parameter : parameters )</span>
+                {
+<span class="nc" id="L253">                    writeParameter( sb, parameter, configurationElement );</span>
+<span class="nc" id="L254">                }</span>
+            }
+        }
+<span class="fc" id="L257">    }</span>
 
     private void writeParameter( StringBuilder sb, Node parameter, Node configurationElement )
         throws MojoExecutionException
-<span class="nc" id="L257">    {</span>
-<span class="nc" id="L258">        String parameterName = getValue( parameter, &quot;name&quot; );</span>
-        String parameterDescription = getValue( parameter, &quot;description&quot; );
-<span class="nc" id="L260"></span>
-<span class="nc bnc" id="L261" title="All 2 branches missed.">        Element fieldConfigurationElement = null;</span>
-        if ( configurationElement != null )
-<span class="nc" id="L263">        {</span>
-          fieldConfigurationElement =  (Element) findSingleChild( configurationElement, parameterName );
+    {
+<span class="nc" id="L262">        String parameterName = getValue( parameter, &quot;name&quot; );</span>
+<span class="nc" id="L263">        String parameterDescription = getValue( parameter, &quot;description&quot; );</span>
+
+<span class="nc" id="L265">        Element fieldConfigurationElement = null;</span>
+<span class="nc bnc" id="L266" title="All 2 branches missed.">        if ( configurationElement != null )</span>
+        {
+<span class="nc" id="L268">          fieldConfigurationElement =  (Element) findSingleChild( configurationElement, parameterName );</span>
         }
-<span class="nc" id="L266"></span>
-<span class="nc bnc" id="L267" title="All 4 branches missed.">        String parameterDefaultValue = &quot;&quot;;</span>
-        if ( fieldConfigurationElement != null &amp;&amp; fieldConfigurationElement.hasAttribute( &quot;default-value&quot; ) )
-<span class="nc" id="L269">        {</span>
-            parameterDefaultValue = &quot; (Default: &quot; + fieldConfigurationElement.getAttribute( &quot;default-value&quot; ) + &quot;)&quot;;
-<span class="nc" id="L271">        }</span>
-<span class="nc" id="L272">        append( sb, parameterName + parameterDefaultValue, 2 );</span>
-<span class="nc bnc" id="L273" title="All 4 branches missed.">        Node deprecated = findSingleChild( parameter, &quot;deprecated&quot; );</span>
-        if ( ( deprecated != null ) &amp;&amp; isNotEmpty( deprecated.getTextContent() ) )
-<span class="nc" id="L275">        {</span>
-<span class="nc" id="L276">            append( sb, &quot;Deprecated. &quot; + deprecated.getTextContent(), 3 );</span>
-            append( sb, &quot;&quot;, 0 );
-<span class="nc" id="L278">        }</span>
-<span class="nc bnc" id="L279" title="All 2 branches missed.">        append( sb, parameterDescription, 3 );</span>
-        if ( &quot;true&quot;.equals( getValue( parameter, &quot;required&quot; ) ) )
-<span class="nc" id="L281">        {</span>
-            append( sb, &quot;Required: Yes&quot;, 3 );
-<span class="nc bnc" id="L283" title="All 4 branches missed.">        }</span>
-        if ( ( fieldConfigurationElement != null ) &amp;&amp; isNotEmpty( fieldConfigurationElement.getTextContent() ) )
-<span class="nc" id="L285">        {</span>
-<span class="nc" id="L286">            String property = getPropertyFromExpression( fieldConfigurationElement.getTextContent() );</span>
-            append( sb, &quot;User property: &quot; + property, 3 );
+
+<span class="nc" id="L271">        String parameterDefaultValue = &quot;&quot;;</span>
+<span class="nc bnc" id="L272" title="All 4 branches missed.">        if ( fieldConfigurationElement != null &amp;&amp; fieldConfigurationElement.hasAttribute( &quot;default-value&quot; ) )</span>
+        {
+<span class="nc" id="L274">            parameterDefaultValue = &quot; (Default: &quot; + fieldConfigurationElement.getAttribute( &quot;default-value&quot; ) + &quot;)&quot;;</span>
         }
-<span class="nc" id="L289"></span>
-<span class="nc" id="L290">        append( sb, &quot;&quot;, 0 );</span>
-    }
+<span class="nc" id="L276">        append( sb, parameterName + parameterDefaultValue, 2 );</span>
+<span class="nc" id="L277">        Node deprecated = findSingleChild( parameter, &quot;deprecated&quot; );</span>
+<span class="nc bnc" id="L278" title="All 4 branches missed.">        if ( ( deprecated != null ) &amp;&amp; isNotEmpty( deprecated.getTextContent() ) )</span>
+        {
+<span class="nc" id="L280">            append( sb, &quot;Deprecated. &quot; + deprecated.getTextContent(), 3 );</span>
+<span class="nc" id="L281">            append( sb, &quot;&quot;, 0 );</span>
+        }
+<span class="nc" id="L283">        append( sb, parameterDescription, 3 );</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">        if ( &quot;true&quot;.equals( getValue( parameter, &quot;required&quot; ) ) )</span>
+        {
+<span class="nc" id="L286">            append( sb, &quot;Required: Yes&quot;, 3 );</span>
+        }
+<span class="nc bnc" id="L288" title="All 4 branches missed.">        if ( ( fieldConfigurationElement != null ) &amp;&amp; isNotEmpty( fieldConfigurationElement.getTextContent() ) )</span>
+        {
+<span class="nc" id="L290">            String property = getPropertyFromExpression( fieldConfigurationElement.getTextContent() );</span>
+<span class="nc" id="L291">            append( sb, &quot;User property: &quot; + property, 3 );</span>
+        }
+
+<span class="nc" id="L294">        append( sb, &quot;&quot;, 0 );</span>
+<span class="nc" id="L295">    }</span>
 
     /**
      * &lt;p&gt;Repeat a String &lt;code&gt;n&lt;/code&gt; times to form a new string.&lt;/p&gt;
@@ -300,15 +304,15 @@ public class HelpMojo
      * @throws NullPointerException       if str is &lt;code&gt;null&lt;/code&gt;
      */
     private static String repeat( String str, int repeat )
-<span class="fc" id="L303">    {</span>
-        StringBuilder buffer = new StringBuilder( repeat * str.length() );
-<span class="fc bfc" id="L305" title="All 2 branches covered."></span>
-        for ( int i = 0; i &lt; repeat; i++ )
-<span class="fc" id="L307">        {</span>
-            buffer.append( str );
+    {
+<span class="fc" id="L308">        StringBuilder buffer = new StringBuilder( repeat * str.length() );</span>
+
+<span class="fc bfc" id="L310" title="All 2 branches covered.">        for ( int i = 0; i &lt; repeat; i++ )</span>
+        {
+<span class="fc" id="L312">            buffer.append( str );</span>
         }
-<span class="fc" id="L310"></span>
-        return buffer.toString();
+
+<span class="fc" id="L315">        return buffer.toString();</span>
     }
 
     /**
@@ -320,12 +324,12 @@ public class HelpMojo
      * @param indent      The base indentation level of each line, must not be negative.
      */
     private void append( StringBuilder sb, String description, int indent )
-<span class="fc bfc" id="L323" title="All 2 branches covered.">    {</span>
-        for ( String line : toLines( description, indent, indentSize, lineLength ) )
-<span class="fc" id="L325">        {</span>
-<span class="fc" id="L326">            sb.append( line ).append( '\n' );</span>
-<span class="fc" id="L327">        }</span>
-    }
+    {
+<span class="fc bfc" id="L328" title="All 2 branches covered.">        for ( String line : toLines( description, indent, indentSize, lineLength ) )</span>
+        {
+<span class="fc" id="L330">            sb.append( line ).append( '\n' );</span>
+<span class="fc" id="L331">        }</span>
+<span class="fc" id="L332">    }</span>
 
     /**
      * Splits the specified text into lines of convenient display length.
@@ -338,19 +342,19 @@ public class HelpMojo
      * @throws NegativeArraySizeException if &lt;code&gt;indent &amp;lt; 0&lt;/code&gt;
      */
     private static List&lt;String&gt; toLines( String text, int indent, int indentSize, int lineLength )
-<span class="fc" id="L341">    {</span>
-        List&lt;String&gt; lines = new ArrayList&lt;String&gt;();
-<span class="fc" id="L343"></span>
-        String ind = repeat( &quot;\t&quot;, indent );
-<span class="fc" id="L345"></span>
-        String[] plainLines = text.split( &quot;(\r\n)|(\r)|(\n)&quot; );
-<span class="fc bfc" id="L347" title="All 2 branches covered."></span>
-        for ( String plainLine : plainLines )
-<span class="fc" id="L349">        {</span>
-            toLines( lines, ind + plainLine, indentSize, lineLength );
+    {
+<span class="fc" id="L346">        List&lt;String&gt; lines = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc" id="L348">        String ind = repeat( &quot;\t&quot;, indent );</span>
+
+<span class="fc" id="L350">        String[] plainLines = text.split( &quot;(\r\n)|(\r)|(\n)&quot; );</span>
+
+<span class="fc bfc" id="L352" title="All 2 branches covered.">        for ( String plainLine : plainLines )</span>
+        {
+<span class="fc" id="L354">            toLines( lines, ind + plainLine, indentSize, lineLength );</span>
         }
-<span class="fc" id="L352"></span>
-        return lines;
+
+<span class="fc" id="L357">        return lines;</span>
     }
 
     /**
@@ -362,47 +366,47 @@ public class HelpMojo
      * @param lineLength The length of the line, must not be negative.
      */
     private static void toLines( List&lt;String&gt; lines, String line, int indentSize, int lineLength )
-<span class="fc" id="L365">    {</span>
-<span class="fc" id="L366">        int lineIndent = getIndentLevel( line );</span>
-        StringBuilder buf = new StringBuilder( 256 );
-<span class="fc" id="L368"></span>
-        String[] tokens = line.split( &quot; +&quot; );
-<span class="fc bfc" id="L370" title="All 2 branches covered."></span>
-        for ( String token : tokens )
-<span class="fc bfc" id="L372" title="All 2 branches covered.">        {</span>
-            if ( buf.length() &gt; 0 )
-<span class="fc bfc" id="L374" title="All 2 branches covered.">            {</span>
-                if ( buf.length() + token.length() &gt;= lineLength )
-<span class="fc" id="L376">                {</span>
-<span class="fc" id="L377">                    lines.add( buf.toString() );</span>
-<span class="fc" id="L378">                    buf.setLength( 0 );</span>
-                    buf.append( repeat( &quot; &quot;, lineIndent * indentSize ) );
+    {
+<span class="fc" id="L370">        int lineIndent = getIndentLevel( line );</span>
+<span class="fc" id="L371">        StringBuilder buf = new StringBuilder( 256 );</span>
+
+<span class="fc" id="L373">        String[] tokens = line.split( &quot; +&quot; );</span>
+
+<span class="fc bfc" id="L375" title="All 2 branches covered.">        for ( String token : tokens )</span>
+        {
+<span class="fc bfc" id="L377" title="All 2 branches covered.">            if ( buf.length() &gt; 0 )</span>
+            {
+<span class="fc bfc" id="L379" title="All 2 branches covered.">                if ( buf.length() + token.length() &gt;= lineLength )</span>
+                {
+<span class="fc" id="L381">                    lines.add( buf.toString() );</span>
+<span class="fc" id="L382">                    buf.setLength( 0 );</span>
+<span class="fc" id="L383">                    buf.append( repeat( &quot; &quot;, lineIndent * indentSize ) );</span>
                 }
                 else
-<span class="fc" id="L382">                {</span>
-                    buf.append( ' ' );
+                {
+<span class="fc" id="L387">                    buf.append( ' ' );</span>
                 }
             }
-<span class="fc bfc" id="L386" title="All 2 branches covered."></span>
-            for ( int j = 0; j &lt; token.length(); j++ )
-<span class="fc" id="L388">            {</span>
-<span class="fc bfc" id="L389" title="All 2 branches covered.">                char c = token.charAt( j );</span>
-                if ( c == '\t' )
-<span class="fc" id="L391">                {</span>
-                    buf.append( repeat( &quot; &quot;, indentSize - buf.length() % indentSize ) );
-<span class="pc bpc" id="L393" title="1 of 2 branches missed.">                }</span>
-                else if ( c == '\u00A0' )
-<span class="nc" id="L395">                {</span>
-                    buf.append( ' ' );
+
+<span class="fc bfc" id="L391" title="All 2 branches covered.">            for ( int j = 0; j &lt; token.length(); j++ )</span>
+            {
+<span class="fc" id="L393">                char c = token.charAt( j );</span>
+<span class="fc bfc" id="L394" title="All 2 branches covered.">                if ( c == '\t' )</span>
+                {
+<span class="fc" id="L396">                    buf.append( repeat( &quot; &quot;, indentSize - buf.length() % indentSize ) );</span>
+                }
+<span class="pc bpc" id="L398" title="1 of 2 branches missed.">                else if ( c == '\u00A0' )</span>
+                {
+<span class="nc" id="L400">                    buf.append( ' ' );</span>
                 }
                 else
-<span class="fc" id="L399">                {</span>
-                    buf.append( c );
+                {
+<span class="fc" id="L404">                    buf.append( c );</span>
                 }
             }
-<span class="fc" id="L403">        }</span>
-<span class="fc" id="L404">        lines.add( buf.toString() );</span>
-    }
+        }
+<span class="fc" id="L408">        lines.add( buf.toString() );</span>
+<span class="fc" id="L409">    }</span>
 
     /**
      * Gets the indentation level of the specified line.
@@ -411,33 +415,33 @@ public class HelpMojo
      * @return The indentation level of the line.
      */
     private static int getIndentLevel( String line )
-<span class="fc" id="L414">    {</span>
-<span class="fc bfc" id="L415" title="All 4 branches covered.">        int level = 0;</span>
-        for ( int i = 0; i &lt; line.length() &amp;&amp; line.charAt( i ) == '\t'; i++ )
-<span class="fc" id="L417">        {</span>
-            level++;
-<span class="fc bfc" id="L419" title="All 4 branches covered.">        }</span>
-        for ( int i = level + 1; i &lt;= level + 4 &amp;&amp; i &lt; line.length(); i++ )
-<span class="pc bpc" id="L421" title="1 of 2 branches missed.">        {</span>
-            if ( line.charAt( i ) == '\t' )
-<span class="nc" id="L423">            {</span>
-<span class="nc" id="L424">                level++;</span>
-                break;
+    {
+<span class="fc" id="L419">        int level = 0;</span>
+<span class="fc bfc" id="L420" title="All 4 branches covered.">        for ( int i = 0; i &lt; line.length() &amp;&amp; line.charAt( i ) == '\t'; i++ )</span>
+        {
+<span class="fc" id="L422">            level++;</span>
+        }
+<span class="fc bfc" id="L424" title="All 4 branches covered.">        for ( int i = level + 1; i &lt;= level + 4 &amp;&amp; i &lt; line.length(); i++ )</span>
+        {
+<span class="pc bpc" id="L426" title="1 of 2 branches missed.">            if ( line.charAt( i ) == '\t' )</span>
+            {
+<span class="nc" id="L428">                level++;</span>
+<span class="nc" id="L429">                break;</span>
             }
-<span class="fc" id="L427">        }</span>
-        return level;
+        }
+<span class="fc" id="L432">        return level;</span>
     }
     
     private static String getPropertyFromExpression( String expression )
-<span class="nc bnc" id="L432" title="All 6 branches missed.">    {</span>
-<span class="nc bnc" id="L433" title="All 2 branches missed.">        if ( expression != null &amp;&amp; expression.startsWith( &quot;${&quot; ) &amp;&amp; expression.endsWith( &quot;}&quot; )</span>
-            &amp;&amp; !expression.substring( 2 ).contains( &quot;${&quot; ) )
+    {
+<span class="nc bnc" id="L437" title="All 6 branches missed.">        if ( expression != null &amp;&amp; expression.startsWith( &quot;${&quot; ) &amp;&amp; expression.endsWith( &quot;}&quot; )</span>
+<span class="nc bnc" id="L438" title="All 2 branches missed.">            &amp;&amp; !expression.substring( 2 ).contains( &quot;${&quot; ) )</span>
         {
-<span class="nc" id="L436">            // expression=&quot;${xxx}&quot; -&gt; property=&quot;xxx&quot;</span>
-            return expression.substring( 2, expression.length() - 1 );
+            // expression=&quot;${xxx}&quot; -&gt; property=&quot;xxx&quot;
+<span class="nc" id="L441">            return expression.substring( 2, expression.length() - 1 );</span>
         }
-<span class="nc" id="L439">        // no property can be extracted</span>
-        return null;
+        // no property can be extracted
+<span class="nc" id="L444">        return null;</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

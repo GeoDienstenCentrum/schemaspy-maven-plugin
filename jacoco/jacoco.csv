@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-SchemaSpy Maven Plugin,com.wakaleo.schemaspy,HelpMojo,854,0,108,0,153,0,70,0,16,0
+SchemaSpy Maven Plugin,com.wakaleo.schemaspy,HelpMojo,323,538,59,51,52,103,41,30,2,14
 SchemaSpy Maven Plugin,com.wakaleo.schemaspy,SchemaSpyReport,66,311,9,11,14,61,14,10,8,6
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,XmlTableFormatter.new Comparator() {...},0,12,0,0,0,2,0,2,0,2
 SchemaSpy Maven Plugin,net.sourceforge.schemaspy.view,HtmlColumnsPage.ByTypeComparator,0,30,0,2,0,6,0,3,0,2
