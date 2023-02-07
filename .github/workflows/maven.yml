@@ -20,11 +20,11 @@ jobs:
       matrix:        
         java: [ 8, 11 ]
         java_dist: ["temurin"]
-        maven: [ "3.5.4", "3.6.3", "3.8.7" ]
+        maven: [ "3.5.4", "3.6.3", "3.8.7", "3.9.0" ]
         include:
           - java: 17
             java_dist: "temurin"
-            maven: "3.8.7"
+            maven: "3.9.0"
 
     services:
       postgres:
@@ -40,14 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache Maven repository
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            maven-
-
       - name: Set up Maven
         uses: stCarolas/setup-maven@v4.5
         with:
@@ -58,6 +50,7 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: ${{ matrix.java_dist }}
+          cache: maven
 
       - name: Startup databases
         run: |
@@ -100,19 +93,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache Maven repository
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            maven-
-
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: 8
           distribution: 'zulu'
+          cache: maven
 
       - name: JavaDoc
         run: mvn javadoc:javadoc
