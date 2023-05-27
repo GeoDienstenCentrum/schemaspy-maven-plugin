@@ -145,12 +145,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <!-- upgrade transitive dependency from maven-core:jar:3.8.4 due to reported vulns -->
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>3.5.1</version>
-        </dependency>
-        <dependency>
             <!-- upgrade transitive-transitive dependency from
             maven-reporting-impl:jar:3.1.0-doxia-site-renderer:jar:1.11.1 due to reported vulns -->
             <groupId>commons-beanutils</groupId>
@@ -352,10 +346,7 @@
                         <includes>com/wakaleo/**/*.java</includes>
                         <!--<suppressionsLocation>${basedir}/checkstyle-suppressions.xml</suppressionsLocation>-->
                         <enableRSS>false</enableRSS>
-                        <excludes>
-
-                            **/HelpMojo.java
-                        </excludes>
+                        <excludes>**/HelpMojo.java</excludes>
                     </configuration>
                 </plugin>
                 <plugin>
