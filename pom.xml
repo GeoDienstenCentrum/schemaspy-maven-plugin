@@ -103,7 +103,7 @@
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         <dependency-check-maven.version>8.2.1</dependency-check-maven.version>
         <taglist-maven-plugin.version>3.0.0</taglist-maven-plugin.version>
-        <maven-checkstyle-plugin.version>3.2.2</maven-checkstyle-plugin.version>
+        <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
         <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
