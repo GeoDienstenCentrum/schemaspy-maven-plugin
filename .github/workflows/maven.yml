@@ -26,7 +26,7 @@ jobs:
             java_dist: "temurin"
             maven: "3.9.5"
           - java: 21
-            java_dist: "temurin"
+            java_dist: "zulu"
             maven: "3.9.5"
 
     services:
