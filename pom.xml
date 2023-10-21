@@ -295,7 +295,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>4.0.0-M10</version>
+                    <version>4.0.0-M11</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.skins</groupId>
