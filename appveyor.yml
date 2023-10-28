@@ -13,6 +13,7 @@ install:
   - cd C:\projects\schemaspy-maven-plugin
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-http-proxy.ps1'))
   - ps: .\.appveyor\set-maven-proxy.ps1
+  - ps: choco upgrade chocolatey
   - ps: choco install graphviz --cache-location=C:\Users\appveyor\.choco\cache
   - mvn install -Dmaven.test.skip=true -B -V -fae -e
 
