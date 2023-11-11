@@ -201,6 +201,7 @@
             <artifactId>derbytools</artifactId>
             <version>10.17.1.0</version>
             <optional>true</optional>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
