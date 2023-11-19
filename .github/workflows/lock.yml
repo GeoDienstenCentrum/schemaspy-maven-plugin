@@ -11,9 +11,7 @@ concurrency:
 jobs:
   action:
     name: 'Repository Maintenance'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: mprins/.github/.github/workflows/maintenance.yml@main
-        with:
-          issue-inactive-days: '63'
-          pr-inactive-days: '22'
+    uses: mprins/.github/.github/workflows/maintenance.yml@main
+    with:
+        issue-inactive-days: '63'
+        pr-inactive-days: '22'
