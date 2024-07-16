@@ -366,6 +366,7 @@
                     <configuration>
                         <name>OWASP Dependency Check</name>
                         <formats>ALL</formats>
+                        <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
                     </configuration>
                 </plugin>
             </plugins>
