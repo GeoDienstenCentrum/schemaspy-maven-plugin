@@ -1,5 +1,9 @@
 name: Maven Site
 
+concurrency:
+  group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
+  cancel-in-progress: true
+
 on:
   push:
   pull_request:
@@ -19,4 +23,6 @@ jobs:
           cache: maven
 
       - name: Build Site with Maven
-        run: mvn site -Dmaven.test.skip=true -B -V -fae -q -DnvdApiKey=${{ secrets.NVD_API_KEY }}
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: mvn site -Dmaven.test.skip=true -B -V -fae -q
