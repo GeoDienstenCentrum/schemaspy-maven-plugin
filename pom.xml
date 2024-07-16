@@ -216,7 +216,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>12.6.1.jre8</version>
+            <version>12.6.3.jre11</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -227,7 +227,7 @@
         </dependency>
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
+            <artifactId>ojdbc11</artifactId>
             <version>23.4.0.24.05</version>
             <optional>true</optional>
         </dependency>
@@ -741,8 +741,7 @@
         <profile>
             <id>appveyor</id>
             <properties>
-                <surefire.excludes.files>**/Oracle*Test.java,**/Mysql*Test.java,**/PGSQL*Test.java
-                </surefire.excludes.files>
+                <surefire.excludes.files>**/Oracle*Test.java,**/Mysql*Test.java,**/PGSQL*Test.java</surefire.excludes.files>
             </properties>
         </profile>
         <profile>
@@ -759,7 +758,8 @@
                                 export GPG_TTY
                         -->
                         <configuration>
-                            <executable>gpg2</executable>
+                            <!-- gpg2 on openbsd, gpg on linux -->
+                            <executable>gpg</executable>
                             <gpgArguments>
                                 <arg>--verbose</arg>
                                 <!-- GPG 2.1 requires pinentry-mode to be set to loopback in order
