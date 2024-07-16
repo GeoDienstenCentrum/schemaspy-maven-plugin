@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang=""><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SchemaSpyReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">com.wakaleo.schemaspy</a> &gt; <span class="el_source">SchemaSpyReport.java</span></div><h1>SchemaSpyReport.java</h1><pre class="source lang-java linenums">package com.wakaleo.schemaspy;
 
-import net.sourceforge.schemaspy.Config;
-import net.sourceforge.schemaspy.SchemaAnalyzer;
 import org.apache.maven.doxia.siterenderer.Renderer;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -35,7 +33,7 @@ import java.util.Locale;
  *
  */
 @Mojo(name = &quot;schemaspy&quot;, defaultPhase = LifecyclePhase.SITE)
-<span class="fc" id="L38">public class SchemaSpyReport extends AbstractMavenReport {</span>
+<span class="fc" id="L36">public class SchemaSpyReport extends AbstractMavenReport {</span>
 
     /**
      * The output directory for the intermediate report.
@@ -307,23 +305,29 @@ import java.util.Locale;
     @Parameter(property = &quot;noLogo&quot;, defaultValue = &quot;true&quot;)
     private Boolean noLogo;
 
+    @Parameter(property = &quot;catalog&quot;, defaultValue = &quot;%&quot;)
+    private String catalog;
+
+<span class="fc" id="L311">    @Parameter(property = &quot;vizjs&quot;, defaultValue = &quot;true&quot;)</span>
+    protected boolean vizjs = false;
+
     /**
      * Whether to create the report only on the execution root of a multi-module project.
      *
      * @since 5.0.4
      */
-<span class="fc" id="L315">    @Parameter(property = &quot;runOnExecutionRoot&quot;, defaultValue = &quot;false&quot;)</span>
+<span class="fc" id="L319">    @Parameter(property = &quot;runOnExecutionRoot&quot;, defaultValue = &quot;false&quot;)</span>
     protected boolean runOnExecutionRoot = false;
 
     /**
      * The SchemaSpy analyser that generates the actual report.
      * Can be overridden for testing purposes.
      */
-<span class="fc" id="L322">    SchemaAnalyzer analyzer = new SchemaAnalyzer();</span>
+    private MavenSchemaAnalyzer analyzer;
 
-    protected void setSchemaAnalyzer(final SchemaAnalyzer analyzer) {
-<span class="fc" id="L325">        this.analyzer = analyzer;</span>
-<span class="fc" id="L326">    }</span>
+    protected void setSchemaAnalyzer(final MavenSchemaAnalyzer analyzer) {
+<span class="nc" id="L329">        this.analyzer = analyzer;</span>
+<span class="nc" id="L330">    }</span>
 
     /**
     * Convenience method used to build the schemaspy command line parameters.
@@ -334,10 +338,11 @@ import java.util.Locale;
     */
     private void addToArguments(
         final List&lt;String&gt; argList, final String parameter, final Boolean value) {
-<span class="pc bpc" id="L337" title="3 of 4 branches missed.">        if (value != null &amp;&amp; value) {</span>
-<span class="nc" id="L338">            argList.add(parameter + &quot;=&quot; + value);</span>
+<span class="pc bpc" id="L341" title="3 of 4 branches missed.">        if (value != null &amp;&amp; value) {</span>
+<span class="nc" id="L342">            argList.add(parameter);</span>
+<span class="nc" id="L343">            argList.add(String.valueOf(true));</span>
         }
-<span class="fc" id="L340">    }</span>
+<span class="fc" id="L345">    }</span>
 
     /**
     * Convenience method used to build the schemaspy command line parameters.
@@ -348,10 +353,10 @@ import java.util.Locale;
     */
     private void addFlagToArguments(
         final List&lt;String&gt; argList, final String parameter, final Boolean value) {
-<span class="fc bfc" id="L351" title="All 4 branches covered.">        if (value != null &amp;&amp; value) {</span>
-<span class="fc" id="L352">            argList.add(parameter);</span>
+<span class="fc bfc" id="L356" title="All 4 branches covered.">        if (value != null &amp;&amp; value) {</span>
+<span class="fc" id="L357">            argList.add(parameter);</span>
         }
-<span class="fc" id="L354">    }</span>
+<span class="fc" id="L359">    }</span>
 
     /**
      * Convenience method used to build the schemaspy command line parameters.
@@ -363,12 +368,12 @@ import java.util.Locale;
      * @param value
      *            the value for this parameter
      */
-    private void addToArguments(final List&lt;String&gt; argList,
-            final String parameter, final String value) {
-<span class="fc bfc" id="L368" title="All 2 branches covered.">        if (value != null) {</span>
-<span class="fc" id="L369">            argList.add(parameter + &quot;=&quot; + value);</span>
+    private void addToArguments(final List&lt;String&gt; argList, final String parameter, final String value) {
+<span class="fc bfc" id="L372" title="All 2 branches covered.">        if (value != null) {</span>
+<span class="fc" id="L373">            argList.add(parameter);</span>
+<span class="fc" id="L374">            argList.add(value);</span>
         }
-<span class="fc" id="L371">    }</span>
+<span class="fc" id="L376">    }</span>
 
     /**
      * Generate the Schemaspy report.
@@ -385,106 +390,108 @@ import java.util.Locale;
         // targetDirectory should be set by the maven framework. This is
         // jusr for unit testing purposes
         //
-<span class="pc bpc" id="L388" title="1 of 2 branches missed.">        if (targetDirectory == null) {</span>
-<span class="fc" id="L389">            targetDirectory = new File(&quot;target&quot;);</span>
+<span class="pc bpc" id="L393" title="1 of 2 branches missed.">        if (targetDirectory == null) {</span>
+<span class="fc" id="L394">            targetDirectory = new File(&quot;target&quot;);</span>
         }
 
-<span class="fc" id="L392">        targetDirectory.mkdirs();</span>
-<span class="fc" id="L393">        File siteDir = new File(targetDirectory, &quot;site&quot;);</span>
-<span class="fc" id="L394">        siteDir.mkdirs();</span>
-<span class="fc" id="L395">        File outputDir = null;</span>
-<span class="pc bpc" id="L396" title="1 of 2 branches missed.">        if (outputDirectory == null) {</span>
-<span class="nc" id="L397">            outputDir = new File(siteDir, &quot;schemaspy&quot;);</span>
-<span class="nc" id="L398">            outputDir.mkdirs();</span>
-<span class="nc" id="L399">            outputDirectory = outputDir.getAbsolutePath();</span>
+<span class="fc" id="L397">        targetDirectory.mkdirs();</span>
+<span class="fc" id="L398">        File siteDir = new File(targetDirectory, &quot;site&quot;);</span>
+<span class="fc" id="L399">        siteDir.mkdirs();</span>
+<span class="fc" id="L400">        File outputDir = null;</span>
+<span class="pc bpc" id="L401" title="1 of 2 branches missed.">        if (outputDirectory == null) {</span>
+<span class="nc" id="L402">            outputDir = new File(siteDir, &quot;schemaspy&quot;);</span>
+<span class="nc" id="L403">            outputDir.mkdirs();</span>
+<span class="nc" id="L404">            outputDirectory = outputDir.getAbsolutePath();</span>
         } else {
-<span class="fc" id="L401">            outputDir = new File(new File(outputDirectory), &quot;schemaspy&quot;);</span>
-<span class="fc" id="L402">            outputDir.mkdirs();</span>
+<span class="fc" id="L406">            outputDir = new File(new File(outputDirectory), &quot;schemaspy&quot;);</span>
+<span class="fc" id="L407">            outputDir.mkdirs();</span>
         }
-<span class="fc" id="L404">        String schemaSpyDirectory = outputDir.getAbsolutePath();</span>
-<span class="fc" id="L405">        List&lt;String&gt; argList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L409">        String schemaSpyDirectory = outputDir.getAbsolutePath();</span>
+
+<span class="fc" id="L411">        List&lt;String&gt; argList = new ArrayList&lt;&gt;();</span>
 
 //        if ((jdbcUrl != null) &amp;&amp; (databaseType == null)) {
 //            databaseType = JDBCHelper.extractDatabaseType(jdbcUrl);
 //        }
-<span class="fc" id="L410">        addToArguments(argList, &quot;-dp&quot;, pathToDrivers);</span>
-<span class="fc" id="L411">        addToArguments(argList, &quot;-db&quot;, database);</span>
-<span class="fc" id="L412">        addToArguments(argList, &quot;-host&quot;, host);</span>
-<span class="fc" id="L413">        addToArguments(argList, &quot;-port&quot;, port);</span>
-<span class="fc" id="L414">        addToArguments(argList, &quot;-t&quot;, databaseType);</span>
-<span class="fc" id="L415">        addToArguments(argList, &quot;-u&quot;, user);</span>
-<span class="fc" id="L416">        addToArguments(argList, &quot;-p&quot;, password);</span>
-<span class="fc" id="L417">        addToArguments(argList, &quot;-s&quot;, schema);</span>
-<span class="fc" id="L418">        addToArguments(argList, &quot;-o&quot;, schemaSpyDirectory);</span>
-<span class="fc" id="L419">        addToArguments(argList, &quot;-desc&quot;, schemaDescription);</span>
-<span class="fc" id="L420">        addToArguments(argList, &quot;-i&quot;, includeTableNamesRegex);</span>
-<span class="fc" id="L421">        addToArguments(argList, &quot;-x&quot;, excludeColumnNamesRegex);</span>
-<span class="fc" id="L422">        addFlagToArguments(argList, &quot;-ahic&quot;, allowHtmlInComments);</span>
-<span class="fc" id="L423">        addFlagToArguments(argList, &quot;-noimplied&quot;, noImplied);</span>
-<span class="fc" id="L424">        addFlagToArguments(argList, &quot;-nohtml&quot;, noHtml);</span>
-<span class="fc" id="L425">        addToArguments(argList, &quot;-loglevel&quot;, logLevel);</span>
-<span class="fc" id="L426">        addFlagToArguments(argList, &quot;-norows&quot;, noRows);</span>
-<span class="fc" id="L427">        addFlagToArguments(argList, &quot;-noviews&quot;, noViews);</span>
-<span class="fc" id="L428">        addFlagToArguments(argList, &quot;-noschema&quot;, noSchema);</span>
-<span class="fc" id="L429">        addFlagToArguments(argList, &quot;-all&quot;, showAllSchemas);</span>
-<span class="fc" id="L430">        addToArguments(argList, &quot;-schemas&quot;, schemas);</span>
+<span class="fc" id="L416">        addToArguments(argList, &quot;-dp&quot;, pathToDrivers);</span>
+<span class="fc" id="L417">        addToArguments(argList, &quot;-db&quot;, database);</span>
+<span class="fc" id="L418">        addToArguments(argList, &quot;-host&quot;, host);</span>
+<span class="fc" id="L419">        addToArguments(argList, &quot;-port&quot;, port);</span>
+<span class="fc" id="L420">        addToArguments(argList, &quot;-t&quot;, databaseType);</span>
+<span class="fc" id="L421">        addToArguments(argList, &quot;-u&quot;, user);</span>
+<span class="fc" id="L422">        addToArguments(argList, &quot;-p&quot;, password);</span>
+<span class="fc" id="L423">        addToArguments(argList, &quot;-s&quot;, schema);</span>
+<span class="fc" id="L424">        addToArguments(argList, &quot;-o&quot;, schemaSpyDirectory);</span>
+<span class="fc" id="L425">        addToArguments(argList, &quot;-desc&quot;, schemaDescription);</span>
+<span class="fc" id="L426">        addToArguments(argList, &quot;-i&quot;, includeTableNamesRegex);</span>
+<span class="fc" id="L427">        addToArguments(argList, &quot;-x&quot;, excludeColumnNamesRegex);</span>
+<span class="fc" id="L428">        addFlagToArguments(argList, &quot;-ahic&quot;, allowHtmlInComments);</span>
+<span class="fc" id="L429">        addFlagToArguments(argList, &quot;-noimplied&quot;, noImplied);</span>
+<span class="fc" id="L430">        addFlagToArguments(argList, &quot;-nohtml&quot;, noHtml);</span>
+<span class="fc" id="L431">        addToArguments(argList, &quot;-loglevel&quot;, logLevel);</span>
+<span class="fc" id="L432">        addFlagToArguments(argList, &quot;-norows&quot;, noRows);</span>
+<span class="fc" id="L433">        addFlagToArguments(argList, &quot;-noviews&quot;, noViews);</span>
+<span class="fc" id="L434">        addFlagToArguments(argList, &quot;-noschema&quot;, noSchema);</span>
+<span class="fc" id="L435">        addFlagToArguments(argList, &quot;-all&quot;, showAllSchemas);</span>
+<span class="fc" id="L436">        addToArguments(argList, &quot;-schemas&quot;, schemas);</span>
 
-<span class="fc" id="L432">        addToArguments(argList, &quot;-useDriverManager&quot;, useDriverManager);</span>
-<span class="fc" id="L433">        addToArguments(argList, &quot;-css&quot;, cssStylesheet);</span>
-<span class="fc" id="L434">        addFlagToArguments(argList, &quot;-sso&quot;, singleSignOn);</span>
-<span class="fc" id="L435">        addFlagToArguments(argList, &quot;-lq&quot;, lowQuality);</span>
-<span class="fc" id="L436">        addFlagToArguments(argList, &quot;-hq&quot;, highQuality);</span>
-<span class="fc" id="L437">        addToArguments(argList, &quot;-connprops&quot;, connprops);</span>
-<span class="fc" id="L438">        addFlagToArguments(argList, &quot;-cid&quot;, commentsInitiallyDisplayed);</span>
-<span class="fc" id="L439">        addFlagToArguments(argList, &quot;-noads&quot;, noAds);</span>
-<span class="fc" id="L440">        addFlagToArguments(argList, &quot;-nologo&quot;, noLogo);</span>
+<span class="fc" id="L438">        addToArguments(argList, &quot;-useDriverManager&quot;, useDriverManager);</span>
+<span class="fc" id="L439">        addToArguments(argList, &quot;-css&quot;, cssStylesheet);</span>
+<span class="fc" id="L440">        addFlagToArguments(argList, &quot;-sso&quot;, singleSignOn);</span>
+<span class="fc" id="L441">        addFlagToArguments(argList, &quot;-lq&quot;, lowQuality);</span>
+<span class="fc" id="L442">        addFlagToArguments(argList, &quot;-hq&quot;, highQuality);</span>
+<span class="fc" id="L443">        addToArguments(argList, &quot;-connprops&quot;, connprops);</span>
+<span class="fc" id="L444">        addFlagToArguments(argList, &quot;-cid&quot;, commentsInitiallyDisplayed);</span>
+<span class="fc" id="L445">        addFlagToArguments(argList, &quot;-noads&quot;, noAds);</span>
+<span class="fc" id="L446">        addFlagToArguments(argList, &quot;-nologo&quot;, noLogo);</span>
+<span class="fc" id="L447">        addToArguments(argList, &quot;-cat&quot;, catalog);</span>
+<span class="fc" id="L448">        addFlagToArguments(argList, &quot;-vizjs&quot;, vizjs);</span>
 //        addToArguments(argList, &quot;-jdbcUrl&quot;, jdbcUrl);
 
-<span class="fc" id="L443">        String[] args = argList.toArray(new String[0]);</span>
-<span class="fc" id="L444">        getLog().info(&quot;Generating SchemaSpy report with parameters:&quot;);</span>
-<span class="fc bfc" id="L445" title="All 2 branches covered.">        for (String arg : args) {</span>
-<span class="fc" id="L446">            getLog().info(arg);</span>
-        }
         try {
-<span class="fc" id="L449">            analyzer.analyze(new Config(args));</span>
-<span class="nc" id="L450">        } catch (Exception e) {</span>
-<span class="nc" id="L451">            throw new MavenReportException(e.getMessage(), e);</span>
-<span class="fc" id="L452">        }</span>
-<span class="fc" id="L453">    }</span>
+<span class="pc bpc" id="L452" title="1 of 2 branches missed.">            if (analyzer == null) {</span>
+<span class="fc" id="L453">                analyzer = new MavenSchemaAnalyzer();</span>
+<span class="fc" id="L454">                analyzer.applyConfiguration(argList);</span>
+            }
+<span class="fc" id="L456">            analyzer.analyze();</span>
+<span class="nc" id="L457">        } catch (Exception e) {</span>
+<span class="nc" id="L458">            throw new MavenReportException(e.getMessage(), e);</span>
+<span class="fc" id="L459">        }</span>
+<span class="fc" id="L460">    }</span>
 
     @Override
     public boolean canGenerateReport() {
-<span class="nc bnc" id="L457" title="All 4 branches missed.">        return !runOnExecutionRoot || project.isExecutionRoot();</span>
+<span class="nc bnc" id="L464" title="All 4 branches missed.">        return !runOnExecutionRoot || project.isExecutionRoot();</span>
     }
 
     @Override
     protected String getOutputDirectory() {
-<span class="nc" id="L462">        return outputDirectory;</span>
+<span class="nc" id="L469">        return outputDirectory;</span>
     }
 
     @Override
     protected MavenProject getProject() {
-<span class="nc" id="L467">        return project;</span>
+<span class="nc" id="L474">        return project;</span>
     }
 
     @Override
     protected Renderer getSiteRenderer() {
-<span class="nc" id="L472">        return siteRenderer;</span>
+<span class="nc" id="L479">        return siteRenderer;</span>
     }
 
     @Override
     public String getDescription(final Locale locale) {
-<span class="nc" id="L477">        return &quot;SchemaSpy database documentation&quot;;</span>
+<span class="nc" id="L484">        return &quot;SchemaSpy database documentation&quot;;</span>
     }
 
     @Override
     public String getName(final Locale locale) {
-<span class="nc" id="L482">        return &quot;SchemaSpy&quot;;</span>
+<span class="nc" id="L489">        return &quot;SchemaSpy&quot;;</span>
     }
 
     @Override
     public String getOutputName() {
-<span class="nc" id="L487">        return &quot;schemaspy/index&quot;;</span>
+<span class="nc" id="L494">        return &quot;schemaspy/index&quot;;</span>
     }
 
     /**
@@ -495,7 +502,7 @@ import java.util.Locale;
      */
     @Override
     public boolean isExternalReport() {
-<span class="nc" id="L498">        return true;</span>
+<span class="nc" id="L505">        return true;</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

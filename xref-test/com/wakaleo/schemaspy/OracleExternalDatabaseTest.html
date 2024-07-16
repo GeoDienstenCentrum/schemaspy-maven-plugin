@@ -54,18 +54,19 @@
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>          assumeTrue(<span class="jxr_string">"POM file should exist as file."</span>,
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>                  testPom.exists() &amp;&amp; testPom.isFile());
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          SchemaSpyReport mojo = (SchemaSpyReport) <strong class="jxr_keyword">this</strong>.rule.lookupMojo(<span class="jxr_string">"schemaspy"</span>, testPom);
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>          mojo.executeReport(Locale.getDefault());
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <em class="jxr_comment">// check if the reports generated</em>
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>          File generatedFile = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"./target/reports/oracle-test/schemaspy/index.html"</span>);
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>          Logger.getLogger(<span class="jxr_string">"global"</span>).info(<span class="jxr_string">"generatedFile = "</span> + generatedFile.getAbsolutePath());
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>          assertTrue(generatedFile.exists());
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      }
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  }
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          SchemaSpyReport mojo = <strong class="jxr_keyword">new</strong> SchemaSpyReport();
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          mojo = (SchemaSpyReport) <strong class="jxr_keyword">this</strong>.rule.configureMojo(mojo, rule.extractPluginConfiguration(<span class="jxr_string">"schemaspy-maven-plugin"</span>, testPom));
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          mojo.executeReport(Locale.getDefault());
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          <em class="jxr_comment">// check if the reports generated</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          File generatedFile = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"./target/reports/oracle-test/schemaspy/index.html"</span>);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          Logger.getLogger(<span class="jxr_string">"global"</span>).info(<span class="jxr_string">"generatedFile = "</span> + generatedFile.getAbsolutePath());
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          assertTrue(generatedFile.exists());
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      }
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2007&#x2013;2023 <a href="https://github.com/GeoDienstenCentrum">GeoDienstenCentrum</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2007&#x2013;2024 <a href="https://github.com/GeoDienstenCentrum">GeoDienstenCentrum</a>. All rights reserved.</div>
 </body>
 </html>

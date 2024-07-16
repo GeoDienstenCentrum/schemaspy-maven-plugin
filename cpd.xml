@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd/>
+<pmd-cpd xmlns="https://pmd-code.org/schema/cpd-report"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         pmdVersion="7.3.0"
+         timestamp="2024-07-16T14:13:52.905942911+02:00"
+         version="1.0.0"
+         xsi:schemaLocation="https://pmd-code.org/schema/cpd-report https://pmd.github.io/schema/cpd-report_1_0_0.xsd">
+   <file path="/home/mark/dev/projects/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/MavenSchemaAnalyzer.java"
+         totalNumberOfTokens="136"/>
+   <file path="/home/mark/dev/projects/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/SchemaSpyReport.java"
+         totalNumberOfTokens="1096"/>
+   <file path="/home/mark/dev/projects/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/util/JDBCHelper.java"
+         totalNumberOfTokens="147"/>
+</pmd-cpd>
