@@ -95,7 +95,7 @@
         <surefire.excludes.files>**/*ExternalDatabaseTest.java</surefire.excludes.files>
         <maven-libs.version>3.9.8</maven-libs.version>
         <maven-libs.annotations.version>3.13.1</maven-libs.annotations.version>
-        <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.8.0</maven-javadoc-plugin.version>
         <versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
         <maven-plugin-plugin.version>3.13.1</maven-plugin-plugin.version>
         <maven-project-info-reports-plugin.version>3.6.2</maven-project-info-reports-plugin.version>
