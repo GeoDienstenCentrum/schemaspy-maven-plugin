@@ -69,8 +69,8 @@ jobs:
           psql -U postgres -h localhost -d test -f ./src/test/resources/sql/pgsql.sql
           docker exec -i mysql1 mysql -uroot -pmysql -e 'CREATE DATABASE IF NOT EXISTS test;'
           docker exec -i mysql1 mysql -uroot -pmysql test < ./src/test/resources/sql/mysql.sql
-          docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password12!' -d 'master' -Q 'CREATE DATABASE test'
-          docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password12!' -d 'test' -i /checkout/src/test/resources/sql/mssql.sql
+          docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'master' -Q 'CREATE DATABASE test'
+          docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'test' -i /checkout/src/test/resources/sql/mssql.sql
           docker exec -i schemaspy sqlplus -l system/oracle@//localhost:1521/XE < build/ci/create_oracle_user.sql
           docker exec -i schemaspy sqlplus -l schemaspy/schemaspy@//localhost:1521/XE < src/test/resources/sql/oracle.sql
 
