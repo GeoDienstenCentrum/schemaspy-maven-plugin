@@ -198,7 +198,13 @@
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.14.2.0</version>
+            <version>10.15.2.0</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbytools</artifactId>
+            <version>10.15.2.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -210,7 +216,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.3</version>
+            <version>42.7.4</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -339,13 +345,6 @@
                 <plugin>
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>${maven-checkstyle-plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>9.3</version>
-                        </dependency>
-                    </dependencies>
                     <configuration>
                         <includeResources>false</includeResources>
                         <configLocation>build/qa/checkstyle.xml</configLocation>
@@ -385,14 +384,10 @@
                     </filesets>
                 </configuration>
             </plugin>
-            <!-- Define the Main class of the output JAR file -->
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
-                        <manifest>
-                            <mainClass>net.sourceforge.schemaspy.Main</mainClass>
-                        </manifest>
                         <manifestEntries>
                             <Specification-Title>${project.name}</Specification-Title>
                             <Specification-Version>${project.version}</Specification-Version>
