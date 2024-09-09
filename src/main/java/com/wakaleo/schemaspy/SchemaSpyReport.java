@@ -19,18 +19,14 @@ import java.util.Locale;
  *
  * @author John Smart
  *           The SchemaSpy Maven plugin This plugin is designed to generate
- *           SchemaSpy reports for a Maven web site.
- *
- *           SchemaSpy (http://schemaspy.sourceforge.net) does not need to be
- *           installed and accessible on your machine. However, SchemaSpy also
- *           needs the Graphviz tool (http://www.graphviz.org/) in order to
+ *           SchemaSpy report for a Maven web site.
+ *           SchemaSpy also may need the Graphviz tool (https://www.graphviz.org/) in order to
  *           generate graphical representations of the table/view relationships,
  *           so this needs to be installed on your machine.
- *
+ *           <p/>
  *           The schemaspy goal invokes the SchemaSpy command-line tool.
  *           SchemaSpy generates a graphical and HTML report describing a given
  *           relational database.
- *
  */
 @Mojo(name = "schemaspy", defaultPhase = LifecyclePhase.SITE)
 public class SchemaSpyReport extends AbstractMavenReport {
@@ -407,6 +403,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
             outputDir.mkdirs();
         }
         String schemaSpyDirectory = outputDir.getAbsolutePath();
+        getLog().debug("SchemaSpy output directory: " + schemaSpyDirectory);
 
         List<String> argList = new ArrayList<>();
 
@@ -420,7 +417,11 @@ public class SchemaSpyReport extends AbstractMavenReport {
         addToArguments(argList, "-t", databaseType);
         addToArguments(argList, "-u", user);
         addToArguments(argList, "-p", password);
-        addToArguments(argList, "-s", schema);
+        if (null != schema && schema.contains(",")) {
+            addToArguments(argList, "-schemas", schema);
+        } else {
+            addToArguments(argList, "-s", schema);
+        }
         addToArguments(argList, "-o", schemaSpyDirectory);
         addToArguments(argList, "-desc", schemaDescription);
         addToArguments(argList, "-i", includeTableNamesRegex);
@@ -446,7 +447,12 @@ public class SchemaSpyReport extends AbstractMavenReport {
         addFlagToArguments(argList, "-nologo", noLogo);
         addToArguments(argList, "-cat", catalog);
         addFlagToArguments(argList, "-vizjs", vizjs);
+        if(getLog().isDebugEnabled()) {
+            addFlagToArguments(argList, "-debug", true);
+        }
 //        addToArguments(argList, "-jdbcUrl", jdbcUrl);
+        getLog().debug("SchemaSpy arguments: " + argList);
+
 
         try {
             if (analyzer == null) {
