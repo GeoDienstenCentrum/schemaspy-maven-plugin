@@ -551,7 +551,7 @@
                 </reportSets>
             </plugin>
             <plugin>
-                <artifactId>maven-plugin-plugin</artifactId>
+                <artifactId>maven-plugin-report-plugin</artifactId>
                 <version>${maven-plugin-plugin.version}</version>
             </plugin>
             <plugin>
@@ -622,7 +622,6 @@
                     </reportSet>
                 </reportSets>
                 <configuration>
-                    <stylesheet>java</stylesheet>
                     <show>protected</show>
                     <useStandardDocletOptions>true</useStandardDocletOptions>
                     <author>true</author>
