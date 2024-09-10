@@ -37,7 +37,6 @@ under the License.
               <databaseType>derby</databaseType>
               <database>target/testdb</database>
               <outputDirectory>target/reports/full-test</outputDirectory>
-              <pathToDrivers>src/test/resources/lib/derby-10.14.2.0.jar</pathToDrivers>
               <commentsInitiallyDisplayed>true</commentsInitiallyDisplayed>
               <noImplied>true</noImplied>
               <noHtml>false</noHtml>
