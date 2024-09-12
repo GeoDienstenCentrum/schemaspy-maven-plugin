@@ -3,7 +3,7 @@ name: 'Release Drafter & Contributors'
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   update_release_draft:
