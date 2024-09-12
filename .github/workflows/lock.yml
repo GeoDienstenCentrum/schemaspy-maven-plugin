@@ -13,5 +13,5 @@ jobs:
     name: 'Repository Maintenance'
     uses: mprins/.github/.github/workflows/maintenance.yml@main
     with:
-        issue-inactive-days: '63'
-        pr-inactive-days: '22'
+      issue-inactive-days: '63'
+      pr-inactive-days: '22'

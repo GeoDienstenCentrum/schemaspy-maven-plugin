@@ -1,37 +1,37 @@
-name: OWASP dependency check
+name: 'OWASP dependency check'
 
 concurrency:
   group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
   cancel-in-progress: true
 
-on: [pull_request, workflow_dispatch]
+on: [ pull_request, workflow_dispatch ]
 
 jobs:
   build:
-    name: Java ${{ matrix.java }}
+    name: "Java ${{ matrix.java }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
         java: [ 11 ]
-        java_dist: ["temurin"]
+        java_dist: [ "temurin" ]
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: 'Set up JDK'
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
           distribution: ${{ matrix.java_dist }}
           cache: maven
 
-      - name: OWASP Dependency Check
+      - name: 'OWASP Dependency Check'
         continue-on-error: true
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: mvn package -Dmaven.test.skip=true org.owasp:dependency-check-maven:check -fae -B -Dorg.slf4j.simpleLogger.defaultLogLevel=WARN -DfailBuildOnCVSS=7
 
-      - name: Upload result to GitHub Code Scanning
+      - name: 'Upload result to GitHub Code Scanning'
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: target/dependency-check-report.sarif
