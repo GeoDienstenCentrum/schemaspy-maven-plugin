@@ -98,7 +98,6 @@
         <maven-plugin-plugin.version>3.15.0</maven-plugin-plugin.version>
         <maven-project-info-reports-plugin.version>3.7.0</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>3.5.0</maven-jxr-plugin.version>
-        <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         <dependency-check-maven.version>10.0.4</dependency-check-maven.version>
         <taglist-maven-plugin.version>3.1.0</taglist-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.5.0</maven-checkstyle-plugin.version>
@@ -583,23 +582,6 @@
                 <configuration>
                     <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-changes-plugin</artifactId>
-                <version>${maven-changes-plugin.version}</version>
-                <configuration>
-                    <publishDateLocale>en</publishDateLocale>
-                    <includeOpenIssues>false</includeOpenIssues>
-                    <sortColumnNames>Fix Version DESC</sortColumnNames>
-                    <columnNames>Fix Version, Id, Type, Reporter, Summary</columnNames>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>github-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.owasp</groupId>
