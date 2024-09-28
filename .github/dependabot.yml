@@ -12,7 +12,7 @@ updates:
   - mprins
   labels:
     - dependencies
-    - build-infra
+    - infrastructure
 
 - package-ecosystem: "github-actions"
   directory: "/"
@@ -22,4 +22,4 @@ updates:
     time: "21:00"
     timezone: "Europe/Amsterdam"
   labels:
-    - build-infra
+    - infrastructure
