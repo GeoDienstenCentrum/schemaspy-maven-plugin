@@ -107,7 +107,7 @@
         <maven-surefire-plugin.version>3.5.0</maven-surefire-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-        <maven-fluido-skin.version>2.0.0-M10</maven-fluido-skin.version>
+        <maven-fluido-skin.version>2.0.0-M11</maven-fluido-skin.version>
         <spotbugs-maven-plugin.version>4.8.6.4</spotbugs-maven-plugin.version>
     </properties>
 
