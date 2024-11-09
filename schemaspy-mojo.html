@@ -154,102 +154,122 @@
 <td><code>-</code></td>
 <td>Only include matching tables/views. This is a regular expression that's used to determine which tables/views to include. For example: -i "(.*book.*)|(library.*)" includes only those tables/views with 'book' in their names or that start with 'library'. You might want to use "description" with this option to describe the subset of tables.<br /><strong>User Property</strong>: <code>includeTableNamesRegex</code></td></tr>
 <tr class="b">
+<td><a href="#locale"><code>&lt;locale&gt;</code></a></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The locale to use when the report generation is invoked directly as a standalone Mojo.<br /><strong>See also:</strong> org.apache.maven.doxia.tools.SiteTool.DEFAULT_LOCALE<!-- no javadoc sites associated -->, org.apache.maven.doxia.tools.SiteTool.getSiteLocales(java.lang.String)<!-- no javadoc sites associated --><br /><strong>Default</strong>: <code>default</code></td></tr>
+<tr class="a">
 <td><a href="#logLevel"><code>&lt;logLevel&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>Detail of execution logging.<br /><strong>User Property</strong>: <code>logLevel</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#lowQuality"><code>&lt;lowQuality&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Generate lower-quality diagrams. Various installations of Graphviz (depending on OS and/or version) will default to generating either higher or lower quality images. That is, some might not have the "lower quality" libraries and others might not have the "higher quality" libraries.<br /><strong>User Property</strong>: <code>lowQuality</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#noAds"><code>&lt;noAds&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>
 <div><strong>Deprecated.</strong><br />will be removed</div><br />Don't generate ads in reports.<br /><strong>Default</strong>: <code>true</code><br /><strong>User Property</strong>: <code>noAds</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#noHtml"><code>&lt;noHtml&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Only generate files needed for insertion/deletion of data (e.g. for scripts).<br /><strong>User Property</strong>: <code>noHtml</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#noImplied"><code>&lt;noImplied&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Don't include implied foreign key relationships in the generated table details.<br /><strong>User Property</strong>: <code>noImplied</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#noLogo"><code>&lt;noLogo&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>
 <div><strong>Deprecated.</strong><br />will be removed</div><br />Don't generate sourceforge logos in reports.<br /><strong>Default</strong>: <code>true</code><br /><strong>User Property</strong>: <code>noLogo</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#noRows"><code>&lt;noRows&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Don't query or display row counts.<br /><strong>User Property</strong>: <code>noRows</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#noSchema"><code>&lt;noSchema&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>No schema required for this database (e.g. derby).<br /><strong>User Property</strong>: <code>noSchema</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#noViews"><code>&lt;noViews&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Don't query or display row counts.<br /><strong>User Property</strong>: <code>noViews</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#outputDirectory"><code>&lt;outputDirectory&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>The output directory where the final HTML reports will be generated. Note that the reports are always generated in a directory called "schemaspy". The output directory refers to the directory in which the "schemaspy" will be generated.<br /><strong>Default</strong>: <code>${project.build.directory}/site</code><br /><strong>User Property</strong>: <code>outputDirectory</code></td></tr>
+<tr class="a">
+<td><a href="#outputFormat"><code>&lt;outputFormat&gt;</code></a></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The report output format: null by default, to represent a site, but can be configured to a Doxia Sink id.<br /><strong>User Property</strong>: <code>output.format</code></td></tr>
 <tr class="b">
+<td><a href="#outputTimestamp"><code>&lt;outputTimestamp&gt;</code></a></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>Timestamp for reproducible output archive entries, either formatted as ISO 8601 <code>yyyy-MM-dd'T'HH:mm:ssXXX</code> or as an int representing seconds since the epoch (like <a href="https://reproducible-builds.org/docs/source-date-epoch/">SOURCE_DATE_EPOCH</a>).<br /><strong>Default</strong>: <code>${project.build.outputTimestamp}</code></td></tr>
+<tr class="a">
 <td><a href="#password"><code>&lt;password&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>Database password to use - defaults to none.<br /><strong>User Property</strong>: <code>password</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#pathToDrivers"><code>&lt;pathToDrivers&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>If specified, SchemaSpy will look for JDBC drivers on this path, rather than using the application classpath. Useful if your database has a non-O/S driver not bundled with the plugin.<br /><strong>User Property</strong>: <code>pathToDrivers</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#port"><code>&lt;port&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>The port, required by some drivers.<br /><strong>User Property</strong>: <code>port</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#runOnExecutionRoot"><code>&lt;runOnExecutionRoot&gt;</code></a></td>
 <td><code>boolean</code></td>
 <td><code>5.0.4</code></td>
 <td>Whether to create the report only on the execution root of a multi-module project.<br /><strong>Default</strong>: <code>false</code><br /><strong>User Property</strong>: <code>runOnExecutionRoot</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#schema"><code>&lt;schema&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>Database schema to use - defaults to the specified user.<br /><strong>User Property</strong>: <code>schema</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#schemaDescription"><code>&lt;schemaDescription&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>Schema description. Displays the specified textual description on summary pages. If your description includes an equals sign then escape it with a backslash. NOTE: This field doesn't seem to be used by SchemaSpy in the current version.<br /><strong>User Property</strong>: <code>schemaDescription</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#schemas"><code>&lt;schemas&gt;</code></a></td>
 <td><code>String</code></td>
 <td><code>-</code></td>
 <td>Evaluate specified schemas. Similar to -showAllSchemas, but explicitly specifies which schema to evaluate without interrogating the database's metadata. Can be used with databases like MySQL where a database isn't composed of multiple schemas.<br /><strong>User Property</strong>: <code>schemas</code></td></tr>
-<tr class="a">
+<tr class="b">
 <td><a href="#showAllSchemas"><code>&lt;showAllSchemas&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Evaluate all schemas in a database. Generates a high-level index of the schemas evaluated and allows for traversal of cross-schema foreign key relationships. Use with -schemaSpec "schemaRegularExpression" to narrow-down the schemas to include.<br /><strong>User Property</strong>: <code>showAllSchemas</code></td></tr>
-<tr class="b">
+<tr class="a">
 <td><a href="#singleSignOn"><code>&lt;singleSignOn&gt;</code></a></td>
 <td><code>Boolean</code></td>
 <td><code>-</code></td>
 <td>Single Sign-On. Don't require a user to be specified with -user to simplify configuration when running in a single sign-on environment.<br /><strong>User Property</strong>: <code>singleSignOn</code></td></tr>
+<tr class="b">
+<td><a href="#siteDirectory"><code>&lt;siteDirectory&gt;</code></a></td>
+<td><code>File</code></td>
+<td><code>-</code></td>
+<td>Directory containing the <code>site.xml</code> file.<br /><strong>Default</strong>: <code>${basedir}/src/site</code></td></tr>
 <tr class="a">
 <td><a href="#targetDirectory"><code>&lt;targetDirectory&gt;</code></a></td>
 <td><code>File</code></td>
@@ -338,7 +358,13 @@
 <ul>
 <li><strong>Type</strong>: <code>java.lang.String</code></li>
 <li><strong>Required</strong>: <code>No</code></li>
-<li><strong>User Property</strong>: <code>includeTableNamesRegex</code></li></ul><hr /></section><a id="logLevel"></a><section><a id="a.3ClogLevel.3E"></a>
+<li><strong>User Property</strong>: <code>includeTableNamesRegex</code></li></ul><hr /></section><a id="locale"></a><section><a id="a.3Clocale.3E"></a>
+<h3>&lt;locale&gt;</h3>
+<div>The locale to use when the report generation is invoked directly as a standalone Mojo.<br /><strong>See also:</strong> org.apache.maven.doxia.tools.SiteTool.DEFAULT_LOCALE<!-- no javadoc sites associated -->, org.apache.maven.doxia.tools.SiteTool.getSiteLocales(java.lang.String)<!-- no javadoc sites associated --></div>
+<ul>
+<li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>default</code></li></ul><hr /></section><a id="logLevel"></a><section><a id="a.3ClogLevel.3E"></a>
 <h3>&lt;logLevel&gt;</h3>
 <div>Detail of execution logging.</div>
 <ul>
@@ -403,7 +429,19 @@
 <li><strong>Type</strong>: <code>java.lang.String</code></li>
 <li><strong>Required</strong>: <code>No</code></li>
 <li><strong>User Property</strong>: <code>outputDirectory</code></li>
-<li><strong>Default</strong>: <code>${project.build.directory}/site</code></li></ul><hr /></section><a id="password"></a><section><a id="a.3Cpassword.3E"></a>
+<li><strong>Default</strong>: <code>${project.build.directory}/site</code></li></ul><hr /></section><a id="outputFormat"></a><section><a id="a.3CoutputFormat.3E"></a>
+<h3>&lt;outputFormat&gt;</h3>
+<div>The report output format: null by default, to represent a site, but can be configured to a Doxia Sink id.</div>
+<ul>
+<li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>User Property</strong>: <code>output.format</code></li></ul><hr /></section><a id="outputTimestamp"></a><section><a id="a.3CoutputTimestamp.3E"></a>
+<h3>&lt;outputTimestamp&gt;</h3>
+<div>Timestamp for reproducible output archive entries, either formatted as ISO 8601 <code>yyyy-MM-dd'T'HH:mm:ssXXX</code> or as an int representing seconds since the epoch (like <a href="https://reproducible-builds.org/docs/source-date-epoch/">SOURCE_DATE_EPOCH</a>).</div>
+<ul>
+<li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>${project.build.outputTimestamp}</code></li></ul><hr /></section><a id="password"></a><section><a id="a.3Cpassword.3E"></a>
 <h3>&lt;password&gt;</h3>
 <div>Database password to use - defaults to none.</div>
 <ul>
@@ -459,7 +497,13 @@
 <ul>
 <li><strong>Type</strong>: <code>java.lang.Boolean</code></li>
 <li><strong>Required</strong>: <code>No</code></li>
-<li><strong>User Property</strong>: <code>singleSignOn</code></li></ul><hr /></section><a id="targetDirectory"></a><section><a id="a.3CtargetDirectory.3E"></a>
+<li><strong>User Property</strong>: <code>singleSignOn</code></li></ul><hr /></section><a id="siteDirectory"></a><section><a id="a.3CsiteDirectory.3E"></a>
+<h3>&lt;siteDirectory&gt;</h3>
+<div>Directory containing the <code>site.xml</code> file.</div>
+<ul>
+<li><strong>Type</strong>: <code>java.io.File</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Default</strong>: <code>${basedir}/src/site</code></li></ul><hr /></section><a id="targetDirectory"></a><section><a id="a.3CtargetDirectory.3E"></a>
 <h3>&lt;targetDirectory&gt;</h3>
 <div>The output directory for the intermediate report.</div>
 <ul>
