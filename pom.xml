@@ -108,7 +108,7 @@
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <maven-fluido-skin.version>2.0.0</maven-fluido-skin.version>
-        <spotbugs-maven-plugin.version>4.8.6.5</spotbugs-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.8.6.6</spotbugs-maven-plugin.version>
     </properties>
 
     <dependencies>
