@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+    day: "saturday"
+    timezone: "Europe/Amsterdam"
+  open-pull-requests-limit: 10
+  assignees:
+  - mprins
+  labels:
+    - dependencies
+    - infrastructure
+
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "weekly"
+    day: "saturday"
+    time: "21:00"
+    timezone: "Europe/Amsterdam"
+  labels:
+    - infrastructure

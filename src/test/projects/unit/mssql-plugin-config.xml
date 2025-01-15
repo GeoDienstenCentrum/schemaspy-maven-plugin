@@ -23,23 +23,27 @@ under the License.
   <artifactId>custom-configuration</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <inceptionYear>2006</inceptionYear>
+  <inceptionYear>2018</inceptionYear>
   <name>Maven SchemaSpy Plugin Configuration Test</name>
   <url>http://maven.apache.org</url>
   <build>
-    <finalName>test-plugin-configuration</finalName>
+    <finalName>mssql-test-plugin-configuration</finalName>
     <plugins>
         <plugin>
             <groupId>nl.geodienstencentrum.maven</groupId>
             <artifactId>schemaspy-maven-plugin</artifactId>
             <version>@project.version@</version>
             <configuration>
-              <outputDirectory>target/reports/test</outputDirectory>
-              <databaseType>derby</databaseType>
-              <database>target/testdb</database>
-              <singleSignOn>true</singleSignOn>
-              <noSchema>true</noSchema>
-              <catalog>%</catalog>
+              <databaseType>mssql08</databaseType>
+              <database>test</database>
+              <schema>dbo</schema>
+              <user>sa</user>
+              <password>Password12!</password>
+              <host>127.0.0.1</host>
+              <port>1433</port>
+              <outputDirectory>target/reports/mssql-test</outputDirectory>
+              <schemaDescription>Maven Plugin SchemaSpy test</schemaDescription>
+              <connprops>Encrypt\=false</connprops>
               <vizjs>true</vizjs>
             </configuration>
         </plugin> 

@@ -1,36 +1,39 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>6</version>
-    </parent>
-    <groupId>com.wakaleo.schemaspy</groupId>
-    <artifactId>maven-schemaspy-plugin</artifactId>
+    <groupId>nl.geodienstencentrum.maven</groupId>
+    <artifactId>schemaspy-maven-plugin</artifactId>
+    <version>5.3.1-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
-    <version>5.0.4-SNAPSHOT</version>
-    <inceptionYear>2007</inceptionYear>
-    <name>Maven SchemaSpy Plugin</name>
-    <url>https://github.com/wakaleo/maven-schemaspy-plugin</url>
+    <name>SchemaSpy Maven Plugin</name>
     <description>
         A Maven plugin designed to generate reports using the SchemaSpy command-line tool.
         SchemaSpy generates interactive HTML and graphical technical documentation
         describing a relational database.
     </description>
-    <prerequisites>
-        <maven>3.2</maven>
-    </prerequisites>
+    <url>https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin</url>
+    <inceptionYear>2007</inceptionYear>
+    <organization>
+        <name>GeoDienstenCentrum</name>
+        <url>https://github.com/GeoDienstenCentrum</url>
+    </organization>
     <licenses>
         <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <name>GNU Lesser General Public License, Version 2.1</name>
+            <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1-standalone.html</url>
             <distribution>repo</distribution>
+            <comments>For those part of the code derived from the SchemaSpy project (http://schemaspy.sourceforge.net),
+                net.sourceforge.schemaspy packages.
+            </comments>
+        </license>
+        <license>
+            <name>MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+            <comments>For those parts of the code that are NOT in the net.sourceforge.schemaspy packages.</comments>
         </license>
     </licenses>
-    <organization>
-        <name>Wakaleo Consulting</name>
-        <url>http://www.wakaleo.com</url>
-    </organization>
+
     <developers>
         <developer>
             <id>johnsmart</id>
@@ -43,51 +46,133 @@
             <email>mprins@users.sf.net</email>
             <url>https://github.com/mprins/</url>
             <organization>GeodienstenCentrum</organization>
-            <organizationUrl>http://www.geodienstencentrum.nl/</organizationUrl>
+            <organizationUrl>https://geodienstencentrum.github.io/</organizationUrl>
         </developer>
     </developers>
+
+    <prerequisites>
+        <maven>3.6.3</maven>
+    </prerequisites>
+
+    <scm>
+        <connection>scm:git:git://github.com/GeoDienstenCentrum/schemaspy-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:GeoDienstenCentrum/schemaspy-maven-plugin.git</developerConnection>
+        <url>https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin/</url>
+        <tag>HEAD</tag>
+    </scm>
     <issueManagement>
-        <system>github</system>
-        <url>https://github.com/wakaleo/maven-schemaspy-plugin/issues</url>
+        <system>GitHub</system>
+        <url>https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin/issues/</url>
     </issueManagement>
     <ciManagement>
-        <system>jenkins</system>
-        <url>http://www.wakaleo-labs.com/jenkins/view/maven-schemaspy-plugin</url>
+        <system>Github-CI</system>
+        <url>https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin/actions/workflows/maven.yml</url>
     </ciManagement>
-    <scm>
-        <connection>scm:git:ssh://github.com/wakaleo/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/wakaleo/${project.artifactId}.git</developerConnection>
-        <url>http://github.com/wakaleo/${project.artifactId}</url>
-    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <site>
+            <id>gh-pages</id>
+            <name>github pages site</name>
+            <url>scm:git:https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin.git</url>
+        </site>
+    </distributionManagement>
     <properties>
-        <project.build.sourceVersion>1.7</project.build.sourceVersion>
-        <project.build.targetVersion>1.7</project.build.targetVersion>
+        <java.version>11</java.version>
+        <project.build.sourceVersion>${java.version}</project.build.sourceVersion>
+        <project.build.targetVersion>${java.version}</project.build.targetVersion>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven-libs.version>3.5.3</maven-libs.version>
+        <surefire.excludes.files>**/*ExternalDatabaseTest.java</surefire.excludes.files>
+        <maven-libs.version>3.9.9</maven-libs.version>
+        <maven-libs.annotations.version>3.15.1</maven-libs.annotations.version>
+        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
+        <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
+        <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
+        <maven-project-info-reports-plugin.version>3.8.0</maven-project-info-reports-plugin.version>
+        <maven-jxr-plugin.version>3.6.0</maven-jxr-plugin.version>
+        <dependency-check-maven.version>11.1.1</dependency-check-maven.version>
+        <taglist-maven-plugin.version>3.2.1</taglist-maven-plugin.version>
+        <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+        <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+        <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+        <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
+        <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
+        <maven-fluido-skin.version>2.0.1</maven-fluido-skin.version>
+        <spotbugs-maven-plugin.version>4.8.6.6</spotbugs-maven-plugin.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>${maven-libs.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>${maven-libs.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>${maven-libs.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven-libs.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
             <artifactId>maven-plugin-annotations</artifactId>
-            <version>3.5.1</version>
+            <version>${maven-libs.annotations.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <!-- upgrade transitive-transitive dependency from
+            maven-reporting-impl:jar:3.1.0-doxia-site-renderer:jar:1.11.1 due to reported vulns -->
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.reporting</groupId>
             <artifactId>maven-reporting-impl</artifactId>
-            <version>3.0.0</version>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- upgrade transitive dependency from
+            org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test due to reported vulns -->
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.18.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-testing</groupId>
@@ -101,64 +186,192 @@
             <version>${maven-libs.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.schemaspy</groupId>
+            <artifactId>schemaspy</artifactId>
+            <version>6.2.4</version>
+        </dependency>
         <!-- Database dependencies -->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.14.1.0</version>
+            <version>10.15.2.0</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbytools</artifactId>
+            <version>10.15.2.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.4.0</version>
+            <version>2.7.4</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.1</version>
+            <version>42.7.4</version>
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>net.sourceforge.jtds</groupId>
-            <artifactId>jtds</artifactId>
-            <version>1.3.1</version>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.8.1.jre11</version>
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.45</version>
-            <scope>test</scope>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.1.0</version>
+            <optional>true</optional>
         </dependency>
-        <!--
-             Oracle are not open
-
-             <dependency>
-             <groupId>com.oracle</groupId>
-             <artifactId>ojdbc</artifactId>
-             <version>11.2.0.2.0</version>
-             <scope>test</scope>
-             </dependency>
-        -->
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>1.3</version>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.6.0.24.10</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jcl</artifactId>
+            <version>1.7.36</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eluder.coveralls</groupId>
+                    <artifactId>coveralls-maven-plugin</artifactId>
+                    <version>4.3.0</version>
+                    <dependencies>
+                        <!-- needed on java 11 -->
+                        <dependency>
+                            <groupId>jakarta.xml.bind</groupId>
+                            <artifactId>jakarta.xml.bind-api</artifactId>
+                            <version>2.3.3</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.glassfish.jaxb</groupId>
+                            <artifactId>jaxb-runtime</artifactId>
+                            <version>2.3.8</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.7.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.4.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.4.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.1.3</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.1.3</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>${maven-plugin-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.21.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.skins</groupId>
+                            <artifactId>maven-fluido-skin</artifactId>
+                            <version>${maven-fluido-skin.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>ru.concerteza.buildnumber</groupId>
+                    <artifactId>maven-jgit-buildnumber-plugin</artifactId>
+                    <version>1.2.10</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                    <configuration>
+                        <includeResources>false</includeResources>
+                        <configLocation>build/qa/checkstyle.xml</configLocation>
+                        <includes>com/wakaleo/**/*.java</includes>
+                        <!--<suppressionsLocation>${basedir}/checkstyle-suppressions.xml</suppressionsLocation>-->
+                        <enableRSS>false</enableRSS>
+                        <excludes>**/HelpMojo.java</excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-scm-publish-plugin</artifactId>
+                    <version>3.3.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>${dependency-check-maven.version}</version>
+                    <configuration>
+                        <name>OWASP Dependency Check</name>
+                        <formats>ALL</formats>
+                        <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
                 <configuration>
                     <filesets>
-                        <fileset>
-                            <directory>${basedir}/testdb</directory>
-                        </fileset>
                         <fileset>
                             <directory>${basedir}</directory>
                             <includes>
@@ -169,41 +382,27 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-            </plugin>
-            <!-- Define the Main class of the output JAR file -->
-            <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
                 <configuration>
                     <archive>
-                        <manifest>
-                            <mainClass>net.sourceforge.schemaspy.Main</mainClass>
-                        </manifest>
                         <manifestEntries>
+                            <Specification-Title>${project.name}</Specification-Title>
+                            <Specification-Version>${project.version}</Specification-Version>
+                            <!--suppress UnresolvedMavenProperty -->
                             <Implementation-Build>${buildNumber}</Implementation-Build>
+                            <X-Git-Branch>${git.branch}</X-Git-Branch>
+                            <X-Git-Tag>${git.tag}</X-Git-Tag>
+                            <X-Git-Commits-Count>${git.commitsCount}</X-Git-Commits-Count>
                         </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-            </plugin>
-            <plugin>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.5.1</version>
                 <configuration>
                     <goalPrefix>schemaspy</goalPrefix>
+                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+                    <helpPackageName>com.wakaleo.schemaspy</helpPackageName>
                 </configuration>
                 <executions>
                     <execution>
@@ -222,18 +421,26 @@
             </plugin>
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7</version>
-                <configuration />
+                <configuration>
+                    <generateSitemap>true</generateSitemap>
+                    <attach>true</attach>
+                    <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                    <skipDeploy>true</skipDeploy>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.21.0</version>
+                <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <argLine>${surefireArgLine}</argLine>
+                    <excludes>
+                        <exclude>${surefire.excludes.files}</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.0</version>
                 <executions>
                     <execution>
                         <id>pre-unit-test</id>
@@ -242,74 +449,217 @@
                         </goals>
                         <configuration>
                             <propertyName>surefireArgLine</propertyName>
+                            <append>true</append>
                             <excludes>
                                 <exclude>**/*Test.class</exclude>
                             </excludes>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
-        </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>1.0-beta-6</version>
-            </extension>
-        </extensions>
-    </build>
-    <reporting>
-        <plugins>
             <plugin>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.5.1</version>
+                <groupId>ru.concerteza.buildnumber</groupId>
+                <artifactId>maven-jgit-buildnumber-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>git-buildnumber</id>
+                        <goals>
+                            <goal>extract-buildnumber</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.9</version>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <configuration>
+                    <content>${project.reporting.outputDirectory}</content>
+                    <scmBranch>gh-pages</scmBranch>
+                    <serverId>github</serverId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>scm-publish</id>
+                        <phase>site-deploy</phase>
+                        <goals>
+                            <goal>publish-scm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <!-- preparationGoals>clean install -Dmaven.test.skip=true</preparationGoals -->
+                    <goals>deploy</goals>
+                    <pushChanges>true</pushChanges>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <doclint>none</doclint>
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-updates-report</report>
+                            <report>plugin-updates-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <artifactId>maven-plugin-report-plugin</artifactId>
+                <version>${maven-plugin-plugin.version}</version>
+            </plugin>
+            <plugin>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.5</version>
+                <version>${maven-jxr-plugin.version}</version>
             </plugin>
             <plugin>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.21.0</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.0.0</version>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>ci-management</report>
+                            <report>dependencies</report>
+                            <report>dependency-convergence</report>
+                            <report>dependency-info</report>
+                            <report>dependency-management</report>
+                            <report>distribution-management</report>
+                            <report>index</report>
+                            <report>issue-management</report>
+                            <report>licenses</report>
+                            <report>plugin-management</report>
+                            <report>plugins</report>
+                            <report>team</report>
+                            <report>scm</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
                 <configuration>
-                    <configLocation>src/main/config/checkstyle.xml</configLocation>
-                    <includes>com/wakaleo/**/*.java</includes>
+                    <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.9.0</version>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependency-check-maven.version}</version>
                 <configuration>
-                    <failonerror>true</failonerror>
-                    <includes>
-                        <include>com/wakaleo/**/*.java</include>
-                    </includes>
+                    <name>OWASP Dependency Check</name>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changelog-plugin</artifactId>
-                <version>2.3</version>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc-no-fork</report>
+                            <report>test-javadoc-no-fork</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+                <configuration>
+                    <show>protected</show>
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
+                    <author>true</author>
+                    <defaultVersion>${project.version}</defaultVersion>
+                    <detectLinks>true</detectLinks>
+                    <fixClassComment>true</fixClassComment>
+                    <fixTags>all</fixTags>
+                    <packagesheader>${project.artifactId}</packagesheader>
+                    <doclint>none</doclint>
+                    <tags>
+                        <tag>
+                            <name>todo</name>
+                            <placement>a</placement>
+                            <head>To Do:</head>
+                        </tag>
+                    </tags>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.5</version>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <version>${taglist-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <configuration>
+                    <!--<rulesets><ruleset>${basedir}/pmd-ruleset.xml</ruleset></rulesets>-->
+                    <linkXRef>true</linkXRef>
+                    <xrefLocation>${project.reporting.outputDirectory}/xref</xrefLocation>
+                    <includeXmlInSite>true</includeXmlInSite>
+                    <minimumTokens>100</minimumTokens>
+                    <targetJdk>${project.build.targetVersion}</targetJdk>
+                    <includes>
+                        <include>com/wakaleo/**/*.java</include>
+                    </includes>
+                    <excludeRoots>
+                        <excludeRoot>${basedir}/target/generated-sources/</excludeRoot>
+                    </excludeRoots>
+                    <printFailingErrors>true</printFailingErrors>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
                 <configuration>
                     <threshold>Normal</threshold>
                     <xmlOutput>true</xmlOutput>
@@ -318,6 +668,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -330,38 +681,89 @@
     </reporting>
     <profiles>
         <profile>
-            <id>in-memory-tests</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>full-tests</id>
+            <properties>
+                <!-- could also be NONE, see https://issues.apache.org/jira/browse/SUREFIRE-861 -->
+                <surefire.excludes.files />
+            </properties>
+        </profile>
+        <profile>
+            <id>maven-ci</id>
+            <properties>
+                <!-- should be environment provided -->
+                <repoToken />
+                <!-- could also be NONE, see https://issues.apache.org/jira/browse/SUREFIRE-861 -->
+                <surefire.excludes.files />
+            </properties>
             <build>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unit-tests</id>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+                        <groupId>org.eluder.coveralls</groupId>
+                        <artifactId>coveralls-maven-plugin</artifactId>
                         <configuration>
-                            <excludes>
-                                <exclude>**/*ExternalDatabaseTest.java</exclude>
-                            </excludes>
+                            <jacocoReports>
+                                <file>${project.reporting.outputDirectory}/jacoco/jacoco.xml</file>
+                            </jacocoReports>
+                            <repoToken>${repoToken}</repoToken>
+                            <sourceDirectories>
+                                <sourceDirectory>${project.build.directory}/generated-sources/plugin</sourceDirectory>
+                            </sourceDirectories>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
-            <id>full-tests</id>
+            <id>appveyor</id>
+            <properties>
+                <surefire.excludes.files>**/Oracle*Test.java,**/Mysql*Test.java,**/PGSQL*Test.java</surefire.excludes.files>
+            </properties>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <!-- also you may need to
+                                GPG_TTY=$(tty)
+                                export GPG_TTY
+                        -->
+                        <configuration>
+                            <!-- gpg2 on openbsd, gpg on linux -->
+                            <executable>gpg</executable>
+                            <gpgArguments>
+                                <arg>--verbose</arg>
+                                <!-- GPG 2.1 requires pinentry-mode to be set to loopback in order
+                                     to pick up the gpg.passphrase value defined in Maven settings.xml. -->
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                            <useAgent>true</useAgent>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

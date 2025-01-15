@@ -1,0 +1,98 @@
+name: 'Maven CI'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+env:
+  MAVEN_OPTS: -Djava.awt.headless=true
+  PGPASSWORD: postgres
+  PGUSER: postgres
+  PGDATABASE: postgres
+
+jobs:
+  build:
+    name: "Test Java  ${{ matrix.java }} / Maven ${{ matrix.maven }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:        
+        java: [ 11, 17, 21 ]
+        java_dist: ["temurin"]
+        maven: [ "3.6.3", "3.8.8", "3.9.9" ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Set up Maven'
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: ${{ matrix.maven }}
+
+      - name: 'Set up JDK'
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: ${{ matrix.java_dist }}
+          cache: maven
+
+      - name: 'Startup databases'
+        run: |
+          build/ci/start-pgsql.sh 16-3.4
+          build/ci/start-oracle.sh 21.3.0
+          build/ci/start-mysql.sh 8
+          build/ci/start-mssql.sh 2022-latest
+
+      - name: Install extra software
+        run: sudo apt install -y --no-install-recommends graphviz
+
+      - name: Build with Maven
+        run: mvn install -Dmaven.test.skip=true -B -V -fae -q -Djava.awt.headless=true
+
+      - name: Setup databases
+        run: |
+          psql -U postgres -h localhost -c 'CREATE DATABASE test;'
+          psql -U postgres -h localhost -d test -f ./src/test/resources/sql/pgsql.sql
+          docker exec -i mysql1 mysql -uroot -pmysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+          docker exec -i mysql1 mysql -uroot -pmysql test < ./src/test/resources/sql/mysql.sql
+          docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'master' -Q 'CREATE DATABASE test'
+          docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'test' -i /checkout/src/test/resources/sql/mssql.sql
+          docker exec -i schemaspy sqlplus -l system/oracle@//localhost:1521/XE < build/ci/create_oracle_user.sql
+          docker exec -i schemaspy sqlplus -l schemaspy/schemaspy@//localhost:1521/XE < src/test/resources/sql/oracle.sql
+
+      - name: Test
+        run: |
+          mvn -e -B -fae -Pmaven-ci clean test -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dfailsafe.useFile=false -Djava.awt.headless=true
+          mvn -e -B -fae -Pmaven-ci jacoco:report coveralls:report -q -Dlicense.skip=true -DrepoToken=$GITHUB_TOKEN -DserviceName=github -Djava.awt.headless=true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      # https://github.com/marketplace/actions/coveralls-github-action
+#      - name: Report test coverage
+#        uses: coverallsapp/github-action@v1.1.2
+#        with:
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+
+  docs:
+    name: Check Javadoc for Java 11
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 11
+          distribution: 'zulu'
+          cache: maven
+
+      - name: JavaDoc
+        run: mvn javadoc:javadoc
+
+      - name: Test JavaDoc
+        run: mvn javadoc:test-javadoc

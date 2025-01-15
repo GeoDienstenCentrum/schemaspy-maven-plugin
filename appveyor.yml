@@ -1,0 +1,46 @@
+clone_folder: C:\projects\schemaspy-maven-plugin
+version: "{build}-{branch}"
+clone_depth: 5
+
+init:
+- git config --global core.autocrlf true
+- git config --global core.safecrlf true
+- ps: Start-Service $env:SQL
+
+install:
+  - cmd: echo %PATH%
+  - cd C:\projects\schemaspy-maven-plugin
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-http-proxy.ps1'))
+  - ps: .\.appveyor\set-maven-proxy.ps1
+  - ps: choco upgrade chocolatey
+  - ps: choco install graphviz --cache-location=C:\Users\appveyor\.choco\cache
+  - mvn install -Dmaven.test.skip=true -B -V -fae -e
+
+build: off
+
+before_test:
+- cmd: echo "create and setup database"
+- sqlcmd -S (local)\%INSTANCENAME% -U sa -P Password12! -Q "CREATE DATABASE test" -d "master"
+- sqlcmd -S (local)\%INSTANCENAME% -U sa -P Password12! -d "test" -i .\src\test\resources\sql\mssql.sql
+
+test_script:
+  - cd C:\projects\schemaspy-maven-plugin
+  - mvn -e -fae -B -Dfailsafe.useFile=false clean test -Pappveyor
+
+environment:
+  matrix:
+    - SQL: MSSQL$SQL2017
+      INSTANCENAME: SQL2017
+      JAVA_HOME: C:\Program Files\Java\jdk11
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    - SQL: MSSQL$SQL2019
+      INSTANCENAME: SQL2019
+      JAVA_HOME: C:\Program Files\Java\jdk17
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+
+matrix:
+  fast_finish: false
+
+cache:
+  - C:\Users\appveyor\.m2\repository -> pom.xml
+  - C:\Users\appveyor\.choco\cache -> appveyor.yml

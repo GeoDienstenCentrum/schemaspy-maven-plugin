@@ -1,8 +1,5 @@
 package com.wakaleo.schemaspy;
 
-import com.wakaleo.schemaspy.util.JDBCHelper;
-import net.sourceforge.schemaspy.Config;
-import net.sourceforge.schemaspy.SchemaAnalyzer;
 import org.apache.maven.doxia.siterenderer.Renderer;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -21,19 +18,15 @@ import java.util.Locale;
  * The SchemaSpy Maven plugin report.
  *
  * @author John Smart
- * @mainpage The SchemaSpy Maven plugin This plugin is designed to generate
- *           SchemaSpy reports for a Maven web site.
- *
- *           SchemaSpy (http://schemaspy.sourceforge.net) does not need to be
- *           installed and accessible on your machine. However, SchemaSpy also
- *           needs the Graphviz tool (http://www.graphviz.org/) in order to
+ *           The SchemaSpy Maven plugin This plugin is designed to generate
+ *           SchemaSpy report for a Maven web site.
+ *           SchemaSpy also may need the Graphviz tool (https://www.graphviz.org/) in order to
  *           generate graphical representations of the table/view relationships,
  *           so this needs to be installed on your machine.
- *
+ *           <p/>
  *           The schemaspy goal invokes the SchemaSpy command-line tool.
  *           SchemaSpy generates a graphical and HTML report describing a given
  *           relational database.
- *
  */
 @Mojo(name = "schemaspy", defaultPhase = LifecyclePhase.SITE)
 public class SchemaSpyReport extends AbstractMavenReport {
@@ -42,7 +35,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * The output directory for the intermediate report.
      *
      */
-    @Parameter (defaultValue="${project.build.directory}")
+    @Parameter(property = "targetDirectory", defaultValue = "${project.build.directory}")
     private File targetDirectory;
 
     /**
@@ -52,67 +45,65 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * will be generated.
      *
      */
-    @Parameter(defaultValue="${project.build.directory}/site", property="outputDirectory")
+    @Parameter(property = "outputDirectory", defaultValue = "${project.build.directory}/site")
     private String outputDirectory;
 
 
     /**
      * The name of the database being analysed.
      */
-    @Parameter (required = true)
+    @Parameter (property = "database", required = true)
     private String database;
 
     /**
      * The host address of the database being analysed.
-     *
-     * @parameter host
      */
-    @Parameter
+    @Parameter(property = "host")
     private String host;
 
     /**
      * The port, required by some drivers.
      */
-    @Parameter
+    @Parameter(property = "port")
     private String port;
 
-    /**
-     * The JDBC URL to be used to connect to the database. Rather than defining
-     * the database and host names and letting SchemaSpy build the URL, you can
-     * alternatively specify the complete JDBC URL using this parameter. If this
-     * parameter is defined, it will override the host address (which, as a
-     * result, is not needed). Note that you still need to specify the database
-     * type, since SchemaSpy uses its own database properties file for extra
-     * information about each database.
-     *
-     * @todo Would it be possible to guess the database type from the form of
-     *       the URL?
-         */
-    @Parameter
-    private String jdbcUrl;
+//    /**
+//     * The JDBC URL to be used to connect to the database. Rather than defining
+//     * the database and host names and letting SchemaSpy build the URL, you can
+//     * alternatively specify the complete JDBC URL using this parameter. If this
+//     * parameter is defined, it will override the host address (which, as a
+//     * result, is not needed). Note that you still need to specify the database
+//     * type, since SchemaSpy uses its own database properties file for extra
+//     * information about each database.
+//     *
+//     * @todo Would it be possible to guess the database type from the form of
+//     *       the URL?
+//     */
+//    @Parameter
+//    private String jdbcUrl;
 
     /**
      * The type of database being analysed - defaults to ora.
      */
-    @Parameter (property ="databaseType")
+    @Parameter (property = "databaseType")
     private String databaseType;
 
     /**
      * Connect to the database with this user id.
      */
-    @Parameter
+    @Parameter(property = "user")
     private String user;
 
     /**
      * Database schema to use - defaults to the specified user.
      */
-    @Parameter
+    @Parameter(property = "schema")
     private String schema;
 
     /**
      * Database password to use - defaults to none.
      */
-    @Parameter
+    @Parameter(property = "password")
     private String password;
 
     /**
@@ -120,7 +111,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * than using the application classpath. Useful if your database has a
      * non-O/S driver not bundled with the plugin.
      */
-    @Parameter
+    @Parameter(property = "pathToDrivers")
     private String pathToDrivers;
 
     /**
@@ -129,7 +120,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * backslash. NOTE: This field doesn't seem to be used by SchemaSpy in the
      * current version.
      */
-    @Parameter
+    @Parameter(property = "schemaDescription")
     private String schemaDescription;
 
     /**
@@ -139,7 +130,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * their names or that start with 'library'. You might want to use
      * "description" with this option to describe the subset of tables.
      */
-    @Parameter
+    @Parameter(property = "includeTableNamesRegex")
     private String includeTableNamesRegex;
 
     /**
@@ -150,7 +141,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * Note that each column name regular expression must be surround by ()'s
      * and separated from other column names by a |.
      */
-    @Parameter
+    @Parameter(property = "excludeColumnNamesRegex")
     private String excludeColumnNamesRegex;
 
     /**
@@ -158,7 +149,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * encoded so that it's rendered as text. This option allows it to be
      * rendered as HTML.
      */
-    @Parameter
+    @Parameter(property = "allowHtmlInComments")
     private Boolean allowHtmlInComments;
 
     /**
@@ -168,27 +159,27 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * @deprecated this seems to no longer be a supported option in SchemaSpy
      */
     @Deprecated
-    @Parameter
+    @Parameter(property = "commentsInitiallyDisplayed")
     private Boolean commentsInitiallyDisplayed;
 
     /**
      * Don't include implied foreign key relationships in the generated table
      * details.
      */
-    @Parameter
+    @Parameter(property = "noImplied")
     private Boolean noImplied;
 
     /**
      * Only generate files needed for insertion/deletion of data (e.g. for
      * scripts).
      */
-    @Parameter
+    @Parameter(property = "noHtml")
     private Boolean noHtml;
 
     /**
      * Detail of execution logging.
      */
-    @Parameter
+    @Parameter(property = "logLevel")
     private String logLevel;
 
     /**
@@ -200,21 +191,21 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * seem to only work with the first method, so don't use this parameter
      * unless you have to.
      */
-    @Parameter
+    @Parameter(property = "useDriverManager")
     private Boolean useDriverManager;
 
     /**
      * The CSS Stylesheet. Allows you to override the default SchemaSpyCSS
      * stylesheet.
      */
-    @Parameter
+    @Parameter(property = "cssStylesheet")
     private String cssStylesheet;
 
     /**
      * Single Sign-On. Don't require a user to be specified with -user to
      * simplify configuration when running in a single sign-on environment.
      */
-    @Parameter
+    @Parameter(property = "singleSignOn")
     private Boolean singleSignOn;
 
     /**
@@ -223,7 +214,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * That is, some might not have the "lower quality" libraries and others might not have
      * the "higher quality" libraries.
      */
-    @Parameter
+    @Parameter(property = "lowQuality")
     private Boolean lowQuality;
 
     /**
@@ -232,7 +223,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * That is, some might not have the "lower quality" libraries and others might not have
      * the "higher quality" libraries.
      */
-    @Parameter
+    @Parameter(property = "highQuality")
     private Boolean highQuality;
 
     /**
@@ -240,7 +231,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * evaluated and allows for traversal of cross-schema foreign key relationships.
      * Use with -schemaSpec "schemaRegularExpression" to narrow-down the schemas to include.
      */
-    @Parameter
+    @Parameter(property = "showAllSchemas")
     private Boolean showAllSchemas;
 
     /**
@@ -249,24 +240,25 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * interrogating the database's metadata. Can be used with databases like MySQL where a
      * database isn't composed of multiple schemas.
      */
-    @Parameter
+    @Parameter(property = "schemas")
     private String schemas;
 
     /**
      * No schema required for this database (e.g. derby).
      */
-    @Parameter
+    @Parameter(property = "noSchema")
     private Boolean noSchema;
+
     /**
      * Don't query or display row counts.
      */
-    @Parameter
+    @Parameter(property = "noRows")
     private Boolean noRows;
 
     /**
      * Don't query or display row counts.
      */
-    @Parameter
+    @Parameter(property = "noViews")
     private Boolean noViews;
 
     /**
@@ -276,74 +268,76 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * 
      * May also be a file name, useful for hiding connection properties from public logs. 
      */
-    @Parameter
+    @Parameter(property = "connprops")
     private String connprops;
 
     /**
-     * Don't generate ads in reports
+     * Don't generate ads in reports.
+     *
+     * @deprecated will be removed
      */
-    @Parameter(defaultValue ="true")
+    @Deprecated
+    @Parameter(property = "noAds", defaultValue = "true")
     private Boolean noAds;
 
     /**
-     * Don't generate sourceforge logos in reports
+     * Don't generate sourceforge logos in reports.
+     *
+     * @deprecated will be removed
      */
-    @Parameter(defaultValue ="true")
+    @Deprecated
+    @Parameter(property = "noLogo", defaultValue = "true")
     private Boolean noLogo;
+
+    @Parameter(property = "catalog", defaultValue = "%")
+    private String catalog;
+
+    @Parameter(property = "vizjs", defaultValue = "true")
+    protected boolean vizjs = false;
 
     /**
      * Whether to create the report only on the execution root of a multi-module project.
      *
      * @since 5.0.4
      */
-    @Parameter(defaultValue ="false")
+    @Parameter(property = "runOnExecutionRoot", defaultValue = "false")
     protected boolean runOnExecutionRoot = false;
 
     /**
      * The SchemaSpy analyser that generates the actual report.
      * Can be overridden for testing purposes.
      */
-    SchemaAnalyzer analyzer = new SchemaAnalyzer();
+    private MavenSchemaAnalyzer analyzer;
 
-    /**
-     * Utility class to help determine the type of the target database.
-     */
-    private JDBCHelper jdbcHelper = new JDBCHelper();
-
-    protected void setSchemaAnalyzer(SchemaAnalyzer analyzer) {
+    protected void setSchemaAnalyzer(final MavenSchemaAnalyzer analyzer) {
         this.analyzer = analyzer;
     }
 
     /**
-     * Convenience method used to build the schemaspy command line parameters.
-     *
-     * @param argList
-     *            the current list of schemaspy parameter options.
-     * @param parameter
-     *            a new parameter to add
-     * @param value
-     *            the value for this parameter
-     */
-    private void addToArguments(final List<String> argList,
-            final String parameter, final Boolean value) {
-        if ((value != null) && (value)) {
-            argList.add(parameter + "=" + value);
+    * Convenience method used to build the schemaspy command line parameters.
+    *
+    * @param argList the current list of schemaspy parameter options.
+    * @param parameter a new parameter to add
+    * @param value the value for this parameter
+    */
+    private void addToArguments(
+        final List<String> argList, final String parameter, final Boolean value) {
+        if (value != null && value) {
+            argList.add(parameter);
+            argList.add(String.valueOf(true));
         }
     }
 
     /**
-     * Convenience method used to build the schemaspy command line parameters.
-     *
-     * @param argList
-     *            the current list of schemaspy parameter options.
-     * @param parameter
-     *            a new parameter to add
-     * @param value
-     *            the value for this parameter
-     */
-    private void addFlagToArguments(final List<String> argList,
-            final String parameter, final Boolean value) {
-        if ((value != null) && (value)) {
+    * Convenience method used to build the schemaspy command line parameters.
+    *
+    * @param argList the current list of schemaspy parameter options.
+    * @param parameter a new parameter to add
+    * @param value the value for this parameter
+    */
+    private void addFlagToArguments(
+        final List<String> argList, final String parameter, final Boolean value) {
+        if (value != null && value) {
             argList.add(parameter);
         }
     }
@@ -358,10 +352,10 @@ public class SchemaSpyReport extends AbstractMavenReport {
      * @param value
      *            the value for this parameter
      */
-    private void addToArguments(final List<String> argList,
-            final String parameter, final String value) {
+    private void addToArguments(final List<String> argList, final String parameter, final String value) {
         if (value != null) {
-            argList.add(parameter + "=" + value);
+            argList.add(parameter);
+            argList.add(value);
         }
     }
 
@@ -374,7 +368,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
      *            the language of the report - currently ignored.
      */
     @Override
-    protected void executeReport(Locale locale) throws MavenReportException {
+    protected void executeReport(final Locale locale) throws MavenReportException {
 
         //
         // targetDirectory should be set by the maven framework. This is
@@ -397,11 +391,13 @@ public class SchemaSpyReport extends AbstractMavenReport {
             outputDir.mkdirs();
         }
         String schemaSpyDirectory = outputDir.getAbsolutePath();
-        List<String> argList = new ArrayList<String>();
+        getLog().debug("SchemaSpy output directory: " + schemaSpyDirectory);
 
-        if ((jdbcUrl != null) && (databaseType == null)) {
-            databaseType = jdbcHelper.extractDatabaseType(jdbcUrl);
-        }
+        List<String> argList = new ArrayList<>();
+
+//        if ((jdbcUrl != null) && (databaseType == null)) {
+//            databaseType = JDBCHelper.extractDatabaseType(jdbcUrl);
+//        }
         addToArguments(argList, "-dp", pathToDrivers);
         addToArguments(argList, "-db", database);
         addToArguments(argList, "-host", host);
@@ -409,7 +405,11 @@ public class SchemaSpyReport extends AbstractMavenReport {
         addToArguments(argList, "-t", databaseType);
         addToArguments(argList, "-u", user);
         addToArguments(argList, "-p", password);
-        addToArguments(argList, "-s", schema);
+        if (null != schema && schema.contains(",")) {
+            addToArguments(argList, "-schemas", schema);
+        } else {
+            addToArguments(argList, "-s", schema);
+        }
         addToArguments(argList, "-o", schemaSpyDirectory);
         addToArguments(argList, "-desc", schemaDescription);
         addToArguments(argList, "-i", includeTableNamesRegex);
@@ -433,17 +433,21 @@ public class SchemaSpyReport extends AbstractMavenReport {
         addFlagToArguments(argList, "-cid", commentsInitiallyDisplayed);
         addFlagToArguments(argList, "-noads", noAds);
         addFlagToArguments(argList, "-nologo", noLogo);
-        /*
-        addToArguments(argList, "-jdbcUrl", jdbcUrl);
-        */
-
-        String[] args = (String[]) argList.toArray(new String[0]);
-        getLog().info("Generating SchemaSpy report with parameters:");
-        for (String arg : args) {
-            getLog().info(arg);
+        addToArguments(argList, "-cat", catalog);
+        addFlagToArguments(argList, "-vizjs", vizjs);
+        if(getLog().isDebugEnabled()) {
+            addFlagToArguments(argList, "-debug", true);
         }
+//        addToArguments(argList, "-jdbcUrl", jdbcUrl);
+        getLog().debug("SchemaSpy arguments: " + argList);
+
+
         try {
-            analyzer.analyze(new Config(args));
+            if (analyzer == null) {
+                analyzer = new MavenSchemaAnalyzer();
+                analyzer.applyConfiguration(argList);
+            }
+            analyzer.analyze();
         } catch (Exception e) {
             throw new MavenReportException(e.getMessage(), e);
         }
@@ -469,32 +473,29 @@ public class SchemaSpyReport extends AbstractMavenReport {
         return siteRenderer;
     }
 
-    /**
-     * Describes the report.
-     */
-    public String getDescription(Locale locale) {
+    @Override
+    public String getDescription(final Locale locale) {
         return "SchemaSpy database documentation";
     }
 
-    /**
-     * Not really sure what this does ;-).
-     */
-    public String getName(Locale locale) {
+    @Override
+    public String getName(final Locale locale) {
         return "SchemaSpy";
     }
 
+    @Override
     public String getOutputName() {
         return "schemaspy/index";
     }
 
     /**
-     * Always return true as we're using the report generated by SchemaSpy
+     * Always return {@code true} as we're using the report generated by SchemaSpy
      * rather than creating our own report.
      *
-     * @return true
+     * @return {@code true}
      */
+    @Override
     public boolean isExternalReport() {
         return true;
     }
-
 }

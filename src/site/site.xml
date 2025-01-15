@@ -1,22 +1,69 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://maven.apache.org/SITE/2.0.0"
+      xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd"
+      name="${this.name} ${this.version}">
+    <publishDate format="dd-MMMM-yyyy"/>
+    <version/>
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>${maven-fluido-skin.version}</version>
+    </skin>
+    <bannerLeft name="${this.organization.name}" href="${this.organization.url}">
+        <image src="images/logo.png" alt=""/>
+    </bannerLeft>
+    <bannerRight name="${project.name}" href="${project.url}"/>
+    <poweredBy>
+        <logo href="https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin/actions/workflows/maven.yml"
+              name="Maven CI Build status (master branch)">
+            <image src="https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin/actions/workflows/maven.yml/badge.svg"
+                   alt=""/>
+        </logo>
+        <logo href="https://ci.appveyor.com/project/mprins/${project.artifactId}"
 
-<project>
-  <bannerLeft>
-    <name>Wakaleo Consulting</name>
-    <src>http://www.wakaleo.com/templates/jazibal/images/logo-default.jpg</src>
-    <href>http://www.wakaleo.com</href>
-  </bannerLeft>
-  <body>
-    <links>
-      <item name="Schemaspy" href="http://schemaspy.sourceforge.net/"/>
-      <item name="Maven" href="http://maven.apache.org/"/>
-    </links>      
-    <menu name="Overview">
-      <item name="Introduction" href="index.html"/>
-      <item name="Goals" href="plugin-info.html"/>
-      <item name="Usage" href="usage.html"/>
-      <item name="FAQ" href="faq.html"/>      
-    </menu>
-    <menu ref="reports" />
-  </body>
-</project>
+              name="AppVeyor-CI Build status (master branch)">
+            <image src="https://ci.appveyor.com/api/projects/status/qxc604b7o0rwxsel/branch/master?svg=true"
+                   alt=""/>
+        </logo>
+        <logo href="https://coveralls.io/github/GeoDienstenCentrum/${project.artifactId}?branch=master"
+              name="Coverage status (master branch)">
+            <image src="https://coveralls.io/repos/github/GeoDienstenCentrum/${project.artifactId}/badge.svg?branch=master"
+                   alt=""/>
+        </logo>
+        <logo href="https://maven-badges.herokuapp.com/maven-central/${project.groupId}/${project.artifactId}/"
+              name="Maven Central">
+            <image src="https://maven-badges.herokuapp.com/maven-central/${project.groupId}/${project.artifactId}/badge.svg"
+                   alt=""/>
+        </logo>
+        <logo href="https://isitmaintained.com/project/GeoDienstenCentrum/${project.artifactId}/"
+              name="Percentage of issues still open">
+            <image src="https://isitmaintained.com/badge/open/GeoDienstenCentrum/${project.artifactId}.svg"
+                   alt=""/>
+        </logo>
+        <logo href="https://isitmaintained.com/project/GeoDienstenCentrum/${project.artifactId}/"
+              name="Average time to resolve an issue">
+            <image src="https://isitmaintained.com/badge/resolution/GeoDienstenCentrum/${project.artifactId}.svg"
+                   alt=""/>
+        </logo>
+    </poweredBy>
+    <body>
+        <head>
+            <![CDATA[<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />]]>
+            <![CDATA[<link rel="icon" href="favicon.ico" type="image/x-icon" />]]>
+            <![CDATA[<link rel="meta" title="DOAP" href="${project.url}/doap_${project.artifactId}.rdf" type="application/rdf+xml" />]]>
+        </head>
+        <links>
+            <item name="Schemaspy" href="https://schemaspy.org/"/>
+            <item name="Maven" href="https://maven.apache.org/"/>
+            <item name="Schemaspy (original)" href="https://schemaspy.sourceforge.net/"/>
+        </links>
+        <menu name="Overview">
+            <item name="Introduction" href="index.html"/>
+            <item name="Goals" href="plugin-info.html"/>
+            <item name="Usage" href="usage.html"/>
+            <item name="FAQ" href="faq.html"/>
+        </menu>
+        <menu ref="reports"/>
+    </body>
+</site>

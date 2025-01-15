@@ -27,19 +27,22 @@ under the License.
   <name>Maven SchemaSpy Plugin Configuration Test</name>
   <url>http://maven.apache.org</url>
   <build>
-    <finalName>test-plugin-configuration</finalName>
+    <finalName>mysql-test-plugin-configuration</finalName>
     <plugins>
         <plugin>
-            <groupId>com.wakaleo.maven.plugin.schemaspy</groupId>
-            <artifactId>maven-schemaspy-plugin</artifactId>
-            <version>1.0</version>
+            <groupId>nl.geodienstencentrum.maven</groupId>
+            <artifactId>schemaspy-maven-plugin</artifactId>
+            <version>@project.version@</version>
             <configuration>
               <databaseType>mysql</databaseType>
               <database>test</database>
+              <schema>test</schema>
               <user>root</user>
-              <host>localhost</host>
+              <password>mysql</password>
+              <host>127.0.0.1</host>
               <outputDirectory>target/reports/mysql-test</outputDirectory>
               <schemaDescription>Maven Plugin SchemaSpy test</schemaDescription>
+              <vizjs>true</vizjs>
             </configuration>
         </plugin> 
     </plugins>

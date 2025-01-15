@@ -1,0 +1,37 @@
+name: 'Maven Site'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Set up JDK'
+        uses: actions/setup-java@v4
+        with:
+          java-version: 11
+          distribution: "temurin"
+          cache: maven
+
+      - name: 'Build Site with Maven'
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: mvn site -Dmaven.test.skip=true -B -V -fae -q
+
+      - name: 'Deploy Site to GitHub Pages'
+        if: ${{ github.ref == 'refs/heads/master' && (github.event_name == 'push') }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: target/site
