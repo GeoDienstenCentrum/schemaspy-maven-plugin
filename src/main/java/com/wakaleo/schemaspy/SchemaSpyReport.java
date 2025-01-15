@@ -55,18 +55,6 @@ public class SchemaSpyReport extends AbstractMavenReport {
     @Parameter(defaultValue="${project.build.directory}/site", property="outputDirectory")
     private String outputDirectory;
 
-    /**
-     * Site rendering component for generating the HTML report.
-     */
-    @Component
-    private Renderer siteRenderer;
-
-    /**
-     * The Maven project object.
-     */
-    @Parameter(defaultValue = "${project}", readonly = true, required = true)
-    private MavenProject project;
-
 
     /**
      * The name of the database being analysed.
