@@ -11,9 +11,6 @@ on:
 
 env:
   MAVEN_OPTS: -Djava.awt.headless=true
-  PGPASSWORD: postgres
-  PGUSER: postgres
-  PGDATABASE: postgres
 
 jobs:
   build:
@@ -43,7 +40,7 @@ jobs:
 
       - name: 'Startup databases'
         run: |
-          build/ci/start-pgsql.sh 16-3.4
+          build/ci/start-pgsql.sh 17-3.5
           build/ci/start-oracle.sh 21.3.0
           build/ci/start-mysql.sh 8
           build/ci/start-mssql.sh 2022-latest
@@ -56,8 +53,8 @@ jobs:
 
       - name: Setup databases
         run: |
-          psql -U postgres -h localhost -c 'CREATE DATABASE test;'
-          psql -U postgres -h localhost -d test -f ./src/test/resources/sql/pgsql.sql
+          PGPASSWORD=postgres psql -U postgres -h localhost -c 'CREATE DATABASE test;'
+          PGPASSWORD=postgres psql -U postgres -h localhost -d test -f ./src/test/resources/sql/pgsql.sql
           docker exec -i mysql1 mysql -uroot -pmysql -e 'CREATE DATABASE IF NOT EXISTS test;'
           docker exec -i mysql1 mysql -uroot -pmysql test < ./src/test/resources/sql/mysql.sql
           docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'master' -Q 'CREATE DATABASE test'
@@ -67,7 +64,7 @@ jobs:
 
       - name: Test
         run: |
-          mvn -e -B -fae -Pmaven-ci clean test -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dfailsafe.useFile=false -Djava.awt.headless=true
+          mvn -e -B -fae -Pmaven-ci clean verify -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dfailsafe.useFile=false -Djava.awt.headless=true
           mvn -e -B -fae -Pmaven-ci jacoco:report coveralls:report -q -Dlicense.skip=true -DrepoToken=$GITHUB_TOKEN -DserviceName=github -Djava.awt.headless=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
