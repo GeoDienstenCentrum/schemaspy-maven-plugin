@@ -26,10 +26,10 @@ jobs:
           - java: 11
             java_dist: "temurin"
             maven: "3.6.3"
-        experimental:
           - java: 21
             java_dist: "temurin"
             maven: "4.0.0-rc-2"
+            experimental: true
 
     steps:
       - uses: actions/checkout@v4
