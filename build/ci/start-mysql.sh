@@ -1,14 +1,15 @@
 #!/bin/bash -e
-#docker version
-docker pull mysql:$1
 
-printf "\n\nStarting MySQL $1 container, this could take a while..."
+VERSION=${1:-"8"}
+docker pull mysql:$VERSION
+
+printf "\n\nStarting MySQL $VERSION container, this could take a while..."
 # start the dockerized mysql instance (the container will be destroyed/removed on stopping)
 # this container can be stopped using: docker stop mysql
-docker run --rm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysql --name mysql1 -h mysql1 -d mysql:$1
+docker run --rm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysql --name mysql1 -h mysql1 -d mysql:$VERSION
 
 # the mysql docker images start a temporary server to init and then restart listening on 3306
-printf "\nWaiting for MySQL $1 database to start up.... "
+printf "\nWaiting for MySQL $VERSION database to start up.... "
 _WAIT=0;
 while :
 do
