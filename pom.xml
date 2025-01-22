@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.geodienstencentrum.maven</groupId>
     <artifactId>schemaspy-maven-plugin</artifactId>
-    <version>5.3.1-SNAPSHOT</version>
+    <version>5.3.1-RC1</version>
     <packaging>maven-plugin</packaging>
     <name>SchemaSpy Maven Plugin</name>
     <description>
@@ -58,7 +58,7 @@
         <connection>scm:git:git://github.com/GeoDienstenCentrum/schemaspy-maven-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:GeoDienstenCentrum/schemaspy-maven-plugin.git</developerConnection>
         <url>https://github.com/GeoDienstenCentrum/schemaspy-maven-plugin/</url>
-        <tag>HEAD</tag>
+        <tag>schemaspy-maven-plugin-5.3.1-RC1</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
@@ -454,13 +454,9 @@
                         </goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}"/>
-                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
-                                      tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.jar"
-                                      verbose="true" overwrite="true"/>
-                                <copy file="${project.basedir}/pom.xml"
-                                      tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.pom"
-                                      verbose="true" overwrite="true"/>
+                                <mkdir dir="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}" />
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.jar" verbose="true" overwrite="true" />
+                                <copy file="${project.basedir}/pom.xml" tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.pom" verbose="true" overwrite="true" />
                             </target>
                         </configuration>
                     </execution>
