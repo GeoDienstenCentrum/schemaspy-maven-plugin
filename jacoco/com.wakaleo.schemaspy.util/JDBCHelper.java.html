@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang=""><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JDBCHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">com.wakaleo.schemaspy.util</a> &gt; <span class="el_source">JDBCHelper.java</span></div><h1>JDBCHelper.java</h1><pre class="source lang-java linenums">/*
+ * JDBCHelper.java
+ *
+ * Created on 18 May 2007, 14:12
+ *
+ * To change this template, choose Tools | Template Manager
+ * and open the template in the editor.
+ */
+package com.wakaleo.schemaspy.util;
+
+/**
+ * A utilities class for the SchemaSpy plugin. Tries to guess the right
+ * SchemaSpy database type configuration value using a JDBC URL.
+ *
+ * @author john
+ */
+public final class JDBCHelper {
+
+    /** Creates a new instance of JDBCHelper. */
+    private JDBCHelper() {
+    }
+
+    /**
+     * A map of JDBC prefixes and database types. Used to determine the database type based on a JDBC
+     * URL.
+     */
+<span class="fc" id="L27">    private static final String[][] DATABASE_TYPES_MAP = {</span>
+        {&quot;jdbc:derby:&quot;, &quot;derby&quot;},
+        {&quot;jdbc:db2:&quot;, &quot;db2&quot;},
+        {&quot;jdbc:firebirdsql:&quot;, &quot;firebirdsql&quot;},
+        {&quot;jdbc:hsqldb:hsql:&quot;, &quot;hsqldb&quot;},
+        {&quot;jdbc:informix-sqli:&quot;, &quot;informix-sqli&quot;},
+        {&quot;jdbc:microsoft:sqlserver:&quot;, &quot;mssql&quot;},
+        {&quot;jdbc:jtds:&quot;, &quot;mssql-jtds&quot;},
+        {&quot;jdbc:mysql:&quot;, &quot;mysql&quot;},
+        {&quot;jdbc:oracle:oci8:&quot;, &quot;ora&quot;},
+        {&quot;jdbc:oracle:thin:&quot;, &quot;orathin&quot;},
+        {&quot;jdbc:postgresql:&quot;, &quot;pgsql&quot;},
+        {&quot;jdbc:sybase:Tds:&quot;, &quot;sybase&quot;}
+    };
+
+    /**
+     * Find the matching SchemaSpy database type from a JDBC URL. If none match, {@code null} is
+     * returned.
+     *
+     * @param jdbcUrl a valid JDBC url for the target database
+     * @return the type of the database for this JDBC URL
+     */
+    public static String extractDatabaseType(final String jdbcUrl) {
+<span class="fc" id="L50">        String result = null;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (String[] databaseTypeEntry : DATABASE_TYPES_MAP) {</span>
+<span class="fc" id="L52">            String jdbcPrefix = databaseTypeEntry[0];</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">            if (jdbcUrl.startsWith(jdbcPrefix)) {</span>
+<span class="fc" id="L54">                result = databaseTypeEntry[1];</span>
+            }
+        }
+<span class="fc" id="L57">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

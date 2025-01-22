@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang=""><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MavenSchemaAnalyzer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SchemaSpy Maven Plugin</a> &gt; <a href="index.source.html" class="el_package">com.wakaleo.schemaspy</a> &gt; <span class="el_source">MavenSchemaAnalyzer.java</span></div><h1>MavenSchemaAnalyzer.java</h1><pre class="source lang-java linenums">package com.wakaleo.schemaspy;
+
+import org.schemaspy.LayoutFolder;
+import org.schemaspy.SchemaAnalyzer;
+import org.schemaspy.cli.CommandLineArgumentParser;
+import org.schemaspy.cli.CommandLineArguments;
+import org.schemaspy.input.dbms.service.DatabaseServiceFactory;
+import org.schemaspy.input.dbms.service.SqlService;
+import org.schemaspy.output.OutputProducer;
+import org.schemaspy.output.xml.dom.XmlProducerUsingDOM;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Wrapper around the {@link SchemaAnalyzer} to hide the initialization details from the {@link SchemaSpyReport}
+ * maven mojo.
+ */
+<span class="fc" id="L21">public class MavenSchemaAnalyzer {</span>
+    private SchemaAnalyzer analyzer;
+
+    private CommandLineArguments cliArgs;
+
+    /**
+     * Adds the schemaspy plugin configuration properties. This is necessary before calling {@link #analyze()}.
+     * @param argList a list of property-value pairs.
+     */
+    public void applyConfiguration(List&lt;String&gt; argList) {
+<span class="fc" id="L31">        String[] args = argList.toArray(new String[0]);</span>
+<span class="fc" id="L32">        CommandLineArgumentParser parser = new CommandLineArgumentParser(new CommandLineArguments(), null);</span>
+<span class="fc" id="L33">        cliArgs = parser.parse(args);</span>
+<span class="fc" id="L34">    }</span>
+
+    /**
+     * Executes the schemaspy analyzer process.
+     */
+    public void analyze() throws SQLException, IOException {
+<span class="fc" id="L40">        cliArgs = Objects.requireNonNull(cliArgs, &quot;The field 'commandLineArguments' need to reference an instance. Call 'applyConfiguration(...) to initiate command line arguments&quot;);</span>
+<span class="fc" id="L41">        SqlService sqlService = new SqlService();</span>
+<span class="fc" id="L42">        DatabaseServiceFactory databaseServiceFactory = new DatabaseServiceFactory(sqlService);</span>
+<span class="fc" id="L43">        OutputProducer outputProducer = new XmlProducerUsingDOM();</span>
+<span class="fc" id="L44">        LayoutFolder layoutFolder = new LayoutFolder(SchemaAnalyzer.class.getClassLoader());</span>
+<span class="fc" id="L45">        analyzer = new SchemaAnalyzer(sqlService, databaseServiceFactory, cliArgs, outputProducer, layoutFolder);</span>
+<span class="fc" id="L46">        analyzer.analyze();</span>
+<span class="fc" id="L47">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

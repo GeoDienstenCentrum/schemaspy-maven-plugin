@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.wakaleo.schemaspy"},{"l":"com.wakaleo.schemaspy.util"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.wakaleo.schemaspy"},{"l":"com.wakaleo.schemaspy.util"}];updateSearchResults();
