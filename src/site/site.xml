@@ -36,12 +36,12 @@
             <image src="https://maven-badges.herokuapp.com/maven-central/${project.groupId}/${project.artifactId}/badge.svg"
                    alt=""/>
         </logo>
-        <logo href="https://isitmaintained.com/project/GeoDienstenCentrum/${project.artifactId}/"
+        <logo href="https://isitmaintained.com/project/GeoDienstenCentrum/${project.artifactId}"
               name="Percentage of issues still open">
             <image src="https://isitmaintained.com/badge/open/GeoDienstenCentrum/${project.artifactId}.svg"
                    alt=""/>
         </logo>
-        <logo href="https://isitmaintained.com/project/GeoDienstenCentrum/${project.artifactId}/"
+        <logo href="https://isitmaintained.com/project/GeoDienstenCentrum/${project.artifactId}"
               name="Average time to resolve an issue">
             <image src="https://isitmaintained.com/badge/resolution/GeoDienstenCentrum/${project.artifactId}.svg"
                    alt=""/>
