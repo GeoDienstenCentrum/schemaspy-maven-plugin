@@ -147,7 +147,7 @@
             maven-reporting-impl:jar:3.1.0-doxia-site-renderer:jar:1.11.1 due to reported vulns -->
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.10.0</version>
+            <version>1.10.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.reporting</groupId>
