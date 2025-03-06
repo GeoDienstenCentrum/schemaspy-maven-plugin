@@ -30,30 +30,28 @@
  */
 package com.wakaleo.schemaspy;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestName;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 
 /** Testcases for the {@code default-cli} commandline. */
 public class CommandlineIntegrationTest {
   private static final String pomFile = "src/test/projects/unit/pgsql-plugin-config-cli.xml";
-  @Rule public TestName testName = new TestName();
   private String version;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     version = System.getenv("PLUGIN_VERSION");
   }
 
   @Test
-  public void testCommandlineHelp() throws Exception {
+  public void testCommandlineHelp(TestInfo testInfo) throws Exception {
     Process mvn =
         new ProcessBuilder(
                 "mvn",
@@ -70,13 +68,13 @@ public class CommandlineIntegrationTest {
     BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(mvn.getInputStream()));
     String line;
     while ((line = stdOutReader.readLine()) != null) {
-      System.out.println(testName.getMethodName() + "--" + line);
+      System.out.println(testInfo.getDisplayName() + "--" + line);
     }
-    assertEquals("Maven default-cli 'schemaspy:help' command failed", 0, mvn.waitFor());
+    assertEquals(0, mvn.waitFor(), "Maven default-cli 'schemaspy:help' command failed");
   }
 
   @Test
-  public void testCommandlineSchemaspy() throws Exception {
+  public void testCommandlineSchemaspy(TestInfo testInfo) throws Exception {
     // /target/reports/pgsql-cli-test/schemaspy/index.html
     final String generatedFile = "./target/reports/pgsql-cli-test/schemaspy/index.html";
     Process mvn =
@@ -96,10 +94,10 @@ public class CommandlineIntegrationTest {
     BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(mvn.getInputStream()));
     String line;
     while ((line = stdOutReader.readLine()) != null) {
-      System.out.println(testName.getMethodName() + "--" + line);
+      System.out.println(testInfo.getDisplayName() + "--" + line);
     }
 
-    assertEquals("Maven default-cli 'schemaspy:schemaspy' command failed", 0, mvn.waitFor());
+    assertEquals(0, mvn.waitFor(), "Maven default-cli 'schemaspy:schemaspy' command failed");
     assertTrue(Paths.get(generatedFile).toFile().exists());
   }
 }
