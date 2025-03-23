@@ -189,7 +189,7 @@
         <dependency>
             <groupId>org.schemaspy</groupId>
             <artifactId>schemaspy</artifactId>
-            <version>6.2.4</version>
+            <version>7.0.2</version>
         </dependency>
         <!-- Database dependencies -->
         <dependency>
