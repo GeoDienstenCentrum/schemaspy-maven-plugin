@@ -4,6 +4,12 @@ import org.schemaspy.LayoutFolder;
 import org.schemaspy.SchemaAnalyzer;
 import org.schemaspy.cli.CommandLineArgumentParser;
 import org.schemaspy.cli.CommandLineArguments;
+import org.schemaspy.connection.ScNullChecked;
+import org.schemaspy.connection.ScSimple;
+import org.schemaspy.connection.SqlConnection;
+import org.schemaspy.input.dbms.ConnectionConfig;
+import org.schemaspy.input.dbms.ConnectionURLBuilder;
+import org.schemaspy.input.dbms.DriverFromConfig;
 import org.schemaspy.input.dbms.service.DatabaseServiceFactory;
 import org.schemaspy.input.dbms.service.SqlService;
 import org.schemaspy.output.OutputProducer;
@@ -28,9 +34,8 @@ public class MavenSchemaAnalyzer {
      * @param argList a list of property-value pairs.
      */
     public void applyConfiguration(List<String> argList) {
-        String[] args = argList.toArray(new String[0]);
-        CommandLineArgumentParser parser = new CommandLineArgumentParser(new CommandLineArguments(), null);
-        cliArgs = parser.parse(args);
+        CommandLineArgumentParser parser = new CommandLineArgumentParser(argList.toArray(new String[0]));
+        cliArgs = parser.commandLineArguments();
     }
 
     /**
@@ -38,11 +43,13 @@ public class MavenSchemaAnalyzer {
      */
     public void analyze() throws SQLException, IOException {
         cliArgs = Objects.requireNonNull(cliArgs, "The field 'commandLineArguments' need to reference an instance. Call 'applyConfiguration(...) to initiate command line arguments");
+        ConnectionConfig connectionConfig = cliArgs.getConnectionConfig();
+        SqlConnection connection = new ScSimple(connectionConfig, new ConnectionURLBuilder(connectionConfig), new DriverFromConfig(connectionConfig));
         SqlService sqlService = new SqlService();
         DatabaseServiceFactory databaseServiceFactory = new DatabaseServiceFactory(sqlService);
         OutputProducer outputProducer = new XmlProducerUsingDOM();
         LayoutFolder layoutFolder = new LayoutFolder(SchemaAnalyzer.class.getClassLoader());
-        analyzer = new SchemaAnalyzer(sqlService, databaseServiceFactory, cliArgs, outputProducer, layoutFolder);
+        analyzer = new SchemaAnalyzer(sqlService, databaseServiceFactory, cliArgs, outputProducer, layoutFolder, connection);
         analyzer.analyze();
     }
 }

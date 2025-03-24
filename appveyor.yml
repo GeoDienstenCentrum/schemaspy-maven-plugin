@@ -31,7 +31,7 @@ environment:
   matrix:
     - SQL: MSSQL$SQL2017
       INSTANCENAME: SQL2017
-      JAVA_HOME: C:\Program Files\Java\jdk11
+      JAVA_HOME: C:\Program Files\Java\jdk17
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - SQL: MSSQL$SQL2019
       INSTANCENAME: SQL2019
