@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content="Apache Maven Doxia Site Renderer 2.0.0" />
-    <title>Checkstyle Results – SchemaSpy Maven Plugin 5.3.2-SNAPSHOT</title>
+    <title>Checkstyle Results – SchemaSpy Maven Plugin 5.4.0-SNAPSHOT</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-2.1.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -32,7 +32,7 @@
           <ul class="breadcrumb">
         <li id="publishDate">Last Published: 24-Mar-2025<span class="divider">|</span>
 </li>
-          <li id="projectVersion">Version: 5.3.2-SNAPSHOT</li>
+          <li id="projectVersion">Version: 5.4.0-SNAPSHOT</li>
         <li class="pull-right"><span class="divider">|</span>
 <a href="https://schemaspy.sourceforge.net/">Schemaspy (original)</a></li>
         <li class="pull-right"><span class="divider">|</span>
@@ -97,7 +97,7 @@
 <tr class="b">
 <td>3</td>
 <td>4</td>
-<td>17</td>
+<td>19</td>
 <td>0</td></tr></table></section><section><a id="Files"></a>
 <h2>Files</h2>
 <table class="table table-striped">
@@ -109,7 +109,7 @@
 <tr class="b">
 <td><a href="#com.2Fwakaleo.2Fschemaspy.2FMavenSchemaAnalyzer.java">com/wakaleo/schemaspy/MavenSchemaAnalyzer.java</a></td>
 <td>0</td>
-<td>8</td>
+<td>10</td>
 <td>0</td></tr>
 <tr class="a">
 <td><a href="#com.2Fwakaleo.2Fschemaspy.2FSchemaSpyReport.java">com/wakaleo/schemaspy/SchemaSpyReport.java</a></td>
@@ -152,30 +152,35 @@
 <td>2</td>
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td></tr>
 <tr class="b">
+<td>imports</td>
+<td><a class="externalLink" href="https://checkstyle.org/checks/imports/unusedimports.html">UnusedImports</a></td>
+<td>1</td>
+<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td></tr>
+<tr class="a">
 <td>javadoc</td>
 <td><a class="externalLink" href="https://checkstyle.org/checks/javadoc/javadocpackage.html">JavadocPackage</a></td>
 <td>2</td>
 <td><img src="images/icon_info_sml.gif" />&#160;Info</td></tr>
-<tr class="a">
+<tr class="b">
 <td></td>
 <td><a class="externalLink" href="https://checkstyle.org/checks/javadoc/javadocvariable.html">JavadocVariable</a></td>
 <td>4</td>
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td></tr>
-<tr class="b">
+<tr class="a">
 <td>misc</td>
 <td><a class="externalLink" href="https://checkstyle.org/checks/misc/finalparameters.html">FinalParameters</a>
 <ul>
 <li>ignorePrimitiveTypes: <code>&quot;true&quot;</code></li></ul></td>
 <td>1</td>
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td></tr>
-<tr class="a">
+<tr class="b">
 <td>sizes</td>
 <td><a class="externalLink" href="https://checkstyle.org/checks/sizes/linelength.html">LineLength</a>
 <ul>
 <li>max: <code>&quot;100&quot;</code></li></ul></td>
-<td>8</td>
+<td>9</td>
 <td><img src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td></td>
 <td><a class="externalLink" href="https://checkstyle.org/checks/sizes/methodlength.html">MethodLength</a>
 <ul>
@@ -193,52 +198,64 @@
 <th>Line</th></tr>
 <tr class="b">
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
+<td>imports</td>
+<td>UnusedImports</td>
+<td>Unused import - org.schemaspy.connection.ScNullChecked.</td>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L7">7</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 100 characters (found 112).</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L18">18</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L22">22</a></td></tr>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L24">24</a></td></tr>
 <tr class="b">
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L24">24</a></td></tr>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L28">28</a></td></tr>
 <tr class="a">
+<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L30">30</a></td></tr>
+<tr class="b">
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 100 characters (found 111).</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L27">27</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L33">33</a></td></tr>
+<tr class="a">
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter argList should be final.</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L30">30</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
-<td>sizes</td>
-<td>LineLength</td>
-<td>Line is longer than 100 characters (found 107).</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L32">32</a></td></tr>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L36">36</a></td></tr>
 <tr class="b">
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
 <td>sizes</td>
 <td>LineLength</td>
-<td>Line is longer than 100 characters (found 182).</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L40">40</a></td></tr>
+<td>Line is longer than 100 characters (found 105).</td>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L37">37</a></td></tr>
 <tr class="a">
 <td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
 <td>sizes</td>
 <td>LineLength</td>
-<td>Line is longer than 100 characters (found 113).</td>
-<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L45">45</a></td></tr></table></section><section><a id="com.2Fwakaleo.2Fschemaspy.2FSchemaSpyReport.java"></a>
+<td>Line is longer than 100 characters (found 182).</td>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L45">45</a></td></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 100 characters (found 150).</td>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L47">47</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" />&#160;Warning</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 100 characters (found 125).</td>
+<td><a href="./xref/com/wakaleo/schemaspy/MavenSchemaAnalyzer.html#L52">52</a></td></tr></table></section><section><a id="com.2Fwakaleo.2Fschemaspy.2FSchemaSpyReport.java"></a>
 <h3>com/wakaleo/schemaspy/SchemaSpyReport.java</h3>
 <table class="table table-striped">
 <tr class="a">
