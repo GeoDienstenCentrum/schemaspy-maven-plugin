@@ -28,7 +28,7 @@ jobs:
             maven: "3.6.3"
           - java: 21
             java_dist: "temurin"
-            maven: "4.0.0-rc-2"
+            maven: "4.0.0-rc-3"
             experimental: true
 
     steps:
