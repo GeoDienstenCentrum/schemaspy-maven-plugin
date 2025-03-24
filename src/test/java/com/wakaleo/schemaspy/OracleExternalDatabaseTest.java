@@ -1,59 +1,40 @@
 package com.wakaleo.schemaspy;
 
-import org.apache.maven.plugin.testing.MojoRule;
-import org.apache.maven.plugin.testing.resources.TestResources;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestName;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.util.Locale;
 import java.util.logging.Logger;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeNotNull;
-import static org.junit.Assume.assumeTrue;
+import org.apache.maven.api.plugin.testing.MojoTest;
+import org.apache.maven.plugin.testing.junit5.InjectMojo;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 
 /**
- * SchemaSpyReport unit tests Test POM files is kept in test/resources/unit
- * directory.
- * 
+ * SchemaSpyReport unit tests Test POM files is kept in test/resources/unit directory.
+ *
  * @author john
  */
-public class OracleExternalDatabaseTest  {
+@MojoTest
+public class OracleExternalDatabaseTest {
 
-    /**
-     * Test resources.
-     */
-    @Rule
-    public TestResources resources = new TestResources();
+  @Test
+  @InjectMojo(goal = "schemaspy", pom = "classpath:/unit/oracle-plugin-config.xml")
+  public void testOracleConfiguration(SchemaSpyReport mojo, TestInfo testInfo) throws Exception {
+    Logger.getLogger("global").info("Starting: " + testInfo.getDisplayName());
+    //        File projectCopy = this.resources.getBasedir("unit");
+    //        File testPom = new File(projectCopy,"oracle-plugin-config.xml");
+    //        assumeTrue(testPom.exists() && testPom.isFile(),
+    //                "POM file should exist as file.");
+    //
+    //        SchemaSpyReport mojo = new SchemaSpyReport();
+    //        mojo = (SchemaSpyReport) this.rule.configureMojo(mojo,
+    // rule.extractPluginConfiguration("schemaspy-maven-plugin", testPom));
+    mojo.executeReport(Locale.getDefault());
 
-    /**
-     * test rule.
-     */
-    @Rule
-    public MojoRule rule = new MojoRule();
-
-    @Rule
-    public TestName name = new TestName();
-
-    @Test
-    public void testOracleConfiguration() throws Exception {
-        Logger.getLogger("global").info("Starting: " + name.getMethodName());
-        File projectCopy = this.resources.getBasedir("unit");
-        File testPom = new File(projectCopy,"oracle-plugin-config.xml");
-        assumeNotNull("POM file should not be null.", testPom);
-        assumeTrue("POM file should exist as file.",
-                testPom.exists() && testPom.isFile());
-
-        SchemaSpyReport mojo = new SchemaSpyReport();
-        mojo = (SchemaSpyReport) this.rule.configureMojo(mojo, rule.extractPluginConfiguration("schemaspy-maven-plugin", testPom));
-        mojo.executeReport(Locale.getDefault());
-
-        // check if the reports generated
-        File generatedFile = new File("./target/reports/oracle-test/schemaspy/index.html");
-        Logger.getLogger("global").info("generatedFile = " + generatedFile.getAbsolutePath());
-        assertTrue(generatedFile.exists());
-    }
-
+    // check if the reports generated
+    File generatedFile = new File("./target/reports/oracle-test/schemaspy/index.html");
+    Logger.getLogger("global").info("generatedFile = " + generatedFile.getAbsolutePath());
+    assertTrue(generatedFile.exists());
+  }
 }
