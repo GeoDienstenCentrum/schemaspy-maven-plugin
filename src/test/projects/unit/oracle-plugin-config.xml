@@ -35,7 +35,7 @@ under the License.
             <version>@project.version@</version>
             <configuration>
               <databaseType>orathin</databaseType>
-              <database>xe</database>
+              <database>FREE</database>
               <user>SCHEMASPY</user>
               <password>schemaspy</password>
               <host>127.0.0.1</host>
