@@ -30,55 +30,42 @@
  */
 package com.wakaleo.schemaspy;
 
-import org.apache.maven.plugin.testing.MojoRule;
-import org.apache.maven.plugin.testing.resources.TestResources;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mock;
 
-import java.io.File;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assume.assumeNotNull;
-import static org.junit.Assume.assumeTrue;
-
+import org.apache.maven.api.plugin.testing.MojoTest;
+import org.apache.maven.plugin.testing.junit5.InjectMojo;
+import org.junit.jupiter.api.Test;
+import org.apache.maven.plugin.logging.Log;
 /**
- * Testcase for
- * {@link com.wakaleo.schemaspy.HelpMojo }
- * (which is a generated class).
+ * Testcase for {@link com.wakaleo.schemaspy.HelpMojo } (which is a generated class).
  *
  * @author mprins
  */
+@MojoTest
 public class HelpMojoTest {
-    /**
-     * Test resources.
-     */
-    @Rule
-    public TestResources resources = new TestResources();
 
-    /**
-     * test rule.
-     */
-    @Rule
-    public MojoRule rule = new MojoRule();
+  /**
+   * Test method for {@link com.wakaleo.schemaspy.HelpMojo#execute() } , it tests execution.
+   *
+   * @throws Exception if any
+   */
+  @Test
+  @InjectMojo(goal = "help", pom = "classpath:/unit/mssql-plugin-config.xml")
+  public void testExecute(SchemaSpyReport myMojo) throws Exception {
 
-    /**
-     * Test method for
-     * {@link com.wakaleo.schemaspy.HelpMojo#execute() }
-     * , it tests execution.
-     *
-     * @throws Exception if any
-     */
-    @Test
-    public void testExecute() throws Exception {
-        final File projectCopy = this.resources.getBasedir("unit");
-        final File pom = new File(projectCopy, "mssql-plugin-config.xml");
-        assumeNotNull("POM file should not be null.", pom);
-        assumeTrue("POM file should exist as file.", pom.exists() && pom.isFile());
+    Log log = mock(Log.class);
 
-        final HelpMojo myMojo = (HelpMojo) this.rule.lookupEmptyMojo("help", pom);
-        assertNotNull("The 'help' mojo should exist", myMojo);
+    myMojo.setLog(log);
 
-        // should execute and not error
-        myMojo.execute();
-    }
+    //        final File projectCopy = this.resources.getBasedir("unit");
+    //        final File pom = new File(projectCopy, "mssql-plugin-config.xml");
+    //        assumeTrue(pom.exists() && pom.isFile(), "POM file should exist as file.");
+    //
+    //        final HelpMojo myMojo = (HelpMojo) this.rule.lookupEmptyMojo("help", pom);
+    assertNotNull(myMojo, "The 'help' mojo should exist");
+
+    // should execute and not error
+    myMojo.execute();
+  }
 }
