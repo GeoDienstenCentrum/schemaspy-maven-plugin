@@ -46,7 +46,7 @@ jobs:
       - name: 'Startup databases'
         run: |
           build/ci/start-pgsql.sh 17-3.5
-          build/ci/start-oracle.sh 21.3.0
+          build/ci/start-oracle.sh 23.7-slim
           build/ci/start-mysql.sh 8
           build/ci/start-mssql.sh 2022-latest
 
@@ -64,8 +64,8 @@ jobs:
           docker exec -i mysql1 mysql -uroot -pmysql test < ./src/test/resources/sql/mysql.sql
           docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'master' -Q 'CREATE DATABASE test'
           docker exec -i sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Password12!' -No -d 'test' -i /checkout/src/test/resources/sql/mssql.sql
-          docker exec -i schemaspy sqlplus -l system/oracle@//localhost:1521/XE < build/ci/create_oracle_user.sql
-          docker exec -i schemaspy sqlplus -l schemaspy/schemaspy@//localhost:1521/XE < src/test/resources/sql/oracle.sql
+          docker exec -i schemaspy sqlplus -l sys/oracle@//localhost:1521/FREE as sysdba < build/ci/create_oracle_user.sql
+          docker exec -i schemaspy sqlplus -l schemaspy/schemaspy@//localhost:1521/FREE < src/test/resources/sql/oracle.sql
 
       - name: Test
         run: |
