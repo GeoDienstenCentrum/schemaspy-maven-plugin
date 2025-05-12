@@ -55,7 +55,8 @@ under the License.
             <artifactId>schemaspy-maven-plugin</artifactId>
             <version>${plugin.version}</version>
             <configuration>
-              <databaseType>pgsql</databaseType>
+              <!-- testing with 17 (11 >) -->
+              <databaseType>pgsql11</databaseType>
               <database>test</database>
               <schema>public</schema>
               <user>postgres</user>
