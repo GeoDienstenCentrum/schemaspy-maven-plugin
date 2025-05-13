@@ -16,6 +16,9 @@ jobs:
   build:
     name: "Test Java  ${{ matrix.java }} / Maven ${{ matrix.maven }}"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     strategy:
       fail-fast: false
       matrix:        
@@ -83,6 +86,8 @@ jobs:
   docs:
     name: Check Javadoc for Java 17
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
