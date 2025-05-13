@@ -7,6 +7,8 @@ on:
 
 jobs:
   update_release_draft:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     name: 'Update release Draft'
     steps:
