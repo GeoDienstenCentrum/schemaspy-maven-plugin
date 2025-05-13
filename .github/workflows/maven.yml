@@ -16,6 +16,9 @@ jobs:
   build:
     name: "Test Java  ${{ matrix.java }} / Maven ${{ matrix.maven }}"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     strategy:
       fail-fast: false
       matrix:        
