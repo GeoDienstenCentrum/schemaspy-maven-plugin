@@ -9,6 +9,12 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+      - '**/*.properties'
+      - '**/*.sh'
+      - '**/*.apt'
   schedule:
     - cron: '0 17 * * 2'
 
@@ -20,9 +26,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - language: java-kotlin
-            build-mode: none
+        language: [ java-kotlin, actions ]
+        build-mode: [ none ]
 
     steps:
       - name: 'Checkout repository'
