@@ -2,6 +2,9 @@ name: 'CodeQL'
 
 permissions:
   contents: read
+  security-events: write
+  pull-requests: read
+  statuses: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
