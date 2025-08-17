@@ -32,7 +32,7 @@ jobs:
             experimental: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: 'Set up Maven'
         uses: stCarolas/setup-maven@v5
@@ -89,7 +89,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up JDK
         uses: actions/setup-java@v4
