@@ -40,7 +40,7 @@ jobs:
           maven-version: ${{ matrix.maven }}
 
       - name: 'Set up JDK'
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: ${{ matrix.java }}
           distribution: ${{ matrix.java_dist }}
@@ -92,7 +92,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 17
           distribution: 'zulu'
