@@ -108,7 +108,7 @@
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
         <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
         <maven-fluido-skin.version>2.1.0</maven-fluido-skin.version>
-        <spotbugs-maven-plugin.version>4.9.4.1</spotbugs-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.9.4.2</spotbugs-maven-plugin.version>
     </properties>
 
     <dependencies>
