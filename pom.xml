@@ -91,7 +91,7 @@
         <maven-libs.version>3.9.11</maven-libs.version>
         <maven-libs.annotations.version>3.15.1</maven-libs.annotations.version>
         <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
-        <versions-maven-plugin.version>2.19.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
         <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
         <maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>3.6.0</maven-jxr-plugin.version>
@@ -245,9 +245,8 @@
                     <groupId>org.eluder.coveralls</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
                     <version>4.3.0</version>
-                    <!--
                     <dependencies>
-                        < ! - - needed on java 11 - - >
+                        <!-- needed on java >11 -->
                         <dependency>
                             <groupId>jakarta.xml.bind</groupId>
                             <artifactId>jakarta.xml.bind-api</artifactId>
@@ -259,7 +258,6 @@
                             <version>2.3.8</version>
                         </dependency>
                     </dependencies>
-                    -->
                 </plugin>
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
