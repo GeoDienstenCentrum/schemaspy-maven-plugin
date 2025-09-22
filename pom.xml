@@ -33,7 +33,6 @@
             <comments>For those parts of the code that are NOT in the net.sourceforge.schemaspy packages.</comments>
         </license>
     </licenses>
-
     <developers>
         <developer>
             <id>johnsmart</id>
@@ -49,11 +48,9 @@
             <organizationUrl>https://geodienstencentrum.github.io/</organizationUrl>
         </developer>
     </developers>
-
     <prerequisites>
-        <maven>3.8.8</maven>
+        <maven>3.8.9</maven>
     </prerequisites>
-
     <scm>
         <connection>scm:git:git://github.com/GeoDienstenCentrum/schemaspy-maven-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:GeoDienstenCentrum/schemaspy-maven-plugin.git</developerConnection>
@@ -248,8 +245,9 @@
                     <groupId>org.eluder.coveralls</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
                     <version>4.3.0</version>
+                    <!--
                     <dependencies>
-                        <!-- needed on java 11 -->
+                        < ! - - needed on java 11 - - >
                         <dependency>
                             <groupId>jakarta.xml.bind</groupId>
                             <artifactId>jakarta.xml.bind-api</artifactId>
@@ -261,6 +259,7 @@
                             <version>2.3.8</version>
                         </dependency>
                     </dependencies>
+                    -->
                 </plugin>
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
@@ -355,7 +354,6 @@
                         <includeResources>false</includeResources>
                         <configLocation>build/qa/checkstyle.xml</configLocation>
                         <includes>com/wakaleo/**/*.java</includes>
-                        <!--<suppressionsLocation>${basedir}/checkstyle-suppressions.xml</suppressionsLocation>-->
                         <enableRSS>false</enableRSS>
                         <excludes>**/HelpMojo.java</excludes>
                     </configuration>
@@ -551,7 +549,6 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <useReleaseProfile>false</useReleaseProfile>
                     <releaseProfiles>release</releaseProfiles>
-                    <!-- preparationGoals>clean install -Dmaven.test.skip=true</preparationGoals -->
                     <goals>deploy</goals>
                     <pushChanges>true</pushChanges>
                 </configuration>
@@ -701,7 +698,6 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven-pmd-plugin.version}</version>
                 <configuration>
-                    <!--<rulesets><ruleset>${basedir}/pmd-ruleset.xml</ruleset></rulesets>-->
                     <linkXRef>true</linkXRef>
                     <xrefLocation>${project.reporting.outputDirectory}/xref</xrefLocation>
                     <includeXmlInSite>true</includeXmlInSite>
