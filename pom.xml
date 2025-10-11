@@ -98,7 +98,7 @@
         <dependency-check-maven.version>12.1.6</dependency-check-maven.version>
         <taglist-maven-plugin.version>3.2.1</taglist-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-        <maven-pmd-plugin.version>3.27.0</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
