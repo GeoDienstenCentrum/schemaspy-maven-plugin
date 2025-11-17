@@ -5,26 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.File;
 import java.util.Locale;
 import java.util.logging.Logger;
-import org.apache.maven.api.plugin.testing.MojoTest;
 import org.apache.maven.api.plugin.testing.InjectMojo;
+import org.apache.maven.api.plugin.testing.MojoTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
 
 @MojoTest
-public class MSSQLExternalDatabaseTest {
-
+class MSSQLExternalDatabaseTest {
   @Test
   @InjectMojo(goal = "schemaspy", pom = "classpath:/unit/mssql-plugin-config.xml")
-  public void testMSSQLConfiguration(SchemaSpyReport mojo, TestInfo testInfo) throws Exception {
-    Logger.getLogger("global").info("Starting: " + testInfo.getDisplayName());
-    //        File projectCopy = this.resources.getBasedir("unit");
-    //        File testPom = new File(projectCopy,"mssql-plugin-config.xml");
-    //        assumeTrue(testPom.exists() && testPom.isFile(),
-    //                "POM file should exist as file.");
-    //
-    //        SchemaSpyReport mojo = new SchemaSpyReport();
-    //        mojo = (SchemaSpyReport) this.rule.configureMojo(mojo,
-    // rule.extractPluginConfiguration("schemaspy-maven-plugin", testPom));
+  void testMSSQLConfiguration(SchemaSpyReport mojo) throws Exception {
     mojo.executeReport(Locale.getDefault());
 
     // check if the reports generated

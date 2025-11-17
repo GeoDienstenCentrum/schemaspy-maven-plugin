@@ -5,10 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.File;
 import java.util.Locale;
 import java.util.logging.Logger;
-import org.apache.maven.api.plugin.testing.MojoTest;
 import org.apache.maven.api.plugin.testing.InjectMojo;
+import org.apache.maven.api.plugin.testing.MojoTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
 
 /**
  * SchemaSpyReport unit tests Test POM files is kept in test/resources/unit directory.
@@ -16,20 +15,10 @@ import org.junit.jupiter.api.TestInfo;
  * @author john
  */
 @MojoTest
-public class OracleExternalDatabaseTest {
-
+class OracleExternalDatabaseTest {
   @Test
   @InjectMojo(goal = "schemaspy", pom = "classpath:/unit/oracle-plugin-config.xml")
-  public void testOracleConfiguration(SchemaSpyReport mojo, TestInfo testInfo) throws Exception {
-    Logger.getLogger("global").info("Starting: " + testInfo.getDisplayName());
-    //        File projectCopy = this.resources.getBasedir("unit");
-    //        File testPom = new File(projectCopy,"oracle-plugin-config.xml");
-    //        assumeTrue(testPom.exists() && testPom.isFile(),
-    //                "POM file should exist as file.");
-    //
-    //        SchemaSpyReport mojo = new SchemaSpyReport();
-    //        mojo = (SchemaSpyReport) this.rule.configureMojo(mojo,
-    // rule.extractPluginConfiguration("schemaspy-maven-plugin", testPom));
+  void testOracleConfiguration(SchemaSpyReport mojo) throws Exception {
     mojo.executeReport(Locale.getDefault());
 
     // check if the reports generated

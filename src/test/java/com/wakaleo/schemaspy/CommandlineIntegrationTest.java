@@ -41,17 +41,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 
 /** Testcases for the {@code default-cli} commandline. */
-public class CommandlineIntegrationTest {
-  private static final String pomFile = "src/test/projects/unit/pgsql-plugin-config-cli.xml";
+class CommandlineIntegrationTest {
+  private static final String pomFile = "src/test/resources/unit/pgsql-plugin-config-cli.xml";
   private String version;
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     version = System.getenv("PLUGIN_VERSION");
   }
 
   @Test
-  public void testCommandlineHelp(TestInfo testInfo) throws Exception {
+  void testCommandlineHelp(TestInfo testInfo) throws Exception {
     Process mvn =
         new ProcessBuilder(
                 "mvn",
@@ -74,7 +74,7 @@ public class CommandlineIntegrationTest {
   }
 
   @Test
-  public void testCommandlineSchemaspy(TestInfo testInfo) throws Exception {
+  void testCommandlineSchemaspy(TestInfo testInfo) throws Exception {
     // /target/reports/pgsql-cli-test/schemaspy/index.html
     final String generatedFile = "./target/reports/pgsql-cli-test/schemaspy/index.html";
     Process mvn =

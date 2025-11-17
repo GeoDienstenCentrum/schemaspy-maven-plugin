@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author john
  */
-public class JDBCHelperTest {
+class JDBCHelperTest {
 
   private final String[][] DATABASE_TYPES_TEST_DATA = {
     {"jdbc:derby:testdb", "derby"},
@@ -38,7 +38,7 @@ public class JDBCHelperTest {
    * com.wakaleo.maven.plugin.schemaspy.util.JDBCHelper.
    */
   @Test
-  public void testExtractDatabaseType() {
+  void testExtractDatabaseType() {
     System.out.println("extractDatabaseType");
 
     for (String[] testDataEntry : DATABASE_TYPES_TEST_DATA) {

@@ -30,20 +30,20 @@
  */
 package com.wakaleo.schemaspy;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.apache.maven.api.plugin.testing.MojoTest;
 import org.apache.maven.api.plugin.testing.InjectMojo;
+import org.apache.maven.api.plugin.testing.MojoTest;
+import org.apache.maven.plugin.MojoExecutionException;
 import org.junit.jupiter.api.Test;
-import org.apache.maven.plugin.logging.Log;
+
 /**
  * Testcase for {@link com.wakaleo.schemaspy.HelpMojo } (which is a generated class).
  *
  * @author mprins
  */
 @MojoTest
-public class HelpMojoTest {
+class HelpMojoTest {
 
   /**
    * Test method for {@link com.wakaleo.schemaspy.HelpMojo#execute() } , it tests execution.
@@ -51,21 +51,13 @@ public class HelpMojoTest {
    * @throws Exception if any
    */
   @Test
-  @InjectMojo(goal = "help", pom = "classpath:/unit/mssql-plugin-config.xml")
-  public void testExecute(SchemaSpyReport myMojo) throws Exception {
-
-    Log log = mock(Log.class);
-
-    myMojo.setLog(log);
-
-    //        final File projectCopy = this.resources.getBasedir("unit");
-    //        final File pom = new File(projectCopy, "mssql-plugin-config.xml");
-    //        assumeTrue(pom.exists() && pom.isFile(), "POM file should exist as file.");
-    //
-    //        final HelpMojo myMojo = (HelpMojo) this.rule.lookupEmptyMojo("help", pom);
-    assertNotNull(myMojo, "The 'help' mojo should exist");
-
-    // should execute and not error
-    myMojo.execute();
+  @InjectMojo(goal = "help")
+  void testExecute(HelpMojo myMojo) throws Exception {
+    try {
+      // should execute and not error
+      myMojo.execute();
+    } catch (MojoExecutionException e) {
+      fail(e.getMessage());
+    }
   }
 }

@@ -116,6 +116,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <!-- upgrade transitive dependency from various maven libs due to reported vulns -->
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-archiver</artifactId>
+            <version>3.6.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
             <version>${maven-libs.version}</version>
@@ -142,20 +149,27 @@
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-api-xml</artifactId>
-            <version>4.0.0-alpha-5</version>
+            <version>4.0.0-rc-5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-xml-impl</artifactId>
-            <version>4.0.0-alpha-5</version>
+            <version>4.0.0-beta-5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-api-meta</artifactId>
-            <version>4.0.0-alpha-5</version>
+            <version>4.0.0-rc-1</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- upgrade transitive dependency from
+            org.apache.maven.reporting:maven-reporting-impl:jar:4.0.0 due to reported vulns -->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.20.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.reporting</groupId>
@@ -165,7 +179,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.12.2</version>
+            <version>5.14.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -189,12 +203,6 @@
             <version>4.0.0</version>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.codehaus.plexus</groupId>-->
-<!--            <artifactId>plexus-testing</artifactId>-->
-<!--            <version>1.1.0</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-compat</artifactId>
@@ -249,12 +257,12 @@
             <version>23.26.0.0.0</version>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-jcl</artifactId>-->
-<!--            <version>1.7.36</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.36</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>

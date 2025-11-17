@@ -1,9 +1,10 @@
 package com.wakaleo.schemaspy.util;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -31,8 +32,8 @@ public class DatabaseHelper {
         BufferedReader input = null;
         try {
           Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-          java.sql.Connection connection =
-              java.sql.DriverManager.getConnection("jdbc:derby:target/testdb;create=true");
+          Connection connection =
+              DriverManager.getConnection("jdbc:derby:target/testdb;create=true");
 
           input = new BufferedReader(new FileReader(sqlCreateScript));
           String line = null;
