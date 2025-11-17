@@ -28,7 +28,7 @@ jobs:
         include:
           - java: 21
             java_dist: "temurin"
-            maven: "4.0.0-rc-4"
+            maven: "4.0.0-rc-5"
             experimental: true
 
     steps:
@@ -48,10 +48,10 @@ jobs:
 
       - name: 'Startup databases'
         run: |
-          build/ci/start-pgsql.sh 17-3.5
-          build/ci/start-oracle.sh 23.8-slim
-          build/ci/start-mysql.sh 8
-          build/ci/start-mssql.sh 2022-latest
+          build/ci/start-pgsql.sh 18-3.6
+          build/ci/start-oracle.sh 23.26.0-slim
+          build/ci/start-mysql.sh 9
+          build/ci/start-mssql.sh 2025-latest
 
       - name: Install extra software
         run: sudo apt install -y --no-install-recommends graphviz
