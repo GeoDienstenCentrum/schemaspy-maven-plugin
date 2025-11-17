@@ -1,5 +1,11 @@
 name: 'CodeQL'
 
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: read
+  statuses: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
   cancel-in-progress: true
@@ -9,6 +15,12 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+      - '**/*.properties'
+      - '**/*.sh'
+      - '**/*.apt'
   schedule:
     - cron: '0 17 * * 2'
 
@@ -20,21 +32,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - language: java-kotlin
-            build-mode: none
+        language: [ java-kotlin, actions ]
+        build-mode: [ none ]
 
     steps:
       - name: 'Checkout repository'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Initialize CodeQL'
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
 
       - name: 'Perform CodeQL Analysis'
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           category: "/language:${{matrix.language}}"

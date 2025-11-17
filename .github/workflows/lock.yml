@@ -1,5 +1,11 @@
 name: 'Repository Maintenance'
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  actions: write
+
 on:
   schedule:
     - cron: '19 0 * * 1'

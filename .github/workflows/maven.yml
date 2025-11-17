@@ -16,20 +16,23 @@ jobs:
   build:
     name: "Test Java  ${{ matrix.java }} / Maven ${{ matrix.maven }}"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     strategy:
       fail-fast: false
       matrix:        
         java: [ 17, 21 ]
         java_dist: ["temurin"]
-        maven: [ "3.8.8", "3.9.9" ]
+        maven: [ "3.8.9", "3.9.11" ]
         include:
           - java: 21
             java_dist: "temurin"
-            maven: "4.0.0-rc-3"
+            maven: "4.0.0-rc-5"
             experimental: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: 'Set up Maven'
         uses: stCarolas/setup-maven@v5
@@ -37,7 +40,7 @@ jobs:
           maven-version: ${{ matrix.maven }}
 
       - name: 'Set up JDK'
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: ${{ matrix.java }}
           distribution: ${{ matrix.java_dist }}
@@ -45,10 +48,10 @@ jobs:
 
       - name: 'Startup databases'
         run: |
-          build/ci/start-pgsql.sh 17-3.5
-          build/ci/start-oracle.sh 23.7-slim
-          build/ci/start-mysql.sh 8
-          build/ci/start-mssql.sh 2022-latest
+          build/ci/start-pgsql.sh 18-3.6
+          build/ci/start-oracle.sh 23.26.0-slim
+          build/ci/start-mysql.sh 9
+          build/ci/start-mssql.sh 2025-latest
 
       - name: Install extra software
         run: sudo apt install -y --no-install-recommends graphviz
@@ -83,11 +86,13 @@ jobs:
   docs:
     name: Check Javadoc for Java 17
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 17
           distribution: 'zulu'
