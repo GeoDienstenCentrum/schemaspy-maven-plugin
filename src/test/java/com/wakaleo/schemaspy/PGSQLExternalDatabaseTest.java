@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.Locale;
 import java.util.logging.Logger;
 import org.apache.maven.api.plugin.testing.MojoTest;
-import org.apache.maven.plugin.testing.junit5.InjectMojo;
+import org.apache.maven.api.plugin.testing.InjectMojo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 

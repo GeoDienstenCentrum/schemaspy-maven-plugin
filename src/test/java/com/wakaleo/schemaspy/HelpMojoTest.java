@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 import org.apache.maven.api.plugin.testing.MojoTest;
-import org.apache.maven.plugin.testing.junit5.InjectMojo;
+import org.apache.maven.api.plugin.testing.InjectMojo;
 import org.junit.jupiter.api.Test;
 import org.apache.maven.plugin.logging.Log;
 /**
