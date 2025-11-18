@@ -59,8 +59,8 @@ under the License.
                     <databaseType>pgsql11</databaseType>
                     <database>test</database>
                     <schema>public</schema>
-                    <user>postgres</user>
-                    <password>postgres</password>
+                    <user>test</user>
+                    <password>test</password>
                     <host>127.0.0.1</host>
                     <port>5432</port>
                     <outputDirectory>${project.basedir}/../../../../target/reports/pgsql-cli-test</outputDirectory>

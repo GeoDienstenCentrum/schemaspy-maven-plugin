@@ -34,8 +34,8 @@ under the License.
                 <artifactId>schemaspy-maven-plugin</artifactId>
                 <version>@project.version@</version>
                 <configuration>
-                    <databaseType>orathin</databaseType>
-                    <database>FREE</database>
+                    <databaseType>orathin-service</databaseType>
+                    <database>FREEPDB1</database>
                     <user>SCHEMASPY</user>
                     <password>schemaspy</password>
                     <host>127.0.0.1</host>

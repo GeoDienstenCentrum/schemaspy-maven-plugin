@@ -200,7 +200,7 @@
             <!-- correct version must be provided by project depends on Maven version -->
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-xml</artifactId>
-            <version>4.0.0</version>
+            <version>4.1.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -281,7 +281,7 @@
                         <dependency>
                             <groupId>org.glassfish.jaxb</groupId>
                             <artifactId>jaxb-runtime</artifactId>
-                            <version>2.3.8</version>
+                            <version>2.3.9</version>
                         </dependency>
                     </dependencies>
                 </plugin>
