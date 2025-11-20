@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
-# Oracle FREE
-docker pull ghcr.io/gvenzl/oracle-free:"$1"
+set -euo pipefail
 
+VERSION=${1:-"23.26.0-slim"}
+
+docker pull ghcr.io/gvenzl/oracle-free:"$VERSION"
 # start the dockerized oracle-free instance
 # this container can be stopped/removed using:
 #
 #    docker stop schemaspy
 #
-# this container has the following admin user/credentials (user/password = system/oracle)
-docker run --rm -p 1521:1521 --name schemaspy -h schemaspy -e ORACLE_PASSWORD=oracle -d ghcr.io/gvenzl/oracle-free:"$1"
+docker run --rm -p 1521:1521 --name schemaspy -h schemaspy -e ORACLE_PASSWORD=oracle -e APP_USER=schemaspy -e APP_USER_PASSWORD=schemaspy -d ghcr.io/gvenzl/oracle-free:"$VERSION"
 
-printf "\n\nStarting Oracle FREE container, this could take a few minutes..."
-printf "\nWaiting for Oracle FREE database to start up.... "
+printf '\n\nStarting Oracle FREE %s container, this could take a few minutes...'"$VERSION"
+printf '\nWaiting for Oracle FREE database to start up.... '
 _WAIT=0;
 while :
 do
-    printf ' %s'" $_WAIT"
+    printf ' %s'"$_WAIT"
     if eval "docker logs schemaspy | grep -q 'DATABASE IS READY TO USE!'"; then
         printf "\nOracle FREE Database started\n\n"
         break
@@ -27,3 +28,5 @@ do
     sleep 10
     _WAIT=$(("$_WAIT"+10))
 done
+
+docker exec -i schemaspy sqlplus -l schemaspy/schemaspy@//localhost:1521/FREEPDB1 < src/test/resources/sql/oracle.sql

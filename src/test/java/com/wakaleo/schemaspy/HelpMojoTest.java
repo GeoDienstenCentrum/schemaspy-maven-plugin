@@ -30,55 +30,34 @@
  */
 package com.wakaleo.schemaspy;
 
-import org.apache.maven.plugin.testing.MojoRule;
-import org.apache.maven.plugin.testing.resources.TestResources;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.File;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assume.assumeNotNull;
-import static org.junit.Assume.assumeTrue;
+import org.apache.maven.api.plugin.testing.InjectMojo;
+import org.apache.maven.api.plugin.testing.MojoTest;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.junit.jupiter.api.Test;
 
 /**
- * Testcase for
- * {@link com.wakaleo.schemaspy.HelpMojo }
- * (which is a generated class).
+ * Testcase for {@link com.wakaleo.schemaspy.HelpMojo } (which is a generated class).
  *
  * @author mprins
  */
-public class HelpMojoTest {
-    /**
-     * Test resources.
-     */
-    @Rule
-    public TestResources resources = new TestResources();
+@MojoTest
+class HelpMojoTest {
 
-    /**
-     * test rule.
-     */
-    @Rule
-    public MojoRule rule = new MojoRule();
-
-    /**
-     * Test method for
-     * {@link com.wakaleo.schemaspy.HelpMojo#execute() }
-     * , it tests execution.
-     *
-     * @throws Exception if any
-     */
-    @Test
-    public void testExecute() throws Exception {
-        final File projectCopy = this.resources.getBasedir("unit");
-        final File pom = new File(projectCopy, "mssql-plugin-config.xml");
-        assumeNotNull("POM file should not be null.", pom);
-        assumeTrue("POM file should exist as file.", pom.exists() && pom.isFile());
-
-        final HelpMojo myMojo = (HelpMojo) this.rule.lookupEmptyMojo("help", pom);
-        assertNotNull("The 'help' mojo should exist", myMojo);
-
-        // should execute and not error
-        myMojo.execute();
+  /**
+   * Test method for {@link com.wakaleo.schemaspy.HelpMojo#execute() } , it tests execution.
+   *
+   * @throws Exception if any
+   */
+  @Test
+  @InjectMojo(goal = "help")
+  void testExecute(HelpMojo myMojo) throws Exception {
+    try {
+      // should execute and not error
+      myMojo.execute();
+    } catch (MojoExecutionException e) {
+      fail(e.getMessage());
     }
+  }
 }
