@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.geodienstencentrum.maven</groupId>
     <artifactId>schemaspy-maven-plugin</artifactId>
@@ -116,7 +117,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <!-- upgrade transitive dependency from various maven libs due to reported vulns -->
+            <!-- upgrade transitive dependency from various maven libs due to reported vulnerabilities -->
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-archiver</artifactId>
             <version>3.6.5</version>
@@ -130,43 +131,13 @@
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
-            <artifactId>maven-artifact</artifactId>
-            <version>${maven-libs.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>${maven-libs.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-model</artifactId>
-            <version>${maven-libs.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-api-xml</artifactId>
-            <version>4.0.0-rc-5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-xml-impl</artifactId>
-            <version>4.0.0-beta-5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-api-meta</artifactId>
-            <version>4.0.0-rc-1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <!-- upgrade transitive dependency from
-            org.apache.maven.reporting:maven-reporting-impl:jar:4.0.0 due to reported vulns -->
+            org.apache.maven.reporting:maven-reporting-impl:jar:4.0.0 due to reported vulnerabilities -->
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.20.0</version>
@@ -184,7 +155,7 @@
         </dependency>
         <dependency>
             <!-- upgrade transitive dependency from
-            org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test due to reported vulns -->
+            org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test due to reported vulnerabilities -->
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.21.0</version>
@@ -194,19 +165,6 @@
             <groupId>org.apache.maven.plugin-testing</groupId>
             <artifactId>maven-plugin-testing-harness</artifactId>
             <version>3.4.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- correct version must be provided by project depends on Maven version -->
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-xml</artifactId>
-            <version>4.1.0</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-compat</artifactId>
-            <version>${maven-libs.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -378,8 +336,8 @@
                         <includeResources>false</includeResources>
                         <configLocation>build/qa/checkstyle.xml</configLocation>
                         <includes>com/wakaleo/**/*.java</includes>
-                        <enableRSS>false</enableRSS>
-                        <excludes>**/HelpMojo.java</excludes>
+                        <!--                        <excludes>**/HelpMojo.java</excludes>-->
+                        <excludeGeneratedSources>true</excludeGeneratedSources>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -481,9 +439,13 @@
                         </goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}" />
-                                <copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.jar" verbose="true" overwrite="true" />
-                                <copy file="${project.basedir}/pom.xml" tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.pom" verbose="true" overwrite="true" />
+                                <mkdir dir="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                                      tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.jar"
+                                      verbose="true" overwrite="true"/>
+                                <copy file="${project.basedir}/pom.xml"
+                                      tofile="${project.build.directory}/testRepo/nl/geodienstencentrum/maven/${project.artifactId}/${project.version}/${project.build.finalName}.pom"
+                                      verbose="true" overwrite="true"/>
                             </target>
                         </configuration>
                     </execution>
@@ -687,10 +649,7 @@
                     <show>protected</show>
                     <useStandardDocletOptions>true</useStandardDocletOptions>
                     <author>true</author>
-                    <defaultVersion>${project.version}</defaultVersion>
                     <detectLinks>true</detectLinks>
-                    <fixClassComment>true</fixClassComment>
-                    <fixTags>all</fixTags>
                     <packagesheader>${project.artifactId}</packagesheader>
                     <doclint>none</doclint>
                     <tags>
@@ -724,9 +683,9 @@
                 <configuration>
                     <linkXRef>true</linkXRef>
                     <xrefLocation>${project.reporting.outputDirectory}/xref</xrefLocation>
-                    <includeXmlInSite>true</includeXmlInSite>
+                    <includeXmlInReports>true</includeXmlInReports>
                     <minimumTokens>100</minimumTokens>
-                    <targetJdk>${project.build.targetVersion}</targetJdk>
+                    <targetJdk>${java.version}</targetJdk>
                     <includes>
                         <include>com/wakaleo/**/*.java</include>
                     </includes>
@@ -764,16 +723,16 @@
             <id>full-tests</id>
             <properties>
                 <!-- could also be NONE, see https://issues.apache.org/jira/browse/SUREFIRE-861 -->
-                <surefire.excludes.files />
+                <surefire.excludes.files/>
             </properties>
         </profile>
         <profile>
             <id>maven-ci</id>
             <properties>
                 <!-- should be environment provided -->
-                <repoToken />
+                <repoToken/>
                 <!-- could also be NONE, see https://issues.apache.org/jira/browse/SUREFIRE-861 -->
-                <surefire.excludes.files />
+                <surefire.excludes.files/>
             </properties>
             <build>
                 <plugins>
@@ -796,7 +755,8 @@
         <profile>
             <id>appveyor</id>
             <properties>
-                <surefire.excludes.files>**/Oracle*Test.java,**/Mysql*Test.java,**/PGSQL*Test.java</surefire.excludes.files>
+                <surefire.excludes.files>**/Oracle*Test.java,**/Mysql*Test.java,**/PGSQL*Test.java
+                </surefire.excludes.files>
             </properties>
         </profile>
         <profile>
