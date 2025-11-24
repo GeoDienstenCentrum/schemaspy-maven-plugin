@@ -378,7 +378,12 @@ public class SchemaSpyReport extends AbstractMavenReport {
     return "SchemaSpy";
   }
 
+    /**
+     * @deprecated use {@link #getOutputPath()} instead.
+     * @return the output path of the report
+     */
   @Override
+  @Deprecated (since = "4.0.0")
   public String getOutputName() {
     return "schemaspy/index";
   }
