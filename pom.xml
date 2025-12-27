@@ -120,7 +120,7 @@
             <!-- upgrade transitive dependency from various maven libs due to reported vulnerabilities -->
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-archiver</artifactId>
-            <version>3.6.5</version>
+            <version>3.6.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
