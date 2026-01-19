@@ -844,8 +844,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-01-10T06:23:02Z"
-            ,"NVD API Last Modified": "2026-01-10T06:15:52Z"
+            ,"NVD API Last Checked": "2026-01-19T08:09:58Z"
+            ,"NVD API Last Modified": "2026-01-19T07:16:22Z"
           }
         }
       },
@@ -1042,14 +1042,14 @@
              "text": "checker-qual contains annotations (type qualifiers) that a programmerwrites to specify Java code for type-checking by the Checker Framework."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/checkerframework\/checker-qual\/3.49.5\/checker-qual-3.49.5.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/checkerframework\/checker-qual\/3.52.0\/checker-qual-3.52.0.jar"
           },
           "hashes": {
-            "md5": "a6525c2747603fb3ec22d18c4adc7419",
-            "sha1": "f0d119b5a4adb4164e9d6fa9fd3ffa5d0e458963",
-            "sha256": "508c83c62c344f6f7ee28f47b88a8797d6116d043bfd1ca0576c828dd1df2880"
+            "md5": "d7eeaac6d7810375c2484fd4faeb2f69",
+            "sha1": "9c17f496846ab1fca8975c6a50ceac0b3bbe63f0",
+            "sha256": "0b5bb1a4bdc4e4b1217482fe598efcaab4e1fba7b37f9412639178fc8116fc05"
           },          "properties": {
-"license": "The MIT License: http:\/\/opensource.org\/licenses\/MIT",                    "id12": "pkg:maven\/org.checkerframework\/checker-qual@3.49.5"
+"license": "The MIT License: http:\/\/opensource.org\/licenses\/MIT",                    "id12": "pkg:maven\/org.checkerframework\/checker-qual@3.52.0"
           }
         }
 ,{
@@ -3261,15 +3261,15 @@
              "text": "PostgreSQL JDBC Driver Postgresql"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.8\/postgresql-42.7.8.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.9\/postgresql-42.7.9.jar"
           },
           "hashes": {
-            "md5": "d5626352279a40e69e863fcff564e2f1",
-            "sha1": "81b840fbfe0a6c0b7aa14c6bd4856108d36ed780",
-            "sha256": "2a32a9dcbc42d67a50ad3a0de5efd102c8d2be46720045f2cbd6689f160ab7c7"
+            "md5": "8fd1ae9cdd1b53c92ea269e9c9fab92f",
+            "sha1": "2b748cd83a1ba3d6ef62dc64e075d1760f9a6d31",
+            "sha256": "88f1fc3992e80ec3b048f798030e9a014aa4783c40afb56d3e7a87ee0adf166f"
           },          "properties": {
-"license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.8"
-,                    "vid37": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.8:*:*:*:*:*:*:*"
+"license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.9"
+,                    "vid37": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.9:*:*:*:*:*:*:*"
           }
         }
 ,{

@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-01-10T06:23:02Z"
+                "timestamp": "2026-01-19T08:09:58Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-01-10T06:15:52Z"
+                "timestamp": "2026-01-19T07:16:22Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.0-SNAPSHOT",        "reportDate": "2026-01-10T06:23:26.932516076Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.0-SNAPSHOT",        "reportDate": "2026-01-19T08:10:19.923056405Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -3823,15 +3823,15 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "checker-qual-3.49.5.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/org\/checkerframework\/checker-qual\/3.49.5\/checker-qual-3.49.5.jar"
-,"md5": "a6525c2747603fb3ec22d18c4adc7419",
-            "sha1": "f0d119b5a4adb4164e9d6fa9fd3ffa5d0e458963",
-            "sha256": "508c83c62c344f6f7ee28f47b88a8797d6116d043bfd1ca0576c828dd1df2880","description": "checker-qual contains annotations (type qualifiers) that a programmerwrites to specify Java code for type-checking by the Checker Framework.","license": "The MIT License: http:\/\/opensource.org\/licenses\/MIT"            ,"projectReferences": [
+            "fileName": "checker-qual-3.52.0.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/checkerframework\/checker-qual\/3.52.0\/checker-qual-3.52.0.jar"
+,"md5": "d7eeaac6d7810375c2484fd4faeb2f69",
+            "sha1": "9c17f496846ab1fca8975c6a50ceac0b3bbe63f0",
+            "sha256": "0b5bb1a4bdc4e4b1217482fe598efcaab4e1fba7b37f9412639178fc8116fc05","description": "checker-qual contains annotations (type qualifiers) that a programmerwrites to specify Java code for type-checking by the Checker Framework.","license": "The MIT License: http:\/\/opensource.org\/licenses\/MIT"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:runtime"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.postgresql\/postgresql@42.7.8" }
+                { "reference":"pkg:maven\/org.postgresql\/postgresql@42.7.9" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -4124,34 +4124,34 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "3.49.5"
+                        "value": "3.52.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "3.49.5"
+                        "value": "3.52.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "3.49.5"
+                        "value": "3.52.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "3.49.5"
+                        "value": "3.52.0"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/org.checkerframework\/checker-qual@3.49.5"
+                        "id": "pkg:maven\/org.checkerframework\/checker-qual@3.52.0"
 ,"confidence": "HIGH"                    }
             ]
         },{
@@ -39137,11 +39137,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "postgresql-42.7.8.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.8\/postgresql-42.7.8.jar"
-,"md5": "d5626352279a40e69e863fcff564e2f1",
-            "sha1": "81b840fbfe0a6c0b7aa14c6bd4856108d36ed780",
-            "sha256": "2a32a9dcbc42d67a50ad3a0de5efd102c8d2be46720045f2cbd6689f160ab7c7","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
+            "fileName": "postgresql-42.7.9.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.9\/postgresql-42.7.9.jar"
+,"md5": "8fd1ae9cdd1b53c92ea269e9c9fab92f",
+            "sha1": "2b748cd83a1ba3d6ef62dc64e075d1760f9a6d31",
+            "sha256": "88f1fc3992e80ec3b048f798030e9a014aa4783c40afb56d3e7a87ee0adf166f","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -39169,6 +39169,13 @@
                             "source": "jar",
                             "name": "package name",
                             "value": "jdbc"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "org"
                         }
 ,{
                             "type": "vendor",
@@ -39218,6 +39225,13 @@
                             "source": "Manifest",
                             "name": "Implementation-Vendor-Id",
                             "value": "org.postgresql"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "LOW",
+                            "source": "Manifest",
+                            "name": "multi-release",
+                            "value": "true"
                         }
 ,{
                             "type": "vendor",
@@ -39408,6 +39422,13 @@
                             "confidence": "HIGHEST",
                             "source": "jar",
                             "name": "package name",
+                            "value": "org"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
                             "value": "osgi"
                     }
 ,{
@@ -39458,6 +39479,13 @@
                             "source": "Manifest",
                             "name": "Implementation-Title",
                             "value": "PostgreSQL JDBC Driver"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "Manifest",
+                            "name": "multi-release",
+                            "value": "true"
                     }
 ,{
                             "type": "product",
@@ -39606,38 +39634,38 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "42.7.8"
+                        "value": "42.7.9"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "42.7.8"
+                        "value": "42.7.9"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "42.7.8"
+                        "value": "42.7.9"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "42.7.8"
+                        "value": "42.7.9"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.8"
+                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.9"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.8:*:*:*:*:*:*:*"
+                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.9:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
             ]
         },{

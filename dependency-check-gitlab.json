@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-01-10T06:23:26",
-                "start_time": "2026-01-10T06:23:26",
+        "end_time": "2026-01-19T08:10:19",
+                "start_time": "2026-01-19T08:10:19",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -9692,7 +9692,7 @@
                         "package": {
                             "name": "org.checkerframework:checker-qual"
                         },
-                        "version": "3.49.5"
+                        "version": "3.52.0"
 
                                                                                                                     }
 ,                    {
@@ -10518,7 +10518,7 @@
                         "package": {
                             "name": "org.postgresql:postgresql"
                         },
-                        "version": "42.7.8"
+                        "version": "42.7.9"
 
                                                                                                                     }
 ,                    {
