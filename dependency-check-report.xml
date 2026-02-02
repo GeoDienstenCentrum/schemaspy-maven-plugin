@@ -4,11 +4,11 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-01-19T08:09:58Z</timestamp>
+            <timestamp>2026-02-02T08:00:37Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-01-19T07:16:22Z</timestamp>
+            <timestamp>2026-02-02T07:16:45Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -16,7 +16,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.0-SNAPSHOT</version>
-        <reportDate>2026-01-19T08:10:19.923056405Z</reportDate>
+        <reportDate>2026-02-02T08:00:59.147711519Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -25626,11 +25626,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>mysql-connector-j-9.5.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/mysql/mysql-connector-j/9.5.0/mysql-connector-j-9.5.0.jar</filePath>
-            <md5>f18b3756c4b8c6c2d82e3819ae085fbe</md5>
-            <sha1>64153d7488bbf25c040f3b0f004177bc05b36b22</sha1>
-            <sha256>f2ca3dfaf00d4aa311470db7ea3051962944ba0cb60005a2f75467549c39f425</sha256>
+            <fileName>mysql-connector-j-9.6.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/mysql/mysql-connector-j/9.6.0/mysql-connector-j-9.6.0.jar</filePath>
+            <md5>41cceeac76ac319992d65c1c3558966e</md5>
+            <sha1>0a76b3cf1facc2faca4b6e34c1a63ef5e7840131</sha1>
+            <sha256>66df1d453789dc8cb759a7dc17f58646893bf28483f262328650f170472a6ead</sha256>
             <description>JDBC Type 4 driver for MySQL.</description>
             <license>The GNU General Public License, v2 with Universal FOSS Exception, v1.0</license>
             <projectReferences>
@@ -25883,31 +25883,31 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>9.5.0</value>
+                    <value>9.6.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>9.5.0</value>
+                    <value>9.6.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>9.5.0</value>
+                    <value>9.6.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>9.5.0</value>
+                    <value>9.6.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.mysql/mysql-connector-j@9.5.0</id>
+                    <id>pkg:maven/com.mysql/mysql-connector-j@9.6.0</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:oracle:mysql_connector\/j:9.5.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Amysql_connector%5C%2Fj%3A9.5.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:oracle:mysql_connector\/j:9.6.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Amysql_connector%5C%2Fj%3A9.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
@@ -29049,7 +29049,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/com.mysql/mysql-connector-j@9.5.0</reference>
+                <reference>pkg:maven/com.mysql/mysql-connector-j@9.6.0</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">

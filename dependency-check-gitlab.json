@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-01-19T08:10:19",
-                "start_time": "2026-01-19T08:10:19",
+        "end_time": "2026-02-02T08:00:59",
+                "start_time": "2026-02-02T08:00:59",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -10399,7 +10399,7 @@
                         "package": {
                             "name": "com.mysql:mysql-connector-j"
                         },
-                        "version": "9.5.0"
+                        "version": "9.6.0"
 
                                                                                                                     }
 ,                    {

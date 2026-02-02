@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.17.0" timestamp="2026-01-19T06:31:50.130">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.17.0" timestamp="2026-02-02T07:58:20.238">
 <file name="/home/runner/work/schemaspy-maven-plugin/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/MavenSchemaAnalyzer.java">
 <violation beginline="7" endline="7" begincolumn="1" endcolumn="47" rule="UnnecessaryImport" ruleset="Code Style" package="com.wakaleo.schemaspy" class="MavenSchemaAnalyzer" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
 Unused import 'org.schemaspy.connection.ScNullChecked'

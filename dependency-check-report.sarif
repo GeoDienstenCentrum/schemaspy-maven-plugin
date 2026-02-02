@@ -844,8 +844,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-01-19T08:09:58Z"
-            ,"NVD API Last Modified": "2026-01-19T07:16:22Z"
+            ,"NVD API Last Checked": "2026-02-02T08:00:37Z"
+            ,"NVD API Last Modified": "2026-02-02T07:16:45Z"
           }
         }
       },
@@ -2911,15 +2911,15 @@
              "text": "JDBC Type 4 driver for MySQL."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/9.5.0\/mysql-connector-j-9.5.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/9.6.0\/mysql-connector-j-9.6.0.jar"
           },
           "hashes": {
-            "md5": "f18b3756c4b8c6c2d82e3819ae085fbe",
-            "sha1": "64153d7488bbf25c040f3b0f004177bc05b36b22",
-            "sha256": "f2ca3dfaf00d4aa311470db7ea3051962944ba0cb60005a2f75467549c39f425"
+            "md5": "41cceeac76ac319992d65c1c3558966e",
+            "sha1": "0a76b3cf1facc2faca4b6e34c1a63ef5e7840131",
+            "sha256": "66df1d453789dc8cb759a7dc17f58646893bf28483f262328650f170472a6ead"
           },          "properties": {
-"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id116": "pkg:maven\/com.mysql\/mysql-connector-j@9.5.0"
-,                    "vid31": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.5.0:*:*:*:*:*:*:*"
+"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id116": "pkg:maven\/com.mysql\/mysql-connector-j@9.6.0"
+,                    "vid31": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
