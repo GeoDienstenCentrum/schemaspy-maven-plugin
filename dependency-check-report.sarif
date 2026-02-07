@@ -844,8 +844,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-02-02T08:00:37Z"
-            ,"NVD API Last Modified": "2026-02-02T07:16:45Z"
+            ,"NVD API Last Checked": "2026-02-07T10:09:57Z"
+            ,"NVD API Last Modified": "2026-02-07T09:16:01Z"
           }
         }
       },
@@ -3052,15 +3052,15 @@
              "text": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.0.0.0\/ojdbc11-23.26.0.0.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.1.0.0\/ojdbc11-23.26.1.0.0.jar"
           },
           "hashes": {
-            "md5": "dd15886101e9e7f5eaf293881c72a072",
-            "sha1": "aea576f3827874d02b3dbd3ea6518955d0d1f1c7",
-            "sha256": "ef295bf01374dac7d791b3bc6526d10e8910ecac4645a95a3ca0c01cfc5c21d0"
+            "md5": "c0d07c69b0030f2f661a6c749919467f",
+            "sha1": "48bc326f44f900ba5956265dc17dc1818f914d1a",
+            "sha256": "94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792"
           },          "properties": {
-"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id118": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.0.0.0"
-,                    "vid32": "cpe:2.3:a:oracle:jdbc:23.26.0.0.0:*:*:*:*:*:*:*"
+"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id118": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.1.0.0"
+,                    "vid32": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{

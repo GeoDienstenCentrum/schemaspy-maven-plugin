@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-02-02T08:00:37Z"
+                "timestamp": "2026-02-07T10:09:57Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-02-02T07:16:45Z"
+                "timestamp": "2026-02-07T09:16:01Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.0-SNAPSHOT",        "reportDate": "2026-02-02T08:00:59.147711519Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.0-SNAPSHOT",        "reportDate": "2026-02-07T10:10:22.331266324Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -35740,11 +35740,11 @@
 
         },{
             "isVirtual": false,
-            "fileName": "ojdbc11-23.26.0.0.0.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.0.0.0\/ojdbc11-23.26.0.0.0.jar"
-,"md5": "dd15886101e9e7f5eaf293881c72a072",
-            "sha1": "aea576f3827874d02b3dbd3ea6518955d0d1f1c7",
-            "sha256": "ef295bf01374dac7d791b3bc6526d10e8910ecac4645a95a3ca0c01cfc5c21d0","description": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21","license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html"            ,"projectReferences": [
+            "fileName": "ojdbc11-23.26.1.0.0.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.1.0.0\/ojdbc11-23.26.1.0.0.jar"
+,"md5": "c0d07c69b0030f2f661a6c749919467f",
+            "sha1": "48bc326f44f900ba5956265dc17dc1818f914d1a",
+            "sha256": "94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792","description": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21","license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -35806,7 +35806,7 @@
                             "confidence": "LOW",
                             "source": "Manifest",
                             "name": "repository-id",
-                            "value": "JAVAVM_23.26.0.0.0DBRU_LINUX.X64_250925.1"
+                            "value": "JAVAVM_23.26.1.0.0DBRU_LINUX.X64_260101"
                         }
 ,{
                             "type": "vendor",
@@ -35913,7 +35913,7 @@
                             "confidence": "LOW",
                             "source": "Manifest",
                             "name": "repository-id",
-                            "value": "JAVAVM_23.26.0.0.0DBRU_LINUX.X64_250925.1"
+                            "value": "JAVAVM_23.26.1.0.0DBRU_LINUX.X64_260101"
                     }
 ,{
                             "type": "product",
@@ -35971,32 +35971,32 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "23.26.0.0.0"
+                        "value": "23.26.1.0.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "23.26.0.0.0"
+                        "value": "23.26.1.0.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "23.26.0.0.0"
+                        "value": "23.26.1.0.0"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.0.0.0"
+                        "id": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.1.0.0"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:oracle:jdbc:23.26.0.0.0:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.0.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.1.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,

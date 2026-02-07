@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-02-02T08:00:59",
-                "start_time": "2026-02-02T08:00:59",
+        "end_time": "2026-02-07T10:10:22",
+                "start_time": "2026-02-07T10:10:22",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -10413,7 +10413,7 @@
                         "package": {
                             "name": "com.oracle.database.jdbc:ojdbc11"
                         },
-                        "version": "23.26.0.0.0"
+                        "version": "23.26.1.0.0"
 
                                                                                                                     }
 ,                    {
