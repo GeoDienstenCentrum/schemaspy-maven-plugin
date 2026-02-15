@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.geodienstencentrum.maven</groupId>
     <artifactId>schemaspy-maven-plugin</artifactId>
-    <version>5.4.0-RC1</version>
+    <version>5.4.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
     <name>SchemaSpy Maven Plugin</name>
     <description>
