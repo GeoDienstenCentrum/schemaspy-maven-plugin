@@ -4,11 +4,11 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-02-07T10:09:57Z</timestamp>
+            <timestamp>2026-02-15T14:03:10Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-02-07T09:16:01Z</timestamp>
+            <timestamp>2026-02-15T13:16:16Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -16,7 +16,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.0-SNAPSHOT</version>
-        <reportDate>2026-02-07T10:10:22.331266324Z</reportDate>
+        <reportDate>2026-02-15T14:03:32.926816684Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -2791,7 +2791,7 @@
                 <projectReference>SchemaSpy Maven Plugin:runtime</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.postgresql/postgresql@42.7.9</reference>
+                <reference>pkg:maven/org.postgresql/postgresql@42.7.10</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28650,11 +28650,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>postgresql-42.7.9.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/postgresql/postgresql/42.7.9/postgresql-42.7.9.jar</filePath>
-            <md5>8fd1ae9cdd1b53c92ea269e9c9fab92f</md5>
-            <sha1>2b748cd83a1ba3d6ef62dc64e075d1760f9a6d31</sha1>
-            <sha256>88f1fc3992e80ec3b048f798030e9a014aa4783c40afb56d3e7a87ee0adf166f</sha256>
+            <fileName>postgresql-42.7.10.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/postgresql/postgresql/42.7.10/postgresql-42.7.10.jar</filePath>
+            <md5>46b64ac0888710f255fc6584f6facf68</md5>
+            <sha1>35100a3f0899551e27af8fed4a3414619a4663b3</sha1>
+            <sha256>cab1cd67cfa25c25de4348e532298028288a877ba01c77d1619fe45416193387</sha256>
             <description>PostgreSQL JDBC Driver Postgresql</description>
             <license>BSD-2-Clause: https://jdbc.postgresql.org/about/license.html</license>
             <projectReferences>
@@ -29007,30 +29007,30 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>42.7.9</value>
+                    <value>42.7.10</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>42.7.9</value>
+                    <value>42.7.10</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>42.7.9</value>
+                    <value>42.7.10</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>42.7.9</value>
+                    <value>42.7.10</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.postgresql/postgresql@42.7.9</id>
+                    <id>pkg:maven/org.postgresql/postgresql@42.7.10</id>
                 </package>
                 <vulnerabilityIds confidence="LOW">
-                    <id>cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.9:*:*:*:*:*:*:*</id>
+                    <id>cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*</id>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>

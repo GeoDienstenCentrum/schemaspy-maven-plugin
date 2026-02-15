@@ -844,8 +844,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-02-07T10:09:57Z"
-            ,"NVD API Last Modified": "2026-02-07T09:16:01Z"
+            ,"NVD API Last Checked": "2026-02-15T14:03:10Z"
+            ,"NVD API Last Modified": "2026-02-15T13:16:16Z"
           }
         }
       },
@@ -3261,15 +3261,15 @@
              "text": "PostgreSQL JDBC Driver Postgresql"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.9\/postgresql-42.7.9.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.10\/postgresql-42.7.10.jar"
           },
           "hashes": {
-            "md5": "8fd1ae9cdd1b53c92ea269e9c9fab92f",
-            "sha1": "2b748cd83a1ba3d6ef62dc64e075d1760f9a6d31",
-            "sha256": "88f1fc3992e80ec3b048f798030e9a014aa4783c40afb56d3e7a87ee0adf166f"
+            "md5": "46b64ac0888710f255fc6584f6facf68",
+            "sha1": "35100a3f0899551e27af8fed4a3414619a4663b3",
+            "sha256": "cab1cd67cfa25c25de4348e532298028288a877ba01c77d1619fe45416193387"
           },          "properties": {
-"license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.9"
-,                    "vid37": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.9:*:*:*:*:*:*:*"
+"license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.10"
+,                    "vid37": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
           }
         }
 ,{
