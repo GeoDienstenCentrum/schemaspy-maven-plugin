@@ -4,7 +4,7 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-02-15T17:21:24Z</timestamp>
+            <timestamp>2026-02-15T17:22:00Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
@@ -15,8 +15,8 @@
         <name>SchemaSpy Maven Plugin</name>
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
-        <version>5.4.0-RC1</version>
-        <reportDate>2026-02-15T17:21:48.434906572Z</reportDate>
+        <version>5.4.0-SNAPSHOT</version>
+        <reportDate>2026-02-15T17:22:26.449955315Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -3033,7 +3033,7 @@
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -6119,7 +6119,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -8087,7 +8087,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -8526,7 +8526,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -14668,7 +14668,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22131,7 +22131,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22588,7 +22588,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23065,7 +23065,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23216,7 +23216,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23533,7 +23533,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25425,7 +25425,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25637,7 +25637,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26180,7 +26180,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28661,7 +28661,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -29201,7 +29201,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-RC1</reference>
+                <reference>pkg:maven/nl.geodienstencentrum.maven/schemaspy-maven-plugin@5.4.0-SNAPSHOT</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
