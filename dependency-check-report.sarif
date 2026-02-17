@@ -844,8 +844,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-02-15T17:22:00Z"
-            ,"NVD API Last Modified": "2026-02-15T16:15:54Z"
+            ,"NVD API Last Checked": "2026-02-17T08:55:54Z"
+            ,"NVD API Last Modified": "2026-02-17T07:16:31Z"
           }
         }
       },
@@ -2903,7 +2903,8 @@
 "license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php",                    "id114": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.2.1"
 ,                    "id115": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.2.1.jre11"
 ,                    "vid29": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.2.1.jre11:*:*:*:*:*:*:*"
-,                    "vid30": "cpe:2.3:a:www-sql_project:www-sql:13.2.1.jre11:*:*:*:*:*:*:*"
+,                    "vid30": "cpe:2.3:a:microsoft:sql_server:13.2.1.jre11:*:*:*:*:*:*:*"
+,                    "vid31": "cpe:2.3:a:www-sql_project:www-sql:13.2.1.jre11:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2919,7 +2920,7 @@
             "sha256": "66df1d453789dc8cb759a7dc17f58646893bf28483f262328650f170472a6ead"
           },          "properties": {
 "license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id116": "pkg:maven\/com.mysql\/mysql-connector-j@9.6.0"
-,                    "vid31": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
+,                    "vid32": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3060,7 +3061,7 @@
             "sha256": "94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792"
           },          "properties": {
 "license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id118": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.1.0.0"
-,                    "vid32": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
+,                    "vid33": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3115,7 +3116,7 @@
             "sha256": "1f39d4f2906a04f501567cd1211cef3fd95fea4cb979e1eba1d8dd84e4b67098"
           },          "properties": {
                     "id122": "pkg:maven\/org.codehaus.plexus\/plexus-archiver@4.10.4"
-,                    "vid33": "cpe:2.3:a:codehaus-plexus:plexus-archiver:4.10.4:*:*:*:*:*:*:*"
+,                    "vid34": "cpe:2.3:a:codehaus-plexus:plexus-archiver:4.10.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3209,7 +3210,7 @@
             "sha256": "873139960c4c780176dda580b003a2c4bf82188bdce5bb99234e224ef7acfceb"
           },          "properties": {
                     "id129": "pkg:maven\/org.codehaus.plexus\/plexus-sec-dispatcher@2.0"
-,                    "vid34": "cpe:2.3:a:sec_project:sec:2.0:*:*:*:*:*:*:*"
+,                    "vid35": "cpe:2.3:a:sec_project:sec:2.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3225,8 +3226,8 @@
             "sha256": "27ef130e32c236090e408fb5498d94cb9ea26d14070fb1c8985d607b62d098d1"
           },          "properties": {
                     "id130": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
-,                    "vid35": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*"
-,                    "vid36": "cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*"
+,                    "vid36": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*"
+,                    "vid37": "cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3269,7 +3270,7 @@
             "sha256": "cab1cd67cfa25c25de4348e532298028288a877ba01c77d1619fe45416193387"
           },          "properties": {
 "license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.10"
-,                    "vid37": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
+,                    "vid38": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3285,7 +3286,7 @@
             "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
           },          "properties": {
 "license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause",                    "id134": "pkg:maven\/com.google.protobuf\/protobuf-java@4.31.1"
-,                    "vid38": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
+,                    "vid39": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3301,7 +3302,7 @@
             "sha256": "bd85a266bdb03325b09d659fced8e0820393a51ce335e8468f4c3476021ab4ad"
           },          "properties": {
 "license": "LGPL-3.0-or-later: https:\/\/www.gnu.org\/licenses\/lgpl-3.0.txt",                    "id135": "pkg:maven\/org.schemaspy\/schemaspy@7.0.2"
-,                    "vid39": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
+,                    "vid40": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3891,7 +3892,7 @@
             "sha256": "1bf78c2ade46f209bf93ebe72ed2af5b989ca7a1de0a015fc1b92a62f56b6549"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id146": "pkg:maven\/org.apache.velocity\/velocity-engine-core@2.4"
-,                    "vid40": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
+,                    "vid41": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3907,7 +3908,7 @@
             "sha256": "8258cfdcaa16127f35ffe610a3fa4f76b7ebe51b88922c73c4ee39ce8f378ce5"
           },          "properties": {
                     "id147": "pkg:maven\/org.apache.velocity.tools\/velocity-tools-generic@3.1"
-,                    "vid41": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
+,                    "vid42": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
           }
         }
 ,{
