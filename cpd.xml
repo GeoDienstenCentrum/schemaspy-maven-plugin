@@ -2,7 +2,7 @@
 <pmd-cpd xmlns="https://pmd-code.org/schema/cpd-report"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          pmdVersion="7.17.0"
-         timestamp="2026-02-17T08:53:27.628043183Z"
+         timestamp="2026-02-23T07:32:55.201512944Z"
          version="1.0.0"
          xsi:schemaLocation="https://pmd-code.org/schema/cpd-report https://pmd.github.io/schema/cpd-report_1_0_0.xsd">
    <file path="/home/runner/work/schemaspy-maven-plugin/schemaspy-maven-plugin/src/main/java/com/wakaleo/schemaspy/MavenSchemaAnalyzer.java"

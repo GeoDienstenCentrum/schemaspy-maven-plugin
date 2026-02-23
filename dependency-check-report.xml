@@ -4,11 +4,11 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-02-17T08:55:54Z</timestamp>
+            <timestamp>2026-02-23T07:36:00Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-02-17T07:16:31Z</timestamp>
+            <timestamp>2026-02-23T07:16:22Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -16,7 +16,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-02-17T08:56:19.880448478Z</reportDate>
+        <reportDate>2026-02-23T07:36:31.402149363Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -21160,7 +21160,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.junit.jupiter/junit-jupiter-engine@6.0.2</reference>
+                <reference>pkg:maven/org.junit.jupiter/junit-jupiter-engine@6.0.3</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25618,10 +25618,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 </package>
                 <vulnerabilityIds confidence="LOW">
                     <id>cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.2.1.jre11:*:*:*:*:*:*:*</id>
-                </vulnerabilityIds>
-                <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:microsoft:sql_server:13.2.1.jre11:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.2.1.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
                 <vulnerabilityIds confidence="HIGHEST">
                     <id>cpe:2.3:a:www-sql_project:www-sql:13.2.1.jre11:*:*:*:*:*:*:*</id>

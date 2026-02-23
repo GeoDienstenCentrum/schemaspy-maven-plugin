@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-02-17T08:55:54Z"
+                "timestamp": "2026-02-23T07:36:00Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-02-17T07:16:31Z"
+                "timestamp": "2026-02-23T07:16:22Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-02-17T08:56:19.880448478Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-02-23T07:36:31.402149363Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -28870,7 +28870,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.0.2" }
+                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.0.3" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -34975,9 +34975,6 @@
                 {
                     "id": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.2.1.jre11:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
-,                {
-                    "id": "cpe:2.3:a:microsoft:sql_server:13.2.1.jre11:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.2.1.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
 ,                {
                     "id": "cpe:2.3:a:www-sql_project:www-sql:13.2.1.jre11:*:*:*:*:*:*:*"
 ,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.2.1.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
