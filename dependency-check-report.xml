@@ -4,7 +4,7 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-03-16T05:55:42Z</timestamp>
+            <timestamp>2026-03-16T06:59:45Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
@@ -16,7 +16,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-03-16T05:56:05.970558888Z</reportDate>
+        <reportDate>2026-03-16T07:00:08.802849285Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -25412,11 +25412,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>mssql-jdbc-13.2.1.jre11.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/13.2.1.jre11/mssql-jdbc-13.2.1.jre11.jar</filePath>
-            <md5>6885a55fab61256d7d100b2f5a39d760</md5>
-            <sha1>406aa00b60c1b30e1bb02e469530dd2e21f2eace</sha1>
-            <sha256>2d137aa308c78932878952fe3624ea090ecfe644414b8b23e71a305f425698c5</sha256>
+            <fileName>mssql-jdbc-13.4.0.jre11.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/13.4.0.jre11/mssql-jdbc-13.4.0.jre11.jar</filePath>
+            <md5>dfbc5d35ad9cabc113f8db3725616d9c</md5>
+            <sha1>061d769c8a7dd4870fd85099ab55fbc6040b1997</sha1>
+            <sha256>e36f5237c1267983e5b88dc2169f6b9d7e50eceec6dc1ca31018e3877e14af66</sha256>
             <description>
 		Microsoft JDBC Driver for SQL Server.
 	</description>
@@ -25601,27 +25601,36 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>13.2.1.jre11</value>
+                    <value>13.4.0.jre11</value>
+                </evidence>
+                <evidence type="version" confidence="HIGH">
+                    <source>Manifest</source>
+                    <name>Bundle-Version</name>
+                    <value>13.4.0.jre11</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>13.2.1.jre11</value>
+                    <value>13.4.0.jre11</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.2.1</id>
+                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.4.0</id>
                 </package>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.2.1.jre11</id>
+                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.4.0.jre11</id>
                 </package>
                 <vulnerabilityIds confidence="LOW">
-                    <id>cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.2.1.jre11:*:*:*:*:*:*:*</id>
+                    <id>cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.4.0.jre11:*:*:*:*:*:*:*</id>
                 </vulnerabilityIds>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:www-sql_project:www-sql:13.2.1.jre11:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.2.1.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:microsoft:sql_server:13.4.0.jre11:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.4.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                </vulnerabilityIds>
+                <vulnerabilityIds confidence="HIGHEST">
+                    <id>cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.4.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>

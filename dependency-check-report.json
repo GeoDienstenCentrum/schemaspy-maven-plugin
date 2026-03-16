@@ -5,7 +5,7 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-03-16T05:55:42Z"
+                "timestamp": "2026-03-16T06:59:45Z"
             }
 ,{
                 "name": "NVD API Last Modified",
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-03-16T05:56:05.970558888Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-03-16T07:00:08.802849285Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -34694,11 +34694,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "mssql-jdbc-13.2.1.jre11.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/com\/microsoft\/sqlserver\/mssql-jdbc\/13.2.1.jre11\/mssql-jdbc-13.2.1.jre11.jar"
-,"md5": "6885a55fab61256d7d100b2f5a39d760",
-            "sha1": "406aa00b60c1b30e1bb02e469530dd2e21f2eace",
-            "sha256": "2d137aa308c78932878952fe3624ea090ecfe644414b8b23e71a305f425698c5","description": "\n\t\tMicrosoft JDBC Driver for SQL Server.\n\t","license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php"            ,"projectReferences": [
+            "fileName": "mssql-jdbc-13.4.0.jre11.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/com\/microsoft\/sqlserver\/mssql-jdbc\/13.4.0.jre11\/mssql-jdbc-13.4.0.jre11.jar"
+,"md5": "dfbc5d35ad9cabc113f8db3725616d9c",
+            "sha1": "061d769c8a7dd4870fd85099ab55fbc6040b1997",
+            "sha256": "e36f5237c1267983e5b88dc2169f6b9d7e50eceec6dc1ca31018e3877e14af66","description": "\n\t\tMicrosoft JDBC Driver for SQL Server.\n\t","license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -34953,31 +34953,41 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "13.2.1.jre11"
+                        "value": "13.4.0.jre11"
+                    }
+,                    {
+                        "type": "version",
+                        "confidence": "HIGH",
+                        "source": "Manifest",
+                        "name": "Bundle-Version",
+                        "value": "13.4.0.jre11"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "13.2.1.jre11"
+                        "value": "13.4.0.jre11"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.2.1"
+                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.4.0"
 ,"confidence": "HIGH"                    }
 ,                    {
-                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.2.1.jre11"
+                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.4.0.jre11"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.2.1.jre11:*:*:*:*:*:*:*"
+                    "id": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
 ,                {
-                    "id": "cpe:2.3:a:www-sql_project:www-sql:13.2.1.jre11:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.2.1.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:microsoft:sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.4.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+,                {
+                    "id": "cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.4.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,
