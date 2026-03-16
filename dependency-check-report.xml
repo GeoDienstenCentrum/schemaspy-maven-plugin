@@ -4,11 +4,11 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-02-23T07:36:00Z</timestamp>
+            <timestamp>2026-03-16T05:55:42Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-02-23T07:16:22Z</timestamp>
+            <timestamp>2026-03-13T21:28:47Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -16,7 +16,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-02-23T07:36:31.402149363Z</reportDate>
+        <reportDate>2026-03-16T05:56:05.970558888Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -199,7 +199,7 @@
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -954,18 +954,18 @@
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>asm-9.9.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/ow2/asm/asm/9.9/asm-9.9.jar</filePath>
-            <md5>6d1dd0482c03a6dc1807d9d004456021</md5>
-            <sha1>c29635c8a7afa03d74b33c1884df8abb2b3f3dcc</sha1>
-            <sha256>03d99a74ad1ee5c71334ef67437f4ef4fe3488caa7c96d8645abc73c8e2017d4</sha256>
+            <fileName>asm-9.9.1.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar</filePath>
+            <md5>1888ad1f49038441bb2d12aa6dffe396</md5>
+            <sha1>2ceea6ab43bcae1979b2a6d85fc0ca429877e5ab</sha1>
+            <sha256>6f3828a215c920059a5efa2fb55c233d6c54ec5cadca99ce1b1bdd10077c7ddd</sha256>
             <description>ASM, a very small and fast Java bytecode manipulation framework</description>
             <license>BSD-3-Clause: https://asm.ow2.io/license.html</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -1216,32 +1216,32 @@
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>9.9</value>
+                    <value>9.9.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>9.9</value>
+                    <value>9.9.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>9.9</value>
+                    <value>9.9.1</value>
                 </evidence>
                 <evidence type="version" confidence="LOW">
                     <source>pom</source>
                     <name>parent-version</name>
-                    <value>9.9</value>
+                    <value>9.9.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>9.9</value>
+                    <value>9.9.1</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.ow2.asm/asm@9.9</id>
+                    <id>pkg:maven/org.ow2.asm/asm@9.9.1</id>
                 </package>
             </identifiers>
         </dependency>
@@ -10346,7 +10346,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -13911,7 +13911,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -14062,7 +14062,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -15385,7 +15385,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22287,16 +22287,16 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-artifact-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-artifact/3.9.12/maven-artifact-3.9.12.jar</filePath>
-            <md5>d834fe188642d22ce7318e6af0a605dd</md5>
-            <sha1>39acdd4ad6b74b1c001ae7c0858482a11d0ead59</sha1>
-            <sha256>4361cecd7e863c0992a6c901202afbb6db2a06b4f9a5e4b22481d4d39bcf137c</sha256>
+            <fileName>maven-artifact-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-artifact/3.9.14/maven-artifact-3.9.14.jar</filePath>
+            <md5>0782702122cfd171170c7e6b9ab9837b</md5>
+            <sha1>921c4f90ec434e29b399796077a08459571d048a</sha1>
+            <sha256>1effa70eacbf0aa4d94ad9c7b225be031ce4317fa07da59e23b02b3e4e1231a3</sha256>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22417,37 +22417,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-artifact@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-artifact@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-builder-support-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-builder-support/3.9.12/maven-builder-support-3.9.12.jar</filePath>
-            <md5>6afaba813236d781c7b3865f9fab3a44</md5>
-            <sha1>fe2fe54522eb2f77bd9b30cefc959d728d3f8105</sha1>
-            <sha256>22a0345c7a90dbe7758209d52135967daa8aae6543c7016cb635891b0eceeed4</sha256>
+            <fileName>maven-builder-support-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-builder-support/3.9.14/maven-builder-support-3.9.14.jar</filePath>
+            <md5>963abb54adeb61e8bfc3ba737054e7f8</md5>
+            <sha1>fd7eff42958f7a6ce02710f02127bc158d710d4e</sha1>
+            <sha256>2109ff808046e4f8b356b1064060a3f224b0b0aad07ecceaf7696c3bdc0b2296</sha256>
             <description>Support for descriptor builders (model, setting, toolchains)</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22558,31 +22558,31 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-builder-support@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-builder-support@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-core-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-core/3.9.12/maven-core-3.9.12.jar</filePath>
-            <md5>5988619119b33562228343c4ded75b9e</md5>
-            <sha1>a349a9dadebca9f2a2d1f99876f651a02961a366</sha1>
-            <sha256>1ee217c759a895771a07a2018c026bba01373305d9bad0099f06dbbdbcf2c332</sha256>
+            <fileName>maven-core-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-core/3.9.14/maven-core-3.9.14.jar</filePath>
+            <md5>6538c37b5355337d131ae31b57ac09be</md5>
+            <sha1>39808a75b5625ddd0e8bba0bd8f9e953da940add</sha1>
+            <sha256>db009d57b90a714efe86c81c7a518febb276d01ba3daf2f301e382f6560e8a58</sha256>
             <description>Maven Core classes.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
@@ -22699,41 +22699,41 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-core@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-core@3.9.14</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:apache:maven:3.9.12:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Amaven%3A3.9.12%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:apache:maven:3.9.14:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Amaven%3A3.9.14%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-model-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model/3.9.12/maven-model-3.9.12.jar</filePath>
-            <md5>2eca810310f90f79e048265eb29165b9</md5>
-            <sha1>6f91cb0e47b7fc6db492ed307b0c91b38bfce924</sha1>
-            <sha256>d443a20cb801a7f116e10a80dd1ebf7aaae7182880d1097e0681d498c45e168b</sha256>
+            <fileName>maven-model-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model/3.9.14/maven-model-3.9.14.jar</filePath>
+            <md5>c6f3bb5fdf95487ac8e66cdb7b0d8fb5</md5>
+            <sha1>623d1a652d2657577be0c8d3c249a4ab2830a843</sha1>
+            <sha256>684f573b1b37933c5d62c1c21d5da4335b049fb8b3d9754281597a38dbbc4044</sha256>
             <description>Model for Maven POM (Project Object Model)</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22854,37 +22854,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-model@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-model@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-model-builder-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model-builder/3.9.12/maven-model-builder-3.9.12.jar</filePath>
-            <md5>8d8d8278aeb6a462ce3421a5d1b7d7d5</md5>
-            <sha1>c1a74479d447e70d98ed5f03f6b32d54818ca046</sha1>
-            <sha256>1cb12b9e51b9855599dd1d02e77f08ff88772e9d4b4a7c4ee1e5d7a4f2b9b9ea</sha256>
+            <fileName>maven-model-builder-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model-builder/3.9.14/maven-model-builder-3.9.14.jar</filePath>
+            <md5>f7843bebace494ee97509e67401a0993</md5>
+            <sha1>45299e0bbefb6575ba18214d822753a373d49aa9</sha1>
+            <sha256>9a6f4deb11bd6fe3f8b11036ed46f34cded3b00fc638f242327537bfb53c9d3f</sha256>
             <description>The effective model builder, with inheritance, profile activation, interpolation, ...</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23035,22 +23035,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-model-builder@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-model-builder@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23206,11 +23206,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-plugin-api-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.12/maven-plugin-api-3.9.12.jar</filePath>
-            <md5>8fcc7f1f1457476e6c0d6c7746bd0960</md5>
-            <sha1>2c2d5180b3dae0e6f91575fc2507429727e01cc9</sha1>
-            <sha256>104a1e073e5484eae2eac594c6e49b59bdd1103fe480ceb9a3468cd427449570</sha256>
+            <fileName>maven-plugin-api-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.14/maven-plugin-api-3.9.14.jar</filePath>
+            <md5>a8be3ebe58277ded8abdc68925c6f4d5</md5>
+            <sha1>67a865f97a78cbd97773542ff3cb838d6624b5c1</sha1>
+            <sha256>062445ef3ae988e245cca68ccec915de64703ec615badf2d9d61da9ee6f1a245</sha256>
             <description>The API for plugins - Mojos - development.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
@@ -23337,22 +23337,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-plugin-api@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23689,17 +23689,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-repository-metadata-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.12/maven-repository-metadata-3.9.12.jar</filePath>
-            <md5>6099a10e5063820edf75037e3e777863</md5>
-            <sha1>3ecfc216f9a56f15c6bd6b3e22567b0b6cb2183e</sha1>
-            <sha256>b3688646dde74429e2e04ba4d7e1482f720bd68ab53824990089d0d8c821f1da</sha256>
+            <fileName>maven-repository-metadata-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.14/maven-repository-metadata-3.9.14.jar</filePath>
+            <md5>a874e3b9651d80f9199ec855ccbbc4c6</md5>
+            <sha1>231607afce2005cb03f2f882b347189f7ff27686</sha1>
+            <sha256>307e4920b17a8fdd764b556a7569de9bdd384d6b5f3f6a63dfb2ef186f02da2a</sha256>
             <description>Per-directory local and remote repository metadata.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23820,38 +23820,38 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-repository-metadata@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-repository-metadata@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-api-1.9.25.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.9.25/maven-resolver-api-1.9.25.jar</filePath>
-            <md5>11a370687a765c2c2288bcff6f4f73cb</md5>
-            <sha1>8b670256b812a45b1ca9ae1bbf7f1c0d00a9d4e4</sha1>
-            <sha256>f414e7f40aff338cef65f836aabf6cd9a9e2a0f1bfa88589315beb0ac2f498c5</sha256>
+            <fileName>maven-resolver-api-1.9.27.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.9.27/maven-resolver-api-1.9.27.jar</filePath>
+            <md5>c7bd6f04c52f098ba934742bb204cb5e</md5>
+            <sha1>2fe7e86e3c193121789470507cf4fadd5bd7ad59</sha1>
+            <sha256>a895d222283666a7320ddc76615e2e93a41fabd93ce9a6bf9ddee39272bb87b4</sha256>
             <description>The application programming interface for the repository system.</description>
             <license>&quot;Apache-2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24007,43 +24007,43 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-api@1.9.25</id>
+                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-api@1.9.27</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-impl-1.9.25.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.9.25/maven-resolver-impl-1.9.25.jar</filePath>
-            <md5>4792489c7592c08bebd235a7f2a3d4a1</md5>
-            <sha1>cc1bde9b56a2e95a181207958dcf40715dc71ab3</sha1>
-            <sha256>8d28766de3a000efa3662d5f67e428ca225498a89001195f7b3c55ea7a8bc56d</sha256>
+            <fileName>maven-resolver-impl-1.9.27.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.9.27/maven-resolver-impl-1.9.27.jar</filePath>
+            <md5>37de3b6f62504d03fb281c533de98d4a</md5>
+            <sha1>876fc89223d9572cade60a1b8158846724548d07</sha1>
+            <sha256>295d48ea2a8bb3aef51888967f105fb6251997d111f13c32d28919fd9b1c951e</sha256>
             <description>An implementation of the repository system.</description>
             <license>&quot;Apache-2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24189,43 +24189,43 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-impl@1.9.25</id>
+                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-impl@1.9.27</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-named-locks-1.9.25.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-named-locks/1.9.25/maven-resolver-named-locks-1.9.25.jar</filePath>
-            <md5>d14b4f832e13dc00cfa3e5e36a60f666</md5>
-            <sha1>fb1c8c95f17c816c3ceb8692aa84cbb068df5d94</sha1>
-            <sha256>e9fc779106713c33b4b5a7ed85e4273cfd7b9a96df7cf678eb0ac588f72669e3</sha256>
+            <fileName>maven-resolver-named-locks-1.9.27.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-named-locks/1.9.27/maven-resolver-named-locks-1.9.27.jar</filePath>
+            <md5>7bbb9ba859aa1ac04280422f0520b9eb</md5>
+            <sha1>72c89ad87be374309a7308ee144949360ed482e8</sha1>
+            <sha256>b39ecd4da98fdac5068e6f5d16910a71f4e4d48e95e17d107f6603e18f2b3fdf</sha256>
             <description>A synchronization utility implementation using Named locks.</description>
             <license>&quot;Apache-2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24376,42 +24376,42 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-named-locks@1.9.25</id>
+                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-named-locks@1.9.27</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-provider-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.12/maven-resolver-provider-3.9.12.jar</filePath>
-            <md5>f7b422b347c8009da8335e848b00b800</md5>
-            <sha1>44963f45b78f89a8479705493c48e01fc54ff9d6</sha1>
-            <sha256>79be07f591709b41d35e3ede06244a3447330fad469499fd5decb7606be01005</sha256>
+            <fileName>maven-resolver-provider-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.14/maven-resolver-provider-3.9.14.jar</filePath>
+            <md5>9026e4ce9aead5a9740f626d49085065</md5>
+            <sha1>9927e911dfc855a462ee79e3f5bb3fd5effd8b82</sha1>
+            <sha256>a5bc340ffe35325c55a01762feee374abb2a9e2b14191ea39c1ef646c2754f65</sha256>
             <description>Extensions to Maven Resolver for utilizing Maven POM and repository metadata.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24532,38 +24532,38 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-resolver-provider@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-resolver-provider@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-spi-1.9.25.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.9.25/maven-resolver-spi-1.9.25.jar</filePath>
-            <md5>49f5e30b9862b489b9e8066c9744869a</md5>
-            <sha1>f81237d0140f9222cf4437c44756a53368a2d152</sha1>
-            <sha256>781fafec23ea24f2624f3e3b48c674912f4bb1a1009a051df194307ed380280e</sha256>
+            <fileName>maven-resolver-spi-1.9.27.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.9.27/maven-resolver-spi-1.9.27.jar</filePath>
+            <md5>ef88eaf44762342c8322924955e3c333</md5>
+            <sha1>fb64e47acdc73f938b4d5b6464ef7a6351f983d5</sha1>
+            <sha256>1cab02f45bc58d5f4d8e084eaf032f13ea1a5fc9021d8bd74f8360ebb6593e5a</sha256>
             <description>The service provider interface for repository system implementations and repository connectors.</description>
             <license>&quot;Apache-2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24709,43 +24709,43 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-spi@1.9.25</id>
+                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-spi@1.9.27</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-util-1.9.25.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.9.25/maven-resolver-util-1.9.25.jar</filePath>
-            <md5>8c4a25d08ba8ba18a9f93a821d518273</md5>
-            <sha1>f755f6816d8fd63b09b8f2c9e1eaaa1f60c179e8</sha1>
-            <sha256>e31330fdb29045f3087b4985cb488a5b5ebbcbd7d879fda14e6ed4dd61b1fdf7</sha256>
+            <fileName>maven-resolver-util-1.9.27.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.9.27/maven-resolver-util-1.9.27.jar</filePath>
+            <md5>0d792ab540b382fc240c3529d5b6e88e</md5>
+            <sha1>7ee4446af6aab27475765ec9c9dc1fb2b082af2b</sha1>
+            <sha256>74a12548f0d6aad13c728666288c1e81201c24bd05bb4e4ec8c1558517b379a7</sha256>
             <description>A collection of utility classes to ease usage of the repository system.</description>
             <license>&quot;Apache-2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24911,42 +24911,42 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>1.9.25</value>
+                    <value>1.9.27</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-util@1.9.25</id>
+                    <id>pkg:maven/org.apache.maven.resolver/maven-resolver-util@1.9.27</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-settings-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings/3.9.12/maven-settings-3.9.12.jar</filePath>
-            <md5>c36d21412549711847bf183674c8d2ee</md5>
-            <sha1>ca072f2b90a59d36d8218dd4e1460722db6e2322</sha1>
-            <sha256>eabb1adfa3ce3c9217318b6d289de20259ee42d7290660ed4358eecd56b5664f</sha256>
+            <fileName>maven-settings-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings/3.9.14/maven-settings-3.9.14.jar</filePath>
+            <md5>e77ceedcd1e9587064a5f4ee519077cb</md5>
+            <sha1>b438ff21305253ded45570a74622595963942e65</sha1>
+            <sha256>0e5492e07136565b1ef72a981e99797999183e54f589e00aa608cbadc4cb9bda</sha256>
             <description>Maven Settings model.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25067,37 +25067,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-settings@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-settings@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-settings-builder-3.9.12.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.12/maven-settings-builder-3.9.12.jar</filePath>
-            <md5>d9dad42925db531f32bcc320783e7322</md5>
-            <sha1>1ddd0b8da05d120768142176476a06f489cea11c</sha1>
-            <sha256>92d137e366a4b4549eda848b52d968ef076ce24b9fb2db1b7a3083b9cc896eb1</sha256>
+            <fileName>maven-settings-builder-3.9.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.14/maven-settings-builder-3.9.14.jar</filePath>
+            <md5>5784e2300228329dafcdb01fc18c803a</md5>
+            <sha1>2b28c76e3c83715179b96404c0c003a91d543aba</sha1>
+            <sha256>1d3cf59f9dc6af77f7a1052aea598535b4f59926a9fe92cecce3ecfb5b91ff1f</sha256>
             <description>The effective settings builder, with inheritance and password decryption.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25218,22 +25218,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.12</value>
+                    <value>3.9.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-settings-builder@3.9.12</id>
+                    <id>pkg:maven/org.apache.maven/maven-settings-builder@3.9.14</id>
                 </package>
             </identifiers>
         </dependency>
@@ -25248,7 +25248,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26511,18 +26511,18 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>org.eclipse.sisu.inject-0.9.0.M4.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M4/org.eclipse.sisu.inject-0.9.0.M4.jar</filePath>
-            <md5>ee95c1a11ba4ca38368d71ef05676cfc</md5>
-            <sha1>a062d8e12dc62e698c9f943a3fce94e366b4e220</sha1>
-            <sha256>1cbd7a965a5e2a9ea823bab311962a4e5aa5c240705bdbad5a52b40ffdfa1004</sha256>
+            <fileName>org.eclipse.sisu.inject-1.0.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.0/org.eclipse.sisu.inject-1.0.0.jar</filePath>
+            <md5>9d66e7450d82f2070a1422de1ebd4c81</md5>
+            <sha1>d9c2d6ff4b461ab9492edb1cd9d8239cfb41f4ca</sha1>
+            <sha256>3ab8d7bfe68f3b6ec95c1a0a47e628edbc9d76e90634cb0a0ba121fbb11b8e42</sha256>
             <description>JSR330-based container; supports classpath scanning, auto-binding, and dynamic auto-wiring</description>
-            <license>&quot;Eclipse Public License, Version 2.0&quot;;link=&quot;https://www.eclipse.org/legal/epl-v20.html&quot;</license>
+            <license>Eclipse Public License, Version 2.0;link=&quot;https://www.eclipse.org/legal/epl-v20.html&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26663,7 +26663,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
                     <name>Bundle-Name</name>
-                    <value>Sisu-Inject (Incubation)</value>
+                    <value>Sisu-Inject</value>
                 </evidence>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
@@ -26696,35 +26696,40 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <value>sisu-inject</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
+                    <source>file</source>
+                    <name>version</name>
+                    <value>1.0.0</value>
+                </evidence>
+                <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>0.9.0.M4</value>
+                    <value>1.0.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>0.9.0.M4</value>
+                    <value>1.0.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.eclipse.sisu/org.eclipse.sisu.inject@0.9.0.M4</id>
+                    <id>pkg:maven/org.eclipse.sisu/org.eclipse.sisu.inject@1.0.0</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>org.eclipse.sisu.plexus-0.9.0.M4.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.jar</filePath>
-            <md5>51eea54bbc85323fc68f6a79f9b8f179</md5>
-            <sha1>478f7935e88cd9da7ef01f509e4853e80ede9034</sha1>
-            <sha256>b90579bc652eac7331436e0a25533fce14130b9c6e015f2dd3a3d4bb07e942b7</sha256>
+            <fileName>org.eclipse.sisu.plexus-1.0.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.0/org.eclipse.sisu.plexus-1.0.0.jar</filePath>
+            <md5>fb07aece41f034fea46b022e2756cd7c</md5>
+            <sha1>873767e95597c9e31749123a408bd4949c29a46c</sha1>
+            <sha256>865b5300034fc08c790215d7d97f141914c932191bef9338a7dcef589f7536e9</sha256>
             <description>Plexus-JSR330 adapter; adds Plexus support to the Sisu-Inject container</description>
-            <license>&quot;Eclipse Public License, Version 2.0&quot;;link=&quot;https://www.eclipse.org/legal/epl-v20.html&quot;</license>
+            <license>Eclipse Public License, Version 2.0;link=&quot;https://www.eclipse.org/legal/epl-v20.html&quot;</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26840,7 +26845,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
                     <name>Bundle-Name</name>
-                    <value>Sisu-Plexus (Incubation)</value>
+                    <value>Sisu-Plexus</value>
                 </evidence>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
@@ -26873,19 +26878,24 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <value>sisu-inject</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
+                    <source>file</source>
+                    <name>version</name>
+                    <value>1.0.0</value>
+                </evidence>
+                <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>0.9.0.M4</value>
+                    <value>1.0.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>0.9.0.M4</value>
+                    <value>1.0.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.eclipse.sisu/org.eclipse.sisu.plexus@0.9.0.M4</id>
+                    <id>pkg:maven/org.eclipse.sisu/org.eclipse.sisu.plexus@1.0.0</id>
                 </package>
             </identifiers>
         </dependency>
@@ -27068,7 +27078,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27190,7 +27200,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27387,7 +27397,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28019,7 +28029,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28145,7 +28155,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -39220,7 +39230,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.12</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
