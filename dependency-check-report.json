@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-03-16T06:59:45Z"
+                "timestamp": "2026-04-10T13:19:33Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-03-13T21:28:47Z"
+                "timestamp": "2026-04-10T13:16:46Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-03-16T07:00:08.802849285Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-04-10T13:19:54.913647814Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -254,8 +254,91 @@
                     {
                         "id": "pkg:maven\/io.airlift\/aircompressor@0.27"
 ,"confidence": "HIGH"                    }
+            ]                ,"vulnerabilityIds": [
+                {
+                    "id": "cpe:2.3:a:airlift:aircompressor:0.27:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aairlift%3Aaircompressor%3A0.27%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
-        },{
+            ,"vulnerabilities": [
+ {
+                "source": "NVD",
+                "name": "CVE-2025-67721",
+                    "severity" : "MEDIUM",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "HIGH"
+,"exploitabilityScore": "3.9","impactScore": "3.6","version": "3.1"                    },
+                    "cvssv4": {
+                        "vectorString": "CVSS:4.0\/AV:N\/AC:L\/AT:P\/PR:N\/UI:N\/VC:L\/VI:N\/VA:N\/SC:N\/SI:N\/SA:N\/E:X\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:N\/V:X\/RE:X\/U:X"
+                        ,"source": "security-advisories@github.com"
+                        ,"type": "Secondary"
+                        ,"version": "4.0"
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"attackRequirements": "PRESENT"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"vulnerableSystemConfidentiality": "LOW"
+                        ,"vulnerableSystemIntegrity": "NONE"
+                        ,"vulnerableSystemAvailability": "NONE"
+                        ,"subsequentSystemConfidentiality": "NONE"
+                        ,"subsequentSystemIntegrity": "NONE"
+                        ,"subsequentSystemAvailability": "NONE"
+                        ,"exploitMaturity": "NOT_DEFINED"
+                        ,"confidentialityRequirements": "NOT_DEFINED"
+                        ,"integrityRequirements": "NOT_DEFINED"
+                        ,"availabilityRequirements": "NOT_DEFINED"
+                        ,"modifiedAttackVector": "NOT_DEFINED"
+                        ,"modifiedAttackComplexity": "NOT_DEFINED"
+                        ,"modifiedAttackRequirements": "NOT_DEFINED"
+                        ,"modifiedPrivilegesRequired": "NOT_DEFINED"
+                        ,"modifiedUserInteraction": "NOT_DEFINED"
+                        ,"modifiedVulnerableSystemConfidentiality": "NOT_DEFINED"
+                        ,"modifiedVulnerableSystemIntegrity": "NOT_DEFINED"
+                        ,"modifiedVulnerableSystemAvailability": "NOT_DEFINED"
+                        ,"modifiedSubsequentSystemConfidentiality": "NOT_DEFINED"
+                        ,"modifiedSubsequentSystemIntegrity": "NOT_DEFINED"
+                        ,"modifiedSubsequentSystemAvailability": "NOT_DEFINED"
+                        ,"safety": "NOT_DEFINED"
+                        ,"automatable": "NOT_DEFINED"
+                        ,"recovery": "NOT_DEFINED"
+                        ,"valueDensity": "NOT_DEFINED"
+                        ,"vulnerabilityResponseEffort": "NOT_DEFINED"
+                        ,"providerUrgency": "NOT_DEFINED"
+                        ,"baseScore": 6.3
+                        ,"baseSeverity": "MEDIUM"
+                    },
+                    "cwes": [
+                        "CWE-125",                        "CWE-201"                    ],
+                "description": "Aircompressor is a library with ports of the Snappy, LZO, LZ4, and Zstandard compression algorithms to Java. In versions 3.3 and below, incorrect handling of malformed data in Java-based decompressor implementations for Snappy and LZ4 allow remote attackers to read previous buffer contents via crafted compressed input. With certain crafted compressed inputs, elements from the output buffer can end up in the uncompressed output, potentially leaking sensitive data. This is relevant for applications that reuse the same output buffer to uncompress multiple inputs. This can be the case of a web server that allocates a fix-sized buffer for performance purposes. There is similar vulnerability in GHSA-cmp6-m4wj-q63q. This issue is fixed in version 3.4.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/airlift\/aircompressor\/security\/advisories\/GHSA-vx9q-rhv9-3jvg","name": "MITIGATION,VENDOR_ADVISORY"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/airlift\/aircompressor\/commit\/f2b489b398779b40c1ee29ddb11d7edef54ddc15","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/airlift\/aircompressor\/commit\/ff12c4d5757c9d6d1de3d39a10402f1f84f9b765","name": "PATCH"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:airlift:aircompressor:*:*:*:*:*:*:*:*"
+,"vulnerabilityIdMatched":"true","versionEndExcluding":"2.0.3"                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:airlift:aircompressor:*:*:*:*:*:*:*:*"
+,"versionStartIncluding":"3.0","versionEndExcluding":"3.4"                        }
+                    }                ]
+                }            ]        },{
             "isVirtual": false,
             "fileName": "aopalliance-1.0.jar",
             "filePath": "\/home\/runner\/.m2\/repository\/aopalliance\/aopalliance\/1.0\/aopalliance-1.0.jar"
@@ -38717,7 +38800,46 @@
                     "id": "cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*"
 ,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
-        },{
+            ,"vulnerabilities": [
+ {
+                "source": "NVD",
+                "name": "CVE-2025-67030",
+                    "severity" : "HIGH",
+                    "cvssv3": {
+                        "baseScore": 8.8
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "REQUIRED"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"exploitabilityScore": "2.8","impactScore": "5.9","version": "3.1"                    },
+                    "cwes": [
+                        "CWE-22"                    ],
+                "description": "Directory Traversal vulnerability in the extractFile method of org.codehaus.plexus.util.Expand in plexus-utils before 6d780b3378829318ba5c2d29547e0012d5b29642. This allows an attacker to execute arbitrary code",
+                "notes": "",
+                "references": [
+ {
+                        "source": "cve@mitre.org"
+,"url": "https:\/\/github.com\/codehaus-plexus\/plexus-utils\/commit\/6d780b3378829318ba5c2d29547e0012d5b29642","name": "PATCH"                    }, {
+                        "source": "cve@mitre.org"
+,"url": "https:\/\/github.com\/codehaus-plexus\/plexus-utils\/issues\/294","name": "ISSUE_TRACKING"                    }, {
+                        "source": "cve@mitre.org"
+,"url": "https:\/\/gist.github.com\/weaver4VD\/3216dac645220f8c9b488362f61241ec","name": "THIRD_PARTY_ADVISORY"                    }, {
+                        "source": "cve@mitre.org"
+,"url": "https:\/\/github.com\/codehaus-plexus\/plexus-utils\/pull\/295","name": "ISSUE_TRACKING,PATCH"                    }, {
+                        "source": "cve@mitre.org"
+,"url": "https:\/\/github.com\/codehaus-plexus\/plexus-utils\/pull\/296","name": "ISSUE_TRACKING,PATCH"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:codehaus-plexus:plexus-utils:*:*:*:*:*:*:*:*"
+,"vulnerabilityIdMatched":"true","versionEndExcluding":"4.0.3"                        }
+                    }                ]
+                }            ]        },{
             "isVirtual": false,
             "fileName": "plexus-velocity-2.2.0.jar",
             "filePath": "\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-velocity\/2.2.0\/plexus-velocity-2.2.0.jar"

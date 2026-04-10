@@ -4,11 +4,11 @@
         <engineVersion>12.2.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-03-16T06:59:45Z</timestamp>
+            <timestamp>2026-04-10T13:19:33Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-03-13T21:28:47Z</timestamp>
+            <timestamp>2026-04-10T13:16:46Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -16,7 +16,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-03-16T07:00:08.802849285Z</reportDate>
+        <reportDate>2026-04-10T13:19:54.913647814Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -185,7 +185,90 @@
                 <package confidence="HIGH">
                     <id>pkg:maven/io.airlift/aircompressor@0.27</id>
                 </package>
+                <vulnerabilityIds confidence="HIGHEST">
+                    <id>cpe:2.3:a:airlift:aircompressor:0.27:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aairlift%3Aaircompressor%3A0.27%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                </vulnerabilityIds>
             </identifiers>
+            <vulnerabilities>
+                <vulnerability source="NVD">
+                    <name>CVE-2025-67721</name>
+    <severity>MEDIUM</severity>
+                    <cvssV3>
+                        <baseScore>7.5</baseScore>
+                        <attackVector>NETWORK</attackVector>
+                        <attackComplexity>LOW</attackComplexity>
+                        <privilegesRequired>NONE</privilegesRequired>
+                        <userInteraction>NONE</userInteraction>
+                        <scope>UNCHANGED</scope>
+                        <confidentialityImpact>HIGH</confidentialityImpact>
+                        <integrityImpact>NONE</integrityImpact>
+                        <availabilityImpact>NONE</availabilityImpact>
+                        <baseSeverity>HIGH</baseSeverity>
+<exploitabilityScore>3.9</exploitabilityScore><impactScore>3.6</impactScore><version>3.1</version>                    </cvssV3>
+                    <cvssV4>
+                            <source>security-advisories@github.com</source>
+                            <type>Secondary</type>
+                            <version>4.0</version>
+                            <vectorString>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:N/V:X/RE:X/U:X</vectorString>
+                            <attackVector>NETWORK</attackVector>
+                            <attackComplexity>LOW</attackComplexity>
+                            <attackRequirements>PRESENT</attackRequirements>
+                            <privilegesRequired>NONE</privilegesRequired>
+                            <userInteraction>NONE</userInteraction>
+                            <vulnerableSystemConfidentiality>LOW</vulnerableSystemConfidentiality>
+                            <vulnerableSystemIntegrity>NONE</vulnerableSystemIntegrity>
+                            <vulnerableSystemAvailability>NONE</vulnerableSystemAvailability>
+                            <subsequentSystemConfidentiality>NONE</subsequentSystemConfidentiality>
+)
+                            <subsequentSystemIntegrity>NONE</subsequentSystemIntegrity>
+                            <subsequentSystemAvailability>NONE</subsequentSystemAvailability>
+                            <exploitMaturity>NOT_DEFINED</exploitMaturity>
+                            <confidentialityRequirements>NOT_DEFINED</confidentialityRequirements>
+                            <integrityRequirements>NOT_DEFINED</integrityRequirements>
+                            <availabilityRequirements>NOT_DEFINED</availabilityRequirements>
+                            <modifiedAttackVector>NOT_DEFINED</modifiedAttackVector>
+                            <modifiedAttackComplexity>NOT_DEFINED</modifiedAttackComplexity>
+                            <modifiedAttackRequirements>NOT_DEFINED</modifiedAttackRequirements>
+                            <modifiedPrivilegesRequired>NOT_DEFINED</modifiedPrivilegesRequired>
+                            <modifiedUserInteraction>NOT_DEFINED</modifiedUserInteraction>
+                            <modifiedVulnerableSystemConfidentiality>NOT_DEFINED</modifiedVulnerableSystemConfidentiality>
+                            <modifiedVulnerableSystemIntegrity>NOT_DEFINED</modifiedVulnerableSystemIntegrity>
+                            <modifiedVulnerableSystemAvailability>NOT_DEFINED</modifiedVulnerableSystemAvailability>
+                            <modifiedSubsequentSystemConfidentiality>NOT_DEFINED</modifiedSubsequentSystemConfidentiality>
+                            <modifiedSubsequentSystemIntegrity>NOT_DEFINED</modifiedSubsequentSystemIntegrity>
+                            <modifiedSubsequentSystemAvailability>NOT_DEFINED</modifiedSubsequentSystemAvailability>
+                            <safety>NOT_DEFINED</safety>
+                            <automatable>NOT_DEFINED</automatable>
+                            <recovery>NOT_DEFINED</recovery>
+                            <valueDensity>NOT_DEFINED</valueDensity>
+                            <vulnerabilityResponseEffort>NOT_DEFINED</vulnerabilityResponseEffort>
+                            <providerUrgency>NOT_DEFINED</providerUrgency>
+                            <baseScore>6.3</baseScore>
+                            <baseSeverity>MEDIUM</baseSeverity>
+                    </cvssV4>
+                    <cwes>
+<cwe>CWE-125</cwe><cwe>CWE-201</cwe>                    </cwes>
+                    <description>Aircompressor is a library with ports of the Snappy, LZO, LZ4, and Zstandard compression algorithms to Java. In versions 3.3 and below, incorrect handling of malformed data in Java-based decompressor implementations for Snappy and LZ4 allow remote attackers to read previous buffer contents via crafted compressed input. With certain crafted compressed inputs, elements from the output buffer can end up in the uncompressed output, potentially leaking sensitive data. This is relevant for applications that reuse the same output buffer to uncompress multiple inputs. This can be the case of a web server that allocates a fix-sized buffer for performance purposes. There is similar vulnerability in GHSA-cmp6-m4wj-q63q. This issue is fixed in version 3.4.</description>
+                    <references>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/airlift/aircompressor/security/advisories/GHSA-vx9q-rhv9-3jvg</url><name>MITIGATION,VENDOR_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/airlift/aircompressor/commit/f2b489b398779b40c1ee29ddb11d7edef54ddc15</url><name>PATCH</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/airlift/aircompressor/commit/ff12c4d5757c9d6d1de3d39a10402f1f84f9b765</url><name>PATCH</name>                        </reference>
+                    </references>
+                    <vulnerableSoftware>
+                        <software vulnerabilityIdMatched="true"
+ versionEndExcluding="2.0.3"                        >cpe:2.3:a:airlift:aircompressor:*:*:*:*:*:*:*:*</software>
+                        <software
+ versionStartIncluding="3.0" versionEndExcluding="3.4"                        >cpe:2.3:a:airlift:aircompressor:*:*:*:*:*:*:*:*</software>
+                    </vulnerableSoftware>
+                </vulnerability>
+            </vulnerabilities>
         </dependency>
         <dependency isVirtual="false">
             <fileName>aopalliance-1.0.jar</fileName>
@@ -28346,6 +28429,48 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
+            <vulnerabilities>
+                <vulnerability source="NVD">
+                    <name>CVE-2025-67030</name>
+                    <severity>HIGH</severity>
+                    <cvssV3>
+                        <baseScore>8.8</baseScore>
+                        <attackVector>NETWORK</attackVector>
+                        <attackComplexity>LOW</attackComplexity>
+                        <privilegesRequired>NONE</privilegesRequired>
+                        <userInteraction>REQUIRED</userInteraction>
+                        <scope>UNCHANGED</scope>
+                        <confidentialityImpact>HIGH</confidentialityImpact>
+                        <integrityImpact>HIGH</integrityImpact>
+                        <availabilityImpact>HIGH</availabilityImpact>
+                        <baseSeverity>HIGH</baseSeverity>
+<exploitabilityScore>2.8</exploitabilityScore><impactScore>5.9</impactScore><version>3.1</version>                    </cvssV3>
+                    <cwes>
+<cwe>CWE-22</cwe>                    </cwes>
+                    <description>Directory Traversal vulnerability in the extractFile method of org.codehaus.plexus.util.Expand in plexus-utils before 6d780b3378829318ba5c2d29547e0012d5b29642. This allows an attacker to execute arbitrary code</description>
+                    <references>
+                        <reference>
+                            <source>cve@mitre.org</source>
+<url>https://github.com/codehaus-plexus/plexus-utils/commit/6d780b3378829318ba5c2d29547e0012d5b29642</url><name>PATCH</name>                        </reference>
+                        <reference>
+                            <source>cve@mitre.org</source>
+<url>https://github.com/codehaus-plexus/plexus-utils/issues/294</url><name>ISSUE_TRACKING</name>                        </reference>
+                        <reference>
+                            <source>cve@mitre.org</source>
+<url>https://gist.github.com/weaver4VD/3216dac645220f8c9b488362f61241ec</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>cve@mitre.org</source>
+<url>https://github.com/codehaus-plexus/plexus-utils/pull/295</url><name>ISSUE_TRACKING,PATCH</name>                        </reference>
+                        <reference>
+                            <source>cve@mitre.org</source>
+<url>https://github.com/codehaus-plexus/plexus-utils/pull/296</url><name>ISSUE_TRACKING,PATCH</name>                        </reference>
+                    </references>
+                    <vulnerableSoftware>
+                        <software vulnerabilityIdMatched="true"
+ versionEndExcluding="4.0.3"                        >cpe:2.3:a:codehaus-plexus:plexus-utils:*:*:*:*:*:*:*:*</software>
+                    </vulnerableSoftware>
+                </vulnerability>
+            </vulnerabilities>
         </dependency>
         <dependency isVirtual="false">
             <fileName>plexus-velocity-2.2.0.jar</fileName>

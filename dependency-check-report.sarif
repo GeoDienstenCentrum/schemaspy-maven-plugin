@@ -138,6 +138,32 @@
 "cvssv3_exploitabilityScore": "3.9","cvssv3_impactScore": "5.9","cvssv3_version": "_3_1",                "source": "NVD"
               }
             },{
+              "id": "CVE-2025-67030",
+              "shortDescription": {
+                 "text": "high severity - CVE-2025-67030 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
+              },
+              "fullDescription": {
+                "text": "Directory Traversal vulnerability in the extractFile method of org.codehaus.plexus.util.Expand in plexus-utils before 6d780b3378829318ba5c2d29547e0012d5b29642. This allows an attacker to execute arbitrary code"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [CVE-2025-67030](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-67030).\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 8.8,
+                    "security-severity": "8.8",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "REQUIRED",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_exploitabilityScore": "2.8","cvssv3_impactScore": "5.9","cvssv3_version": "_3_1",                "source": "NVD"
+              }
+            },{
               "id": "CVE-2019-11358",
               "shortDescription": {
                  "text": "medium severity - CVE-2019-11358 Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in pkg:javascript\/jquery@2.2.3.min"
@@ -289,6 +315,35 @@
               },
               "properties": {
                 "source": "RETIREJS"
+              }
+            },{
+              "id": "CVE-2025-67721",
+              "shortDescription": {
+                 "text": "medium severity - CVE-2025-67721 Out-of-bounds Read vulnerability in pkg:maven\/io.airlift\/aircompressor@0.27"
+              },
+              "fullDescription": {
+                "text": "Aircompressor is a library with ports of the Snappy, LZO, LZ4, and Zstandard compression algorithms to Java. In versions 3.3 and below, incorrect handling of malformed data in Java-based decompressor implementations for Snappy and LZ4 allow remote attackers to read previous buffer contents via crafted compressed input. With certain crafted compressed inputs, elements from the output buffer can end up in the uncompressed output, potentially leaking sensitive data. This is relevant for applications that reuse the same output buffer to uncompress multiple inputs. This can be the case of a web server that allocates a fix-sized buffer for performance purposes. There is similar vulnerability in GHSA-cmp6-m4wj-q63q. This issue is fixed in version 3.4."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [CVE-2025-67721](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-67721).\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_exploitabilityScore": "3.9","cvssv3_impactScore": "3.6","cvssv3_version": "_3_1",                "cvssv4_baseScore": 6.3,
+                "security-severity": "6.3",
+                "cvssv4_vector": "CVSS:4.0\/AV:N\/AC:L\/AT:P\/PR:N\/UI:N\/VC:L\/VI:N\/VA:N\/SC:N\/SI:N\/SA:N\/E:X\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:N\/V:X\/RE:X\/U:X",
+                "source": "NVD"
               }
             },{
               "id": "CVE-2015-9251",
@@ -844,8 +899,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-03-16T06:59:45Z"
-            ,"NVD API Last Modified": "2026-03-13T21:28:47Z"
+            ,"NVD API Last Checked": "2026-04-10T13:19:33Z"
+            ,"NVD API Last Modified": "2026-04-10T13:16:46Z"
           }
         }
       },
@@ -863,6 +918,7 @@
             "sha256": "fdbef3137a28f63bb0cb93487803080ede746a4ec3d421e36c6f0c305c35e5e4"
           },          "properties": {
 "license": "Apache License 2.0: https:\/\/www.apache.org\/licenses\/LICENSE-2.0.html",                    "id1": "pkg:maven\/io.airlift\/aircompressor@0.27"
+,                    "vid1": "cpe:2.3:a:airlift:aircompressor:0.27:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -893,8 +949,8 @@
             "sha256": "d975de80afa7b7929d102b7f46b4ec7dad691366c87f83af236cc989078d0583"
           },          "properties": {
 "license": "The Apache Software License, Version 2.0: http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id3": "pkg:maven\/org.asciidoctor\/asciidoctorj@2.5.10"
-,                    "vid1": "cpe:2.3:a:asciidoctor:asciidoctor:2.5.10:*:*:*:*:*:*:*"
-,                    "vid2": "cpe:2.3:a:jruby:jruby:2.5.10:*:*:*:*:*:*:*"
+,                    "vid2": "cpe:2.3:a:asciidoctor:asciidoctor:2.5.10:*:*:*:*:*:*:*"
+,                    "vid3": "cpe:2.3:a:jruby:jruby:2.5.10:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -932,7 +988,7 @@
             "sha256": "c3093a5bcb613025fe5f1f44c03ee3994a15ed534e23190d6afa6bd526323707"
           },          "properties": {
 "license": "The Apache Software License, Version 2.0: http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id4": "pkg:maven\/org.asciidoctor\/asciidoctorj-api@2.5.10"
-,                    "vid3": "cpe:2.3:a:asciidoctor:asciidoctor:2.5.10:*:*:*:*:*:*:*"
+,                    "vid4": "cpe:2.3:a:asciidoctor:asciidoctor:2.5.10:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1065,7 +1121,7 @@
             "sha256": "9e44ba68ec9a3f21286fa2a8bbb003b735c0f69101bb43144b79f4f8aaa74709"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id13": "pkg:maven\/commons-beanutils\/commons-beanutils@1.11.0"
-,                    "vid4": "cpe:2.3:a:apache:commons_beanutils:1.11.0:*:*:*:*:*:*:*"
+,                    "vid5": "cpe:2.3:a:apache:commons_beanutils:1.11.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1096,7 +1152,7 @@
             "sha256": "eeeae917917144a68a741d4c0dff66aa5c5c5fd85593ff217bced3fc8ca783b8"
           },          "properties": {
 "license": "http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id15": "pkg:maven\/commons-collections\/commons-collections@3.2.2"
-,                    "vid5": "cpe:2.3:a:apache:commons_collections:3.2.2:*:*:*:*:*:*:*"
+,                    "vid6": "cpe:2.3:a:apache:commons_collections:3.2.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1112,7 +1168,7 @@
             "sha256": "e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id16": "pkg:maven\/org.apache.commons\/commons-compress@1.28.0"
-,                    "vid6": "cpe:2.3:a:apache:commons_compress:1.28.0:*:*:*:*:*:*:*"
+,                    "vid7": "cpe:2.3:a:apache:commons_compress:1.28.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1143,7 +1199,7 @@
             "sha256": "69e5c9fa35da7a51a5fd2099dfe56a2d8d32cf233e2f6d770e796146440263f4"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id18": "pkg:maven\/org.apache.commons\/commons-lang3@3.20.0"
-,                    "vid7": "cpe:2.3:a:apache:commons_lang:3.20.0:*:*:*:*:*:*:*"
+,                    "vid8": "cpe:2.3:a:apache:commons_lang:3.20.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1174,7 +1230,7 @@
             "sha256": "de023257ff166044a56bd1aa9124e843cd05dac5806cc705a9311f3556d5a15f"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id20": "pkg:maven\/org.apache.commons\/commons-text@1.12.0"
-,                    "vid8": "cpe:2.3:a:apache:commons_text:1.12.0:*:*:*:*:*:*:*"
+,                    "vid9": "cpe:2.3:a:apache:commons_text:1.12.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1205,7 +1261,7 @@
             "sha256": "ede804cb04e871d7c52d2414e952ab939f9ef243abb7bd0ce7dbeb6e1e28bd0b"
           },          "properties": {
                     "id22": "pkg:maven\/org.apache.derby\/derby@10.16.1.1"
-,                    "vid9": "cpe:2.3:a:apache:derby:10.16.1.1:*:*:*:*:*:*:*"
+,                    "vid10": "cpe:2.3:a:apache:derby:10.16.1.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1221,7 +1277,7 @@
             "sha256": "27d4be683a45f6c15940167277ce39bb7e26b9f6dc0bc05efbcf813cac5d2b8f"
           },          "properties": {
                     "id23": "pkg:maven\/org.apache.derby\/derbyshared@10.16.1.1"
-,                    "vid10": "cpe:2.3:a:apache:derby:10.16.1.1:*:*:*:*:*:*:*"
+,                    "vid11": "cpe:2.3:a:apache:derby:10.16.1.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1237,7 +1293,7 @@
             "sha256": "db052f92508e966ee8b0c5c9eca84cb11cbf0b0d78e608dc89340d4bb6c07314"
           },          "properties": {
                     "id24": "pkg:maven\/org.apache.derby\/derbytools@10.16.1.1"
-,                    "vid11": "cpe:2.3:a:apache:derby:10.16.1.1:*:*:*:*:*:*:*"
+,                    "vid12": "cpe:2.3:a:apache:derby:10.16.1.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1658,7 +1714,7 @@
             "sha256": "865745f068c7ff1a5e363b893651330b1336282c6664a7b635634263a4ed7898"
           },          "properties": {
                     "id52": "pkg:maven\/com.vladsch.flexmark\/flexmark-ext-wikilink@0.34.32"
-,                    "vid12": "cpe:2.3:a:links:links:0.34.32:*:*:*:*:*:*:*"
+,                    "vid13": "cpe:2.3:a:links:links:0.34.32:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1749,7 +1805,7 @@
             "sha256": "1e301f0c52ac248b0b14fdc3d12283c77252d4d6f48521d572e7d8c4c2cc4ac7"
           },          "properties": {
 "license": "http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id58": "pkg:maven\/com.google.guava\/guava@33.5.0-jre"
-,                    "vid13": "cpe:2.3:a:google:guava:33.5.0:*:*:*:*:*:*:*"
+,                    "vid14": "cpe:2.3:a:google:guava:33.5.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -1810,7 +1866,7 @@
             "sha256": "5fab2bb4384ac06b762638c8fa2740c944b8d080e4796c0c6c2af8b90dd4e5ad"
           },          "properties": {
 "license": "HSQLDB License, a BSD open source license: http:\/\/hsqldb.org\/web\/hsqlLicense.html",                    "id62": "pkg:maven\/org.hsqldb\/hsqldb@2.7.4"
-,                    "vid14": "cpe:2.3:a:hsqldb:hypersql_database:2.7.4:*:*:*:*:*:*:*"
+,                    "vid15": "cpe:2.3:a:hsqldb:hypersql_database:2.7.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2149,7 +2205,7 @@
             "sha256": "d1b98a34c953908f5d60ed4ea78c3308ed381dcd852b401d8e7baf8a0d183523"
           },          "properties": {
                     "id82": "pkg:maven\/org.jruby\/jruby@9.4.2.0"
-,                    "vid15": "cpe:2.3:a:jruby:jruby:9.4.2.0:*:*:*:*:*:*:*"
+,                    "vid16": "cpe:2.3:a:jruby:jruby:9.4.2.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2172,12 +2228,12 @@
             "sha1": "943e8d0c2bd592ad78759c39d6f749fafaf29cf4",
             "sha256": "f3433a97d780fe9fa3dc3d562a41decd59b2e617ce884de9060349ac14750045"
           },          "properties": {
-                    "vid16": "cpe:2.3:a:bouncycastle:bouncy-castle-crypto-package:1.71:*:*:*:*:*:*:*"
-,                    "vid17": "cpe:2.3:a:bouncycastle:bouncy_castle_crypto_package:1.71:*:*:*:*:*:*:*"
-,                    "vid18": "cpe:2.3:a:bouncycastle:bouncy_castle_for_java:1.71:*:*:*:*:*:*:*"
-,                    "vid19": "cpe:2.3:a:bouncycastle:legion-of-the-bouncy-castle:1.71:*:*:*:*:*:*:*"
-,                    "vid20": "cpe:2.3:a:bouncycastle:legion-of-the-bouncy-castle-java-crytography-api:1.71:*:*:*:*:*:*:*"
-,                    "vid21": "cpe:2.3:a:bouncycastle:the_bouncy_castle_crypto_package_for_java:1.71:*:*:*:*:*:*:*"
+                    "vid17": "cpe:2.3:a:bouncycastle:bouncy-castle-crypto-package:1.71:*:*:*:*:*:*:*"
+,                    "vid18": "cpe:2.3:a:bouncycastle:bouncy_castle_crypto_package:1.71:*:*:*:*:*:*:*"
+,                    "vid19": "cpe:2.3:a:bouncycastle:bouncy_castle_for_java:1.71:*:*:*:*:*:*:*"
+,                    "vid20": "cpe:2.3:a:bouncycastle:legion-of-the-bouncy-castle:1.71:*:*:*:*:*:*:*"
+,                    "vid21": "cpe:2.3:a:bouncycastle:legion-of-the-bouncy-castle-java-crytography-api:1.71:*:*:*:*:*:*:*"
+,                    "vid22": "cpe:2.3:a:bouncycastle:the_bouncy_castle_crypto_package_for_java:1.71:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2267,7 +2323,7 @@
             "sha256": "97d1acaac82409be42e622d7a54d3ae9d08517e8aefdea3d2ba9791150c2f02d"
           },          "properties": {
 "license": "The BSD License: http:\/\/www.opensource.org\/licenses\/bsd-license.php",                    "id83": "pkg:maven\/jline\/jline@2.14.6"
-,                    "vid22": "cpe:2.3:a:jline:jline:2.14.6:*:*:*:*:*:*:*"
+,                    "vid23": "cpe:2.3:a:jline:jline:2.14.6:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2445,7 +2501,7 @@
             "sha256": "2652199af40c9aa2f1782400d2dfbbf4e5226208c4e05ddd4059c3d6d9cd1505"
           },          "properties": {
 "license": "Apache License, Version 2.0: http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id86": "pkg:maven\/org.snakeyaml\/snakeyaml-engine@2.6"
-,                    "vid23": "cpe:2.3:a:snakeyaml_project:snakeyaml:2.6:*:*:*:*:*:*:*"
+,                    "vid24": "cpe:2.3:a:snakeyaml_project:snakeyaml:2.6:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2554,7 +2610,7 @@
             "sha256": "89b1360f407381bf61fde411019d8cbd009ebb10cff715f3669017a031027560"
           },          "properties": {
 "license": "BSD: http:\/\/www.jcraft.com\/jzlib\/LICENSE.txt",                    "id91": "pkg:maven\/com.jcraft\/jzlib@1.1.3"
-,                    "vid24": "cpe:2.3:a:jcraft:jzlib:1.1.3:*:*:*:*:*:*:*"
+,                    "vid25": "cpe:2.3:a:jcraft:jzlib:1.1.3:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2585,7 +2641,7 @@
             "sha256": "132f1ae2e3be4e7ccbcaaec24cb7d16fc7e903d43cc69ad7ebc1a9ca54e9dcff"
           },          "properties": {
 "license": "http:\/\/www.eclipse.org\/legal\/epl-v10.html, http:\/\/www.gnu.org\/licenses\/old-licenses\/lgpl-2.1.html",                    "id93": "pkg:maven\/ch.qos.logback\/logback-core@1.4.12"
-,                    "vid25": "cpe:2.3:a:qos:logback:1.4.12:*:*:*:*:*:*:*"
+,                    "vid26": "cpe:2.3:a:qos:logback:1.4.12:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2643,7 +2699,7 @@
             "sha256": "db009d57b90a714efe86c81c7a518febb276d01ba3daf2f301e382f6560e8a58"
           },          "properties": {
                     "id97": "pkg:maven\/org.apache.maven\/maven-core@3.9.14"
-,                    "vid26": "cpe:2.3:a:apache:maven:3.9.14:*:*:*:*:*:*:*"
+,                    "vid27": "cpe:2.3:a:apache:maven:3.9.14:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2884,8 +2940,8 @@
             "sha256": "b613357e1bad4dfc1dead801691c9460f9585fe7c6b466bc25186212d7d18487"
           },          "properties": {
                     "id113": "pkg:maven\/org.apache.maven.shared\/maven-shared-utils@3.4.2"
-,                    "vid27": "cpe:2.3:a:apache:maven_shared_utils:3.4.2:*:*:*:*:*:*:*"
-,                    "vid28": "cpe:2.3:a:utils_project:utils:3.4.2:*:*:*:*:*:*:*"
+,                    "vid28": "cpe:2.3:a:apache:maven_shared_utils:3.4.2:*:*:*:*:*:*:*"
+,                    "vid29": "cpe:2.3:a:utils_project:utils:3.4.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2902,9 +2958,9 @@
           },          "properties": {
 "license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php",                    "id114": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.4.0"
 ,                    "id115": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.4.0.jre11"
-,                    "vid29": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
-,                    "vid30": "cpe:2.3:a:microsoft:sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
-,                    "vid31": "cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*"
+,                    "vid30": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
+,                    "vid31": "cpe:2.3:a:microsoft:sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
+,                    "vid32": "cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2920,7 +2976,7 @@
             "sha256": "66df1d453789dc8cb759a7dc17f58646893bf28483f262328650f170472a6ead"
           },          "properties": {
 "license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id116": "pkg:maven\/com.mysql\/mysql-connector-j@9.6.0"
-,                    "vid32": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
+,                    "vid33": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3061,7 +3117,7 @@
             "sha256": "94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792"
           },          "properties": {
 "license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id118": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.1.0.0"
-,                    "vid33": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
+,                    "vid34": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3116,7 +3172,7 @@
             "sha256": "1f39d4f2906a04f501567cd1211cef3fd95fea4cb979e1eba1d8dd84e4b67098"
           },          "properties": {
                     "id122": "pkg:maven\/org.codehaus.plexus\/plexus-archiver@4.10.4"
-,                    "vid34": "cpe:2.3:a:codehaus-plexus:plexus-archiver:4.10.4:*:*:*:*:*:*:*"
+,                    "vid35": "cpe:2.3:a:codehaus-plexus:plexus-archiver:4.10.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3210,7 +3266,7 @@
             "sha256": "873139960c4c780176dda580b003a2c4bf82188bdce5bb99234e224ef7acfceb"
           },          "properties": {
                     "id129": "pkg:maven\/org.codehaus.plexus\/plexus-sec-dispatcher@2.0"
-,                    "vid35": "cpe:2.3:a:sec_project:sec:2.0:*:*:*:*:*:*:*"
+,                    "vid36": "cpe:2.3:a:sec_project:sec:2.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3226,8 +3282,8 @@
             "sha256": "27ef130e32c236090e408fb5498d94cb9ea26d14070fb1c8985d607b62d098d1"
           },          "properties": {
                     "id130": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
-,                    "vid36": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*"
-,                    "vid37": "cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*"
+,                    "vid37": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*"
+,                    "vid38": "cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3270,7 +3326,7 @@
             "sha256": "cab1cd67cfa25c25de4348e532298028288a877ba01c77d1619fe45416193387"
           },          "properties": {
 "license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.10"
-,                    "vid38": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
+,                    "vid39": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3286,7 +3342,7 @@
             "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
           },          "properties": {
 "license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause",                    "id134": "pkg:maven\/com.google.protobuf\/protobuf-java@4.31.1"
-,                    "vid39": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
+,                    "vid40": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3302,7 +3358,7 @@
             "sha256": "bd85a266bdb03325b09d659fced8e0820393a51ce335e8468f4c3476021ab4ad"
           },          "properties": {
 "license": "LGPL-3.0-or-later: https:\/\/www.gnu.org\/licenses\/lgpl-3.0.txt",                    "id135": "pkg:maven\/org.schemaspy\/schemaspy@7.0.2"
-,                    "vid40": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
+,                    "vid41": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3892,7 +3948,7 @@
             "sha256": "1bf78c2ade46f209bf93ebe72ed2af5b989ca7a1de0a015fc1b92a62f56b6549"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id146": "pkg:maven\/org.apache.velocity\/velocity-engine-core@2.4"
-,                    "vid41": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
+,                    "vid42": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3908,7 +3964,7 @@
             "sha256": "8258cfdcaa16127f35ffe610a3fa4f76b7ebe51b88922c73c4ee39ce8f378ce5"
           },          "properties": {
                     "id147": "pkg:maven\/org.apache.velocity.tools\/velocity-tools-generic@3.1"
-,                    "vid42": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
+,                    "vid43": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3977,6 +4033,31 @@
       ],
       "results": [
  {
+          "ruleId": "CVE-2025-67721",
+          "level": "warning",
+          "message": {
+            "text": "CVE-2025-67721 - Aircompressor is a library with ports of the Snappy, LZO, LZ4, and Zstandard compression algorithms to Java. In versions 3.3 and below, incorrect handling of malformed data in Java-based decompressor implementations for Snappy and LZ4 allow remote attackers to read previous buffer contents via crafted compressed input. With certain crafted compressed inputs, elements from the output buffer can end up in the uncompressed output, potentially leaking sensitive data. This is relevant for applications that reuse the same output buffer to uncompress multiple inputs. This can be the case of a web server that allocates a fix-sized buffer for performance purposes. There is similar vulnerability in GHSA-cmp6-m4wj-q63q. This issue is fixed in version 3.4."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "455546df23cdd1ad5c80c31bb7b96e67"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/home\/runner\/.m2\/repository\/io\/airlift\/aircompressor\/0.27\/aircompressor-0.27.jar"
+                  ,"index": 0
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:maven\/io.airlift\/aircompressor@0.27"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
           "ruleId": "CVE-2022-46337",
           "level": "warning",
           "message": {
@@ -4116,6 +4197,31 @@
                 ,"logicalLocations": [
                     {
                     "fullyQualifiedName": "pkg:maven\/jline\/jline@2.14.6"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "CVE-2025-67030",
+          "level": "warning",
+          "message": {
+            "text": "CVE-2025-67030 - Directory Traversal vulnerability in the extractFile method of org.codehaus.plexus.util.Expand in plexus-utils before 6d780b3378829318ba5c2d29547e0012d5b29642. This allows an attacker to execute arbitrary code"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "c39bc941462a024b6338719fbb2498ed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-utils\/3.6.0\/plexus-utils-3.6.0.jar"
+                  ,"index": 168
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
                     }
                 ]
               
