@@ -34,7 +34,7 @@ under the License.
                 <artifactId>schemaspy-maven-plugin</artifactId>
                 <version>@project.version@</version>
                 <configuration>
-                    <databaseType>derby</databaseType>
+                    <databaseType>hsqldb-file</databaseType>
                     <database>target/testdb</database>
                     <outputDirectory>target/reports/full-test</outputDirectory>
                     <commentsInitiallyDisplayed>true</commentsInitiallyDisplayed>

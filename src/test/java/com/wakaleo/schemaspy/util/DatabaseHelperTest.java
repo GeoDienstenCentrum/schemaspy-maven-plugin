@@ -22,7 +22,7 @@ class DatabaseHelperTest {
   void testSetupDatabase() throws Exception {
     DatabaseHelper.setupDatabase("src/test/resources/sql/testdb.sql");
 
-    Connection connection = DriverManager.getConnection("jdbc:derby:target/testdb");
+    Connection connection = DriverManager.getConnection("jdbc:hsqldb:file:target/testdb;shutdown=true", "SA", "");
 
     ResultSet rs = connection.createStatement().executeQuery("select * from employee");
     assertNotNull(rs);

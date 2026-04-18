@@ -180,18 +180,6 @@
         </dependency>
         <!-- Database dependencies -->
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>10.16.1.1</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbytools</artifactId>
-            <version>10.16.1.1</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.7.4</version>
@@ -354,12 +342,12 @@
                 <artifactId>maven-clean-plugin</artifactId>
                 <configuration>
                     <filesets>
-                        <fileset>
-                            <directory>${basedir}</directory>
-                            <includes>
-                                <include>derby.log</include>
-                            </includes>
-                        </fileset>
+<!--                        <fileset>-->
+<!--                            <directory>${basedir}</directory>-->
+<!--                            <includes>-->
+<!--                                <include>derby.log</include>-->
+<!--                            </includes>-->
+<!--                        </fileset>-->
                     </filesets>
                 </configuration>
             </plugin>
