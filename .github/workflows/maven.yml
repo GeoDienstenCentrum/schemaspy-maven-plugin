@@ -24,12 +24,15 @@ jobs:
       matrix:        
         java: [ 17, 21 ]
         java_dist: ["temurin"]
-        maven: [ "3.8.9", "3.9.12" ]
+        maven: [ "3.8.9", "3.9.15" ]
         include:
-          - java: 21
+          - java: 25
             java_dist: "temurin"
             maven: "4.0.0-rc-5"
             experimental: true
+          - java: 25
+            java_dist: "temurin"
+            maven: "3.9.15"
 
     steps:
       - uses: actions/checkout@v6
