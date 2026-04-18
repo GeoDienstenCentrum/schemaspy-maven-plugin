@@ -10,54 +10,6 @@
         <link rel="shortcut icon" href="data:;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVLSURBVFhHvZdvbFRFEMB3913v9Vr+FKUNRdtrewg1lQgRE0gMYkJSowYMwcSPkGDwg8ZigMR+UYzGaIuAEj+R+IfE+EUlRL+QYAwhGBMqkFQDpO1xd/YPBaSU9u767r0dZ5a513vtXVsq8Zcsb3bu9c3szuzsIMU8iEaj5fhYJlzRYCkZ7Utd+wbnQL+Nd0TeoyeAPLFgf/oiyTNxXw6g4WUhTz4JEtaiNXLCEE8l3seHJjlzsOJHfLxMsgHE4cje9B6eTUPxc0ZoxbFHG1qVFq9rCRsKjc+KFG3oFGQ6Kw6xJsCsDqDxNZYWbWSYVUFAJFkyaA2XWAxiHIlcGPukYg1rDCVDQKsOadmqBaxllY8CuKHBuqOlHlNKufFk/GdUmxxoeqTpMbBg1dGXRlZtqHc2R8rgedIXgk4eqNyXMblS1AE2vhWNP84qAxl2hewno6wyFHOAZOLAc6PRbU+kd2OyrmbVPTg3pjlQzDgazGmh40rKMY3LZrVBCi/Tl0z+gqJxYGV9fWNOWC0kF3Jm1/C2pZWwk6cG2olpOcDb7hsHgLQGcUWAGs0bV1K7EuSQFbbOLKmuPkOvkZ64mkzG8bXz5BirDBuP1fzQP6I+5yl9eAS9vxjYAVz9esx0P2a0ck+73VKGPFaR8Vtpx7k0ODiYZlVJmpcvfzirwi1SyUWsMiF5ZXX6A1zJzsq9mRO+A7T1lO2BIyZVN/6bJZFWnQO4Wl1dnerq6sqRbq401TWtw9qxjGT6zhfbs3+0Hrw+THPfgVhdA8Xdz3j84RpIdZOngrY1kUgMOR3lG1kVREkHhBp3smJ4wdLmf+TuoJOxuroW3NI6zN6L9B1W33MAV1+FW99mNIgUclBaYtCPObjx3lTqT5KxqJyk52y4nv5u4f7stzzNY+Hww0ncS0JXBIoDWryRN07JVlVTc9Xo74OQpV7F6ndk5CO7iVVEwDihVqxYYVtKrOc5bckIgHJIpnhl3MxfpWIuJZyWAMdo0Io1AOXMJFI0hm3VzrOiYG2BmsLEAz0Zd9DWzZmyHd/tLt+bOUmDthuzun3C8dryjqCDdzF5tqcPRr40f1AElcvl6lgmJkC5d1kWYS8bZ3HOVL0z0TcKiz70tBjAML4opVgsoeB2nIJyXfeKJfRxGo52j4ds+xwWmN9t1/7t8sDALX7vvqjdd31cChgi40YhZdXUSyiPGkAjPalUL43+/v6/e3p6btC4PHB5XsZ9sMqxZJAWbGIxwJz6gfkAWl5jcUYUbU1+3D60uIp0PPwiNR/wZAW3HERRh5Sy4C3LEhdoiAn368b6xhdoxKLRVn5nXmDpfZZFg7J00f5QgRYJlkV5GWyJVnk2yRpUKBaLFZ6QOYMFaAdW0x08xcXDr5E9E8V3wAmFD7NseO3pMf8uh1xuJYuzQuGjMJreT4rJc4/XrvZk6aZ0yZ47WPkm47M55mxnET23IrW1tRU8DUBFBlf2faYzcptGuefETRix9+NXDNhLHJmpPTenAON1xMyQRbZevaV5ooanwrbsdSz6kPF8kaEz7o9CqOEAvPO59yuFccBR4a/MjGnfNDp5M2IzgQnpd8QB41NBoxRvarWyVrgRe77Ad4vhHzX6H41S8l2eitO9ZR+/+dNDZ3lqbsW+VN/52x12YxlY04xbZd5IqUSbCd8BSiLby13AlTWwSnx6tvKNY10LzCmhm7E3kTiFYqAp/a/4lZCSUYIX6Frffmb86K6nxqJknDoZVD1Q48S0ajc1FBTXU8mFzVs/G77OmgdK0XLLZ7nNnGHuXvmn/w9yYrwzUvIefzAI8S83C2sS1J4rmAAAAABJRU5ErkJggg==" />
         <!--suppress CssUnknownProperty, CssUnusedSymbol, HtmlDeprecatedAttribute, CssRedundantUnit, CssReplaceWithShorthandSafely -->
         <style type="text/css">
-            #modal-background {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: white;
-                opacity: .50;
-                -webkit-opacity: .5;
-                -moz-opacity: .5;
-                filter: alpha(opacity=50);
-                z-index: 1000;
-            }
-
-            #modal-content {
-                background-color: white;
-                border-radius: 10px;
-                -webkit-border-radius: 10px;
-                -moz-border-radius: 10px;
-                box-shadow: 0 0 20px 0 #222;
-                -webkit-box-shadow: 0 0 20px 0 #222;
-                -moz-box-shadow: 0 0 20px 0 #222;
-                display: none;
-                height: 240px;
-                left: 50%;
-                margin: -120px 0 0 -160px;
-                padding: 10px;
-                position: fixed;
-                top: 50%;
-                z-index: 1000;
-            }
-            #modal-add-header {
-                display: none;
-            }
-            #modal-add-header.active {
-                display: block;
-            }
-            #modal-background.active, #modal-content.active {
-                display: block;
-            }
-            #modal-text {
-                border: 0;
-                overflow: hidden
-            }
-            #modal-text:focus {
-                outline: none;
-            }
             .suppresstype {
                 display: none;
             }
@@ -94,58 +46,6 @@
                 background-color: #dddddd;
                 border: 1px solid #444444;
                 color:#444444;
-                text-decoration:none;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -khtml-border-radius: 3px;
-                -o-border-radius: 3px;
-                border-radius: 3px;
-            }
-            .modal-button {
-                padding:1px;
-                float:left;
-                background-color: #eeeeee;
-                border: 1px solid #555555;
-                color:#555555;
-                text-decoration:none;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -khtml-border-radius: 3px;
-                -o-border-radius: 3px;
-                border-radius: 3px;
-            }
-            .modal-button:hover {
-                padding:1px;
-                float:left;
-                background-color: #dddddd;
-                border: 1px solid #333333;
-                color:#333333;
-                text-decoration:none;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -khtml-border-radius: 3px;
-                -o-border-radius: 3px;
-                border-radius: 3px;
-            }
-            .modal-button-right {
-                padding:1px;
-                float:right;
-                background-color: #eeeeee;
-                border: 1px solid #555555;
-                color:#555555;
-                text-decoration:none;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -khtml-border-radius: 3px;
-                -o-border-radius: 3px;
-                border-radius: 3px;
-            }
-            .modal-button-right:hover {
-                padding:1px;
-                float:right;
-                background-color: #dddddd;
-                border: 1px solid #333333;
-                color:#333333;
                 text-decoration:none;
                 -moz-border-radius: 3px;
                 -webkit-border-radius: 3px;
@@ -431,8 +331,8 @@ Getting Help: <a href="https://github.com/dependency-check/DependencyCheck/issue
 
                 Scan Information:<br/>
                     <ul class="indent">
-                        <li><i>dependency-check version</i>: 12.2.0</li>
-                        <li><i>Report Generated On</i>: Fri, 10 Apr 2026 13:19:54 GMT</li>
+                        <li><i>dependency-check version</i>: 12.2.1</li>
+                        <li><i>Report Generated On</i>: Sat, 18 Apr 2026 12:23:43 GMT</li>
                         <li><i>Dependencies Scanned</i>:&nbsp;236 (232 unique)</li>
                         <li><i>Vulnerable Dependencies</i>:&nbsp;<span id="vulnerableCount">16</span></li>
                         <li><i>Vulnerabilities Found</i>:&nbsp;50</li>
@@ -550,19 +450,19 @@ Getting Help: <a href="https://github.com/dependency-check/DependencyCheck/issue
                         <td>34</td>
                     </tr>
                     <tr class="vulnerable">
-                        <td data-sort-value="PLEXUS-UTILS-3.6.0.JAR"><a href="#l8_e8bc129728f22671a36fff3b604edcd39073a7b1">plexus-utils-3.6.0.jar</a></td>
-                        <td data-sort-value="cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*">
-                                <a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*</a>
+                        <td data-sort-value="PLEXUS-UTILS-3.6.1.JAR"><a href="#l8_9dce1b9c69b197f453223e45a2cb9fa0cd48b424">plexus-utils-3.6.1.jar</a></td>
+                        <td data-sort-value="cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.1:*:*:*:*:*:*:*cpe:2.3:a:utils_project:utils:3.6.1:*:*:*:*:*:*:*">
+                                <a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.1:*:*:*:*:*:*:*</a>
                                 <br/>
-                                <a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*</a>
+                                <a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:utils_project:utils:3.6.1:*:*:*:*:*:*:*</a>
                         </td>
-                        <td data-sort-value="pkg:maven/org.codehaus.plexus/plexus-utils@3.6.0">
-                                pkg:maven/org.codehaus.plexus/plexus-utils@3.6.0
+                        <td data-sort-value="pkg:maven/org.codehaus.plexus/plexus-utils@3.6.1">
+                                pkg:maven/org.codehaus.plexus/plexus-utils@3.6.1
 </td>
                                                                                 <td data-sort-value="88.0">HIGH</td>
                         <td>1</td>
                         <td data-sort-value="0">Highest</td>
-                        <td>33</td>
+                        <td>37</td>
                     </tr>
                     <tr class="vulnerable">
                         <td data-sort-value="SCHEMASPY-7.0.2.JAR"><a href="#l9_ab0356201dabfafb8bdc4194a586dd515369f339">schemaspy-7.0.2.jar</a></td>
@@ -698,10 +598,10 @@ Getting Help: <a href="https://github.com/dependency-check/DependencyCheck/issue
                                 CWE-125 Out-of-bounds Read, CWE-201 Insertion of Sensitive Information Into Sent Data<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: HIGH (7.5)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:3.9/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N/E:P/RC:R/MAV:A</li></ul>
                                 CVSSv4:
                                 <ul><li>Base Score: MEDIUM (6.3)</li>
-                                    <li>Vector: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:N/V:X/RE:X/U:X</li></ul>
+                                    <li>Vector: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X</li></ul>
                                 <br/>References:<ul>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/airlift/aircompressor/security/advisories/GHSA-vx9q-rhv9-3jvg">MITIGATION,VENDOR_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/airlift/aircompressor/commit/f2b489b398779b40c1ee29ddb11d7edef54ddc15">PATCH</a></li>
@@ -787,7 +687,7 @@ and 8.
                                 CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: CRITICAL (9.8)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:3.9/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread/q23kvvtoohgzwybxpwozmvvk17rp0td3">MAILING_LIST</a></li>
                                     <li>security@apache.org - <a target="_blank" href="https://lists.apache.org/thread/q23kvvtoohgzwybxpwozmvvk17rp0td3">MAILING_LIST</a></li>
@@ -851,7 +751,7 @@ and 8.
                                 CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: CRITICAL (9.8)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:3.9/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread/q23kvvtoohgzwybxpwozmvvk17rp0td3">MAILING_LIST</a></li>
                                     <li>security@apache.org - <a target="_blank" href="https://lists.apache.org/thread/q23kvvtoohgzwybxpwozmvvk17rp0td3">MAILING_LIST</a></li>
@@ -915,7 +815,7 @@ and 8.
                                 CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: CRITICAL (9.8)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:3.9/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread/q23kvvtoohgzwybxpwozmvvk17rp0td3">MAILING_LIST</a></li>
                                     <li>security@apache.org - <a target="_blank" href="https://lists.apache.org/thread/q23kvvtoohgzwybxpwozmvvk17rp0td3">MAILING_LIST</a></li>
@@ -1042,10 +942,10 @@ and 8.
                                 CWE-295 Improper Certificate Validation<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: LOW (3.7)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N/E:2.2/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 CVSSv4:
                                 <ul><li>Base Score: MEDIUM (5.7)</li>
-                                    <li>Vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:N/V:X/RE:X/U:X</li></ul>
+                                    <li>Vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X</li></ul>
                                 <br/>References:<ul>
                                     <li>134c704f-9b21-4f2e-91b3-4a467353bcc0 - <a target="_blank" href="https://github.com/jruby/jruby-openssl/security/advisories/GHSA-72qj-48g4-5xgx">EXPLOIT,VENDOR_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jruby/jruby-openssl/security/advisories/GHSA-72qj-48g4-5xgx">EXPLOIT,VENDOR_ADVISORY</a></li>
@@ -1101,7 +1001,7 @@ and 8.
                                 CWE-400 Uncontrolled Resource Consumption<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (5.5)</li>
-                                <li>Vector: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H/E:1.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/bcgit/bc-java/wiki/CVE-2023-33202">EXPLOIT,THIRD_PARTY_ADVISORY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://bouncycastle.org">PRODUCT</a></li>
@@ -1155,7 +1055,7 @@ and 8.
                                 CWE-787 Out-of-bounds Write<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (5.5)</li>
-                                <li>Vector: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H/E:1.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jline/jline3/issues/909">EXPLOIT,ISSUE_TRACKING</a></li>
                                     <li>cve@mitre.org - <a target="_blank" href="https://github.com/jline/jline3/issues/909">EXPLOIT,ISSUE_TRACKING</a></li>
@@ -1236,28 +1136,29 @@ and 8.
                 </div>
                 </div>
                 </div>
-                    <h3 class="subsectionheader "><a name="l8_e8bc129728f22671a36fff3b604edcd39073a7b1"></a>plexus-utils-3.6.0.jar</h3>
+                    <h3 class="subsectionheader "><a name="l8_9dce1b9c69b197f453223e45a2cb9fa0cd48b424"></a>plexus-utils-3.6.1.jar</h3>
                     <div class="subsectioncontent">
                             <p><b>Description:</b><pre>A collection of various utility classes to ease working with strings, files, command lines, XML and
     more.</pre></p>
                         <p>
-                            <b>File&nbsp;Path:</b>&nbsp;/home/runner/.m2/repository/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.jar<br/>
-                            <b>MD5:</b>&nbsp;1d5893fecbc7ec13f205a1c5893e90ce<br/>
-                            <b>SHA1:</b>&nbsp;e8bc129728f22671a36fff3b604edcd39073a7b1<br/>
-                            <b>SHA256:</b>27ef130e32c236090e408fb5498d94cb9ea26d14070fb1c8985d607b62d098d1
+                            <b>License:</b><pre class="indent">Apache-2.0: https://www.apache.org/licenses/LICENSE-2.0.txt</pre>
+                            <b>File&nbsp;Path:</b>&nbsp;/home/runner/.m2/repository/org/codehaus/plexus/plexus-utils/3.6.1/plexus-utils-3.6.1.jar<br/>
+                            <b>MD5:</b>&nbsp;bf77c7ef462342bd42ce245be9648540<br/>
+                            <b>SHA1:</b>&nbsp;9dce1b9c69b197f453223e45a2cb9fa0cd48b424<br/>
+                            <b>SHA256:</b>05a63effd67e2d6b9d610cc82e2bd7473289d34802e57a529b28110f28af5679
                                 <br/><b>Referenced In Project/Scope:</b> SchemaSpy Maven Plugin:compile
-                                <br/><span class="tooltip"><span class="tooltiptext">plexus-utils-3.6.0.jar is in the transitive dependency tree of the listed items.</span><b>Included by:</b></span> pkg:maven/org.apache.maven/maven-plugin-api@3.9.14
+                                <br/><span class="tooltip"><span class="tooltiptext">plexus-utils-3.6.1.jar is in the transitive dependency tree of the listed items.</span><b>Included by:</b></span> pkg:maven/org.apache.maven/maven-plugin-api@3.9.15
                         </p>
                         <h4 id="header16" class="subsectionheader white">Identifiers</h4>
                         <div id="content16" class="subsectioncontent standardsubsection">
                             <ul>
-                                    <li>pkg:maven/org.codehaus.plexus/plexus-utils@3.6.0
+                                    <li>pkg:maven/org.codehaus.plexus/plexus-utils@3.6.1
                                     &nbsp;&nbsp;(<i>Confidence</i>:High)
                                 </li>
-                                <li><a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*</a>
+                                <li><a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.1:*:*:*:*:*:*:*</a>
                                     &nbsp;&nbsp;(<i>Confidence</i>:Highest)
                             </li>
-                                <li><a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*</a>
+                                <li><a href="https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A" target="_blank">cpe:2.3:a:utils_project:utils:3.6.1:*:*:*:*:*:*:*</a>
                                     &nbsp;&nbsp;(<i>Confidence</i>:Highest)
                             </li>
                             </ul>
@@ -1270,7 +1171,7 @@ and 8.
                                 CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: HIGH (8.8)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>cve@mitre.org - <a target="_blank" href="https://github.com/codehaus-plexus/plexus-utils/issues/294">ISSUE_TRACKING</a></li>
                                     <li>cve@mitre.org - <a target="_blank" href="https://github.com/codehaus-plexus/plexus-utils/pull/295">ISSUE_TRACKING,PATCH</a></li>
@@ -1320,7 +1221,7 @@ and 8.
                                 CWE-918 Server-Side Request Forgery (SSRF)<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (5.3)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N/E:3.9/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>vulnreport@tenable.com - <a target="_blank" href="https://www.tenable.com/security/research/tra-2024-41">EXPLOIT,THIRD_PARTY_ADVISORY</a></li>
                                 </ul>
@@ -1362,7 +1263,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1076">https://access.redhat.com/errata/RHBA-2019:1076</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1570">https://access.redhat.com/errata/RHBA-2019:1570</a></li>
@@ -1408,7 +1309,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html">http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html">http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</a></li>
@@ -1475,7 +1376,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html">http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html">http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</a></li>
@@ -1538,7 +1439,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html">http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://seclists.org/fulldisclosure/2019/May/10">http://seclists.org/fulldisclosure/2019/May/10</a></li>
@@ -1601,7 +1502,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1076">https://access.redhat.com/errata/RHBA-2019:1076</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1570">https://access.redhat.com/errata/RHBA-2019:1570</a></li>
@@ -1646,7 +1547,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1076">https://access.redhat.com/errata/RHBA-2019:1076</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1570">https://access.redhat.com/errata/RHBA-2019:1570</a></li>
@@ -1693,7 +1594,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E">https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E">https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E</a></li>
@@ -1864,7 +1765,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1076">https://access.redhat.com/errata/RHBA-2019:1076</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1570">https://access.redhat.com/errata/RHBA-2019:1570</a></li>
@@ -1910,7 +1811,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html">http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html">http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</a></li>
@@ -1977,7 +1878,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html">http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html">http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</a></li>
@@ -2040,7 +1941,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html">http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://seclists.org/fulldisclosure/2019/May/10">http://seclists.org/fulldisclosure/2019/May/10</a></li>
@@ -2103,7 +2004,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1076">https://access.redhat.com/errata/RHBA-2019:1076</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1570">https://access.redhat.com/errata/RHBA-2019:1570</a></li>
@@ -2148,7 +2049,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1076">https://access.redhat.com/errata/RHBA-2019:1076</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://access.redhat.com/errata/RHBA-2019:1570">https://access.redhat.com/errata/RHBA-2019:1570</a></li>
@@ -2195,7 +2096,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E">https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E">https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E</a></li>
@@ -2389,7 +2290,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-03/msg00041.html">http://lists.opensuse.org/opensuse-security-announce/2020-03/msg00041.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html">http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</a></li>
@@ -2568,7 +2469,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://www.securityfocus.com/bid/108023">BROKEN_LINK,THIRD_PARTY_ADVISORY,VDB_ENTRY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://snyk.io/vuln/SNYK-JS-JQUERY-174006">EXPLOIT,THIRD_PARTY_ADVISORY</a></li>
@@ -2936,7 +2837,7 @@ and 8.
                                     </ul>
                                 </p>
                                 <p><b><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-11022">CVE-2020-11022</a></b></p>
-                            <p>                            <pre>In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</pre>
+                            <p>                            <pre>In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</pre>
 
                                 CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')<br/><br/>
                             CVSSv2:
@@ -2944,7 +2845,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</a></li>
@@ -2990,40 +2891,44 @@ and 8.
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://www.tenable.com/security/tns-2021-02">THIRD_PARTY_ADVISORY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://www.tenable.com/security/tns-2021-10">THIRD_PARTY_ADVISORY</a></li>
                                     <li>info - <a target="_blank" href="https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/">https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67%40%3Cdev.flink.apache.org%3E">https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67%40%3Cdev.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E">https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="http://security.netapp.com/advisory/ntap-20200511-0006">http://security.netapp.com/advisory/ntap-20200511-0006</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://blog.jquery.com/2020/04/10/jquery-3-5-0-released">https://blog.jquery.com/2020/04/10/jquery-3-5-0-released</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jquery/jquery/releases/tag/3.5.0">https://github.com/jquery/jquery/releases/tag/3.5.0</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/maximebf/php-debugbar/commit/847216e60544258c881f2733d699bbcfeefac0fc">https://github.com/maximebf/php-debugbar/commit/847216e60544258c881f2733d699bbcfeefac0fc</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/maximebf/php-debugbar/issues/447">https://github.com/maximebf/php-debugbar/issues/447</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jquery-rails/CVE-2020-11022.yml">https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jquery-rails/CVE-2020-11022.yml</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://jquery.com/upgrade-guide/3.5">https://jquery.com/upgrade-guide/3.5</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67@%3Cdev.flink.apache.org%3E">https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67@%3Cdev.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133@%3Ccommits.airflow.apache.org%3E">https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133@%3Ccommits.airflow.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2@%3Cissues.flink.apache.org%3E</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html">https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html">https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html">https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html">https://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujul2021.html">https://www.oracle.com/security-alerts/cpujul2021.html</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujul2022.html">https://www.oracle.com/security-alerts/cpujul2022.html</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html">BROKEN_LINK</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html">BROKEN_LINK</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html">BROKEN_LINK</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html">EXPLOIT,THIRD_PARTY_ADVISORY,VDB_ENTRY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2021/03/msg00033.html">MAILING_LIST,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2">MITIGATION,THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://jquery.com/upgrade-guide/3.5/">MITIGATION,VENDOR_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jquery/jquery/commit/1d61fd9407e6fbe82fe55cb0b938307aa0791f77">PATCH,THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com//security-alerts/cpujul2021.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpuApr2021.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpuapr2022.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujan2022.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpuoct2021.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/">RELEASE_NOTES,VENDOR_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://security.gentoo.org/glsa/202007-03">THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://security.netapp.com/advisory/ntap-20200511-0006/">THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.debian.org/security/2020/dsa-4693">THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.drupal.org/sa-core-2020-002">THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujan2021.html">THIRD_PARTY_ADVISORY</a></li>
@@ -3155,7 +3060,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>134c704f-9b21-4f2e-91b3-4a467353bcc0 - <a target="_blank" href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2020-11023">US_GOVERNMENT_RESOURCE</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html">BROKEN_LINK</a></li>
@@ -3420,7 +3325,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://www.securityfocus.com/bid/104823">BROKEN_LINK,THIRD_PARTY_ADVISORY,VDB_ENTRY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jquery/api.jqueryui.com/issues/281">EXPLOIT,ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY</a></li>
@@ -3514,7 +3419,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc">EXPLOIT,MITIGATION,THIRD_PARTY_ADVISORY</a></li>
@@ -3603,7 +3508,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jquery/jquery-ui/security/advisories/GHSA-j7qv-pgf6-hvh4">EXPLOIT,MITIGATION,THIRD_PARTY_ADVISORY</a></li>
@@ -3691,7 +3596,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://seclists.org/fulldisclosure/2024/Aug/37">http://seclists.org/fulldisclosure/2024/Aug/37</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
@@ -3769,7 +3674,7 @@ and 8.
                                 CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6XBR3G3JR5ZIOJDO4224M3INXDS2VFDD/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6XBR3G3JR5ZIOJDO4224M3INXDS2VFDD/</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J5LGNTICB5BRFAG3DHVVELS6H3CZSQMO/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J5LGNTICB5BRFAG3DHVVELS6H3CZSQMO/</a></li>
@@ -3838,7 +3743,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://www.securityfocus.com/bid/104823">BROKEN_LINK,THIRD_PARTY_ADVISORY,VDB_ENTRY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jquery/api.jqueryui.com/issues/281">EXPLOIT,ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY</a></li>
@@ -3932,7 +3837,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jquery/jquery-ui/security/advisories/GHSA-9gj3-hwp5-pmwc">EXPLOIT,MITIGATION,THIRD_PARTY_ADVISORY</a></li>
@@ -4021,7 +3926,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/jquery/jquery-ui/security/advisories/GHSA-j7qv-pgf6-hvh4">EXPLOIT,MITIGATION,THIRD_PARTY_ADVISORY</a></li>
@@ -4109,7 +4014,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://seclists.org/fulldisclosure/2024/Aug/37">http://seclists.org/fulldisclosure/2024/Aug/37</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
@@ -4187,7 +4092,7 @@ and 8.
                                 CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')<br/><br/>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6XBR3G3JR5ZIOJDO4224M3INXDS2VFDD/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6XBR3G3JR5ZIOJDO4224M3INXDS2VFDD/</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J5LGNTICB5BRFAG3DHVVELS6H3CZSQMO/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J5LGNTICB5BRFAG3DHVVELS6H3CZSQMO/</a></li>
@@ -4253,7 +4158,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:L/Au:N/C:P/I:P/A:P</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: HIGH (7.3)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L/E:3.9/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://security.netapp.com/advisory/ntap-20240621-0006/">https://security.netapp.com/advisory/ntap-20240621-0006/</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://github.com/DataTables/Dist-DataTables/blob/master/js/jquery.dataTables.js%23L2766">BROKEN_LINK,THIRD_PARTY_ADVISORY</a></li>
@@ -4286,7 +4191,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00018.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00018.html</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://security.netapp.com/advisory/ntap-20240621-0006/">https://security.netapp.com/advisory/ntap-20240621-0006/</a></li>
@@ -4361,7 +4266,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://www.securityfocus.com/bid/108023">BROKEN_LINK,THIRD_PARTY_ADVISORY,VDB_ENTRY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://snyk.io/vuln/SNYK-JS-JQUERY-174006">EXPLOIT,THIRD_PARTY_ADVISORY</a></li>
@@ -4729,7 +4634,7 @@ and 8.
                                     </ul>
                                 </p>
                                 <p><b><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2020-11022">CVE-2020-11022</a></b></p>
-                            <p>                            <pre>In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</pre>
+                            <p>                            <pre>In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</pre>
 
                                 CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')<br/><br/>
                             CVSSv2:
@@ -4737,7 +4642,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</a></li>
@@ -4783,40 +4688,44 @@ and 8.
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://www.tenable.com/security/tns-2021-02">THIRD_PARTY_ADVISORY</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="https://www.tenable.com/security/tns-2021-10">THIRD_PARTY_ADVISORY</a></li>
                                     <li>info - <a target="_blank" href="https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/">https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67%40%3Cdev.flink.apache.org%3E">https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67%40%3Cdev.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E">https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4%40%3Cissues.flink.apache.org%3E</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="http://security.netapp.com/advisory/ntap-20200511-0006">http://security.netapp.com/advisory/ntap-20200511-0006</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://blog.jquery.com/2020/04/10/jquery-3-5-0-released">https://blog.jquery.com/2020/04/10/jquery-3-5-0-released</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jquery/jquery/releases/tag/3.5.0">https://github.com/jquery/jquery/releases/tag/3.5.0</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/maximebf/php-debugbar/commit/847216e60544258c881f2733d699bbcfeefac0fc">https://github.com/maximebf/php-debugbar/commit/847216e60544258c881f2733d699bbcfeefac0fc</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/maximebf/php-debugbar/issues/447">https://github.com/maximebf/php-debugbar/issues/447</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jquery-rails/CVE-2020-11022.yml">https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jquery-rails/CVE-2020-11022.yml</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://jquery.com/upgrade-guide/3.5">https://jquery.com/upgrade-guide/3.5</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67@%3Cdev.flink.apache.org%3E">https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67@%3Cdev.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133@%3Ccommits.airflow.apache.org%3E">https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133@%3Ccommits.airflow.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4@%3Cissues.flink.apache.org%3E</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2@%3Cissues.flink.apache.org%3E">https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2@%3Cissues.flink.apache.org%3E</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B/</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/">https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html">https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html">https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html">https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html">https://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html</a></li>
+                                    <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujul2021.html">https://www.oracle.com/security-alerts/cpujul2021.html</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujul2022.html">https://www.oracle.com/security-alerts/cpujul2022.html</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html">BROKEN_LINK</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html">BROKEN_LINK</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html">BROKEN_LINK</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="http://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html">EXPLOIT,THIRD_PARTY_ADVISORY,VDB_ENTRY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://lists.debian.org/debian-lts-announce/2021/03/msg00033.html">MAILING_LIST,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2">MITIGATION,THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://jquery.com/upgrade-guide/3.5/">MITIGATION,VENDOR_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://github.com/jquery/jquery/commit/1d61fd9407e6fbe82fe55cb0b938307aa0791f77">PATCH,THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com//security-alerts/cpujul2021.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpuApr2021.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpuapr2022.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujan2022.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpuoct2021.html">PATCH,THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/">RELEASE_NOTES,VENDOR_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://security.gentoo.org/glsa/202007-03">THIRD_PARTY_ADVISORY</a></li>
-                                    <li>security-advisories@github.com - <a target="_blank" href="https://security.netapp.com/advisory/ntap-20200511-0006/">THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.debian.org/security/2020/dsa-4693">THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.drupal.org/sa-core-2020-002">THIRD_PARTY_ADVISORY</a></li>
                                     <li>security-advisories@github.com - <a target="_blank" href="https://www.oracle.com/security-alerts/cpujan2021.html">THIRD_PARTY_ADVISORY</a></li>
@@ -4948,7 +4857,7 @@ and 8.
                                 <li>Vector: /AV:N/AC:M/Au:N/C:N/I:P/A:N</li></ul>
                             CVSSv3:
                             <ul><li>Base Score: MEDIUM (6.1)</li>
-                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:2.8/RC:R/MAV:A</li></ul>
+                                <li>Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RC:R/MAV:A</li></ul>
                                 <br/>References:<ul>
                                     <li>134c704f-9b21-4f2e-91b3-4a467353bcc0 - <a target="_blank" href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2020-11023">US_GOVERNMENT_RESOURCE</a></li>
                                     <li>af854a3a-2127-422b-91ae-364da2661108 - <a target="_blank" href="http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html">BROKEN_LINK</a></li>

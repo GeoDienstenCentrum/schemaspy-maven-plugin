@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
-<analysis xmlns="https://jeremylong.github.io/DependencyCheck/dependency-check.4.1.xsd">
+<analysis xmlns="https://jeremylong.github.io/DependencyCheck/dependency-check.4.1.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="https://jeremylong.github.io/DependencyCheck/dependency-check.4.1.xsd
+                              https://dependency-check.github.io/DependencyCheck/dependency-check.4.1.xsd">
     <scanInfo>
-        <engineVersion>12.2.0</engineVersion>
+        <engineVersion>12.2.1</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-04-10T13:19:33Z</timestamp>
+            <timestamp>2026-04-18T12:23:21Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-04-10T13:16:46Z</timestamp>
+            <timestamp>2026-04-18T12:16:11Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -16,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-04-10T13:19:54.913647814Z</reportDate>
+        <reportDate>2026-04-18T12:23:43.145307774Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -210,7 +213,7 @@
                             <source>security-advisories@github.com</source>
                             <type>Secondary</type>
                             <version>4.0</version>
-                            <vectorString>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:N/V:X/RE:X/U:X</vectorString>
+                            <vectorString>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X</vectorString>
                             <attackVector>NETWORK</attackVector>
                             <attackComplexity>LOW</attackComplexity>
                             <attackRequirements>PRESENT</attackRequirements>
@@ -282,7 +285,7 @@
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -1048,7 +1051,7 @@
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -10429,7 +10432,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -13994,7 +13997,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -14145,7 +14148,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -15468,7 +15471,7 @@ and 8.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -18555,7 +18558,7 @@ GNU Lesser General Public License Version 2.1: http://www.gnu.org/licenses/lgpl.
                             <source>security-advisories@github.com</source>
                             <type>Secondary</type>
                             <version>4.0</version>
-                            <vectorString>CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:N/V:X/RE:X/U:X</vectorString>
+                            <vectorString>CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X</vectorString>
                             <attackVector>NETWORK</attackVector>
                             <attackComplexity>LOW</attackComplexity>
                             <attackRequirements>NONE</attackRequirements>
@@ -22370,16 +22373,16 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-artifact-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-artifact/3.9.14/maven-artifact-3.9.14.jar</filePath>
-            <md5>0782702122cfd171170c7e6b9ab9837b</md5>
-            <sha1>921c4f90ec434e29b399796077a08459571d048a</sha1>
-            <sha256>1effa70eacbf0aa4d94ad9c7b225be031ce4317fa07da59e23b02b3e4e1231a3</sha256>
+            <fileName>maven-artifact-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-artifact/3.9.15/maven-artifact-3.9.15.jar</filePath>
+            <md5>705ca9659f4968ff4f19c710c510b0a4</md5>
+            <sha1>1bdd4eee8f1853fdfdefbdefdaac1bb708138c93</sha1>
+            <sha256>f154c31f15ac97c37b9cdf9f8d63cde5053c470d2daf54df7dfd3bb3c9e501c6</sha256>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22405,7 +22408,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -22465,7 +22468,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -22500,37 +22503,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-artifact@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-artifact@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-builder-support-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-builder-support/3.9.14/maven-builder-support-3.9.14.jar</filePath>
-            <md5>963abb54adeb61e8bfc3ba737054e7f8</md5>
-            <sha1>fd7eff42958f7a6ce02710f02127bc158d710d4e</sha1>
-            <sha256>2109ff808046e4f8b356b1064060a3f224b0b0aad07ecceaf7696c3bdc0b2296</sha256>
+            <fileName>maven-builder-support-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-builder-support/3.9.15/maven-builder-support-3.9.15.jar</filePath>
+            <md5>a505c381d99f6b51a2f7fcc763f7202b</md5>
+            <sha1>9bbd9729ac0667b6c11d5a62574cbf8581494eac</sha1>
+            <sha256>905745a1735ddd713c118315384a7b32af33a2b7017c227da12ad342fc08d852</sha256>
             <description>Support for descriptor builders (model, setting, toolchains)</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22551,7 +22554,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -22606,7 +22609,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -22641,31 +22644,31 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-builder-support@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-builder-support@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-core-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-core/3.9.14/maven-core-3.9.14.jar</filePath>
-            <md5>6538c37b5355337d131ae31b57ac09be</md5>
-            <sha1>39808a75b5625ddd0e8bba0bd8f9e953da940add</sha1>
-            <sha256>db009d57b90a714efe86c81c7a518febb276d01ba3daf2f301e382f6560e8a58</sha256>
+            <fileName>maven-core-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-core/3.9.15/maven-core-3.9.15.jar</filePath>
+            <md5>81ff4a29496b60cdcf0ca0bb5077d1d7</md5>
+            <sha1>fea27d454846597be5845bec1060dd433ae0ec5e</sha1>
+            <sha256>9cc1a87e4864cf45ee6d896e39499f5ed257e99d3b0adb5a3b5f77299777f8d0</sha256>
             <description>Maven Core classes.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
@@ -22692,7 +22695,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -22747,7 +22750,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -22782,41 +22785,41 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-core@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-core@3.9.15</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:apache:maven:3.9.14:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Amaven%3A3.9.14%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:apache:maven:3.9.15:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Amaven%3A3.9.15%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-model-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model/3.9.14/maven-model-3.9.14.jar</filePath>
-            <md5>c6f3bb5fdf95487ac8e66cdb7b0d8fb5</md5>
-            <sha1>623d1a652d2657577be0c8d3c249a4ab2830a843</sha1>
-            <sha256>684f573b1b37933c5d62c1c21d5da4335b049fb8b3d9754281597a38dbbc4044</sha256>
+            <fileName>maven-model-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model/3.9.15/maven-model-3.9.15.jar</filePath>
+            <md5>6c763aba3713fd8197d7b48894783378</md5>
+            <sha1>2193e5c1be2117d14a461e215943012c1599494e</sha1>
+            <sha256>591722f628000086c5af93d5a367aaefec2f78476b6f732ad70a05d49942fbfd</sha256>
             <description>Model for Maven POM (Project Object Model)</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22842,7 +22845,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -22902,7 +22905,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -22937,37 +22940,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-model@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-model@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-model-builder-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model-builder/3.9.14/maven-model-builder-3.9.14.jar</filePath>
-            <md5>f7843bebace494ee97509e67401a0993</md5>
-            <sha1>45299e0bbefb6575ba18214d822753a373d49aa9</sha1>
-            <sha256>9a6f4deb11bd6fe3f8b11036ed46f34cded3b00fc638f242327537bfb53c9d3f</sha256>
+            <fileName>maven-model-builder-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model-builder/3.9.15/maven-model-builder-3.9.15.jar</filePath>
+            <md5>f2eb3f9ef0637c7b24c923315aba26e8</md5>
+            <sha1>53f57aac9bd7d78bb7f6d6757fd3b37128c4141f</sha1>
+            <sha256>73f653c16e06c62b391c72bb3b68e78eebd07eadb1214a60a60df81ec2c733fc</sha256>
             <description>The effective model builder, with inheritance, profile activation, interpolation, ...</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23008,7 +23011,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -23083,7 +23086,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -23118,22 +23121,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-model-builder@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-model-builder@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23289,11 +23292,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-plugin-api-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.14/maven-plugin-api-3.9.14.jar</filePath>
-            <md5>a8be3ebe58277ded8abdc68925c6f4d5</md5>
-            <sha1>67a865f97a78cbd97773542ff3cb838d6624b5c1</sha1>
-            <sha256>062445ef3ae988e245cca68ccec915de64703ec615badf2d9d61da9ee6f1a245</sha256>
+            <fileName>maven-plugin-api-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.15/maven-plugin-api-3.9.15.jar</filePath>
+            <md5>10e2c9d81dc3a8e4136cbac7666b1abf</md5>
+            <sha1>9471d03f15536a08100157fab73512a3297423fa</sha1>
+            <sha256>ea4ae22e2b86e7b63c674c3b5cdfcb074d2c54237b983d9292f94b6966986938</sha256>
             <description>The API for plugins - Mojos - development.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
@@ -23325,7 +23328,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -23385,7 +23388,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -23420,22 +23423,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23772,17 +23775,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-repository-metadata-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.14/maven-repository-metadata-3.9.14.jar</filePath>
-            <md5>a874e3b9651d80f9199ec855ccbbc4c6</md5>
-            <sha1>231607afce2005cb03f2f882b347189f7ff27686</sha1>
-            <sha256>307e4920b17a8fdd764b556a7569de9bdd384d6b5f3f6a63dfb2ef186f02da2a</sha256>
+            <fileName>maven-repository-metadata-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.15/maven-repository-metadata-3.9.15.jar</filePath>
+            <md5>d097aa01f24ab815b6b0a3f3d496a709</md5>
+            <sha1>d4c8af2fc537fca6cd1f260219cd7ab4bc20ba22</sha1>
+            <sha256>3d6245c893d452a89f606cf366f50bc84cc91da236f937c85d5f30db4aaeafb8</sha256>
             <description>Per-directory local and remote repository metadata.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23808,7 +23811,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -23868,7 +23871,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -23903,22 +23906,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-repository-metadata@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-repository-metadata@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23934,7 +23937,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24126,7 +24129,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24308,7 +24311,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24484,17 +24487,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-provider-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.14/maven-resolver-provider-3.9.14.jar</filePath>
-            <md5>9026e4ce9aead5a9740f626d49085065</md5>
-            <sha1>9927e911dfc855a462ee79e3f5bb3fd5effd8b82</sha1>
-            <sha256>a5bc340ffe35325c55a01762feee374abb2a9e2b14191ea39c1ef646c2754f65</sha256>
+            <fileName>maven-resolver-provider-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.15/maven-resolver-provider-3.9.15.jar</filePath>
+            <md5>4715eb454ccb612558e4bc942c2e85c1</md5>
+            <sha1>56f5162b7dee47f803c833be26e386b1bf7bd808</sha1>
+            <sha256>194195fb2a0075aded42b6d4632da95d6574877371c17ac7614e894f5bfe9114</sha256>
             <description>Extensions to Maven Resolver for utilizing Maven POM and repository metadata.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24520,7 +24523,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -24580,7 +24583,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -24615,22 +24618,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-resolver-provider@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-resolver-provider@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
@@ -24646,7 +24649,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24828,7 +24831,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25019,17 +25022,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-settings-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings/3.9.14/maven-settings-3.9.14.jar</filePath>
-            <md5>e77ceedcd1e9587064a5f4ee519077cb</md5>
-            <sha1>b438ff21305253ded45570a74622595963942e65</sha1>
-            <sha256>0e5492e07136565b1ef72a981e99797999183e54f589e00aa608cbadc4cb9bda</sha256>
+            <fileName>maven-settings-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings/3.9.15/maven-settings-3.9.15.jar</filePath>
+            <md5>cda225684b42bdb446019f3583bed78b</md5>
+            <sha1>2034380ab005695d22bb9d243210be44b63bee9c</sha1>
+            <sha256>8219041d9e23043e349c2b330093be304b0f15b7be7b1ce3be0b09f170fd98af</sha256>
             <description>Maven Settings model.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25055,7 +25058,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -25115,7 +25118,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -25150,37 +25153,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-settings@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-settings@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-settings-builder-3.9.14.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.14/maven-settings-builder-3.9.14.jar</filePath>
-            <md5>5784e2300228329dafcdb01fc18c803a</md5>
-            <sha1>2b28c76e3c83715179b96404c0c003a91d543aba</sha1>
-            <sha256>1d3cf59f9dc6af77f7a1052aea598535b4f59926a9fe92cecce3ecfb5b91ff1f</sha256>
+            <fileName>maven-settings-builder-3.9.15.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.15/maven-settings-builder-3.9.15.jar</filePath>
+            <md5>a66833a721910c1ddd726e3f2109c4c0</md5>
+            <sha1>8e70febb4859716c61068d06e0bf59f398e63568</sha1>
+            <sha256>3614a2331ec4ba14297cfd6834649816b89c1e85ad92148822a756d6204cc33a</sha256>
             <description>The effective settings builder, with inheritance and password decryption.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25206,7 +25209,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -25266,7 +25269,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>21</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -25301,22 +25304,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.14</value>
+                    <value>3.9.15</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-settings-builder@3.9.14</id>
+                    <id>pkg:maven/org.apache.maven/maven-settings-builder@3.9.15</id>
                 </package>
             </identifiers>
         </dependency>
@@ -25331,7 +25334,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25706,10 +25709,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 </package>
                 <vulnerabilityIds confidence="LOW">
                     <id>cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.4.0.jre11:*:*:*:*:*:*:*</id>
-                </vulnerabilityIds>
-                <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:microsoft:sql_server:13.4.0.jre11:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.4.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
                 <vulnerabilityIds confidence="HIGHEST">
                     <id>cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*</id>
@@ -26614,7 +26613,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26821,7 +26820,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27170,7 +27169,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27292,7 +27291,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27489,7 +27488,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28121,7 +28120,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28236,18 +28235,19 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>plexus-utils-3.6.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.jar</filePath>
-            <md5>1d5893fecbc7ec13f205a1c5893e90ce</md5>
-            <sha1>e8bc129728f22671a36fff3b604edcd39073a7b1</sha1>
-            <sha256>27ef130e32c236090e408fb5498d94cb9ea26d14070fb1c8985d607b62d098d1</sha256>
+            <fileName>plexus-utils-3.6.1.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/codehaus/plexus/plexus-utils/3.6.1/plexus-utils-3.6.1.jar</filePath>
+            <md5>bf77c7ef462342bd42ce245be9648540</md5>
+            <sha1>9dce1b9c69b197f453223e45a2cb9fa0cd48b424</sha1>
+            <sha256>05a63effd67e2d6b9d610cc82e2bd7473289d34802e57a529b28110f28af5679</sha256>
             <description>A collection of various utility classes to ease working with strings, files, command lines, XML and
     more.</description>
+            <license>Apache-2.0: https://www.apache.org/licenses/LICENSE-2.0.txt</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -28273,12 +28273,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="HIGHEST">
                     <source>jar</source>
                     <name>package name</name>
+                    <value>util</value>
+                </evidence>
+                <evidence type="vendor" confidence="HIGHEST">
+                    <source>jar</source>
+                    <name>package name</name>
                     <value>xml</value>
+                </evidence>
+                <evidence type="vendor" confidence="MEDIUM">
+                    <source>Manifest</source>
+                    <name>automatic-module-name</name>
+                    <value>org.codehaus.plexus.util</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>23</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
                     <source>Manifest</source>
@@ -28348,12 +28358,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="HIGHEST">
                     <source>jar</source>
                     <name>package name</name>
+                    <value>util</value>
+                </evidence>
+                <evidence type="product" confidence="HIGHEST">
+                    <source>jar</source>
+                    <name>package name</name>
                     <value>xml</value>
+                </evidence>
+                <evidence type="product" confidence="MEDIUM">
+                    <source>Manifest</source>
+                    <name>automatic-module-name</name>
+                    <value>org.codehaus.plexus.util</value>
                 </evidence>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>23</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
                     <source>Manifest</source>
@@ -28398,35 +28418,35 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.6.0</value>
+                    <value>3.6.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.6.0</value>
+                    <value>3.6.1</value>
                 </evidence>
                 <evidence type="version" confidence="LOW">
                     <source>pom</source>
                     <name>parent-version</name>
-                    <value>3.6.0</value>
+                    <value>3.6.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.6.0</value>
+                    <value>3.6.1</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.codehaus.plexus/plexus-utils@3.6.0</id>
+                    <id>pkg:maven/org.codehaus.plexus/plexus-utils@3.6.1</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.1:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:utils_project:utils:3.6.1:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
             <vulnerabilities>
@@ -29667,17 +29687,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>bootstrap</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>bootstrap</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>3.3.7</value>
                 </evidence>
@@ -30899,17 +30919,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>bootstrap</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>bootstrap</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>3.3.7</value>
                 </evidence>
@@ -32407,17 +32427,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>2.2.3.min</value>
                 </evidence>
@@ -33793,11 +33813,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <exploitabilityScore>2.8</exploitabilityScore><impactScore>2.7</impactScore><version>3.1</version>                    </cvssV3>
                     <cwes>
 <cwe>CWE-79</cwe>                    </cwes>
-                    <description>In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery&apos;s DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</description>
+                    <description>In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery&apos;s DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</description>
                     <references>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.tenable.com/security/tns-2020-11</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>http://security.netapp.com/advisory/ntap-20200511-0006</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jquery-rails/CVE-2020-11022.yml</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpujan2021.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33806,7 +33832,10 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://www.oracle.com/security-alerts/cpujul2022.html</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K/</url>                        </reference>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.debian.org/security/2020/dsa-4693</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33842,7 +33871,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://security.netapp.com/advisory/ntap-20200511-0006/</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67%40%3Cdev.flink.apache.org%3E</url>                        </reference>
+<url>https://github.com/jquery/jquery/releases/tag/3.5.0</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E</url>                        </reference>
@@ -33853,11 +33882,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>security-advisories@github.com</source>
 <url>https://github.com/jquery/jquery/commit/1d61fd9407e6fbe82fe55cb0b938307aa0791f77</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html</url>                        </reference>
+                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>http://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html</url><name>BROKEN_LINK</name>                        </reference>
+<url>https://github.com/maximebf/php-debugbar/issues/447</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.debian.org/debian-lts-announce/2021/03/msg00033.html</url><name>MAILING_LIST,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33866,31 +33901,34 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</url><name>BROKEN_LINK</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.drupal.org/sa-core-2020-002</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.debian.org/security/2020/dsa-4693</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://www.oracle.com/security-alerts/cpujul2021.html</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.oracle.com/security-alerts/cpujan2021.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</url><name>RELEASE_NOTES,VENDOR_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html</url><name>BROKEN_LINK</name>                        </reference>
+<url>https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.oracle.com/security-alerts/cpuApr2021.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33908,13 +33946,13 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://www.oracle.com/security-alerts/cpuoct2021.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E</url>                        </reference>
+<url>https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpujan2022.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://jquery.com/upgrade-guide/3.5/</url><name>MITIGATION,VENDOR_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.tenable.com/security/tns-2021-02</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33923,13 +33961,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://security.netapp.com/advisory/ntap-20200511-0006/</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://github.com/jquery/jquery/commit/1d61fd9407e6fbe82fe55cb0b938307aa0791f77</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33944,10 +33976,13 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://www.drupal.org/sa-core-2020-002</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>http://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html</url><name>EXPLOIT,THIRD_PARTY_ADVISORY,VDB_ENTRY</name>                        </reference>
+<url>https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/</url>                        </reference>
+<url>https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133@%3Ccommits.airflow.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2</url><name>MITIGATION,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -33955,29 +33990,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpuoct2020.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY/</url>                        </reference>
-                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</url><name>BROKEN_LINK</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</url>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://www.oracle.com//security-alerts/cpujul2021.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/</url>                        </reference>
@@ -34022,7 +34039,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/</url>                        </reference>
+<url>https://github.com/maximebf/php-debugbar/commit/847216e60544258c881f2733d699bbcfeefac0fc</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.oracle.com/security-alerts/cpuoct2020.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -34030,14 +34047,26 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.tenable.com/security/tns-2021-02</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</url><name>RELEASE_NOTES,VENDOR_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B/</url>                        </reference>
+<url>https://jquery.com/upgrade-guide/3.5</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67@%3Cdev.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</url>                        </reference>
@@ -34047,6 +34076,9 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <reference>
                             <source>info</source>
 <url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</url><name>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpujul2022.html</url>                        </reference>
@@ -34903,27 +34935,27 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui-dialog</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui-dialog</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>1.11.4</value>
                 </evidence>
@@ -35913,27 +35945,27 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui</value>
                 </evidence>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui-dialog</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery-ui-dialog</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>1.11.4</value>
                 </evidence>
@@ -36923,17 +36955,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery.datatables</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery.datatables</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>1.10.15</value>
                 </evidence>
@@ -37150,17 +37182,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </projectReferences>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery</value>
                 </evidence>
                 <evidence type="product" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>name</name>
                     <value>jquery</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
-                    <source>file</source>
+                    <source>RetireJS</source>
                     <name>version</name>
                     <value>3.2.1</value>
                 </evidence>
@@ -38098,11 +38130,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <exploitabilityScore>2.8</exploitabilityScore><impactScore>2.7</impactScore><version>3.1</version>                    </cvssV3>
                     <cwes>
 <cwe>CWE-79</cwe>                    </cwes>
-                    <description>In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery&apos;s DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</description>
+                    <description>In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery&apos;s DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.</description>
                     <references>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.tenable.com/security/tns-2020-11</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>http://security.netapp.com/advisory/ntap-20200511-0006</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jquery-rails/CVE-2020-11022.yml</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpujan2021.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38111,7 +38149,10 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://www.oracle.com/security-alerts/cpujul2022.html</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K/</url>                        </reference>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.debian.org/security/2020/dsa-4693</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38147,7 +38188,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://security.netapp.com/advisory/ntap-20200511-0006/</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67%40%3Cdev.flink.apache.org%3E</url>                        </reference>
+<url>https://github.com/jquery/jquery/releases/tag/3.5.0</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E</url>                        </reference>
@@ -38158,11 +38199,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>security-advisories@github.com</source>
 <url>https://github.com/jquery/jquery/commit/1d61fd9407e6fbe82fe55cb0b938307aa0791f77</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html</url>                        </reference>
+                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>http://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html</url><name>BROKEN_LINK</name>                        </reference>
+<url>https://github.com/maximebf/php-debugbar/issues/447</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.debian.org/debian-lts-announce/2021/03/msg00033.html</url><name>MAILING_LIST,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38171,31 +38218,34 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</url><name>BROKEN_LINK</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.drupal.org/sa-core-2020-002</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.debian.org/security/2020/dsa-4693</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://www.oracle.com/security-alerts/cpujul2021.html</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.oracle.com/security-alerts/cpujan2021.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</url><name>RELEASE_NOTES,VENDOR_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00085.html</url><name>BROKEN_LINK</name>                        </reference>
+<url>https://lists.apache.org/thread.html/re4ae96fa5c1a2fe71ccbb7b7ac1538bd0cb677be270a2bf6e2f8d108@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.oracle.com/security-alerts/cpuApr2021.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38213,13 +38263,13 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://www.oracle.com/security-alerts/cpuoct2021.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E</url>                        </reference>
+<url>https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpujan2022.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://jquery.com/upgrade-guide/3.5/</url><name>MITIGATION,VENDOR_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.tenable.com/security/tns-2021-02</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38228,13 +38278,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133%40%3Ccommits.airflow.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://security.netapp.com/advisory/ntap-20200511-0006/</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://github.com/jquery/jquery/commit/1d61fd9407e6fbe82fe55cb0b938307aa0791f77</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38249,10 +38293,13 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://www.drupal.org/sa-core-2020-002</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>http://packetstormsecurity.com/files/162159/jQuery-1.2-Cross-Site-Scripting.html</url><name>EXPLOIT,THIRD_PARTY_ADVISORY,VDB_ENTRY</name>                        </reference>
+<url>https://lists.apache.org/thread.html/r564585d97bc069137e64f521e68ba490c7c9c5b342df5d73c49a0760@%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SAPQVX3XDNPGFT26QAQ6AJIXZZBZ4CD4/</url>                        </reference>
+<url>https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00039.html</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/rdf44341677cf7eec7e9aa96dcf3f37ed709544863d619cca8c36f133@%3Ccommits.airflow.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2</url><name>MITIGATION,THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38260,29 +38307,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpuoct2020.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY/</url>                        </reference>
-                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/r0483ba0072783c2e1bfea613984bfb3c86e73ba8879d780dc1cc7d36%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>http://lists.opensuse.org/opensuse-security-announce/2020-07/msg00067.html</url><name>BROKEN_LINK</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r706cfbc098420f7113968cc377247ec3d1439bce42e679c11c609e2d%40%3Cissues.flink.apache.org%3E</url>                        </reference>
-                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.debian.org/debian-lts-announce/2023/08/msg00040.html</url>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://www.oracle.com//security-alerts/cpujul2021.html</url><name>PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/ree3bd8ddb23df5fa4e372d11c226830ea3650056b1059f3965b3fce2%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/</url>                        </reference>
@@ -38327,7 +38356,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
 <url>https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c%40%3Cissues.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W/</url>                        </reference>
+<url>https://github.com/maximebf/php-debugbar/commit/847216e60544258c881f2733d699bbcfeefac0fc</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.oracle.com/security-alerts/cpuoct2020.html</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
@@ -38335,14 +38364,26 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://www.tenable.com/security/tns-2021-02</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
                         <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/r8f70b0f65d6bedf316ecd899371fd89e65333bc988f6326d2956735c@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/rede9cfaa756e050a3d83045008f84a62802fc68c17f2b4eabeaae5e4@%3Cissues.flink.apache.org%3E</url>                        </reference>
+                        <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</url><name>RELEASE_NOTES,VENDOR_ADVISORY</name>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.apache.org/thread.html/r54565a8f025c7c4f305355fdfd75b68eca442eebdb5f31c2e7d977ae%40%3Cissues.flink.apache.org%3E</url>                        </reference>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QPN2L2XVQGUA2V5HNQJWHK3APSK3VN7K</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
-<url>https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SFP4UK4EGP4AFH2MWYJ5A5Z4I7XVFQ6B/</url>                        </reference>
+<url>https://jquery.com/upgrade-guide/3.5</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/AVKYXLWCLZBV2N7M46KYK4LVA5OXWPBY</url>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.apache.org/thread.html/rbb448222ba62c430e21e13f940be4cb5cfc373cd3bce56b48c0ffa67@%3Cdev.flink.apache.org%3E</url>                        </reference>
                         <reference>
                             <source>af854a3a-2127-422b-91ae-364da2661108</source>
 <url>https://lists.apache.org/thread.html/r49ce4243b4738dd763caeb27fa8ad6afb426ae3e8c011ff00b8b1f48%40%3Cissues.flink.apache.org%3E</url>                        </reference>
@@ -38352,6 +38393,9 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <reference>
                             <source>info</source>
 <url>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</url><name>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOE7P7APPRQKD4FGNHBKJPDY6FFCOH3W</url>                        </reference>
                         <reference>
                             <source>security-advisories@github.com</source>
 <url>https://www.oracle.com/security-alerts/cpujul2022.html</url>                        </reference>
@@ -39364,7 +39408,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.14</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">

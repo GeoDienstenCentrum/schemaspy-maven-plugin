@@ -6,7 +6,7 @@
       "tool": {
         "driver": {
           "name": "dependency-check",
-          "version": "12.2.0",
+          "version": "12.2.1",
           "informationUri": "https://dependency-check.github.io/DependencyCheck/",
         "rules": [
 {
@@ -140,7 +140,7 @@
             },{
               "id": "CVE-2025-67030",
               "shortDescription": {
-                 "text": "high severity - CVE-2025-67030 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
+                 "text": "high severity - CVE-2025-67030 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.1"
               },
               "fullDescription": {
                 "text": "Directory Traversal vulnerability in the extractFile method of org.codehaus.plexus.util.Expand in plexus-utils before 6d780b3378829318ba5c2d29547e0012d5b29642. This allows an attacker to execute arbitrary code"
@@ -223,7 +223,7 @@
                     "cvssv3_baseSeverity": "LOW",
 "cvssv3_exploitabilityScore": "2.2","cvssv3_impactScore": "1.4","cvssv3_version": "_3_1",                "cvssv4_baseScore": 5.7,
                 "security-severity": "5.7",
-                "cvssv4_vector": "CVSS:4.0\/AV:N\/AC:L\/AT:N\/PR:L\/UI:N\/VC:N\/VI:H\/VA:N\/SC:N\/SI:N\/SA:N\/E:P\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:N\/V:X\/RE:X\/U:X",
+                "cvssv4_vector": "CVSS:4.0\/AV:N\/AC:L\/AT:N\/PR:L\/UI:N\/VC:N\/VI:H\/VA:N\/SC:N\/SI:N\/SA:N\/E:P\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:X\/V:X\/RE:X\/U:X",
                 "source": "NVD"
               }
             },{
@@ -342,7 +342,7 @@
                     "cvssv3_baseSeverity": "HIGH",
 "cvssv3_exploitabilityScore": "3.9","cvssv3_impactScore": "3.6","cvssv3_version": "_3_1",                "cvssv4_baseScore": 6.3,
                 "security-severity": "6.3",
-                "cvssv4_vector": "CVSS:4.0\/AV:N\/AC:L\/AT:P\/PR:N\/UI:N\/VC:L\/VI:N\/VA:N\/SC:N\/SI:N\/SA:N\/E:X\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:N\/V:X\/RE:X\/U:X",
+                "cvssv4_vector": "CVSS:4.0\/AV:N\/AC:L\/AT:P\/PR:N\/UI:N\/VC:L\/VI:N\/VA:N\/SC:N\/SI:N\/SA:N\/E:X\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:X\/V:X\/RE:X\/U:X",
                 "source": "NVD"
               }
             },{
@@ -788,7 +788,7 @@
                  "text": "medium severity - CVE-2020-11022 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in pkg:javascript\/jquery@2.2.3.min"
               },
               "fullDescription": {
-                "text": "In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0."
+                "text": "In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0."
               },
               "help": {
                 "text": "",
@@ -899,8 +899,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-04-10T13:19:33Z"
-            ,"NVD API Last Modified": "2026-04-10T13:16:46Z"
+            ,"NVD API Last Checked": "2026-04-18T12:23:21Z"
+            ,"NVD API Last Modified": "2026-04-18T12:16:11Z"
           }
         }
       },
@@ -2661,14 +2661,14 @@
         }
 ,{
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-artifact\/3.9.14\/maven-artifact-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-artifact\/3.9.15\/maven-artifact-3.9.15.jar"
           },
           "hashes": {
-            "md5": "0782702122cfd171170c7e6b9ab9837b",
-            "sha1": "921c4f90ec434e29b399796077a08459571d048a",
-            "sha256": "1effa70eacbf0aa4d94ad9c7b225be031ce4317fa07da59e23b02b3e4e1231a3"
+            "md5": "705ca9659f4968ff4f19c710c510b0a4",
+            "sha1": "1bdd4eee8f1853fdfdefbdefdaac1bb708138c93",
+            "sha256": "f154c31f15ac97c37b9cdf9f8d63cde5053c470d2daf54df7dfd3bb3c9e501c6"
           },          "properties": {
-                    "id95": "pkg:maven\/org.apache.maven\/maven-artifact@3.9.14"
+                    "id95": "pkg:maven\/org.apache.maven\/maven-artifact@3.9.15"
           }
         }
 ,{
@@ -2676,14 +2676,14 @@
              "text": "Support for descriptor builders (model, setting, toolchains)"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-builder-support\/3.9.14\/maven-builder-support-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-builder-support\/3.9.15\/maven-builder-support-3.9.15.jar"
           },
           "hashes": {
-            "md5": "963abb54adeb61e8bfc3ba737054e7f8",
-            "sha1": "fd7eff42958f7a6ce02710f02127bc158d710d4e",
-            "sha256": "2109ff808046e4f8b356b1064060a3f224b0b0aad07ecceaf7696c3bdc0b2296"
+            "md5": "a505c381d99f6b51a2f7fcc763f7202b",
+            "sha1": "9bbd9729ac0667b6c11d5a62574cbf8581494eac",
+            "sha256": "905745a1735ddd713c118315384a7b32af33a2b7017c227da12ad342fc08d852"
           },          "properties": {
-                    "id96": "pkg:maven\/org.apache.maven\/maven-builder-support@3.9.14"
+                    "id96": "pkg:maven\/org.apache.maven\/maven-builder-support@3.9.15"
           }
         }
 ,{
@@ -2691,15 +2691,15 @@
              "text": "Maven Core classes."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-core\/3.9.14\/maven-core-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-core\/3.9.15\/maven-core-3.9.15.jar"
           },
           "hashes": {
-            "md5": "6538c37b5355337d131ae31b57ac09be",
-            "sha1": "39808a75b5625ddd0e8bba0bd8f9e953da940add",
-            "sha256": "db009d57b90a714efe86c81c7a518febb276d01ba3daf2f301e382f6560e8a58"
+            "md5": "81ff4a29496b60cdcf0ca0bb5077d1d7",
+            "sha1": "fea27d454846597be5845bec1060dd433ae0ec5e",
+            "sha256": "9cc1a87e4864cf45ee6d896e39499f5ed257e99d3b0adb5a3b5f77299777f8d0"
           },          "properties": {
-                    "id97": "pkg:maven\/org.apache.maven\/maven-core@3.9.14"
-,                    "vid27": "cpe:2.3:a:apache:maven:3.9.14:*:*:*:*:*:*:*"
+                    "id97": "pkg:maven\/org.apache.maven\/maven-core@3.9.15"
+,                    "vid27": "cpe:2.3:a:apache:maven:3.9.15:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2707,14 +2707,14 @@
              "text": "Model for Maven POM (Project Object Model)"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model\/3.9.14\/maven-model-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model\/3.9.15\/maven-model-3.9.15.jar"
           },
           "hashes": {
-            "md5": "c6f3bb5fdf95487ac8e66cdb7b0d8fb5",
-            "sha1": "623d1a652d2657577be0c8d3c249a4ab2830a843",
-            "sha256": "684f573b1b37933c5d62c1c21d5da4335b049fb8b3d9754281597a38dbbc4044"
+            "md5": "6c763aba3713fd8197d7b48894783378",
+            "sha1": "2193e5c1be2117d14a461e215943012c1599494e",
+            "sha256": "591722f628000086c5af93d5a367aaefec2f78476b6f732ad70a05d49942fbfd"
           },          "properties": {
-                    "id98": "pkg:maven\/org.apache.maven\/maven-model@3.9.14"
+                    "id98": "pkg:maven\/org.apache.maven\/maven-model@3.9.15"
           }
         }
 ,{
@@ -2722,14 +2722,14 @@
              "text": "The effective model builder, with inheritance, profile activation, interpolation, ..."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model-builder\/3.9.14\/maven-model-builder-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model-builder\/3.9.15\/maven-model-builder-3.9.15.jar"
           },
           "hashes": {
-            "md5": "f7843bebace494ee97509e67401a0993",
-            "sha1": "45299e0bbefb6575ba18214d822753a373d49aa9",
-            "sha256": "9a6f4deb11bd6fe3f8b11036ed46f34cded3b00fc638f242327537bfb53c9d3f"
+            "md5": "f2eb3f9ef0637c7b24c923315aba26e8",
+            "sha1": "53f57aac9bd7d78bb7f6d6757fd3b37128c4141f",
+            "sha256": "73f653c16e06c62b391c72bb3b68e78eebd07eadb1214a60a60df81ec2c733fc"
           },          "properties": {
-                    "id99": "pkg:maven\/org.apache.maven\/maven-model-builder@3.9.14"
+                    "id99": "pkg:maven\/org.apache.maven\/maven-model-builder@3.9.15"
           }
         }
 ,{
@@ -2752,14 +2752,14 @@
              "text": "The API for plugins - Mojos - development."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-plugin-api\/3.9.14\/maven-plugin-api-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-plugin-api\/3.9.15\/maven-plugin-api-3.9.15.jar"
           },
           "hashes": {
-            "md5": "a8be3ebe58277ded8abdc68925c6f4d5",
-            "sha1": "67a865f97a78cbd97773542ff3cb838d6624b5c1",
-            "sha256": "062445ef3ae988e245cca68ccec915de64703ec615badf2d9d61da9ee6f1a245"
+            "md5": "10e2c9d81dc3a8e4136cbac7666b1abf",
+            "sha1": "9471d03f15536a08100157fab73512a3297423fa",
+            "sha256": "ea4ae22e2b86e7b63c674c3b5cdfcb074d2c54237b983d9292f94b6966986938"
           },          "properties": {
-                    "id101": "pkg:maven\/org.apache.maven\/maven-plugin-api@3.9.14"
+                    "id101": "pkg:maven\/org.apache.maven\/maven-plugin-api@3.9.15"
           }
         }
 ,{
@@ -2797,14 +2797,14 @@
              "text": "Per-directory local and remote repository metadata."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-repository-metadata\/3.9.14\/maven-repository-metadata-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-repository-metadata\/3.9.15\/maven-repository-metadata-3.9.15.jar"
           },
           "hashes": {
-            "md5": "a874e3b9651d80f9199ec855ccbbc4c6",
-            "sha1": "231607afce2005cb03f2f882b347189f7ff27686",
-            "sha256": "307e4920b17a8fdd764b556a7569de9bdd384d6b5f3f6a63dfb2ef186f02da2a"
+            "md5": "d097aa01f24ab815b6b0a3f3d496a709",
+            "sha1": "d4c8af2fc537fca6cd1f260219cd7ab4bc20ba22",
+            "sha256": "3d6245c893d452a89f606cf366f50bc84cc91da236f937c85d5f30db4aaeafb8"
           },          "properties": {
-                    "id104": "pkg:maven\/org.apache.maven\/maven-repository-metadata@3.9.14"
+                    "id104": "pkg:maven\/org.apache.maven\/maven-repository-metadata@3.9.15"
           }
         }
 ,{
@@ -2857,14 +2857,14 @@
              "text": "Extensions to Maven Resolver for utilizing Maven POM and repository metadata."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-resolver-provider\/3.9.14\/maven-resolver-provider-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-resolver-provider\/3.9.15\/maven-resolver-provider-3.9.15.jar"
           },
           "hashes": {
-            "md5": "9026e4ce9aead5a9740f626d49085065",
-            "sha1": "9927e911dfc855a462ee79e3f5bb3fd5effd8b82",
-            "sha256": "a5bc340ffe35325c55a01762feee374abb2a9e2b14191ea39c1ef646c2754f65"
+            "md5": "4715eb454ccb612558e4bc942c2e85c1",
+            "sha1": "56f5162b7dee47f803c833be26e386b1bf7bd808",
+            "sha256": "194195fb2a0075aded42b6d4632da95d6574877371c17ac7614e894f5bfe9114"
           },          "properties": {
-                    "id108": "pkg:maven\/org.apache.maven\/maven-resolver-provider@3.9.14"
+                    "id108": "pkg:maven\/org.apache.maven\/maven-resolver-provider@3.9.15"
           }
         }
 ,{
@@ -2902,14 +2902,14 @@
              "text": "Maven Settings model."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings\/3.9.14\/maven-settings-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings\/3.9.15\/maven-settings-3.9.15.jar"
           },
           "hashes": {
-            "md5": "e77ceedcd1e9587064a5f4ee519077cb",
-            "sha1": "b438ff21305253ded45570a74622595963942e65",
-            "sha256": "0e5492e07136565b1ef72a981e99797999183e54f589e00aa608cbadc4cb9bda"
+            "md5": "cda225684b42bdb446019f3583bed78b",
+            "sha1": "2034380ab005695d22bb9d243210be44b63bee9c",
+            "sha256": "8219041d9e23043e349c2b330093be304b0f15b7be7b1ce3be0b09f170fd98af"
           },          "properties": {
-                    "id111": "pkg:maven\/org.apache.maven\/maven-settings@3.9.14"
+                    "id111": "pkg:maven\/org.apache.maven\/maven-settings@3.9.15"
           }
         }
 ,{
@@ -2917,14 +2917,14 @@
              "text": "The effective settings builder, with inheritance and password decryption."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings-builder\/3.9.14\/maven-settings-builder-3.9.14.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings-builder\/3.9.15\/maven-settings-builder-3.9.15.jar"
           },
           "hashes": {
-            "md5": "5784e2300228329dafcdb01fc18c803a",
-            "sha1": "2b28c76e3c83715179b96404c0c003a91d543aba",
-            "sha256": "1d3cf59f9dc6af77f7a1052aea598535b4f59926a9fe92cecce3ecfb5b91ff1f"
+            "md5": "a66833a721910c1ddd726e3f2109c4c0",
+            "sha1": "8e70febb4859716c61068d06e0bf59f398e63568",
+            "sha256": "3614a2331ec4ba14297cfd6834649816b89c1e85ad92148822a756d6204cc33a"
           },          "properties": {
-                    "id112": "pkg:maven\/org.apache.maven\/maven-settings-builder@3.9.14"
+                    "id112": "pkg:maven\/org.apache.maven\/maven-settings-builder@3.9.15"
           }
         }
 ,{
@@ -2959,8 +2959,7 @@
 "license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php",                    "id114": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.4.0"
 ,                    "id115": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.4.0.jre11"
 ,                    "vid30": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
-,                    "vid31": "cpe:2.3:a:microsoft:sql_server:13.4.0.jre11:*:*:*:*:*:*:*"
-,                    "vid32": "cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*"
+,                    "vid31": "cpe:2.3:a:www-sql_project:www-sql:13.4.0.jre11:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2976,7 +2975,7 @@
             "sha256": "66df1d453789dc8cb759a7dc17f58646893bf28483f262328650f170472a6ead"
           },          "properties": {
 "license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id116": "pkg:maven\/com.mysql\/mysql-connector-j@9.6.0"
-,                    "vid33": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
+,                    "vid32": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3117,7 +3116,7 @@
             "sha256": "94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792"
           },          "properties": {
 "license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id118": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.1.0.0"
-,                    "vid34": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
+,                    "vid33": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3172,7 +3171,7 @@
             "sha256": "1f39d4f2906a04f501567cd1211cef3fd95fea4cb979e1eba1d8dd84e4b67098"
           },          "properties": {
                     "id122": "pkg:maven\/org.codehaus.plexus\/plexus-archiver@4.10.4"
-,                    "vid35": "cpe:2.3:a:codehaus-plexus:plexus-archiver:4.10.4:*:*:*:*:*:*:*"
+,                    "vid34": "cpe:2.3:a:codehaus-plexus:plexus-archiver:4.10.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3266,7 +3265,7 @@
             "sha256": "873139960c4c780176dda580b003a2c4bf82188bdce5bb99234e224ef7acfceb"
           },          "properties": {
                     "id129": "pkg:maven\/org.codehaus.plexus\/plexus-sec-dispatcher@2.0"
-,                    "vid36": "cpe:2.3:a:sec_project:sec:2.0:*:*:*:*:*:*:*"
+,                    "vid35": "cpe:2.3:a:sec_project:sec:2.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3274,16 +3273,16 @@
              "text": "A collection of various utility classes to ease working with strings, files, command lines, XML and\n    more."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-utils\/3.6.0\/plexus-utils-3.6.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-utils\/3.6.1\/plexus-utils-3.6.1.jar"
           },
           "hashes": {
-            "md5": "1d5893fecbc7ec13f205a1c5893e90ce",
-            "sha1": "e8bc129728f22671a36fff3b604edcd39073a7b1",
-            "sha256": "27ef130e32c236090e408fb5498d94cb9ea26d14070fb1c8985d607b62d098d1"
+            "md5": "bf77c7ef462342bd42ce245be9648540",
+            "sha1": "9dce1b9c69b197f453223e45a2cb9fa0cd48b424",
+            "sha256": "05a63effd67e2d6b9d610cc82e2bd7473289d34802e57a529b28110f28af5679"
           },          "properties": {
-                    "id130": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
-,                    "vid37": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.0:*:*:*:*:*:*:*"
-,                    "vid38": "cpe:2.3:a:utils_project:utils:3.6.0:*:*:*:*:*:*:*"
+"license": "Apache-2.0: https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id130": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.1"
+,                    "vid36": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.1:*:*:*:*:*:*:*"
+,                    "vid37": "cpe:2.3:a:utils_project:utils:3.6.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3326,7 +3325,7 @@
             "sha256": "cab1cd67cfa25c25de4348e532298028288a877ba01c77d1619fe45416193387"
           },          "properties": {
 "license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id133": "pkg:maven\/org.postgresql\/postgresql@42.7.10"
-,                    "vid39": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
+,                    "vid38": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3342,7 +3341,7 @@
             "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
           },          "properties": {
 "license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause",                    "id134": "pkg:maven\/com.google.protobuf\/protobuf-java@4.31.1"
-,                    "vid40": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
+,                    "vid39": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3358,7 +3357,7 @@
             "sha256": "bd85a266bdb03325b09d659fced8e0820393a51ce335e8468f4c3476021ab4ad"
           },          "properties": {
 "license": "LGPL-3.0-or-later: https:\/\/www.gnu.org\/licenses\/lgpl-3.0.txt",                    "id135": "pkg:maven\/org.schemaspy\/schemaspy@7.0.2"
-,                    "vid41": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
+,                    "vid40": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3948,7 +3947,7 @@
             "sha256": "1bf78c2ade46f209bf93ebe72ed2af5b989ca7a1de0a015fc1b92a62f56b6549"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id146": "pkg:maven\/org.apache.velocity\/velocity-engine-core@2.4"
-,                    "vid42": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
+,                    "vid41": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3964,7 +3963,7 @@
             "sha256": "8258cfdcaa16127f35ffe610a3fa4f76b7ebe51b88922c73c4ee39ce8f378ce5"
           },          "properties": {
                     "id147": "pkg:maven\/org.apache.velocity.tools\/velocity-tools-generic@3.1"
-,                    "vid43": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
+,                    "vid42": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -4215,13 +4214,13 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-utils\/3.6.0\/plexus-utils-3.6.0.jar"
+                  "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-utils\/3.6.1\/plexus-utils-3.6.1.jar"
                   ,"index": 168
                 }
               }
                 ,"logicalLocations": [
                     {
-                    "fullyQualifiedName": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.0"
+                    "fullyQualifiedName": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.1"
                     }
                 ]
               
@@ -4756,7 +4755,7 @@
           "ruleId": "CVE-2020-11022",
           "level": "warning",
           "message": {
-            "text": "CVE-2020-11022 - In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0."
+            "text": "CVE-2020-11022 - In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0."
           },
           "partialFingerprints": {
             "vulnerabilityHash": "2842292a7d8c51e9cda9e2056974580c"
@@ -5231,7 +5230,7 @@
           "ruleId": "CVE-2020-11022",
           "level": "warning",
           "message": {
-            "text": "CVE-2020-11022 - In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0."
+            "text": "CVE-2020-11022 - In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0."
           },
           "partialFingerprints": {
             "vulnerabilityHash": "2842292a7d8c51e9cda9e2056974580c"
