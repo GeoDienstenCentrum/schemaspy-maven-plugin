@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION=${1:-"23.26.0-slim"}
+VERSION=${1:-"23.26.1-slim"}
 
 docker pull ghcr.io/gvenzl/oracle-free:"$VERSION"
 # start the dockerized oracle-free instance
