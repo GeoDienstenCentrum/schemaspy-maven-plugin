@@ -339,19 +339,6 @@
         </pluginManagement>
         <plugins>
             <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <configuration>
-                    <filesets>
-<!--                        <fileset>-->
-<!--                            <directory>${basedir}</directory>-->
-<!--                            <includes>-->
-<!--                                <include>derby.log</include>-->
-<!--                            </includes>-->
-<!--                        </fileset>-->
-                    </filesets>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
