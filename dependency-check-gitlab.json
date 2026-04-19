@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-04-18T12:23:43",
-                "start_time": "2026-04-18T12:23:43",
+        "end_time": "2026-04-19T12:20:18",
+                "start_time": "2026-04-19T12:20:18",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -67,117 +67,6 @@
                                     {
                                                                                 "name": "PATCH",
                                         "url": "https:\/\/github.com\/airlift\/aircompressor\/commit\/ff12c4d5757c9d6d1de3d39a10402f1f84f9b765"
-                                    }
-                        ]
-                                                                                            }
-                                        ,
-                                        {
-                        "id": "CVE-2022-46337",
-                        "identifiers": [
-                            {
-                                "type": "NVD"
-                                    , "name": "CVE-2022-46337"
-                                , "value": "f9ca2054b3e33ec3f3f19df4a7490352d82de54a"
-
-                                                                    , "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-46337"
-                            }
-                        ],
-                        "location": {
-                            "file": "\/home\/runner\/.m2\/repository\/org\/apache\/derby\/derby\/10.16.1.1\/derby-10.16.1.1.jar",
-                            "dependency": {
-                                "package": {
-                                    "name": "org.apache.derby:derby"
-                                },
-                                "version": "10.16.1.1"
-                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                        },
-
-                                                "name": "CVE-2022-46337",
-                        "description": "A cleverly devised username might bypass LDAP authentication checks. In \nLDAP-authenticated Derby installations, this could let an attacker fill \nup the disk by creating junk Derby databases. In LDAP-authenticated \nDerby installations, this could also allow the attacker to execute \nmalware which was visible to and executable by the account which booted \nthe Derby server. In LDAP-protected databases which weren't also \nprotected by SQL GRANT\/REVOKE authorization, this vulnerability could \nalso let an attacker view and corrupt sensitive data and run sensitive \ndatabase functions and procedures.\n\nMitigation:\n\nUsers should upgrade to Java 21 and Derby 10.17.1.0.\n\nAlternatively, users who wish to remain on older Java versions should \nbuild their own Derby distribution from one of the release families to \nwhich the fix was backported: 10.16, 10.15, and 10.14. Those are the \nreleases which correspond, respectively, with Java LTS versions 17, 11, \nand 8.\n\n",
-                        "severity": "Critical",
-                                                "links": [
-                                    {
-                                                                                "name": "MAILING_LIST",
-                                        "url": "https:\/\/lists.apache.org\/thread\/q23kvvtoohgzwybxpwozmvvk17rp0td3"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "MAILING_LIST",
-                                        "url": "https:\/\/lists.apache.org\/thread\/q23kvvtoohgzwybxpwozmvvk17rp0td3"
-                                    }
-                        ]
-                                                                                            }
-                                        ,
-                                        {
-                        "id": "CVE-2022-46337",
-                        "identifiers": [
-                            {
-                                "type": "NVD"
-                                    , "name": "CVE-2022-46337"
-                                , "value": "77a3ec6b9791c7c29c76148c5d56fc1f3f12d638"
-
-                                                                    , "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-46337"
-                            }
-                        ],
-                        "location": {
-                            "file": "\/home\/runner\/.m2\/repository\/org\/apache\/derby\/derbyshared\/10.16.1.1\/derbyshared-10.16.1.1.jar",
-                            "dependency": {
-                                "package": {
-                                    "name": "org.apache.derby:derbyshared"
-                                },
-                                "version": "10.16.1.1"
-                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                        },
-
-                                                "name": "CVE-2022-46337",
-                        "description": "A cleverly devised username might bypass LDAP authentication checks. In \nLDAP-authenticated Derby installations, this could let an attacker fill \nup the disk by creating junk Derby databases. In LDAP-authenticated \nDerby installations, this could also allow the attacker to execute \nmalware which was visible to and executable by the account which booted \nthe Derby server. In LDAP-protected databases which weren't also \nprotected by SQL GRANT\/REVOKE authorization, this vulnerability could \nalso let an attacker view and corrupt sensitive data and run sensitive \ndatabase functions and procedures.\n\nMitigation:\n\nUsers should upgrade to Java 21 and Derby 10.17.1.0.\n\nAlternatively, users who wish to remain on older Java versions should \nbuild their own Derby distribution from one of the release families to \nwhich the fix was backported: 10.16, 10.15, and 10.14. Those are the \nreleases which correspond, respectively, with Java LTS versions 17, 11, \nand 8.\n\n",
-                        "severity": "Critical",
-                                                "links": [
-                                    {
-                                                                                "name": "MAILING_LIST",
-                                        "url": "https:\/\/lists.apache.org\/thread\/q23kvvtoohgzwybxpwozmvvk17rp0td3"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "MAILING_LIST",
-                                        "url": "https:\/\/lists.apache.org\/thread\/q23kvvtoohgzwybxpwozmvvk17rp0td3"
-                                    }
-                        ]
-                                                                                            }
-                                        ,
-                                        {
-                        "id": "CVE-2022-46337",
-                        "identifiers": [
-                            {
-                                "type": "NVD"
-                                    , "name": "CVE-2022-46337"
-                                , "value": "32a5335f9087022cd8ca5c85f35f8c844b1360a9"
-
-                                                                    , "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-46337"
-                            }
-                        ],
-                        "location": {
-                            "file": "\/home\/runner\/.m2\/repository\/org\/apache\/derby\/derbytools\/10.16.1.1\/derbytools-10.16.1.1.jar",
-                            "dependency": {
-                                "package": {
-                                    "name": "org.apache.derby:derbytools"
-                                },
-                                "version": "10.16.1.1"
-                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                        },
-
-                                                "name": "CVE-2022-46337",
-                        "description": "A cleverly devised username might bypass LDAP authentication checks. In \nLDAP-authenticated Derby installations, this could let an attacker fill \nup the disk by creating junk Derby databases. In LDAP-authenticated \nDerby installations, this could also allow the attacker to execute \nmalware which was visible to and executable by the account which booted \nthe Derby server. In LDAP-protected databases which weren't also \nprotected by SQL GRANT\/REVOKE authorization, this vulnerability could \nalso let an attacker view and corrupt sensitive data and run sensitive \ndatabase functions and procedures.\n\nMitigation:\n\nUsers should upgrade to Java 21 and Derby 10.17.1.0.\n\nAlternatively, users who wish to remain on older Java versions should \nbuild their own Derby distribution from one of the release families to \nwhich the fix was backported: 10.16, 10.15, and 10.14. Those are the \nreleases which correspond, respectively, with Java LTS versions 17, 11, \nand 8.\n\n",
-                        "severity": "Critical",
-                                                "links": [
-                                    {
-                                                                                "name": "MAILING_LIST",
-                                        "url": "https:\/\/lists.apache.org\/thread\/q23kvvtoohgzwybxpwozmvvk17rp0td3"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "MAILING_LIST",
-                                        "url": "https:\/\/lists.apache.org\/thread\/q23kvvtoohgzwybxpwozmvvk17rp0td3"
                                     }
                         ]
                                                                                             }
@@ -9866,27 +9755,6 @@
                             "name": "com.github.spullara.mustache.java:compiler"
                         },
                         "version": "0.9.10"
-
-                                                                                                                    }
-,                    {
-                        "package": {
-                            "name": "org.apache.derby:derby"
-                        },
-                        "version": "10.16.1.1"
-
-                                                                                                                    }
-,                    {
-                        "package": {
-                            "name": "org.apache.derby:derbyshared"
-                        },
-                        "version": "10.16.1.1"
-
-                                                                                                                    }
-,                    {
-                        "package": {
-                            "name": "org.apache.derby:derbytools"
-                        },
-                        "version": "10.16.1.1"
 
                                                                                                                     }
 ,                    {
