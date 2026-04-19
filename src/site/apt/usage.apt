@@ -45,7 +45,6 @@ Configuration
 
   Most databases with JDBC drivers available in the standard Maven repository should work out-of-the-box. 
   Currently, these are:
-   * Derby
    * MySQL
    * HSQLDB
    * PostgreSQL
