@@ -873,7 +873,7 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-04-25T07:21:20Z"
+            ,"NVD API Last Checked": "2026-04-25T07:22:21Z"
             ,"NVD API Last Modified": "2026-04-25T06:16:16Z"
           }
         }
@@ -2893,15 +2893,15 @@
              "text": "JDBC Type 4 driver for MySQL."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/9.6.0\/mysql-connector-j-9.6.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/9.7.0\/mysql-connector-j-9.7.0.jar"
           },
           "hashes": {
-            "md5": "41cceeac76ac319992d65c1c3558966e",
-            "sha1": "0a76b3cf1facc2faca4b6e34c1a63ef5e7840131",
-            "sha256": "66df1d453789dc8cb759a7dc17f58646893bf28483f262328650f170472a6ead"
+            "md5": "07479bc6b6870cede56d0f192603c3f9",
+            "sha1": "4e6e3e8765e4a9d0609744b3e8fe75afe1b98cba",
+            "sha256": "0353648eaa1c91e0f4020c959abf756bc866ffd583df22ae6b6f6e0cbd43eb44"
           },          "properties": {
-"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id113": "pkg:maven\/com.mysql\/mysql-connector-j@9.6.0"
-,                    "vid29": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.6.0:*:*:*:*:*:*:*"
+"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id113": "pkg:maven\/com.mysql\/mysql-connector-j@9.7.0"
+,                    "vid29": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.7.0:*:*:*:*:*:*:*"
           }
         }
 ,{
