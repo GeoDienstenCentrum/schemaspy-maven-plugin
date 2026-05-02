@@ -7,11 +7,11 @@
         <engineVersion>12.2.1</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-04-25T07:22:21Z</timestamp>
+            <timestamp>2026-05-02T12:48:37Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-04-25T06:16:16Z</timestamp>
+            <timestamp>2026-05-02T12:16:17Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-04-25T07:22:42.732362027Z</reportDate>
+        <reportDate>2026-05-02T12:49:00.591090888Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -2862,248 +2862,6 @@
             <identifiers>
                 <package confidence="HIGH">
                     <id>pkg:maven/com.headius/backport9@1.12</id>
-                </package>
-            </identifiers>
-        </dependency>
-        <dependency isVirtual="false">
-            <fileName>checker-qual-3.52.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/checkerframework/checker-qual/3.52.0/checker-qual-3.52.0.jar</filePath>
-            <md5>d7eeaac6d7810375c2484fd4faeb2f69</md5>
-            <sha1>9c17f496846ab1fca8975c6a50ceac0b3bbe63f0</sha1>
-            <sha256>0b5bb1a4bdc4e4b1217482fe598efcaab4e1fba7b37f9412639178fc8116fc05</sha256>
-            <description>checker-qual contains annotations (type qualifiers) that a programmerwrites to specify Java code for type-checking by the Checker Framework.</description>
-            <license>The MIT License: http://opensource.org/licenses/MIT</license>
-            <projectReferences>
-                <projectReference>SchemaSpy Maven Plugin:runtime</projectReference>
-            </projectReferences>
-            <includedBy>
-                <reference>pkg:maven/org.postgresql/postgresql@42.7.10</reference>
-            </includedBy>
-            <evidenceCollected>
-                <evidence type="vendor" confidence="HIGH">
-                    <source>file</source>
-                    <name>name</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>checker</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>checkerframework</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>framework</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>qual</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>Manifest</source>
-                    <name>bundle-symbolicname</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="vendor" confidence="LOW">
-                    <source>Manifest</source>
-                    <name>implementation-url</name>
-                    <value>https://checkerframework.org</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>pom</source>
-                    <name>artifactid</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="vendor" confidence="LOW">
-                    <source>pom</source>
-                    <name>artifactid</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="vendor" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer email</name>
-                    <value>mernst@cs.washington.edu</value>
-                </evidence>
-                <evidence type="vendor" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer email</name>
-                    <value>smillst@cs.washington.edu</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>developer id</name>
-                    <value>mernst</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>developer id</name>
-                    <value>smillst</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>developer name</name>
-                    <value>Michael Ernst</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>developer name</name>
-                    <value>Suzanne Millstein</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>developer org</name>
-                    <value>University of Washington</value>
-                </evidence>
-                <evidence type="vendor" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>developer org URL</name>
-                    <value>https://www.cs.washington.edu/</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>pom</source>
-                    <name>groupid</name>
-                    <value>org.checkerframework</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGH">
-                    <source>pom</source>
-                    <name>name</name>
-                    <value>Checker Qual</value>
-                </evidence>
-                <evidence type="vendor" confidence="HIGHEST">
-                    <source>pom</source>
-                    <name>url</name>
-                    <value>https://checkerframework.org/</value>
-                </evidence>
-                <evidence type="product" confidence="HIGH">
-                    <source>file</source>
-                    <name>name</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="product" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>checker</value>
-                </evidence>
-                <evidence type="product" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>checkerframework</value>
-                </evidence>
-                <evidence type="product" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>framework</value>
-                </evidence>
-                <evidence type="product" confidence="HIGHEST">
-                    <source>jar</source>
-                    <name>package name</name>
-                    <value>qual</value>
-                </evidence>
-                <evidence type="product" confidence="MEDIUM">
-                    <source>Manifest</source>
-                    <name>Bundle-Name</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="product" confidence="MEDIUM">
-                    <source>Manifest</source>
-                    <name>bundle-symbolicname</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>Manifest</source>
-                    <name>implementation-url</name>
-                    <value>https://checkerframework.org</value>
-                </evidence>
-                <evidence type="product" confidence="HIGHEST">
-                    <source>pom</source>
-                    <name>artifactid</name>
-                    <value>checker-qual</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer email</name>
-                    <value>mernst@cs.washington.edu</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer email</name>
-                    <value>smillst@cs.washington.edu</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer id</name>
-                    <value>mernst</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer id</name>
-                    <value>smillst</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer name</name>
-                    <value>Michael Ernst</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer name</name>
-                    <value>Suzanne Millstein</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer org</name>
-                    <value>University of Washington</value>
-                </evidence>
-                <evidence type="product" confidence="LOW">
-                    <source>pom</source>
-                    <name>developer org URL</name>
-                    <value>https://www.cs.washington.edu/</value>
-                </evidence>
-                <evidence type="product" confidence="HIGHEST">
-                    <source>pom</source>
-                    <name>groupid</name>
-                    <value>org.checkerframework</value>
-                </evidence>
-                <evidence type="product" confidence="HIGH">
-                    <source>pom</source>
-                    <name>name</name>
-                    <value>Checker Qual</value>
-                </evidence>
-                <evidence type="product" confidence="MEDIUM">
-                    <source>pom</source>
-                    <name>url</name>
-                    <value>https://checkerframework.org/</value>
-                </evidence>
-                <evidence type="version" confidence="HIGH">
-                    <source>file</source>
-                    <name>version</name>
-                    <value>3.52.0</value>
-                </evidence>
-                <evidence type="version" confidence="HIGH">
-                    <source>Manifest</source>
-                    <name>Bundle-Version</name>
-                    <value>3.52.0</value>
-                </evidence>
-                <evidence type="version" confidence="HIGH">
-                    <source>Manifest</source>
-                    <name>Implementation-Version</name>
-                    <value>3.52.0</value>
-                </evidence>
-                <evidence type="version" confidence="HIGHEST">
-                    <source>pom</source>
-                    <name>version</name>
-                    <value>3.52.0</value>
-                </evidence>
-            </evidenceCollected>
-            <identifiers>
-                <package confidence="HIGH">
-                    <id>pkg:maven/org.checkerframework/checker-qual@3.52.0</id>
                 </package>
             </identifiers>
         </dependency>
@@ -27763,48 +27521,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
-            <vulnerabilities>
-                <vulnerability source="NVD">
-                    <name>CVE-2025-67030</name>
-                    <severity>HIGH</severity>
-                    <cvssV3>
-                        <baseScore>8.8</baseScore>
-                        <attackVector>NETWORK</attackVector>
-                        <attackComplexity>LOW</attackComplexity>
-                        <privilegesRequired>NONE</privilegesRequired>
-                        <userInteraction>REQUIRED</userInteraction>
-                        <scope>UNCHANGED</scope>
-                        <confidentialityImpact>HIGH</confidentialityImpact>
-                        <integrityImpact>HIGH</integrityImpact>
-                        <availabilityImpact>HIGH</availabilityImpact>
-                        <baseSeverity>HIGH</baseSeverity>
-<exploitabilityScore>2.8</exploitabilityScore><impactScore>5.9</impactScore><version>3.1</version>                    </cvssV3>
-                    <cwes>
-<cwe>CWE-22</cwe>                    </cwes>
-                    <description>Directory Traversal vulnerability in the extractFile method of org.codehaus.plexus.util.Expand in plexus-utils before 6d780b3378829318ba5c2d29547e0012d5b29642. This allows an attacker to execute arbitrary code</description>
-                    <references>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/codehaus-plexus/plexus-utils/commit/6d780b3378829318ba5c2d29547e0012d5b29642</url><name>PATCH</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/codehaus-plexus/plexus-utils/issues/294</url><name>ISSUE_TRACKING</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://gist.github.com/weaver4VD/3216dac645220f8c9b488362f61241ec</url><name>THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/codehaus-plexus/plexus-utils/pull/295</url><name>ISSUE_TRACKING,PATCH</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/codehaus-plexus/plexus-utils/pull/296</url><name>ISSUE_TRACKING,PATCH</name>                        </reference>
-                    </references>
-                    <vulnerableSoftware>
-                        <software vulnerabilityIdMatched="true"
- versionEndExcluding="4.0.3"                        >cpe:2.3:a:codehaus-plexus:plexus-utils:*:*:*:*:*:*:*:*</software>
-                    </vulnerableSoftware>
-                </vulnerability>
-            </vulnerabilities>
         </dependency>
         <dependency isVirtual="false">
             <fileName>plexus-velocity-2.2.0.jar</fileName>
@@ -28128,11 +27844,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>postgresql-42.7.10.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/postgresql/postgresql/42.7.10/postgresql-42.7.10.jar</filePath>
-            <md5>46b64ac0888710f255fc6584f6facf68</md5>
-            <sha1>35100a3f0899551e27af8fed4a3414619a4663b3</sha1>
-            <sha256>cab1cd67cfa25c25de4348e532298028288a877ba01c77d1619fe45416193387</sha256>
+            <fileName>postgresql-42.7.11.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/postgresql/postgresql/42.7.11/postgresql-42.7.11.jar</filePath>
+            <md5>b969f87f07d6434bd77cdc5e440da49a</md5>
+            <sha1>4c21cdd1b3938f400703716d37c4e8ca4d332808</sha1>
+            <sha256>1981b31d3993c58702783c1cddf10a34e48c1f413d70ff1cb6def0a143484647</sha256>
             <description>PostgreSQL JDBC Driver Postgresql</description>
             <license>BSD-2-Clause: https://jdbc.postgresql.org/about/license.html</license>
             <projectReferences>
@@ -28205,7 +27921,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>provide-capability</name>
-                    <value>osgi.service;effective:=active;objectClass=&quot;org.osgi.service.jdbc.DataSourceFactory&quot;;osgi.jdbc.driver.class=&quot;org.postgresql.Driver&quot;;osgi.jdbc.driver.name=&quot;PostgreSQL JDBC Driver&quot;</value>
+                    <value>osgi.service;objectClass=&quot;org.osgi.service.jdbc.DataSourceFactory&quot;;osgi.jdbc.driver.class=&quot;org.postgresql.Driver&quot;;osgi.jdbc.driver.name=&quot;PostgreSQL JDBC Driver&quot;;effective:=active</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
@@ -28250,6 +27966,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="MEDIUM">
                     <source>pom</source>
                     <name>developer id</name>
+                    <value>sehrope</value>
+                </evidence>
+                <evidence type="vendor" confidence="MEDIUM">
+                    <source>pom</source>
+                    <name>developer id</name>
                     <value>vlsi</value>
                 </evidence>
                 <evidence type="vendor" confidence="MEDIUM">
@@ -28276,6 +27997,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <source>pom</source>
                     <name>developer name</name>
                     <value>Oliver Jowett</value>
+                </evidence>
+                <evidence type="vendor" confidence="MEDIUM">
+                    <source>pom</source>
+                    <name>developer name</name>
+                    <value>Sehrope Sarkuni</value>
                 </evidence>
                 <evidence type="vendor" confidence="MEDIUM">
                     <source>pom</source>
@@ -28385,7 +28111,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>provide-capability</name>
-                    <value>osgi.service;effective:=active;objectClass=&quot;org.osgi.service.jdbc.DataSourceFactory&quot;;osgi.jdbc.driver.class=&quot;org.postgresql.Driver&quot;;osgi.jdbc.driver.name=&quot;PostgreSQL JDBC Driver&quot;</value>
+                    <value>osgi.service;objectClass=&quot;org.osgi.service.jdbc.DataSourceFactory&quot;;osgi.jdbc.driver.class=&quot;org.postgresql.Driver&quot;;osgi.jdbc.driver.name=&quot;PostgreSQL JDBC Driver&quot;;effective:=active</value>
                 </evidence>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
@@ -28425,6 +28151,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>pom</source>
                     <name>developer id</name>
+                    <value>sehrope</value>
+                </evidence>
+                <evidence type="product" confidence="LOW">
+                    <source>pom</source>
+                    <name>developer id</name>
                     <value>vlsi</value>
                 </evidence>
                 <evidence type="product" confidence="LOW">
@@ -28451,6 +28182,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <source>pom</source>
                     <name>developer name</name>
                     <value>Oliver Jowett</value>
+                </evidence>
+                <evidence type="product" confidence="LOW">
+                    <source>pom</source>
+                    <name>developer name</name>
+                    <value>Sehrope Sarkuni</value>
                 </evidence>
                 <evidence type="product" confidence="LOW">
                     <source>pom</source>
@@ -28485,30 +28221,30 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>42.7.10</value>
+                    <value>42.7.11</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>42.7.10</value>
+                    <value>42.7.11</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>42.7.10</value>
+                    <value>42.7.11</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>42.7.10</value>
+                    <value>42.7.11</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.postgresql/postgresql@42.7.10</id>
+                    <id>pkg:maven/org.postgresql/postgresql@42.7.11</id>
                 </package>
                 <vulnerabilityIds confidence="LOW">
-                    <id>cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.10:*:*:*:*:*:*:*</id>
+                    <id>cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.11:*:*:*:*:*:*:*</id>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
