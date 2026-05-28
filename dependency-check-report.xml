@@ -7,7 +7,7 @@
         <engineVersion>12.2.2</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-05-28T09:33:37Z</timestamp>
+            <timestamp>2026-05-28T09:35:06Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-05-28T09:34:02.050188725Z</reportDate>
+        <reportDate>2026-05-28T09:35:32.125181326Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
