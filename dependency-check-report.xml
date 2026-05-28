@@ -4,14 +4,14 @@
           xsi:schemaLocation="https://jeremylong.github.io/DependencyCheck/dependency-check.4.1.xsd
                               https://dependency-check.github.io/DependencyCheck/dependency-check.4.1.xsd">
     <scanInfo>
-        <engineVersion>12.2.1</engineVersion>
+        <engineVersion>12.2.2</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-05-02T12:48:37Z</timestamp>
+            <timestamp>2026-05-28T09:33:37Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-05-02T12:16:17Z</timestamp>
+            <timestamp>2026-05-28T09:16:49Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-05-02T12:49:00.591090888Z</reportDate>
+        <reportDate>2026-05-28T09:34:02.050188725Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -285,7 +285,7 @@
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -1051,7 +1051,7 @@
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -9504,7 +9504,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -13054,11 +13054,11 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>guava-33.5.0-jre.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/google/guava/guava/33.5.0-jre/guava-33.5.0-jre.jar</filePath>
-            <md5>d9fbf39a41a5bab891348f07668e18c5</md5>
-            <sha1>8699de25f2f979108d6c1b804a7ba38cda1116bc</sha1>
-            <sha256>1e301f0c52ac248b0b14fdc3d12283c77252d4d6f48521d572e7d8c4c2cc4ac7</sha256>
+            <fileName>guava-33.6.0-jre.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar</filePath>
+            <md5>34a4f258ed23d2e876a6e4666bb3b1c5</md5>
+            <sha1>c376b13067cc99a5774403530953f7b05a91e218</sha1>
+            <sha256>dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3</sha256>
             <description>
     Guava is a suite of core and expanded libraries that include
     utility classes, Google&apos;s collections, I/O classes, and
@@ -13069,7 +13069,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -13085,7 +13085,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>11</value>
+                    <value>17</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
@@ -13145,7 +13145,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>11</value>
+                    <value>17</value>
                 </evidence>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
@@ -13195,16 +13195,16 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>33.5.0-jre</value>
+                    <value>33.6.0-jre</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.google.guava/guava@33.5.0-jre</id>
+                    <id>pkg:maven/com.google.guava/guava@33.6.0-jre</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:google:guava:33.5.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Agoogle%3Aguava%3A33.5.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:google:guava:33.6.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Agoogle%3Aguava%3A33.6.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
@@ -13220,7 +13220,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -14543,7 +14543,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -21445,16 +21445,16 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-artifact-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-artifact/3.9.15/maven-artifact-3.9.15.jar</filePath>
-            <md5>705ca9659f4968ff4f19c710c510b0a4</md5>
-            <sha1>1bdd4eee8f1853fdfdefbdefdaac1bb708138c93</sha1>
-            <sha256>f154c31f15ac97c37b9cdf9f8d63cde5053c470d2daf54df7dfd3bb3c9e501c6</sha256>
+            <fileName>maven-artifact-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-artifact/3.9.16/maven-artifact-3.9.16.jar</filePath>
+            <md5>6005ab2198a19a41cd3cf59618f9abc1</md5>
+            <sha1>1176c6579a8a68508c3479ef72d514e71c98ddca</sha1>
+            <sha256>54cc1c1ef932e3d4a903352111b42b4d3c3ed8e7a1d0de73b625309d9c3ad3e8</sha256>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -21575,37 +21575,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-artifact@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-artifact@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-builder-support-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-builder-support/3.9.15/maven-builder-support-3.9.15.jar</filePath>
-            <md5>a505c381d99f6b51a2f7fcc763f7202b</md5>
-            <sha1>9bbd9729ac0667b6c11d5a62574cbf8581494eac</sha1>
-            <sha256>905745a1735ddd713c118315384a7b32af33a2b7017c227da12ad342fc08d852</sha256>
+            <fileName>maven-builder-support-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-builder-support/3.9.16/maven-builder-support-3.9.16.jar</filePath>
+            <md5>63d5dfe8e9a09ac68ad382ee8af116ab</md5>
+            <sha1>d23ad247143e3b0fb6de5b61c56d46bba6513f9b</sha1>
+            <sha256>02972384eae3495801565fd27abb84cfd75a8e6d2cbb1ae0c556752ebc2b1cde</sha256>
             <description>Support for descriptor builders (model, setting, toolchains)</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -21716,31 +21716,31 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-builder-support@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-builder-support@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-core-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-core/3.9.15/maven-core-3.9.15.jar</filePath>
-            <md5>81ff4a29496b60cdcf0ca0bb5077d1d7</md5>
-            <sha1>fea27d454846597be5845bec1060dd433ae0ec5e</sha1>
-            <sha256>9cc1a87e4864cf45ee6d896e39499f5ed257e99d3b0adb5a3b5f77299777f8d0</sha256>
+            <fileName>maven-core-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-core/3.9.16/maven-core-3.9.16.jar</filePath>
+            <md5>045855e32be6ef1727118a7dcb9af9fe</md5>
+            <sha1>1f2b4176f1395310a9bce323919189cec51f7115</sha1>
+            <sha256>5d45c72e3dbfab8b68d15ad4f12777b7d9b5fe4d4adc99c3bd51fb9641fab009</sha256>
             <description>Maven Core classes.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
@@ -21857,41 +21857,41 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-core@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-core@3.9.16</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:apache:maven:3.9.15:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Amaven%3A3.9.15%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:apache:maven:3.9.16:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Amaven%3A3.9.16%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-model-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model/3.9.15/maven-model-3.9.15.jar</filePath>
-            <md5>6c763aba3713fd8197d7b48894783378</md5>
-            <sha1>2193e5c1be2117d14a461e215943012c1599494e</sha1>
-            <sha256>591722f628000086c5af93d5a367aaefec2f78476b6f732ad70a05d49942fbfd</sha256>
+            <fileName>maven-model-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model/3.9.16/maven-model-3.9.16.jar</filePath>
+            <md5>15ea34610d5c8d1944fc4ba317c6b4cd</md5>
+            <sha1>6f93dbc874ef321b0c3734dee41a6d17e18ceebd</sha1>
+            <sha256>f59d86a507c241bf17bbf050050d1b8b9c0d34d5010a7e2386c3cab7c83b93de</sha256>
             <description>Model for Maven POM (Project Object Model)</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22012,37 +22012,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-model@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-model@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-model-builder-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model-builder/3.9.15/maven-model-builder-3.9.15.jar</filePath>
-            <md5>f2eb3f9ef0637c7b24c923315aba26e8</md5>
-            <sha1>53f57aac9bd7d78bb7f6d6757fd3b37128c4141f</sha1>
-            <sha256>73f653c16e06c62b391c72bb3b68e78eebd07eadb1214a60a60df81ec2c733fc</sha256>
+            <fileName>maven-model-builder-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-model-builder/3.9.16/maven-model-builder-3.9.16.jar</filePath>
+            <md5>114db488c69246d1b371b4c203801b3a</md5>
+            <sha1>eb7a9ca8cc2d61d7c6430dd2ee16f71628b2046d</sha1>
+            <sha256>002be86d1f53b36f559a0786034a17598d71087f1935f205a1f9e51d4dd124b3</sha256>
             <description>The effective model builder, with inheritance, profile activation, interpolation, ...</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22193,22 +22193,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-model-builder@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-model-builder@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
@@ -22364,11 +22364,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-plugin-api-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.15/maven-plugin-api-3.9.15.jar</filePath>
-            <md5>10e2c9d81dc3a8e4136cbac7666b1abf</md5>
-            <sha1>9471d03f15536a08100157fab73512a3297423fa</sha1>
-            <sha256>ea4ae22e2b86e7b63c674c3b5cdfcb074d2c54237b983d9292f94b6966986938</sha256>
+            <fileName>maven-plugin-api-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.16/maven-plugin-api-3.9.16.jar</filePath>
+            <md5>bcb853f9daa463ff30dcf96d96bcbb06</md5>
+            <sha1>4509ebc6c30856368a5786859342eef9b43ab27a</sha1>
+            <sha256>37cb5e483e23327cf4ba18f920b45e000d20eec0428a086a5c1bd6bbdecf088c</sha256>
             <description>The API for plugins - Mojos - development.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
@@ -22495,22 +22495,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-plugin-api@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
@@ -22847,17 +22847,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-repository-metadata-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.15/maven-repository-metadata-3.9.15.jar</filePath>
-            <md5>d097aa01f24ab815b6b0a3f3d496a709</md5>
-            <sha1>d4c8af2fc537fca6cd1f260219cd7ab4bc20ba22</sha1>
-            <sha256>3d6245c893d452a89f606cf366f50bc84cc91da236f937c85d5f30db4aaeafb8</sha256>
+            <fileName>maven-repository-metadata-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.16/maven-repository-metadata-3.9.16.jar</filePath>
+            <md5>df9e6c18b95541ac7585f7d213d459af</md5>
+            <sha1>d2013b76825de9d844d5894e17fb4a894e8e8ae1</sha1>
+            <sha256>bc3dd413b89a16b695f35a5d0496b58ea2787c30b7b6062c130d24d6d764720f</sha256>
             <description>Per-directory local and remote repository metadata.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -22978,22 +22978,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-repository-metadata@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-repository-metadata@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23009,7 +23009,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23201,7 +23201,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23383,7 +23383,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23559,17 +23559,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-resolver-provider-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.15/maven-resolver-provider-3.9.15.jar</filePath>
-            <md5>4715eb454ccb612558e4bc942c2e85c1</md5>
-            <sha1>56f5162b7dee47f803c833be26e386b1bf7bd808</sha1>
-            <sha256>194195fb2a0075aded42b6d4632da95d6574877371c17ac7614e894f5bfe9114</sha256>
+            <fileName>maven-resolver-provider-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.16/maven-resolver-provider-3.9.16.jar</filePath>
+            <md5>476c028745a99d6492386f7e6d7d4471</md5>
+            <sha1>92faacf3d46fe4b971689b4839b0d9aaf438ce48</sha1>
+            <sha256>72a2d6aad3708e2c708b659b292ae9587a4d170ec88f48466290318730221118</sha256>
             <description>Extensions to Maven Resolver for utilizing Maven POM and repository metadata.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23690,22 +23690,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-resolver-provider@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-resolver-provider@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
@@ -23721,7 +23721,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -23903,7 +23903,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24094,17 +24094,17 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-settings-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings/3.9.15/maven-settings-3.9.15.jar</filePath>
-            <md5>cda225684b42bdb446019f3583bed78b</md5>
-            <sha1>2034380ab005695d22bb9d243210be44b63bee9c</sha1>
-            <sha256>8219041d9e23043e349c2b330093be304b0f15b7be7b1ce3be0b09f170fd98af</sha256>
+            <fileName>maven-settings-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings/3.9.16/maven-settings-3.9.16.jar</filePath>
+            <md5>46ffb3627f87c3b798829a41960f9fe9</md5>
+            <sha1>ab466fe1cb5b80d1b5e6f6b5ba3f87dfc56f75b6</sha1>
+            <sha256>322ae5b23f4b7b6ce7896bd33a793143dbbbbcc16c4475e2d7eebbd8f755da92</sha256>
             <description>Maven Settings model.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24225,37 +24225,37 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-settings@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-settings@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>maven-settings-builder-3.9.15.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.15/maven-settings-builder-3.9.15.jar</filePath>
-            <md5>a66833a721910c1ddd726e3f2109c4c0</md5>
-            <sha1>8e70febb4859716c61068d06e0bf59f398e63568</sha1>
-            <sha256>3614a2331ec4ba14297cfd6834649816b89c1e85ad92148822a756d6204cc33a</sha256>
+            <fileName>maven-settings-builder-3.9.16.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.16/maven-settings-builder-3.9.16.jar</filePath>
+            <md5>bd711f14681dc719b1ca8c883912014b</md5>
+            <sha1>31321459aee3dd0a12d72a9fb71bfac31b0fb529</sha1>
+            <sha256>226f1cbb0b4d414eff773fb151a8977837c98073e14d5963794e6cf464e6adbb</sha256>
             <description>The effective settings builder, with inheritance and password decryption.</description>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -24376,22 +24376,22 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.9.15</value>
+                    <value>3.9.16</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.maven/maven-settings-builder@3.9.15</id>
+                    <id>pkg:maven/org.apache.maven/maven-settings-builder@3.9.16</id>
                 </package>
             </identifiers>
         </dependency>
@@ -24406,7 +24406,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25332,11 +25332,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </evidenceCollected>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>ojdbc11-23.26.1.0.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.26.1.0.0/ojdbc11-23.26.1.0.0.jar</filePath>
-            <md5>c0d07c69b0030f2f661a6c749919467f</md5>
-            <sha1>48bc326f44f900ba5956265dc17dc1818f914d1a</sha1>
-            <sha256>94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792</sha256>
+            <fileName>ojdbc11-23.26.2.0.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.26.2.0.0/ojdbc11-23.26.2.0.0.jar</filePath>
+            <md5>6198c05f94f53accd741a74c994dfff4</md5>
+            <sha1>2462b603e435c9a2707f41a1896e5b5be6f36520</sha1>
+            <sha256>dbc0ff940bc056d5d9b8f42c0946ded4ebbc08c25cecf6ec1e521b2c8216956b</sha256>
             <description> Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21</description>
             <license>Oracle Free Use Terms and Conditions (FUTC): https://www.oracle.com/downloads/licenses/oracle-free-license.html</license>
             <projectReferences>
@@ -25384,7 +25384,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>repository-id</name>
-                    <value>JAVAVM_23.26.1.0.0DBRU_LINUX.X64_260101</value>
+                    <value>JAVAVM_23.26.2.0.0DBRU_LINUX.X64_260410.2</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
@@ -25459,7 +25459,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>repository-id</name>
-                    <value>JAVAVM_23.26.1.0.0DBRU_LINUX.X64_260101</value>
+                    <value>JAVAVM_23.26.2.0.0DBRU_LINUX.X64_260410.2</value>
                 </evidence>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
@@ -25499,26 +25499,26 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>23.26.1.0.0</value>
+                    <value>23.26.2.0.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>23.26.1.0.0</value>
+                    <value>23.26.2.0.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>23.26.1.0.0</value>
+                    <value>23.26.2.0.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.oracle.database.jdbc/ojdbc11@23.26.1.0.0</id>
+                    <id>pkg:maven/com.oracle.database.jdbc/ojdbc11@23.26.2.0.0</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.1.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:oracle:jdbc:23.26.2.0.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.2.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
@@ -25685,7 +25685,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -25892,7 +25892,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26241,7 +26241,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26352,18 +26352,18 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>plexus-classworlds-2.9.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.9.0/plexus-classworlds-2.9.0.jar</filePath>
-            <md5>64e4ee5a1298f866d00f705e02058200</md5>
-            <sha1>ace0820f34de49f69511f5263bcebb09fac9731a</sha1>
-            <sha256>1ad3292cd563381e3fd632f3fded1988f9e9b2be7a9f3db63ff4c4cedba13fa5</sha256>
+            <fileName>plexus-classworlds-2.11.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.11.0/plexus-classworlds-2.11.0.jar</filePath>
+            <md5>54d5f4e0835c5e53f08a494f08d2a75d</md5>
+            <sha1>6586ba9f3137d7ac7b9789f1fcf7c4e192482905</sha1>
+            <sha256>8971f135490070bc5fde7413fcc8db7c997fda4bebfb5c31185900d66edcbbb2</sha256>
             <description>A class loader framework</description>
             <license>https://www.apache.org/licenses/LICENSE-2.0.txt</license>
             <projectReferences>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -26386,10 +26386,15 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <name>package name</name>
                     <value>plexus</value>
                 </evidence>
+                <evidence type="vendor" confidence="MEDIUM">
+                    <source>Manifest</source>
+                    <name>automatic-module-name</name>
+                    <value>org.codehaus.plexus.classworlds</value>
+                </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>23</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
@@ -26461,10 +26466,15 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <name>package name</name>
                     <value>plexus</value>
                 </evidence>
+                <evidence type="product" confidence="MEDIUM">
+                    <source>Manifest</source>
+                    <name>automatic-module-name</name>
+                    <value>org.codehaus.plexus.classworlds</value>
+                </evidence>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>23</value>
+                    <value>25</value>
                 </evidence>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
@@ -26519,32 +26529,32 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>2.9.0</value>
+                    <value>2.11.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>2.9.0</value>
+                    <value>2.11.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>2.9.0</value>
+                    <value>2.11.0</value>
                 </evidence>
                 <evidence type="version" confidence="LOW">
                     <source>pom</source>
                     <name>parent-version</name>
-                    <value>2.9.0</value>
+                    <value>2.11.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>2.9.0</value>
+                    <value>2.11.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.codehaus.plexus/plexus-classworlds@2.9.0</id>
+                    <id>pkg:maven/org.codehaus.plexus/plexus-classworlds@2.11.0</id>
                 </package>
             </identifiers>
         </dependency>
@@ -26560,7 +26570,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27192,7 +27202,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -27319,7 +27329,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-plugin-api@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -29049,167 +29059,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     </vulnerableSoftware>
                 </vulnerability>
                 <vulnerability source="NVD">
-                    <name>CVE-2018-14041</name>
-                    <severity>MEDIUM</severity>
-                    <cvssV2>
-                        <score>4.3</score>
-                        <accessVector>NETWORK</accessVector>
-                        <accessComplexity>MEDIUM</accessComplexity>
-                        <authenticationr>NONE</authenticationr>
-                        <confidentialityImpact>NONE</confidentialityImpact>
-                        <integrityImpact>PARTIAL</integrityImpact>
-                        <availabilityImpact>NONE</availabilityImpact>
-                        <severity>MEDIUM</severity>
-<version>2.0</version><exploitabilityScore>8.6</exploitabilityScore><impactScore>2.9</impactScore><userInteractionRequired>true</userInteractionRequired>                    </cvssV2>
-                    <cvssV3>
-                        <baseScore>6.1</baseScore>
-                        <attackVector>NETWORK</attackVector>
-                        <attackComplexity>LOW</attackComplexity>
-                        <privilegesRequired>NONE</privilegesRequired>
-                        <userInteraction>REQUIRED</userInteraction>
-                        <scope>CHANGED</scope>
-                        <confidentialityImpact>LOW</confidentialityImpact>
-                        <integrityImpact>LOW</integrityImpact>
-                        <availabilityImpact>NONE</availabilityImpact>
-                        <baseSeverity>MEDIUM</baseSeverity>
-<exploitabilityScore>2.8</exploitabilityScore><impactScore>2.7</impactScore><version>3.0</version>                    </cvssV3>
-                    <cwes>
-<cwe>CWE-79</cwe>                    </cwes>
-                    <description>In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy.</description>
-                    <references>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://www.oracle.com/security-alerts/cpuApr2021.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://blog.getbootstrap.com/2018/07/12/bootstrap-4-1-2/</url><name>VENDOR_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/twbs/bootstrap/issues/26423</url><name>ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://access.redhat.com/errata/RHSA-2019:1456</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://www.oracle.com/security-alerts/cpuApr2021.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/twbs/bootstrap/issues/26627</url><name>EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://access.redhat.com/errata/RHSA-2019:1456</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://github.com/twbs/bootstrap/pull/26630</url><name>ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>info</source>
-<url>https://github.com/advisories/GHSA-pj7m-g53m-7638</url><name>https://github.com/advisories/GHSA-pj7m-g53m-7638</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://seclists.org/bugtraq/2019/May/18</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://github.com/twbs/bootstrap/issues/26627</url><name>EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/twbs/bootstrap/pull/26630</url><name>ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>info</source>
-<url>https://github.com/twbs/bootstrap/issues/20184</url><name>https://github.com/twbs/bootstrap/issues/20184</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://seclists.org/fulldisclosure/2019/May/13</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://seclists.org/bugtraq/2019/May/18</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://seclists.org/fulldisclosure/2019/May/11</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://seclists.org/fulldisclosure/2019/May/10</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://blog.getbootstrap.com/2018/07/12/bootstrap-4-1-2/</url><name>VENDOR_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://seclists.org/fulldisclosure/2019/May/13</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://seclists.org/fulldisclosure/2019/May/11</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://seclists.org/fulldisclosure/2019/May/10</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://github.com/twbs/bootstrap/issues/26423</url><name>ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                    </references>
-                    <vulnerableSoftware>
-                        <software
- versionStartIncluding="4.0.0" versionEndExcluding="4.1.2"                        >cpe:2.3:a:getbootstrap:bootstrap:*:*:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha2:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha3:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha4:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha5:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha6:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:beta:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:beta2:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:beta3:*:*:*:*:*:*</software>
-                    </vulnerableSoftware>
-                </vulnerability>
-                <vulnerability source="NVD">
                     <name>CVE-2018-14042</name>
                     <severity>MEDIUM</severity>
                     <cvssV2>
@@ -29923,7 +29772,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <vulnerability source="RETIREJS">
                     <name>CVE-2024-6485</name>
                     <severity unscored="true">medium</severity>
-                    <description></description>
+                    <description>Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes</description>
                     <references>
                         <reference>
                             <source>info</source>
@@ -29934,6 +29783,9 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <reference>
                             <source>info</source>
 <url>https://nvd.nist.gov/vuln/detail/CVE-2024-6485</url><name>https://nvd.nist.gov/vuln/detail/CVE-2024-6485</name>                        </reference>
+                        <reference>
+                            <source>ghsaId</source>
+<name>GHSA-vxmc-5x29-h64v</name>                        </reference>
                         <reference>
                             <source>info</source>
 <url>https://github.com/twbs/bootstrap</url><name>https://github.com/twbs/bootstrap</name>                        </reference>
@@ -29949,9 +29801,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <reference>
                             <source>info</source>
 <url>https://github.com/twbs/bootstrap/issues/20631</url><name>https://github.com/twbs/bootstrap/issues/20631</name>                        </reference>
-                        <reference>
-                            <source>retid</source>
-<name>72</name>                        </reference>
                     </references>
                     <vulnerableSoftware>
                     </vulnerableSoftware>
@@ -30281,167 +30130,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     </vulnerableSoftware>
                 </vulnerability>
                 <vulnerability source="NVD">
-                    <name>CVE-2018-14041</name>
-                    <severity>MEDIUM</severity>
-                    <cvssV2>
-                        <score>4.3</score>
-                        <accessVector>NETWORK</accessVector>
-                        <accessComplexity>MEDIUM</accessComplexity>
-                        <authenticationr>NONE</authenticationr>
-                        <confidentialityImpact>NONE</confidentialityImpact>
-                        <integrityImpact>PARTIAL</integrityImpact>
-                        <availabilityImpact>NONE</availabilityImpact>
-                        <severity>MEDIUM</severity>
-<version>2.0</version><exploitabilityScore>8.6</exploitabilityScore><impactScore>2.9</impactScore><userInteractionRequired>true</userInteractionRequired>                    </cvssV2>
-                    <cvssV3>
-                        <baseScore>6.1</baseScore>
-                        <attackVector>NETWORK</attackVector>
-                        <attackComplexity>LOW</attackComplexity>
-                        <privilegesRequired>NONE</privilegesRequired>
-                        <userInteraction>REQUIRED</userInteraction>
-                        <scope>CHANGED</scope>
-                        <confidentialityImpact>LOW</confidentialityImpact>
-                        <integrityImpact>LOW</integrityImpact>
-                        <availabilityImpact>NONE</availabilityImpact>
-                        <baseSeverity>MEDIUM</baseSeverity>
-<exploitabilityScore>2.8</exploitabilityScore><impactScore>2.7</impactScore><version>3.0</version>                    </cvssV3>
-                    <cwes>
-<cwe>CWE-79</cwe>                    </cwes>
-                    <description>In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy.</description>
-                    <references>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://www.oracle.com/security-alerts/cpuApr2021.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://blog.getbootstrap.com/2018/07/12/bootstrap-4-1-2/</url><name>VENDOR_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/twbs/bootstrap/issues/26423</url><name>ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://access.redhat.com/errata/RHSA-2019:1456</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://www.oracle.com/security-alerts/cpuApr2021.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/twbs/bootstrap/issues/26627</url><name>EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://access.redhat.com/errata/RHSA-2019:1456</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://github.com/twbs/bootstrap/pull/26630</url><name>ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://lists.apache.org/thread.html/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>info</source>
-<url>https://github.com/advisories/GHSA-pj7m-g53m-7638</url><name>https://github.com/advisories/GHSA-pj7m-g53m-7638</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://seclists.org/bugtraq/2019/May/18</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://github.com/twbs/bootstrap/issues/26627</url><name>EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://packetstormsecurity.com/files/152787/dotCMS-5.1.1-Vulnerable-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://github.com/twbs/bootstrap/pull/26630</url><name>ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>info</source>
-<url>https://github.com/twbs/bootstrap/issues/20184</url><name>https://github.com/twbs/bootstrap/issues/20184</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://seclists.org/fulldisclosure/2019/May/13</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://seclists.org/bugtraq/2019/May/18</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://seclists.org/fulldisclosure/2019/May/11</url>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>http://seclists.org/fulldisclosure/2019/May/10</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://blog.getbootstrap.com/2018/07/12/bootstrap-4-1-2/</url><name>VENDOR_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://packetstormsecurity.com/files/156743/OctoberCMS-Insecure-Dependencies.html</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://seclists.org/fulldisclosure/2019/May/13</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://seclists.org/fulldisclosure/2019/May/11</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>http://seclists.org/fulldisclosure/2019/May/10</url>                        </reference>
-                        <reference>
-                            <source>af854a3a-2127-422b-91ae-364da2661108</source>
-<url>https://github.com/twbs/bootstrap/issues/26423</url><name>ISSUE_TRACKING,THIRD_PARTY_ADVISORY</name>                        </reference>
-                        <reference>
-                            <source>cve@mitre.org</source>
-<url>https://lists.apache.org/thread.html/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E</url>                        </reference>
-                    </references>
-                    <vulnerableSoftware>
-                        <software
- versionStartIncluding="4.0.0" versionEndExcluding="4.1.2"                        >cpe:2.3:a:getbootstrap:bootstrap:*:*:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha2:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha3:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha4:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha5:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:alpha6:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:beta:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:beta2:*:*:*:*:*:*</software>
-                        <software
-                        >cpe:2.3:a:getbootstrap:bootstrap:4.0.0:beta3:*:*:*:*:*:*</software>
-                    </vulnerableSoftware>
-                </vulnerability>
-                <vulnerability source="NVD">
                     <name>CVE-2018-14042</name>
                     <severity>MEDIUM</severity>
                     <cvssV2>
@@ -31155,7 +30843,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <vulnerability source="RETIREJS">
                     <name>CVE-2024-6485</name>
                     <severity unscored="true">medium</severity>
-                    <description></description>
+                    <description>Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes</description>
                     <references>
                         <reference>
                             <source>info</source>
@@ -31166,6 +30854,9 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <reference>
                             <source>info</source>
 <url>https://nvd.nist.gov/vuln/detail/CVE-2024-6485</url><name>https://nvd.nist.gov/vuln/detail/CVE-2024-6485</name>                        </reference>
+                        <reference>
+                            <source>ghsaId</source>
+<name>GHSA-vxmc-5x29-h64v</name>                        </reference>
                         <reference>
                             <source>info</source>
 <url>https://github.com/twbs/bootstrap</url><name>https://github.com/twbs/bootstrap</name>                        </reference>
@@ -31181,9 +30872,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <reference>
                             <source>info</source>
 <url>https://github.com/twbs/bootstrap/issues/20631</url><name>https://github.com/twbs/bootstrap/issues/20631</name>                        </reference>
-                        <reference>
-                            <source>retid</source>
-<name>72</name>                        </reference>
                     </references>
                     <vulnerableSoftware>
                     </vulnerableSoftware>
@@ -33963,9 +33651,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                             <source>issue</source>
 <name>162</name>                        </reference>
                         <reference>
-                            <source>retid</source>
-<name>73</name>                        </reference>
-                        <reference>
                             <source>info</source>
 <url>https://github.com/jquery/jquery.com/issues/162</url><name>https://github.com/jquery/jquery.com/issues/162</name>                        </reference>
                     </references>
@@ -36192,9 +35877,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <description>prototype pollution</description>
                     <references>
                         <reference>
-                            <source>retid</source>
-<name>4</name>                        </reference>
-                        <reference>
                             <source>info</source>
 <url>https://cdn.datatables.net/1.10.22/</url><name>https://cdn.datatables.net/1.10.22/</name>                        </reference>
                     </references>
@@ -36206,9 +35888,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <severity unscored="true">low</severity>
                     <description>possible XSS</description>
                     <references>
-                        <reference>
-                            <source>retid</source>
-<name>2</name>                        </reference>
                         <reference>
                             <source>info</source>
 <url>https://github.com/DataTables/Dist-DataTables/commit/59a8d3f8a3c1138ab08704e783bc52bfe88d7c9b</url><name>https://github.com/DataTables/Dist-DataTables/commit/59a8d3f8a3c1138ab08704e783bc52bfe88d7c9b</name>                        </reference>
@@ -38458,7 +38137,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.apache.maven/maven-core@3.9.15</reference>
+                <reference>pkg:maven/org.apache.maven/maven-core@3.9.16</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">

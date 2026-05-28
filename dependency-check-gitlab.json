@@ -4,7 +4,7 @@
                 "scanner": {
             "id": "org.owasp.dependency-check",
             "name": "Dependency-Check Core",
-            "version": "12.2.1",
+            "version": "12.2.2",
             "vendor": {
                 "name": "OWASP"
             },
@@ -14,7 +14,7 @@
                         "analyzer": {
             "id": "org.owasp.dependency-check",
             "name": "Dependency-Check Core",
-            "version": "12.2.1",
+            "version": "12.2.2",
             "vendor": {
                 "name": "OWASP"
             },
@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-05-02T12:49:00",
-                "start_time": "2026-05-02T12:49:00",
+        "end_time": "2026-05-28T09:34:02",
+                "start_time": "2026-05-28T09:34:02",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -586,187 +586,6 @@
                                                                                             }
                                         ,
                                         {
-                        "id": "CVE-2018-14041",
-                        "identifiers": [
-                            {
-                                "type": "NVD"
-                                    , "name": "CVE-2018-14041"
-                                , "value": "3b965a36a6b08854ad6eddedf85c5319fd392b4a"
-
-                                                                    , "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2018-14041"
-                            }
-                        ],
-                        "location": {
-                            "file": "\/home\/runner\/.m2\/repository\/org\/schemaspy\/schemaspy\/7.0.2\/schemaspy-7.0.2.jar\/layout\/bower\/admin-lte\/bootstrap\/js\/bootstrap.js",
-                            "dependency": {
-                                "package": {
-                                    "name": "bootstrap"
-                                },
-                                "version": "3.3.7"
-                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                        },
-
-                                                "name": "CVE-2018-14041",
-                        "description": "In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy.",
-                        "severity": "Medium",
-                                                "links": [
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/152787\/dotCMS-5.1.1-Vulnerable-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/156743\/OctoberCMS-Insecure-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/10"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/11"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/13"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/access.redhat.com\/errata\/RHSA-2019:1456"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/seclists.org\/bugtraq\/2019\/May\/18"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/www.oracle.com\/security-alerts\/cpuApr2021.html"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26627"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/pull\/26630"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26423"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "VENDOR_ADVISORY",
-                                        "url": "https:\/\/blog.getbootstrap.com\/2018\/07\/12\/bootstrap-4-1-2\/"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/152787\/dotCMS-5.1.1-Vulnerable-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/156743\/OctoberCMS-Insecure-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/10"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/11"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/13"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/access.redhat.com\/errata\/RHSA-2019:1456"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/seclists.org\/bugtraq\/2019\/May\/18"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/www.oracle.com\/security-alerts\/cpuApr2021.html"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26627"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/pull\/26630"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26423"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "VENDOR_ADVISORY",
-                                        "url": "https:\/\/blog.getbootstrap.com\/2018\/07\/12\/bootstrap-4-1-2\/"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "https:\/\/github.com\/advisories\/GHSA-pj7m-g53m-7638",
-                                        "url": "https:\/\/github.com\/advisories\/GHSA-pj7m-g53m-7638"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "https:\/\/github.com\/twbs\/bootstrap\/issues\/20184",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/20184"
-                                    }
-                        ]
-                                                                                            }
-                                        ,
-                                        {
                         "id": "CVE-2018-14042",
                         "identifiers": [
                             {
@@ -1548,6 +1367,7 @@
                         },
 
                                                 "name": "CVE-2024-6485",
+                        "description": "Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes",
                         "severity": "Medium",
                                                 "links": [
                                     {
@@ -1946,187 +1766,6 @@
                                                                                             }
                                         ,
                                         {
-                        "id": "CVE-2018-14041",
-                        "identifiers": [
-                            {
-                                "type": "NVD"
-                                    , "name": "CVE-2018-14041"
-                                , "value": "430a443d74830fe9be26efca431f448c1b3740f9"
-
-                                                                    , "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2018-14041"
-                            }
-                        ],
-                        "location": {
-                            "file": "\/home\/runner\/.m2\/repository\/org\/schemaspy\/schemaspy\/7.0.2\/schemaspy-7.0.2.jar\/layout\/bower\/admin-lte\/bootstrap\/js\/bootstrap.min.js",
-                            "dependency": {
-                                "package": {
-                                    "name": "bootstrap"
-                                },
-                                "version": "3.3.7"
-                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                        },
-
-                                                "name": "CVE-2018-14041",
-                        "description": "In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy.",
-                        "severity": "Medium",
-                                                "links": [
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/152787\/dotCMS-5.1.1-Vulnerable-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/156743\/OctoberCMS-Insecure-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/10"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/11"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/13"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/access.redhat.com\/errata\/RHSA-2019:1456"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/seclists.org\/bugtraq\/2019\/May\/18"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/www.oracle.com\/security-alerts\/cpuApr2021.html"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26627"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/pull\/26630"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26423"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "VENDOR_ADVISORY",
-                                        "url": "https:\/\/blog.getbootstrap.com\/2018\/07\/12\/bootstrap-4-1-2\/"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/152787\/dotCMS-5.1.1-Vulnerable-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/packetstormsecurity.com\/files\/156743\/OctoberCMS-Insecure-Dependencies.html"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/10"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/11"
-                                    }
-                                        ,
-                                    {
-                                        "url": "http:\/\/seclists.org\/fulldisclosure\/2019\/May\/13"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/access.redhat.com\/errata\/RHSA-2019:1456"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/519eb0fd45642dcecd9ff74cb3e71c20a4753f7d82e2f07864b5108f%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/52e0e6b5df827ee7f1e68f7cc3babe61af3b2160f5d74a85469b7b0e%40%3Cdev.superset.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/b0656d359c7d40ec9f39c8cc61bca66802ef9a2a12ee199f5b0c1442%40%3Cdev.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/f9bc3e55f4e28d1dcd1a69aae6d53e609a758e34d2869b4d798e13cc%40%3Cissues.drill.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/lists.apache.org\/thread.html\/r3dc0cac8d856bca02bd6997355d7ff83027dcfc82f8646a29b89b714%40%3Cissues.hbase.apache.org%3E"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/seclists.org\/bugtraq\/2019\/May\/18"
-                                    }
-                                        ,
-                                    {
-                                        "url": "https:\/\/www.oracle.com\/security-alerts\/cpuApr2021.html"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26627"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,PATCH,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/pull\/26630"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/26423"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "VENDOR_ADVISORY",
-                                        "url": "https:\/\/blog.getbootstrap.com\/2018\/07\/12\/bootstrap-4-1-2\/"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "https:\/\/github.com\/advisories\/GHSA-pj7m-g53m-7638",
-                                        "url": "https:\/\/github.com\/advisories\/GHSA-pj7m-g53m-7638"
-                                    }
-                                        ,
-                                    {
-                                                                                "name": "https:\/\/github.com\/twbs\/bootstrap\/issues\/20184",
-                                        "url": "https:\/\/github.com\/twbs\/bootstrap\/issues\/20184"
-                                    }
-                        ]
-                                                                                            }
-                                        ,
-                                        {
                         "id": "CVE-2018-14042",
                         "identifiers": [
                             {
@@ -2908,6 +2547,7 @@
                         },
 
                                                 "name": "CVE-2024-6485",
+                        "description": "Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes",
                         "severity": "Medium",
                                                 "links": [
                                     {
@@ -9933,7 +9573,7 @@
                         "package": {
                             "name": "com.google.guava:guava"
                         },
-                        "version": "33.5.0-jre"
+                        "version": "33.6.0-jre"
 
                                                                                                                     }
 ,                    {
@@ -10178,35 +9818,35 @@
                         "package": {
                             "name": "org.apache.maven:maven-artifact"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-builder-support"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-core"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-model"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-model-builder"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
@@ -10220,7 +9860,7 @@
                         "package": {
                             "name": "org.apache.maven:maven-plugin-api"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
@@ -10241,7 +9881,7 @@
                         "package": {
                             "name": "org.apache.maven:maven-repository-metadata"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
@@ -10269,7 +9909,7 @@
                         "package": {
                             "name": "org.apache.maven:maven-resolver-provider"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
@@ -10290,14 +9930,14 @@
                         "package": {
                             "name": "org.apache.maven:maven-settings"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-settings-builder"
                         },
-                        "version": "3.9.15"
+                        "version": "3.9.16"
 
                                                                                                                     }
 ,                    {
@@ -10332,7 +9972,7 @@
                         "package": {
                             "name": "com.oracle.database.jdbc:ojdbc11"
                         },
-                        "version": "23.26.1.0.0"
+                        "version": "23.26.2.0.0"
 
                                                                                                                     }
 ,                    {
@@ -10374,7 +10014,7 @@
                         "package": {
                             "name": "org.codehaus.plexus:plexus-classworlds"
                         },
-                        "version": "2.9.0"
+                        "version": "2.11.0"
 
                                                                                                                     }
 ,                    {

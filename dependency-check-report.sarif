@@ -6,7 +6,7 @@
       "tool": {
         "driver": {
           "name": "dependency-check",
-          "version": "12.2.1",
+          "version": "12.2.2",
           "informationUri": "https://dependency-check.github.io/DependencyCheck/",
         "rules": [
 {
@@ -369,40 +369,6 @@
                 "source": "RETIREJS"
               }
             },{
-              "id": "CVE-2018-14041",
-              "shortDescription": {
-                 "text": "medium severity - CVE-2018-14041 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in pkg:javascript\/bootstrap@3.3.7"
-              },
-              "fullDescription": {
-                "text": "In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy."
-              },
-              "help": {
-                "text": "",
-                "markdown": "For more information see [CVE-2018-14041](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2018-14041).\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
-              },
-              "properties": {
-                    "cvssv2_score": 4.3,
-                    "cvssv2_accessVector": "NETWORK",
-                    "cvssv2_accessComplexity": "MEDIUM",
-                    "cvssv2_authenticationr": "NONE",
-                    "cvssv2_confidentialityImpact": "NONE",
-                    "cvssv2_integrityImpact": "PARTIAL",
-                    "cvssv2_availabilityImpact": "NONE",
-                    "cvssv2_severity": "MEDIUM",
-                    "cvssv3_baseScore": 6.1,
-                    "security-severity": "6.1",
-                    "cvssv3_attackVector": "NETWORK",
-                    "cvssv3_attackComplexity": "LOW",
-                    "cvssv3_privilegesRequired": "NONE",
-                    "cvssv3_userInteraction": "REQUIRED",
-                    "cvssv3_scope": "CHANGED",
-                    "cvssv3_confidentialityImpact": "LOW",
-                    "cvssv3_integrityImpact": "LOW",
-                    "cvssv3_availabilityImpact": "NONE",
-                    "cvssv3_baseSeverity": "MEDIUM",
-"cvssv3_exploitabilityScore": "2.8","cvssv3_impactScore": "2.7","cvssv3_version": "_3_0",                "source": "NVD"
-              }
-            },{
               "id": "CVE-2021-41184",
               "shortDescription": {
                  "text": "medium severity - CVE-2021-41184 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in pkg:javascript\/jquery-ui-dialog@1.11.4"
@@ -687,7 +653,7 @@
                  "text": "medium severity - CVE-2024-6485 vulnerability in pkg:javascript\/bootstrap@3.3.7"
               },
               "fullDescription": {
-                "text": "null"
+                "text": "Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes"
               },
               "help": {
                 "text": "",
@@ -846,9 +812,9 @@
           "cisa": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
-          "ossindex": "This report may contain data retrieved from the Sonatype OSS Index: https://ossindex.sonatype.org"
-            ,"NVD API Last Checked": "2026-05-02T12:48:37Z"
-            ,"NVD API Last Modified": "2026-05-02T12:16:17Z"
+          "ossindex": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+            ,"NVD API Last Checked": "2026-05-28T09:33:37Z"
+            ,"NVD API Last Modified": "2026-05-28T09:16:49Z"
           }
         }
       },
@@ -1682,15 +1648,15 @@
              "text": "\n    Guava is a suite of core and expanded libraries that include\n    utility classes, Google's collections, I\/O classes, and\n    much more.\n  "
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/google\/guava\/guava\/33.5.0-jre\/guava-33.5.0-jre.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/google\/guava\/guava\/33.6.0-jre\/guava-33.6.0-jre.jar"
           },
           "hashes": {
-            "md5": "d9fbf39a41a5bab891348f07668e18c5",
-            "sha1": "8699de25f2f979108d6c1b804a7ba38cda1116bc",
-            "sha256": "1e301f0c52ac248b0b14fdc3d12283c77252d4d6f48521d572e7d8c4c2cc4ac7"
+            "md5": "34a4f258ed23d2e876a6e4666bb3b1c5",
+            "sha1": "c376b13067cc99a5774403530953f7b05a91e218",
+            "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
           },          "properties": {
-"license": "http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id54": "pkg:maven\/com.google.guava\/guava@33.5.0-jre"
-,                    "vid11": "cpe:2.3:a:google:guava:33.5.0:*:*:*:*:*:*:*"
+"license": "http:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id54": "pkg:maven\/com.google.guava\/guava@33.6.0-jre"
+,                    "vid11": "cpe:2.3:a:google:guava:33.6.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2546,14 +2512,14 @@
         }
 ,{
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-artifact\/3.9.15\/maven-artifact-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-artifact\/3.9.16\/maven-artifact-3.9.16.jar"
           },
           "hashes": {
-            "md5": "705ca9659f4968ff4f19c710c510b0a4",
-            "sha1": "1bdd4eee8f1853fdfdefbdefdaac1bb708138c93",
-            "sha256": "f154c31f15ac97c37b9cdf9f8d63cde5053c470d2daf54df7dfd3bb3c9e501c6"
+            "md5": "6005ab2198a19a41cd3cf59618f9abc1",
+            "sha1": "1176c6579a8a68508c3479ef72d514e71c98ddca",
+            "sha256": "54cc1c1ef932e3d4a903352111b42b4d3c3ed8e7a1d0de73b625309d9c3ad3e8"
           },          "properties": {
-                    "id91": "pkg:maven\/org.apache.maven\/maven-artifact@3.9.15"
+                    "id91": "pkg:maven\/org.apache.maven\/maven-artifact@3.9.16"
           }
         }
 ,{
@@ -2561,14 +2527,14 @@
              "text": "Support for descriptor builders (model, setting, toolchains)"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-builder-support\/3.9.15\/maven-builder-support-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-builder-support\/3.9.16\/maven-builder-support-3.9.16.jar"
           },
           "hashes": {
-            "md5": "a505c381d99f6b51a2f7fcc763f7202b",
-            "sha1": "9bbd9729ac0667b6c11d5a62574cbf8581494eac",
-            "sha256": "905745a1735ddd713c118315384a7b32af33a2b7017c227da12ad342fc08d852"
+            "md5": "63d5dfe8e9a09ac68ad382ee8af116ab",
+            "sha1": "d23ad247143e3b0fb6de5b61c56d46bba6513f9b",
+            "sha256": "02972384eae3495801565fd27abb84cfd75a8e6d2cbb1ae0c556752ebc2b1cde"
           },          "properties": {
-                    "id92": "pkg:maven\/org.apache.maven\/maven-builder-support@3.9.15"
+                    "id92": "pkg:maven\/org.apache.maven\/maven-builder-support@3.9.16"
           }
         }
 ,{
@@ -2576,15 +2542,15 @@
              "text": "Maven Core classes."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-core\/3.9.15\/maven-core-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-core\/3.9.16\/maven-core-3.9.16.jar"
           },
           "hashes": {
-            "md5": "81ff4a29496b60cdcf0ca0bb5077d1d7",
-            "sha1": "fea27d454846597be5845bec1060dd433ae0ec5e",
-            "sha256": "9cc1a87e4864cf45ee6d896e39499f5ed257e99d3b0adb5a3b5f77299777f8d0"
+            "md5": "045855e32be6ef1727118a7dcb9af9fe",
+            "sha1": "1f2b4176f1395310a9bce323919189cec51f7115",
+            "sha256": "5d45c72e3dbfab8b68d15ad4f12777b7d9b5fe4d4adc99c3bd51fb9641fab009"
           },          "properties": {
-                    "id93": "pkg:maven\/org.apache.maven\/maven-core@3.9.15"
-,                    "vid24": "cpe:2.3:a:apache:maven:3.9.15:*:*:*:*:*:*:*"
+                    "id93": "pkg:maven\/org.apache.maven\/maven-core@3.9.16"
+,                    "vid24": "cpe:2.3:a:apache:maven:3.9.16:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2592,14 +2558,14 @@
              "text": "Model for Maven POM (Project Object Model)"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model\/3.9.15\/maven-model-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model\/3.9.16\/maven-model-3.9.16.jar"
           },
           "hashes": {
-            "md5": "6c763aba3713fd8197d7b48894783378",
-            "sha1": "2193e5c1be2117d14a461e215943012c1599494e",
-            "sha256": "591722f628000086c5af93d5a367aaefec2f78476b6f732ad70a05d49942fbfd"
+            "md5": "15ea34610d5c8d1944fc4ba317c6b4cd",
+            "sha1": "6f93dbc874ef321b0c3734dee41a6d17e18ceebd",
+            "sha256": "f59d86a507c241bf17bbf050050d1b8b9c0d34d5010a7e2386c3cab7c83b93de"
           },          "properties": {
-                    "id94": "pkg:maven\/org.apache.maven\/maven-model@3.9.15"
+                    "id94": "pkg:maven\/org.apache.maven\/maven-model@3.9.16"
           }
         }
 ,{
@@ -2607,14 +2573,14 @@
              "text": "The effective model builder, with inheritance, profile activation, interpolation, ..."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model-builder\/3.9.15\/maven-model-builder-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-model-builder\/3.9.16\/maven-model-builder-3.9.16.jar"
           },
           "hashes": {
-            "md5": "f2eb3f9ef0637c7b24c923315aba26e8",
-            "sha1": "53f57aac9bd7d78bb7f6d6757fd3b37128c4141f",
-            "sha256": "73f653c16e06c62b391c72bb3b68e78eebd07eadb1214a60a60df81ec2c733fc"
+            "md5": "114db488c69246d1b371b4c203801b3a",
+            "sha1": "eb7a9ca8cc2d61d7c6430dd2ee16f71628b2046d",
+            "sha256": "002be86d1f53b36f559a0786034a17598d71087f1935f205a1f9e51d4dd124b3"
           },          "properties": {
-                    "id95": "pkg:maven\/org.apache.maven\/maven-model-builder@3.9.15"
+                    "id95": "pkg:maven\/org.apache.maven\/maven-model-builder@3.9.16"
           }
         }
 ,{
@@ -2637,14 +2603,14 @@
              "text": "The API for plugins - Mojos - development."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-plugin-api\/3.9.15\/maven-plugin-api-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-plugin-api\/3.9.16\/maven-plugin-api-3.9.16.jar"
           },
           "hashes": {
-            "md5": "10e2c9d81dc3a8e4136cbac7666b1abf",
-            "sha1": "9471d03f15536a08100157fab73512a3297423fa",
-            "sha256": "ea4ae22e2b86e7b63c674c3b5cdfcb074d2c54237b983d9292f94b6966986938"
+            "md5": "bcb853f9daa463ff30dcf96d96bcbb06",
+            "sha1": "4509ebc6c30856368a5786859342eef9b43ab27a",
+            "sha256": "37cb5e483e23327cf4ba18f920b45e000d20eec0428a086a5c1bd6bbdecf088c"
           },          "properties": {
-                    "id97": "pkg:maven\/org.apache.maven\/maven-plugin-api@3.9.15"
+                    "id97": "pkg:maven\/org.apache.maven\/maven-plugin-api@3.9.16"
           }
         }
 ,{
@@ -2682,14 +2648,14 @@
              "text": "Per-directory local and remote repository metadata."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-repository-metadata\/3.9.15\/maven-repository-metadata-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-repository-metadata\/3.9.16\/maven-repository-metadata-3.9.16.jar"
           },
           "hashes": {
-            "md5": "d097aa01f24ab815b6b0a3f3d496a709",
-            "sha1": "d4c8af2fc537fca6cd1f260219cd7ab4bc20ba22",
-            "sha256": "3d6245c893d452a89f606cf366f50bc84cc91da236f937c85d5f30db4aaeafb8"
+            "md5": "df9e6c18b95541ac7585f7d213d459af",
+            "sha1": "d2013b76825de9d844d5894e17fb4a894e8e8ae1",
+            "sha256": "bc3dd413b89a16b695f35a5d0496b58ea2787c30b7b6062c130d24d6d764720f"
           },          "properties": {
-                    "id100": "pkg:maven\/org.apache.maven\/maven-repository-metadata@3.9.15"
+                    "id100": "pkg:maven\/org.apache.maven\/maven-repository-metadata@3.9.16"
           }
         }
 ,{
@@ -2742,14 +2708,14 @@
              "text": "Extensions to Maven Resolver for utilizing Maven POM and repository metadata."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-resolver-provider\/3.9.15\/maven-resolver-provider-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-resolver-provider\/3.9.16\/maven-resolver-provider-3.9.16.jar"
           },
           "hashes": {
-            "md5": "4715eb454ccb612558e4bc942c2e85c1",
-            "sha1": "56f5162b7dee47f803c833be26e386b1bf7bd808",
-            "sha256": "194195fb2a0075aded42b6d4632da95d6574877371c17ac7614e894f5bfe9114"
+            "md5": "476c028745a99d6492386f7e6d7d4471",
+            "sha1": "92faacf3d46fe4b971689b4839b0d9aaf438ce48",
+            "sha256": "72a2d6aad3708e2c708b659b292ae9587a4d170ec88f48466290318730221118"
           },          "properties": {
-                    "id104": "pkg:maven\/org.apache.maven\/maven-resolver-provider@3.9.15"
+                    "id104": "pkg:maven\/org.apache.maven\/maven-resolver-provider@3.9.16"
           }
         }
 ,{
@@ -2787,14 +2753,14 @@
              "text": "Maven Settings model."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings\/3.9.15\/maven-settings-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings\/3.9.16\/maven-settings-3.9.16.jar"
           },
           "hashes": {
-            "md5": "cda225684b42bdb446019f3583bed78b",
-            "sha1": "2034380ab005695d22bb9d243210be44b63bee9c",
-            "sha256": "8219041d9e23043e349c2b330093be304b0f15b7be7b1ce3be0b09f170fd98af"
+            "md5": "46ffb3627f87c3b798829a41960f9fe9",
+            "sha1": "ab466fe1cb5b80d1b5e6f6b5ba3f87dfc56f75b6",
+            "sha256": "322ae5b23f4b7b6ce7896bd33a793143dbbbbcc16c4475e2d7eebbd8f755da92"
           },          "properties": {
-                    "id107": "pkg:maven\/org.apache.maven\/maven-settings@3.9.15"
+                    "id107": "pkg:maven\/org.apache.maven\/maven-settings@3.9.16"
           }
         }
 ,{
@@ -2802,14 +2768,14 @@
              "text": "The effective settings builder, with inheritance and password decryption."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings-builder\/3.9.15\/maven-settings-builder-3.9.15.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/maven\/maven-settings-builder\/3.9.16\/maven-settings-builder-3.9.16.jar"
           },
           "hashes": {
-            "md5": "a66833a721910c1ddd726e3f2109c4c0",
-            "sha1": "8e70febb4859716c61068d06e0bf59f398e63568",
-            "sha256": "3614a2331ec4ba14297cfd6834649816b89c1e85ad92148822a756d6204cc33a"
+            "md5": "bd711f14681dc719b1ca8c883912014b",
+            "sha1": "31321459aee3dd0a12d72a9fb71bfac31b0fb529",
+            "sha256": "226f1cbb0b4d414eff773fb151a8977837c98073e14d5963794e6cf464e6adbb"
           },          "properties": {
-                    "id108": "pkg:maven\/org.apache.maven\/maven-settings-builder@3.9.15"
+                    "id108": "pkg:maven\/org.apache.maven\/maven-settings-builder@3.9.16"
           }
         }
 ,{
@@ -2993,15 +2959,15 @@
              "text": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.1.0.0\/ojdbc11-23.26.1.0.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.2.0.0\/ojdbc11-23.26.2.0.0.jar"
           },
           "hashes": {
-            "md5": "c0d07c69b0030f2f661a6c749919467f",
-            "sha1": "48bc326f44f900ba5956265dc17dc1818f914d1a",
-            "sha256": "94ff71df1cb409bf355b61f2e485994231cda233f918594f63b605a4da92c792"
+            "md5": "6198c05f94f53accd741a74c994dfff4",
+            "sha1": "2462b603e435c9a2707f41a1896e5b5be6f36520",
+            "sha256": "dbc0ff940bc056d5d9b8f42c0946ded4ebbc08c25cecf6ec1e521b2c8216956b"
           },          "properties": {
-"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id114": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.1.0.0"
-,                    "vid30": "cpe:2.3:a:oracle:jdbc:23.26.1.0.0:*:*:*:*:*:*:*"
+"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id114": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.2.0.0"
+,                    "vid30": "cpe:2.3:a:oracle:jdbc:23.26.2.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3076,14 +3042,14 @@
              "text": "A class loader framework"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-classworlds\/2.9.0\/plexus-classworlds-2.9.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/codehaus\/plexus\/plexus-classworlds\/2.11.0\/plexus-classworlds-2.11.0.jar"
           },
           "hashes": {
-            "md5": "64e4ee5a1298f866d00f705e02058200",
-            "sha1": "ace0820f34de49f69511f5263bcebb09fac9731a",
-            "sha256": "1ad3292cd563381e3fd632f3fded1988f9e9b2be7a9f3db63ff4c4cedba13fa5"
+            "md5": "54d5f4e0835c5e53f08a494f08d2a75d",
+            "sha1": "6586ba9f3137d7ac7b9789f1fcf7c4e192482905",
+            "sha256": "8971f135490070bc5fde7413fcc8db7c997fda4bebfb5c31185900d66edcbbb2"
           },          "properties": {
-"license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id120": "pkg:maven\/org.codehaus.plexus\/plexus-classworlds@2.9.0"
+"license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id120": "pkg:maven\/org.codehaus.plexus\/plexus-classworlds@2.11.0"
           }
         }
 ,{
@@ -4087,31 +4053,6 @@
             }
           ]
           }, {
-          "ruleId": "CVE-2018-14041",
-          "level": "warning",
-          "message": {
-            "text": "CVE-2018-14041 - In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy."
-          },
-          "partialFingerprints": {
-            "vulnerabilityHash": "7940f14bec0cf9e4002e37657d25b407"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file://\/home\/runner\/.m2\/repository\/org\/schemaspy\/schemaspy\/7.0.2\/schemaspy-7.0.2.jar\/layout\/bower\/admin-lte\/bootstrap\/js\/bootstrap.js"
-                  ,"index": 174
-                }
-              }
-                ,"logicalLocations": [
-                    {
-                    "fullyQualifiedName": "pkg:javascript\/bootstrap@3.3.7"
-                    }
-                ]
-              
-            }
-          ]
-          }, {
           "ruleId": "CVE-2018-14042",
           "level": "warning",
           "message": {
@@ -4215,7 +4156,7 @@
           "ruleId": "CVE-2024-6485",
           "level": "warning",
           "message": {
-            "text": "CVE-2024-6485"
+            "text": "CVE-2024-6485 - Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes"
           },
           "partialFingerprints": {
             "vulnerabilityHash": "466143ae233664879c28ebfdf543188e"
@@ -4312,31 +4253,6 @@
             }
           ]
           }, {
-          "ruleId": "CVE-2018-14041",
-          "level": "warning",
-          "message": {
-            "text": "CVE-2018-14041 - In Bootstrap before 4.1.2, XSS is possible in the data-target property of scrollspy."
-          },
-          "partialFingerprints": {
-            "vulnerabilityHash": "7940f14bec0cf9e4002e37657d25b407"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file://\/home\/runner\/.m2\/repository\/org\/schemaspy\/schemaspy\/7.0.2\/schemaspy-7.0.2.jar\/layout\/bower\/admin-lte\/bootstrap\/js\/bootstrap.min.js"
-                  ,"index": 175
-                }
-              }
-                ,"logicalLocations": [
-                    {
-                    "fullyQualifiedName": "pkg:javascript\/bootstrap@3.3.7"
-                    }
-                ]
-              
-            }
-          ]
-          }, {
           "ruleId": "CVE-2018-14042",
           "level": "warning",
           "message": {
@@ -4440,7 +4356,7 @@
           "ruleId": "CVE-2024-6485",
           "level": "warning",
           "message": {
-            "text": "CVE-2024-6485"
+            "text": "CVE-2024-6485 - Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes"
           },
           "partialFingerprints": {
             "vulnerabilityHash": "466143ae233664879c28ebfdf543188e"
