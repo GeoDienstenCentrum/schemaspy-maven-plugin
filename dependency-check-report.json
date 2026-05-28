@@ -5,7 +5,7 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-05-28T09:35:06Z"
+                "timestamp": "2026-05-28T10:16:23Z"
             }
 ,{
                 "name": "NVD API Last Modified",
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-05-28T09:35:32.125181326Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-05-28T10:16:45.456371679Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -27794,7 +27794,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.0.3" }
+                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.0" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
