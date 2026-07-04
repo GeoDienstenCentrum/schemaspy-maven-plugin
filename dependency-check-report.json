@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-05-28T10:16:23Z"
+                "timestamp": "2026-07-04T11:26:51Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-05-28T09:16:49Z"
+                "timestamp": "2026-07-04T11:16:47Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-05-28T10:16:45.456371679Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-07-04T11:27:16.036372964Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -27794,7 +27794,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.0" }
+                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.1" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -38124,11 +38124,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "postgresql-42.7.11.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.11\/postgresql-42.7.11.jar"
-,"md5": "b969f87f07d6434bd77cdc5e440da49a",
-            "sha1": "4c21cdd1b3938f400703716d37c4e8ca4d332808",
-            "sha256": "1981b31d3993c58702783c1cddf10a34e48c1f413d70ff1cb6def0a143484647","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
+            "fileName": "postgresql-42.7.12.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.12\/postgresql-42.7.12.jar"
+,"md5": "bf3dd29ad502aeff677c4920bc6d6c9a",
+            "sha1": "9d30cb5aaf509e58b05da3b8ef98b6f9cc93d7af",
+            "sha256": "31fbf6f06b2217fb51d5100cee51b22625cc81640da0679b47914e54c1e6377c","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -38649,38 +38649,38 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "42.7.11"
+                        "value": "42.7.12"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "42.7.11"
+                        "value": "42.7.12"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "42.7.11"
+                        "value": "42.7.12"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "42.7.11"
+                        "value": "42.7.12"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.11"
+                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.12"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.11:*:*:*:*:*:*:*"
+                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.12:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
             ]
         },{
