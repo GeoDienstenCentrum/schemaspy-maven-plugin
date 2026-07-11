@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-07-04T11:47:49",
-                "start_time": "2026-07-04T11:47:49",
+        "end_time": "2026-07-11T06:07:14",
+                "start_time": "2026-07-11T06:07:14",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -9277,6 +9277,13 @@
                                                                                                                     }
 ,                    {
                         "package": {
+                            "name": "org.checkerframework:checker-qual"
+                        },
+                        "version": "3.55.1"
+
+                                                                                                                    }
+,                    {
+                        "package": {
                             "name": "commons-beanutils:commons-beanutils"
                         },
                         "version": "1.11.0"
@@ -10077,7 +10084,7 @@
                         "package": {
                             "name": "org.postgresql:postgresql"
                         },
-                        "version": "42.7.12"
+                        "version": "42.7.13"
 
                                                                                                                     }
 ,                    {

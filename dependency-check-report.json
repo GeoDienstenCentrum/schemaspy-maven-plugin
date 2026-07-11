@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-07-04T11:47:23Z"
+                "timestamp": "2026-07-11T06:06:42Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-07-04T11:16:47Z"
+                "timestamp": "2026-07-11T05:16:34Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-07-04T11:47:49.512185525Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-07-11T06:07:14.876533033Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -3902,6 +3902,339 @@
                 ,"packages": [
                     {
                         "id": "pkg:maven\/com.headius\/backport9@1.12"
+,"confidence": "HIGH"                    }
+            ]
+        },{
+            "isVirtual": false,
+            "fileName": "checker-qual-3.55.1.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/checkerframework\/checker-qual\/3.55.1\/checker-qual-3.55.1.jar"
+,"md5": "05361199dc29af8334d1405f28b83109",
+            "sha1": "3d40699936a66b2d4c1f759f2f1a0446c8cf64fc",
+            "sha256": "857658c8bdcbff794949a8d9922f88d63ee3751c203c7cd7d21ea97f9e745288","description": "checker-qual contains annotations (type qualifiers) that a programmerwrites to specify Java code for type-checking by the Checker Framework.","license": "The MIT License: https:\/\/opensource.org\/licenses\/MIT"            ,"projectReferences": [
+                "SchemaSpy Maven Plugin:runtime"
+            ]
+            ,"includedBy": [
+                { "reference":"pkg:maven\/org.postgresql\/postgresql@42.7.13" }
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "file",
+                            "name": "name",
+                            "value": "checker-qual"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "checker"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "checkerframework"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "framework"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "qual"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "Manifest",
+                            "name": "bundle-symbolicname",
+                            "value": "checker-qual"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "LOW",
+                            "source": "Manifest",
+                            "name": "implementation-url",
+                            "value": "https:\/\/checkerframework.org"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "pom",
+                            "name": "artifactid",
+                            "value": "checker-qual"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "artifactid",
+                            "value": "checker-qual"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer email",
+                            "value": "mernst@cs.washington.edu"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer email",
+                            "value": "smillst@cs.washington.edu"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "developer id",
+                            "value": "mernst"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "developer id",
+                            "value": "smillst"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "developer name",
+                            "value": "Michael Ernst"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "developer name",
+                            "value": "Suzanne Millstein"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "developer org",
+                            "value": "University of Washington"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "developer org URL",
+                            "value": "https:\/\/www.cs.washington.edu\/"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "pom",
+                            "name": "groupid",
+                            "value": "org.checkerframework"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "pom",
+                            "name": "name",
+                            "value": "Checker Qual"
+                        }
+,{
+                            "type": "vendor",
+                            "confidence": "HIGHEST",
+                            "source": "pom",
+                            "name": "url",
+                            "value": "https:\/\/checkerframework.org\/"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGH",
+                            "source": "file",
+                            "name": "name",
+                            "value": "checker-qual"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "checker"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "checkerframework"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "framework"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "jar",
+                            "name": "package name",
+                            "value": "qual"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "MEDIUM",
+                            "source": "Manifest",
+                            "name": "Bundle-Name",
+                            "value": "checker-qual"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "MEDIUM",
+                            "source": "Manifest",
+                            "name": "bundle-symbolicname",
+                            "value": "checker-qual"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "Manifest",
+                            "name": "implementation-url",
+                            "value": "https:\/\/checkerframework.org"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "pom",
+                            "name": "artifactid",
+                            "value": "checker-qual"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer email",
+                            "value": "mernst@cs.washington.edu"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer email",
+                            "value": "smillst@cs.washington.edu"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer id",
+                            "value": "mernst"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer id",
+                            "value": "smillst"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer name",
+                            "value": "Michael Ernst"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer name",
+                            "value": "Suzanne Millstein"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer org",
+                            "value": "University of Washington"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "LOW",
+                            "source": "pom",
+                            "name": "developer org URL",
+                            "value": "https:\/\/www.cs.washington.edu\/"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "pom",
+                            "name": "groupid",
+                            "value": "org.checkerframework"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "HIGH",
+                            "source": "pom",
+                            "name": "name",
+                            "value": "Checker Qual"
+                    }
+,{
+                            "type": "product",
+                            "confidence": "MEDIUM",
+                            "source": "pom",
+                            "name": "url",
+                            "value": "https:\/\/checkerframework.org\/"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGH",
+                        "source": "file",
+                        "name": "version",
+                        "value": "3.55.1"
+                    }
+,                    {
+                        "type": "version",
+                        "confidence": "HIGH",
+                        "source": "Manifest",
+                        "name": "Bundle-Version",
+                        "value": "3.55.1"
+                    }
+,                    {
+                        "type": "version",
+                        "confidence": "HIGH",
+                        "source": "Manifest",
+                        "name": "Implementation-Version",
+                        "value": "3.55.1"
+                    }
+,                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "pom",
+                        "name": "version",
+                        "value": "3.55.1"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:maven\/org.checkerframework\/checker-qual@3.55.1"
 ,"confidence": "HIGH"                    }
             ]
         },{
@@ -27794,7 +28127,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.0" }
+                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.1" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -38127,11 +38460,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "postgresql-42.7.12.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.12\/postgresql-42.7.12.jar"
-,"md5": "bf3dd29ad502aeff677c4920bc6d6c9a",
-            "sha1": "9d30cb5aaf509e58b05da3b8ef98b6f9cc93d7af",
-            "sha256": "31fbf6f06b2217fb51d5100cee51b22625cc81640da0679b47914e54c1e6377c","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
+            "fileName": "postgresql-42.7.13.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.13\/postgresql-42.7.13.jar"
+,"md5": "52ba042322b750121222bd57423003b5",
+            "sha1": "a6e1bd21b412d6ffb3df23cd13d507bc2cc9e37d",
+            "sha256": "6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -38652,38 +38985,38 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "42.7.12"
+                        "value": "42.7.13"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "42.7.12"
+                        "value": "42.7.13"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "42.7.12"
+                        "value": "42.7.13"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "42.7.12"
+                        "value": "42.7.13"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.12"
+                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.13"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.12:*:*:*:*:*:*:*"
+                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.13:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
             ]
         },{
