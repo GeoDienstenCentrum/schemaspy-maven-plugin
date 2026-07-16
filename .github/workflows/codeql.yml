@@ -21,14 +21,12 @@ on:
       - '**/*.properties'
       - '**/*.sh'
       - '**/*.apt'
-  schedule:
-    - cron: '0 17 * * 2'
 
 jobs:
   analyze:
     name: 'Analyze'
     runs-on: ubuntu-latest
-
+    if: ${{ github.actor != 'dependabot[bot]' }}
     strategy:
       fail-fast: false
       matrix:
