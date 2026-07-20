@@ -15,8 +15,33 @@ jobs:
         uses: dependabot/fetch-metadata@v3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: 'Enable auto-merge for Dependabot PRs on selected dependencies for patch and minor version updates'
+        if: |
+          ( 
+            contains(steps.metadata.outputs.dependency-names, 'junit') || 
+            contains(steps.metadata.outputs.dependency-names, 'org.apache.maven') ||
+            contains(steps.metadata.outputs.dependency-names, 'schemaspy') ||
+            contains(steps.metadata.outputs.dependency-names, 'postgresql') ||
+            contains(steps.metadata.outputs.dependency-names, 'ojdbc11') ||
+            contains(steps.metadata.outputs.dependency-names, 'mssql-jdbc') ||
+            contains(steps.metadata.outputs.dependency-names, 'mysql-connector-j') ||
+            contains(steps.metadata.outputs.dependency-names, 'hsqldb') 
+          ) && (
+            steps.metadata.outputs.update-type == 'version-update:semver-patch' || 
+            steps.metadata.outputs.update-type == 'version-update:semver-minor'
+          )
+        run: |
+          gh pr edit --remove-label "infrastructure" "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
       - name: 'Enable auto-merge for Dependabot PRs on Maven plugins'
-        if: contains(steps.metadata.outputs.dependency-names, 'maven') && (steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor')
+        if: |
+          (
+            contains(steps.metadata.outputs.dependency-names, 'maven-') ||
+            contains(steps.metadata.outputs.dependency-names, 'action')
+          ) && (
+            steps.metadata.outputs.update-type == 'version-update:semver-patch' || 
+            steps.metadata.outputs.update-type == 'version-update:semver-minor'
+          )
         run: |
           gh pr edit --remove-label "dependencies" "$PR_URL"
           gh pr merge --auto --squash "$PR_URL"
