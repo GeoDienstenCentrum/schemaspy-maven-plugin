@@ -33,7 +33,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
    * Limit the degree of separation (1 shows less, 2 is default), 1 is a good option for large databases with
    * lots of relationships.
    */
-  @Parameter(property = "degree", defaultValue = "false")
+  @Parameter(property = "degree", defaultValue = "2")
   protected int degree = 2;
 
   /**
