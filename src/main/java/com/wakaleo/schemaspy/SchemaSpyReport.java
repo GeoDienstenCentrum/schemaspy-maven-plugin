@@ -17,7 +17,7 @@ import org.apache.maven.reporting.MavenReportException;
  * need the Graphviz tool (https://www.graphviz.org/) in order to generate graphical representations
  * of the table/view relationships, so this needs to be installed on your machine.
  *
- * <p>The schemaspy goal invokes the SchemaSpy command-line tool. SchemaSpy generates a graphical
+ * <p>The SchemaSpy goal invokes the SchemaSpy command-line tool. SchemaSpy generates a graphical
  * and HTML report describing a given relational database.
  *
  * @author John Smart
@@ -28,6 +28,13 @@ public class SchemaSpyReport extends AbstractMavenReport {
 
   @Parameter(property = "vizjs", defaultValue = "true")
   protected boolean vizjs = false;
+
+  /**
+   * Limit the degree of separation (1 shows less, 2 is default), 1 is a good option for large databases with
+   * lots of relationships.
+   */
+  @Parameter(property = "degree", defaultValue = "false")
+  protected int degree = 2;
 
   /**
    * Whether to create the report only on the execution root of a multi-module project.
@@ -241,9 +248,9 @@ public class SchemaSpyReport extends AbstractMavenReport {
   }
 
   /**
-   * Convenience method used to build the schemaspy command line parameters.
+   * Convenience method used to build the SchemaSpy command line parameters.
    *
-   * @param argList the current list of schemaspy parameter options.
+   * @param argList the current list of SchemaSpy parameter options.
    * @param parameter a new parameter to add
    * @param value the value for this parameter
    */
@@ -256,9 +263,9 @@ public class SchemaSpyReport extends AbstractMavenReport {
   }
 
   /**
-   * Convenience method used to build the schemaspy command line parameters.
+   * Convenience method used to build the SchemaSpy command line parameters.
    *
-   * @param argList the current list of schemaspy parameter options.
+   * @param argList the current list of SchemaSpy parameter options.
    * @param parameter a new parameter to add
    * @param value the value for this parameter
    */
@@ -270,9 +277,9 @@ public class SchemaSpyReport extends AbstractMavenReport {
   }
 
   /**
-   * Convenience method used to build the schemaspy command line parameters.
+   * Convenience method used to build the SchemaSpy command line parameters.
    *
-   * @param argList the current list of schemaspy parameter options.
+   * @param argList the current list of SchemaSpy parameter options.
    * @param parameter a new parameter to add
    * @param value the value for this parameter
    */
@@ -285,9 +292,9 @@ public class SchemaSpyReport extends AbstractMavenReport {
   }
 
   /**
-   * Generate the Schemaspy report.
+   * Generate the SchemaSpy report.
    *
-   * @throws MavenReportException if schemaspy crashes
+   * @throws MavenReportException if SchemaSpy crashes
    * @param locale the language of the report — currently ignored.
    */
   @Override
@@ -347,6 +354,7 @@ public class SchemaSpyReport extends AbstractMavenReport {
     addFlagToArguments(argList, "-nologo", noLogo);
     addToArguments(argList, "-cat", catalog);
     addFlagToArguments(argList, "-vizjs", vizjs);
+    addToArguments(argList, "-degree", String.valueOf(degree));
     if (getLog().isDebugEnabled()) {
       addFlagToArguments(argList, "-debug", true);
     }
@@ -378,14 +386,14 @@ public class SchemaSpyReport extends AbstractMavenReport {
     return "SchemaSpy";
   }
 
-    /**
-     * @deprecated use {@link #getOutputPath()} instead.
-     * @return the output path of the report
-     */
+  /**
+   * @deprecated use {@link #getOutputPath()} instead.
+   * @return the output path of the report
+   */
   @Override
   @Deprecated (since = "4.0.0")
   public String getOutputName() {
-    return "schemaspy/index";
+    return this.getOutputPath();
   }
 
   @Override
