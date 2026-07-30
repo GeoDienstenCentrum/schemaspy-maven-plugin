@@ -363,8 +363,8 @@ public class SchemaSpyReport extends AbstractMavenReport {
     try {
       if (analyzer == null) {
         analyzer = new MavenSchemaAnalyzer();
-        analyzer.applyConfiguration(argList);
       }
+      analyzer.applyConfiguration(argList);
       analyzer.analyze();
     } catch (Exception e) {
       throw new MavenReportException(e.getMessage(), e);
