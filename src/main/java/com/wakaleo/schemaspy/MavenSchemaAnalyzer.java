@@ -41,7 +41,7 @@ public class MavenSchemaAnalyzer {
      * Executes the SchemaSpy analyzer process.
      */
     public void analyze() throws SQLException, IOException {
-        cliArgs = Objects.requireNonNull(cliArgs, "The field 'commandLineArguments' needs to reference an instance. Call 'applyConfiguration(...) to initiate command line arguments");
+        cliArgs = Objects.requireNonNull(cliArgs, "cliArgs must be initialized. Call applyConfiguration(...) before analyze().");
         ConnectionConfig connectionConfig = cliArgs.getConnectionConfig();
         SqlConnection connection = new ScSimple(connectionConfig, new ConnectionURLBuilder(connectionConfig), new DriverFromConfig(connectionConfig));
         SqlService sqlService = new SqlService();
