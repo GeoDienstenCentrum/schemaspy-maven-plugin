@@ -7,11 +7,11 @@
         <engineVersion>12.2.2</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-07-20T10:30:00Z</timestamp>
+            <timestamp>2026-07-31T14:47:04Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-07-20T10:16:31Z</timestamp>
+            <timestamp>2026-07-31T14:44:31Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-07-20T10:30:24.968661242Z</reportDate>
+        <reportDate>2026-07-31T14:47:28.654837836Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -20560,7 +20560,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:provided</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.junit.jupiter/junit-jupiter-engine@6.1.1</reference>
+                <reference>pkg:maven/org.junit.jupiter/junit-jupiter-engine@6.1.2</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
