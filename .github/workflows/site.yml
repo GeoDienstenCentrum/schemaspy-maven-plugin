@@ -29,6 +29,14 @@ jobs:
           distribution: "temurin"
           cache: maven
 
+      - uses: actions/cache/restore@v6
+        # restore-only, no saving of this cache
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-db-maven-${{ github.run_id }}
+          restore-keys: |
+            owasp-db-maven
+
       - name: 'Build Site with Maven'
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
