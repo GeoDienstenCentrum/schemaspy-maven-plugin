@@ -813,8 +813,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
-            ,"NVD API Last Checked": "2026-07-31T14:47:04Z"
-            ,"NVD API Last Modified": "2026-07-31T14:44:31Z"
+            ,"NVD API Last Checked": "2026-07-31T19:09:56Z"
+            ,"NVD API Last Modified": "2026-07-31T18:48:58Z"
           }
         }
       },
