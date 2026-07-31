@@ -12,12 +12,8 @@ on: [ pull_request, workflow_dispatch ]
 
 jobs:
   build:
-    name: "Java ${{ matrix.java }}"
+    name: "Java 17"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ 17 ]
-        java_dist: [ "temurin" ]
 
     steps:
       - uses: actions/checkout@v7
@@ -25,9 +21,28 @@ jobs:
       - name: 'Set up JDK'
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ matrix.java }}
-          distribution: ${{ matrix.java_dist }}
+          java-version: 17
+          distribution: temurin
           cache: maven
+
+      - name: 'Restore OWASP cache'
+        uses: actions/cache/restore@v6
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-db-maven-${{ github.run_id }}
+          restore-keys: |
+            owasp-db-maven
+
+      - name: 'Update OWASP Dependency Check Database'
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: mvn -U org.owasp:dependency-check-maven:update-only -DnvdApiKeyEnvironmentVariable=NVD_API_KEY
+
+      - name: 'Save OWASP cache'
+        uses: actions/cache/save@v6
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-db-maven-${{ github.run_id }}
 
       - name: 'OWASP Dependency Check'
         continue-on-error: true
