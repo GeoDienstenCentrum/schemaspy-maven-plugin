@@ -813,8 +813,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
-            ,"NVD API Last Checked": "2026-07-31T19:09:56Z"
-            ,"NVD API Last Modified": "2026-07-31T18:48:58Z"
+            ,"NVD API Last Checked": "2026-08-02T09:04:45Z"
+            ,"NVD API Last Modified": "2026-08-02T08:16:31Z"
           }
         }
       },
@@ -2834,15 +2834,15 @@
              "text": "JDBC Type 4 driver for MySQL."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/9.7.0\/mysql-connector-j-9.7.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/26.7.0\/mysql-connector-j-26.7.0.jar"
           },
           "hashes": {
-            "md5": "07479bc6b6870cede56d0f192603c3f9",
-            "sha1": "4e6e3e8765e4a9d0609744b3e8fe75afe1b98cba",
-            "sha256": "0353648eaa1c91e0f4020c959abf756bc866ffd583df22ae6b6f6e0cbd43eb44"
+            "md5": "e66a1e9f6465f66b3503705aee942a47",
+            "sha1": "43e30438c4c8707272ead3cd3167a1e07abb2c3c",
+            "sha256": "69084713593a4aa8d07c383619b9639276f08bccf8faf1c562178147d389b1e1"
           },          "properties": {
-"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id113": "pkg:maven\/com.mysql\/mysql-connector-j@9.7.0"
-,                    "vid30": "cpe:2.3:a:oracle:mysql_connector\\\/j:9.7.0:*:*:*:*:*:*:*"
+"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id113": "pkg:maven\/com.mysql\/mysql-connector-j@26.7.0"
+,                    "vid30": "cpe:2.3:a:oracle:mysql_connector\\\/j:26.7.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2975,15 +2975,15 @@
              "text": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.2.0.0\/ojdbc11-23.26.2.0.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.3.0.0\/ojdbc11-23.26.3.0.0.jar"
           },
           "hashes": {
-            "md5": "6198c05f94f53accd741a74c994dfff4",
-            "sha1": "2462b603e435c9a2707f41a1896e5b5be6f36520",
-            "sha256": "dbc0ff940bc056d5d9b8f42c0946ded4ebbc08c25cecf6ec1e521b2c8216956b"
+            "md5": "105ce312fdf6dc25a3fb163594d2debd",
+            "sha1": "6936aba69cb7142aac36a53ed920af563b0e1dd1",
+            "sha256": "764cc3f88454d1be117e155d01ed617467b984c9c68f13090dd6083799d2bb8c"
           },          "properties": {
-"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id115": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.2.0.0"
-,                    "vid31": "cpe:2.3:a:oracle:jdbc:23.26.2.0.0:*:*:*:*:*:*:*"
+"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id115": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.3.0.0"
+,                    "vid31": "cpe:2.3:a:oracle:jdbc:23.26.3.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{
