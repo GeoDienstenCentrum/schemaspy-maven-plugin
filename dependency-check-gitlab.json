@@ -4,7 +4,7 @@
                 "scanner": {
             "id": "org.owasp.dependency-check",
             "name": "Dependency-Check Core",
-            "version": "12.2.2",
+            "version": "13.0.0",
             "vendor": {
                 "name": "OWASP"
             },
@@ -14,7 +14,7 @@
                         "analyzer": {
             "id": "org.owasp.dependency-check",
             "name": "Dependency-Check Core",
-            "version": "12.2.2",
+            "version": "13.0.0",
             "vendor": {
                 "name": "OWASP"
             },
@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-08-02T09:05:11",
-                "start_time": "2026-08-02T09:05:11",
+        "end_time": "2026-08-09T11:45:31",
+                "start_time": "2026-08-09T11:45:31",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -207,6 +207,48 @@
                                     {
                                                                                 "name": "EXPLOIT,ISSUE_TRACKING",
                                         "url": "https:\/\/github.com\/jline\/jline3\/issues\/909"
+                                    }
+                        ]
+                                                                                            }
+                                        ,
+                                        {
+                        "id": "CVE-2025-46551",
+                        "identifiers": [
+                            {
+                                "type": "NVD"
+                                    , "name": "CVE-2025-46551"
+                                , "value": "feebc56dc27535e5d94fe99b4c1d46fbac3a68e9"
+
+                                                                    , "url": "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2025-46551"
+                            }
+                        ],
+                        "location": {
+                            "file": "\/home\/runner\/.m2\/repository\/org\/jruby\/jruby-stdlib\/9.4.2.0\/jruby-stdlib-9.4.2.0.jar\/META-INF\/jruby.home\/lib\/ruby\/stdlib\/jopenssl.jar\/META-INF\/maven\/rubygems\/jruby-openssl\/pom.xml",
+                            "dependency": {
+                                "package": {
+                                    "name": "rubygems:jruby-openssl"
+                                },
+                                "version": "0.14.0"
+                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                        },
+
+                                                "name": "CVE-2025-46551",
+                        "description": "JRuby-OpenSSL is an add-on gem for JRuby that emulates the Ruby OpenSSL native library. Starting in JRuby-OpenSSL version 0.12.1 and prior to version 0.15.4 (corresponding to JRuby versions starting in 9.3.4.0 prior to 9.4.12.1 and 10.0.0.0 prior to 10.0.0.1), when verifying SSL certificates, JRuby-OpenSSL does not verify that the hostname presented in the certificate matches the one the user tries to connect to. This means a man-in-the-middle could just present any valid cert for a completely different domain they own, and JRuby would accept the cert. Anybody using JRuby to make requests of external APIs, or scraping the web, that depends on https to connect securely. JRuby-OpenSSL version 0.15.4 contains a fix for the issue. This fix is included in JRuby versions 10.0.0.1 and 9.4.12.1.",
+                        "severity": "Medium",
+                                                "links": [
+                                    {
+                                                                                "name": "EXPLOIT,VENDOR_ADVISORY",
+                                        "url": "https:\/\/github.com\/jruby\/jruby-openssl\/security\/advisories\/GHSA-72qj-48g4-5xgx"
+                                    }
+                                        ,
+                                    {
+                                                                                "name": "EXPLOIT,VENDOR_ADVISORY",
+                                        "url": "https:\/\/github.com\/jruby\/jruby-openssl\/security\/advisories\/GHSA-72qj-48g4-5xgx"
+                                    }
+                                        ,
+                                    {
+                                                                                "name": "PATCH",
+                                        "url": "https:\/\/github.com\/jruby\/jruby-openssl\/commit\/31a56d690ce9b8af47af09aaaf809081949ed285"
                                     }
                         ]
                                                                                             }

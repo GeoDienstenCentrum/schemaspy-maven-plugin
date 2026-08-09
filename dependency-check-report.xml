@@ -4,14 +4,14 @@
           xsi:schemaLocation="https://jeremylong.github.io/DependencyCheck/dependency-check.4.1.xsd
                               https://dependency-check.github.io/DependencyCheck/dependency-check.4.1.xsd">
     <scanInfo>
-        <engineVersion>12.2.2</engineVersion>
+        <engineVersion>13.0.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-08-02T09:04:45Z</timestamp>
+            <timestamp>2026-08-09T11:45:00Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-08-02T08:16:31Z</timestamp>
+            <timestamp>2026-08-09T11:16:52Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-08-02T09:05:11.928869272Z</reportDate>
+        <reportDate>2026-08-09T11:45:31.011184654Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -19426,7 +19426,92 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <package confidence="HIGH">
                     <id>pkg:maven/rubygems/jruby-openssl@0.14.0</id>
                 </package>
+                <vulnerabilityIds confidence="HIGHEST">
+                    <id>cpe:2.3:a:jruby:jruby-openssl:0.14.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Ajruby%3Ajruby-openssl%3A0.14.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                </vulnerabilityIds>
             </identifiers>
+            <vulnerabilities>
+                <vulnerability source="NVD">
+                    <name>CVE-2025-46551</name>
+    <severity>MEDIUM</severity>
+                    <cvssV3>
+                        <baseScore>3.7</baseScore>
+                        <attackVector>NETWORK</attackVector>
+                        <attackComplexity>HIGH</attackComplexity>
+                        <privilegesRequired>NONE</privilegesRequired>
+                        <userInteraction>NONE</userInteraction>
+                        <scope>UNCHANGED</scope>
+                        <confidentialityImpact>NONE</confidentialityImpact>
+                        <integrityImpact>LOW</integrityImpact>
+                        <availabilityImpact>NONE</availabilityImpact>
+                        <baseSeverity>LOW</baseSeverity>
+<exploitabilityScore>2.2</exploitabilityScore><impactScore>1.4</impactScore><version>3.1</version>                    </cvssV3>
+                    <cvssV4>
+                            <source>security-advisories@github.com</source>
+                            <type>Secondary</type>
+                            <version>4.0</version>
+                            <vectorString>CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X</vectorString>
+                            <attackVector>NETWORK</attackVector>
+                            <attackComplexity>LOW</attackComplexity>
+                            <attackRequirements>NONE</attackRequirements>
+                            <privilegesRequired>LOW</privilegesRequired>
+                            <userInteraction>NONE</userInteraction>
+                            <vulnerableSystemConfidentiality>NONE</vulnerableSystemConfidentiality>
+                            <vulnerableSystemIntegrity>HIGH</vulnerableSystemIntegrity>
+                            <vulnerableSystemAvailability>NONE</vulnerableSystemAvailability>
+                            <subsequentSystemConfidentiality>NONE</subsequentSystemConfidentiality>
+)
+                            <subsequentSystemIntegrity>NONE</subsequentSystemIntegrity>
+                            <subsequentSystemAvailability>NONE</subsequentSystemAvailability>
+                            <exploitMaturity>PROOF_OF_CONCEPT</exploitMaturity>
+                            <confidentialityRequirements>NOT_DEFINED</confidentialityRequirements>
+                            <integrityRequirements>NOT_DEFINED</integrityRequirements>
+                            <availabilityRequirements>NOT_DEFINED</availabilityRequirements>
+                            <modifiedAttackVector>NOT_DEFINED</modifiedAttackVector>
+                            <modifiedAttackComplexity>NOT_DEFINED</modifiedAttackComplexity>
+                            <modifiedAttackRequirements>NOT_DEFINED</modifiedAttackRequirements>
+                            <modifiedPrivilegesRequired>NOT_DEFINED</modifiedPrivilegesRequired>
+                            <modifiedUserInteraction>NOT_DEFINED</modifiedUserInteraction>
+                            <modifiedVulnerableSystemConfidentiality>NOT_DEFINED</modifiedVulnerableSystemConfidentiality>
+                            <modifiedVulnerableSystemIntegrity>NOT_DEFINED</modifiedVulnerableSystemIntegrity>
+                            <modifiedVulnerableSystemAvailability>NOT_DEFINED</modifiedVulnerableSystemAvailability>
+                            <modifiedSubsequentSystemConfidentiality>NOT_DEFINED</modifiedSubsequentSystemConfidentiality>
+                            <modifiedSubsequentSystemIntegrity>NOT_DEFINED</modifiedSubsequentSystemIntegrity>
+                            <modifiedSubsequentSystemAvailability>NOT_DEFINED</modifiedSubsequentSystemAvailability>
+                            <safety>NOT_DEFINED</safety>
+                            <automatable>NOT_DEFINED</automatable>
+                            <recovery>NOT_DEFINED</recovery>
+                            <valueDensity>NOT_DEFINED</valueDensity>
+                            <vulnerabilityResponseEffort>NOT_DEFINED</vulnerabilityResponseEffort>
+                            <providerUrgency>NOT_DEFINED</providerUrgency>
+                            <baseScore>5.7</baseScore>
+                            <baseSeverity>MEDIUM</baseSeverity>
+                    </cvssV4>
+                    <cwes>
+<cwe>CWE-295</cwe>                    </cwes>
+                    <description>JRuby-OpenSSL is an add-on gem for JRuby that emulates the Ruby OpenSSL native library. Starting in JRuby-OpenSSL version 0.12.1 and prior to version 0.15.4 (corresponding to JRuby versions starting in 9.3.4.0 prior to 9.4.12.1 and 10.0.0.0 prior to 10.0.0.1), when verifying SSL certificates, JRuby-OpenSSL does not verify that the hostname presented in the certificate matches the one the user tries to connect to. This means a man-in-the-middle could just present any valid cert for a completely different domain they own, and JRuby would accept the cert. Anybody using JRuby to make requests of external APIs, or scraping the web, that depends on https to connect securely. JRuby-OpenSSL version 0.15.4 contains a fix for the issue. This fix is included in JRuby versions 10.0.0.1 and 9.4.12.1.</description>
+                    <references>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/jruby/jruby-openssl/commit/31a56d690ce9b8af47af09aaaf809081949ed285</url><name>PATCH</name>                        </reference>
+                        <reference>
+                            <source>security-advisories@github.com</source>
+<url>https://github.com/jruby/jruby-openssl/security/advisories/GHSA-72qj-48g4-5xgx</url><name>EXPLOIT,VENDOR_ADVISORY</name>                        </reference>
+                        <reference>
+                            <source>134c704f-9b21-4f2e-91b3-4a467353bcc0</source>
+<url>https://github.com/jruby/jruby-openssl/security/advisories/GHSA-72qj-48g4-5xgx</url><name>EXPLOIT,VENDOR_ADVISORY</name>                        </reference>
+                    </references>
+                    <vulnerableSoftware>
+                        <software
+ versionStartIncluding="9.3.4.0" versionEndExcluding="9.4.12.1"                        >cpe:2.3:a:jruby:jruby:*:*:*:*:*:*:*:*</software>
+                        <software
+                        >cpe:2.3:a:jruby:jruby:10.0.0.0:*:*:*:*:*:*:*</software>
+                        <software vulnerabilityIdMatched="true"
+ versionStartIncluding="0.12.1" versionEndExcluding="0.15.4"                        >cpe:2.3:a:jruby:jruby-openssl:*:*:*:*:*:*:*:*</software>
+                    </vulnerableSoftware>
+                </vulnerability>
+            </vulnerabilities>
         </dependency>
         <dependency isVirtual="false">
             <fileName>jruby-stdlib-9.4.2.0.jar: jopenssl.jar</fileName>

@@ -1,15 +1,15 @@
 {
     "reportSchema": "1.1",
     "scanInfo": {
-        "engineVersion": "12.2.2",
+        "engineVersion": "13.0.0",
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-08-02T09:04:45Z"
+                "timestamp": "2026-08-09T11:45:00Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-08-02T08:16:31Z"
+                "timestamp": "2026-08-09T11:16:52Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-02T09:05:11.928869272Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-09T11:45:31.011184654Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -26573,8 +26573,95 @@
                     {
                         "id": "pkg:maven\/rubygems\/jruby-openssl@0.14.0"
 ,"confidence": "HIGH"                    }
+            ]                ,"vulnerabilityIds": [
+                {
+                    "id": "cpe:2.3:a:jruby:jruby-openssl:0.14.0:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Ajruby%3Ajruby-openssl%3A0.14.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
-        },{
+            ,"vulnerabilities": [
+ {
+                "source": "NVD",
+                "name": "CVE-2025-46551",
+                    "severity" : "MEDIUM",
+                    "cvssv3": {
+                        "baseScore": 3.7
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "LOW"
+,"exploitabilityScore": "2.2","impactScore": "1.4","version": "3.1"                    },
+                    "cvssv4": {
+                        "vectorString": "CVSS:4.0\/AV:N\/AC:L\/AT:N\/PR:L\/UI:N\/VC:N\/VI:H\/VA:N\/SC:N\/SI:N\/SA:N\/E:P\/CR:X\/IR:X\/AR:X\/MAV:X\/MAC:X\/MAT:X\/MPR:X\/MUI:X\/MVC:X\/MVI:X\/MVA:X\/MSC:X\/MSI:X\/MSA:X\/S:X\/AU:X\/R:X\/V:X\/RE:X\/U:X"
+                        ,"source": "security-advisories@github.com"
+                        ,"type": "Secondary"
+                        ,"version": "4.0"
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"attackRequirements": "NONE"
+                        ,"privilegesRequired": "LOW"
+                        ,"userInteraction": "NONE"
+                        ,"vulnerableSystemConfidentiality": "NONE"
+                        ,"vulnerableSystemIntegrity": "HIGH"
+                        ,"vulnerableSystemAvailability": "NONE"
+                        ,"subsequentSystemConfidentiality": "NONE"
+                        ,"subsequentSystemIntegrity": "NONE"
+                        ,"subsequentSystemAvailability": "NONE"
+                        ,"exploitMaturity": "PROOF_OF_CONCEPT"
+                        ,"confidentialityRequirements": "NOT_DEFINED"
+                        ,"integrityRequirements": "NOT_DEFINED"
+                        ,"availabilityRequirements": "NOT_DEFINED"
+                        ,"modifiedAttackVector": "NOT_DEFINED"
+                        ,"modifiedAttackComplexity": "NOT_DEFINED"
+                        ,"modifiedAttackRequirements": "NOT_DEFINED"
+                        ,"modifiedPrivilegesRequired": "NOT_DEFINED"
+                        ,"modifiedUserInteraction": "NOT_DEFINED"
+                        ,"modifiedVulnerableSystemConfidentiality": "NOT_DEFINED"
+                        ,"modifiedVulnerableSystemIntegrity": "NOT_DEFINED"
+                        ,"modifiedVulnerableSystemAvailability": "NOT_DEFINED"
+                        ,"modifiedSubsequentSystemConfidentiality": "NOT_DEFINED"
+                        ,"modifiedSubsequentSystemIntegrity": "NOT_DEFINED"
+                        ,"modifiedSubsequentSystemAvailability": "NOT_DEFINED"
+                        ,"safety": "NOT_DEFINED"
+                        ,"automatable": "NOT_DEFINED"
+                        ,"recovery": "NOT_DEFINED"
+                        ,"valueDensity": "NOT_DEFINED"
+                        ,"vulnerabilityResponseEffort": "NOT_DEFINED"
+                        ,"providerUrgency": "NOT_DEFINED"
+                        ,"baseScore": 5.7
+                        ,"baseSeverity": "MEDIUM"
+                    },
+                    "cwes": [
+                        "CWE-295"                    ],
+                "description": "JRuby-OpenSSL is an add-on gem for JRuby that emulates the Ruby OpenSSL native library. Starting in JRuby-OpenSSL version 0.12.1 and prior to version 0.15.4 (corresponding to JRuby versions starting in 9.3.4.0 prior to 9.4.12.1 and 10.0.0.0 prior to 10.0.0.1), when verifying SSL certificates, JRuby-OpenSSL does not verify that the hostname presented in the certificate matches the one the user tries to connect to. This means a man-in-the-middle could just present any valid cert for a completely different domain they own, and JRuby would accept the cert. Anybody using JRuby to make requests of external APIs, or scraping the web, that depends on https to connect securely. JRuby-OpenSSL version 0.15.4 contains a fix for the issue. This fix is included in JRuby versions 10.0.0.1 and 9.4.12.1.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jruby\/jruby-openssl\/commit\/31a56d690ce9b8af47af09aaaf809081949ed285","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jruby\/jruby-openssl\/security\/advisories\/GHSA-72qj-48g4-5xgx","name": "EXPLOIT,VENDOR_ADVISORY"                    }, {
+                        "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0"
+,"url": "https:\/\/github.com\/jruby\/jruby-openssl\/security\/advisories\/GHSA-72qj-48g4-5xgx","name": "EXPLOIT,VENDOR_ADVISORY"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:jruby:jruby:*:*:*:*:*:*:*:*"
+,"versionStartIncluding":"9.3.4.0","versionEndExcluding":"9.4.12.1"                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:jruby:jruby:10.0.0.0:*:*:*:*:*:*:*"
+                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:jruby:jruby-openssl:*:*:*:*:*:*:*:*"
+,"vulnerabilityIdMatched":"true","versionStartIncluding":"0.12.1","versionEndExcluding":"0.15.4"                        }
+                    }                ]
+                }            ]        },{
             "isVirtual": false,
             "fileName": "jruby-stdlib-9.4.2.0.jar: jopenssl.jar",
             "filePath": "\/home\/runner\/.m2\/repository\/org\/jruby\/jruby-stdlib\/9.4.2.0\/jruby-stdlib-9.4.2.0.jar\/META-INF\/jruby.home\/lib\/ruby\/stdlib\/jopenssl.jar"
