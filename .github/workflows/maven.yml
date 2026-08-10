@@ -28,17 +28,20 @@ jobs:
         include:
           - java: 25
             java_dist: "temurin"
-            maven: "4.0.0-rc-5"
+            maven: "4.0.0-rc-6"
             experimental: true
           - java: 25
             java_dist: "temurin"
             maven: "3.9.16"
+          - java: 21
+            java_dist: "temurin"
+            maven: "3.10.0-rc-1"
 
     steps:
       - uses: actions/checkout@v7
 
       - name: 'Set up Maven'
-        uses: stCarolas/setup-maven@v5
+        uses: stCarolas/setup-maven@v5.1
         with:
           maven-version: ${{ matrix.maven }}
 
