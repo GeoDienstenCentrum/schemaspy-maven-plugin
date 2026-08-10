@@ -8,7 +8,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
   cancel-in-progress: true
 
-on: [ pull_request, workflow_dispatch ]
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * MON-FRI' # every Sunday at 06:00 UTC
 
 jobs:
   build:
