@@ -18,11 +18,13 @@ import org.junit.jupiter.api.Test;
  * @author john
  */
 class DatabaseHelperTest {
+  private static final String TEST_DB_URL = "jdbc:hsqldb:file:target/testdb;shutdown=true";
+
   @Test
   void testSetupDatabase() throws Exception {
     DatabaseHelper.setupDatabase("src/test/resources/sql/testdb.sql");
 
-    Connection connection = DriverManager.getConnection("jdbc:hsqldb:file:target/testdb;shutdown=true", "SA", "");
+    Connection connection = DriverManager.getConnection(TEST_DB_URL, "SA", "");
 
     ResultSet rs = connection.createStatement().executeQuery("select * from employee");
     assertNotNull(rs);
