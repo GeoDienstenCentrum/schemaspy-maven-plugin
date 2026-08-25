@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-08-10T12:20:54Z"
+                "timestamp": "2026-08-25T15:38:29Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-08-10T12:17:35Z"
+                "timestamp": "2026-08-25T15:36:37Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-10T14:12:00.053096543Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-25T15:39:02.765070039Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -26339,6 +26339,114 @@
             ,"vulnerabilities": [
  {
                 "source": "NVD",
+                "name": "CVE-2026-56740",
+                    "severity" : "HIGH",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"exploitabilityScore": "3.9","impactScore": "3.6","version": "3.1"                    },
+                    "cwes": [
+                        "CWE-400"                    ],
+                "description": "JLine is a Java library for handling console input. Prior to 3.30.14, 4.0.16, and 4.2.1, the JLine3 Telnet server remote-telnet module does not limit the number of environment variables a client may inject via the Telnet NEW-ENVIRON option, and TelnetIO.readNEVariables() in TelnetIO.java:1127-1180 stores each variable pair in a HashMap held by ConnectionData, allowing an unauthenticated attacker to flood unique variable pairs before the terminating IAC SE byte and exhaust JVM heap memory with an OutOfMemoryError. This issue is fixed in versions 3.30.14, 4.0.16, and 4.2.1.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/pull\/2000","name": "ISSUE_TRACKING"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/pull\/2001","name": "ISSUE_TRACKING"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/releases\/tag\/jline-3.30.14","name": "RELEASE_NOTES"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/commit\/0389f0ee6d0375901b602671ad5dafd4d1d4ee09","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/commit\/4ee3a73849ffb9a85ec748e4e8cd8f6d81f84f40","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/releases\/tag\/4.0.16","name": "RELEASE_NOTES"                    }, {
+                        "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0"
+,"url": "https:\/\/github.com\/jline\/jline3\/security\/advisories\/GHSA-47qp-hqvx-6r3f","name": "EXPLOIT,VENDOR_ADVISORY"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/commit\/934f09e6128cee33c2b13d42b6e859c1ee2d194b","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/security\/advisories\/GHSA-47qp-hqvx-6r3f","name": "EXPLOIT,VENDOR_ADVISORY"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/releases\/tag\/4.2.1","name": "RELEASE_NOTES"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:jline:jline:*:*:*:*:*:*:*:*"
+,"vulnerabilityIdMatched":"true","versionEndExcluding":"3.30.14"                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:jline:jline:*:*:*:*:*:*:*:*"
+,"versionStartIncluding":"4.0.0","versionEndExcluding":"4.0.16"                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:jline:jline:*:*:*:*:*:*:*:*"
+,"versionStartIncluding":"4.1.0","versionEndExcluding":"4.2.1"                        }
+                    }                ]
+                }, {
+                "source": "NVD",
+                "name": "CVE-2026-56741",
+                    "severity" : "HIGH",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"exploitabilityScore": "3.9","impactScore": "3.6","version": "3.1"                    },
+                    "cwes": [
+                        "CWE-400"                    ],
+                "description": "JLine is a Java library for handling console input. Prior to 3.30.14, 4.0.16, and 4.2.1, the JLine3 Telnet server remote-telnet module does not apply an upper bound to terminal dimensions received via the Telnet NAWS option, and TelnetIO.handleNAWS() in TelnetIO.java:856-879 reads client-supplied width and height as 16-bit unsigned integers and passes values such as 65535x65535 to setTerminalGeometry(), allowing an unauthenticated remote attacker to repeatedly alternate values and trigger continuous expensive rendering work that causes CPU exhaustion and denial of service. This issue is fixed in versions 3.30.14, 4.0.16, and 4.2.1.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/pull\/2000","name": "ISSUE_TRACKING"                    }, {
+                        "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0"
+,"url": "https:\/\/github.com\/jline\/jline3\/security\/advisories\/GHSA-2r2c-cx56-8933","name": "EXPLOIT,VENDOR_ADVISORY"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/commit\/86b7ba7801988aadb1a67555629522a71d603bd3","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/security\/advisories\/GHSA-2r2c-cx56-8933","name": "EXPLOIT,VENDOR_ADVISORY"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/commit\/3ea9cad8699714dc072fade29d36be0d1e23d708","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/releases\/tag\/4.0.16","name": "RELEASE_NOTES"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/commit\/733eb353dca7b0ea0252e724445b6defa29c393e","name": "PATCH"                    }, {
+                        "source": "security-advisories@github.com"
+,"url": "https:\/\/github.com\/jline\/jline3\/releases\/tag\/4.2.1","name": "RELEASE_NOTES"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:jline:jline:*:*:*:*:*:*:*:*"
+,"vulnerabilityIdMatched":"true","versionEndExcluding":"3.30.14"                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:jline:jline:*:*:*:*:*:*:*:*"
+,"versionStartIncluding":"4.0.0","versionEndExcluding":"4.0.16"                        }
+                    }, {
+                        "software": { 
+                            "id":"cpe:2.3:a:jline:jline:*:*:*:*:*:*:*:*"
+,"versionStartIncluding":"4.1.0","versionEndExcluding":"4.2.1"                        }
+                    }                ]
+                }, {
+                "source": "NVD",
                 "name": "CVE-2023-50572",
                     "severity" : "MEDIUM",
                     "cvssv3": {
@@ -28214,7 +28322,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.2" }
+                { "reference":"pkg:maven\/org.junit.jupiter\/junit-jupiter-engine@6.1.3" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
