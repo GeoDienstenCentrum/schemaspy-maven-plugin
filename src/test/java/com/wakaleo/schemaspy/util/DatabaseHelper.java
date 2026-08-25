@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Set up a simple embedded database to run SchemaSpy on. We use a Derby database.
+ * Set up a simple embedded database to run SchemaSpy on. We use a hsqldb database.
  *
  * @author john
  */
@@ -22,7 +22,7 @@ public class DatabaseHelper {
   private static final Logger LOGGER = Logger.getLogger(DatabaseHelper.class.getName());
 
   /**
-   * Create an embedded Derby database using a simple SQL script. The SQL commands should each be on
+   * Create an embedded HSQLDB database using a simple SQL script. The SQL commands should each be on
    * a single line. "--" and "//" can be used for comments.
    *
    * @param sqlCreateScript Path to a file containing the SQL creation script.
@@ -32,9 +32,9 @@ public class DatabaseHelper {
     if (!databaseSetupDone) {
       synchronized (lock) {
         try (BufferedReader input = new BufferedReader(new FileReader(sqlCreateScript))) {
-          Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+          Class.forName("org.hsqldb.jdbc.JDBCDriver");
           try (Connection connection =
-              DriverManager.getConnection("jdbc:derby:target/testdb;create=true")) {
+              DriverManager.getConnection("jdbc:hsqldb:file:target/testdb", "SA", "")) {
 
             String line;
             while ((line = input.readLine()) != null) {

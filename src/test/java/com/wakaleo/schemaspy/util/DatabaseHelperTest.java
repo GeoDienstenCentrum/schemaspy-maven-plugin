@@ -7,36 +7,44 @@
 
 package com.wakaleo.schemaspy.util;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author john
  */
 class DatabaseHelperTest {
+  private static final String TEST_DB_URL = "jdbc:hsqldb:file:target/testdb;shutdown=true";
+
   @Test
   void testSetupDatabase() throws Exception {
     DatabaseHelper.setupDatabase("src/test/resources/sql/testdb.sql");
 
-    Connection connection = DriverManager.getConnection("jdbc:derby:target/testdb");
+    try (Connection connection = DriverManager.getConnection(TEST_DB_URL, "SA", "")) {
+      try (Statement statement = connection.createStatement();
+          ResultSet rs = statement.executeQuery("select * from employee")) {
+        assertTrue(rs.next(), "Expected employee table to contain at least one row");
+      }
 
-    ResultSet rs = connection.createStatement().executeQuery("select * from employee");
-    assertNotNull(rs);
+      try (Statement statement = connection.createStatement();
+          ResultSet rs = statement.executeQuery("select * from item")) {
+        assertTrue(rs.next(), "Expected item table to contain at least one row");
+      }
 
-    rs = connection.createStatement().executeQuery("select * from item");
-    assertNotNull(rs);
+      try (Statement statement = connection.createStatement();
+          ResultSet rs = statement.executeQuery("select * from customer")) {
+        assertTrue(rs.next(), "Expected customer table to contain at least one row");
+      }
 
-    rs = connection.createStatement().executeQuery("select * from customer");
-    assertNotNull(rs);
-
-    rs = connection.createStatement().executeQuery("select * from salesorder");
-    assertNotNull(rs);
-
-    rs.close();
-    connection.close();
+      try (Statement statement = connection.createStatement();
+          ResultSet rs = statement.executeQuery("select * from salesorder")) {
+        assertTrue(rs.next(), "Expected salesorder table to contain at least one row");
+      }
+    }
   }
 }

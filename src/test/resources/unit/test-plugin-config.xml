@@ -35,7 +35,7 @@ under the License.
                 <version>@project.version@</version>
                 <configuration>
                     <outputDirectory>target/reports/test</outputDirectory>
-                    <databaseType>derby</databaseType>
+                    <databaseType>hsqldb-file</databaseType>
                     <database>target/testdb</database>
                     <singleSignOn>true</singleSignOn>
                     <noSchema>true</noSchema>

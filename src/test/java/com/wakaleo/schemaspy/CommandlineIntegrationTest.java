@@ -65,12 +65,13 @@ class CommandlineIntegrationTest {
             .redirectErrorStream(true)
             .start();
 
-    BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(mvn.getInputStream()));
-    String line;
-    while ((line = stdOutReader.readLine()) != null) {
-      System.out.println(testInfo.getDisplayName() + "--" + line);
+    try (BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(mvn.getInputStream()))) {
+      String line;
+      while ((line = stdOutReader.readLine()) != null) {
+        System.out.println(testInfo.getDisplayName() + "--" + line);
+      }
+      assertEquals(0, mvn.waitFor(), "Maven default-cli 'schemaspy:help' command failed");
     }
-    assertEquals(0, mvn.waitFor(), "Maven default-cli 'schemaspy:help' command failed");
   }
 
   @Test
@@ -91,10 +92,11 @@ class CommandlineIntegrationTest {
             .redirectErrorStream(true)
             .start();
 
-    BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(mvn.getInputStream()));
-    String line;
-    while ((line = stdOutReader.readLine()) != null) {
-      System.out.println(testInfo.getDisplayName() + "--" + line);
+    try (BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(mvn.getInputStream()))) {
+      String line;
+      while ((line = stdOutReader.readLine()) != null) {
+        System.out.println(testInfo.getDisplayName() + "--" + line);
+      }
     }
 
     assertEquals(0, mvn.waitFor(), "Maven default-cli 'schemaspy:schemaspy' command failed");

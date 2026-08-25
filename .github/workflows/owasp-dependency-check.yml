@@ -8,26 +8,45 @@ concurrency:
   group: ${{ github.workflow }}-${{ ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release' ) && format('ci-master-{0}', github.sha) || format('ci-master-{0}', github.ref) }}
   cancel-in-progress: true
 
-on: [ pull_request, workflow_dispatch ]
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * MON-FRI' # every Sunday at 06:00 UTC
 
 jobs:
   build:
-    name: "Java ${{ matrix.java }}"
+    name: "Java 17"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ 17 ]
-        java_dist: [ "temurin" ]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: 'Set up JDK'
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ matrix.java }}
-          distribution: ${{ matrix.java_dist }}
+          java-version: 17
+          distribution: temurin
           cache: maven
+
+      - name: 'Restore OWASP cache'
+        uses: actions/cache/restore@v6
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-db-maven-${{ github.run_id }}
+          restore-keys: |
+            owasp-db-maven
+
+      - name: 'Update OWASP Dependency Check Database'
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: mvn -U org.owasp:dependency-check-maven:update-only -DnvdApiKeyEnvironmentVariable=NVD_API_KEY
+
+      - name: 'Save OWASP cache'
+        uses: actions/cache/save@v6
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-db-maven-${{ github.run_id }}
 
       - name: 'OWASP Dependency Check'
         continue-on-error: true
@@ -36,6 +55,6 @@ jobs:
         run: mvn package -Dmaven.test.skip=true org.owasp:dependency-check-maven:check -fae -B -Dorg.slf4j.simpleLogger.defaultLogLevel=WARN -DfailBuildOnCVSS=7
 
       - name: 'Upload result to GitHub Code Scanning'
-        uses: github/codeql-action/upload-sarif@v4
+        uses: github/codeql-action/upload-sarif@v4.37.7
         with:
           sarif_file: target/dependency-check-report.sarif

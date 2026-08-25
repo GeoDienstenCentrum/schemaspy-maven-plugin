@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: 'Set up JDK'
         uses: actions/setup-java@v5
@@ -28,6 +28,14 @@ jobs:
           java-version: 17
           distribution: "temurin"
           cache: maven
+
+      - uses: actions/cache/restore@v6
+        # restore-only, no saving of this cache
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-db-maven-${{ github.run_id }}
+          restore-keys: |
+            owasp-db-maven
 
       - name: 'Build Site with Maven'
         env:

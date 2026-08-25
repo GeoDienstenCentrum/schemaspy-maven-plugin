@@ -49,8 +49,7 @@ Usage: dot [-Vv?] [-(GNE)name=val] [-(KTlso)<val>] <dot files>
 but it keeps crashing on me.
 
  Most databases with JDBC drivers available in the standard Maven repository should work out-of-the-box. 
- Currently, these are 
-   * Derby
+ Currently, these are
    * MySQL
    * HSQLDB
    * PostgreSQL

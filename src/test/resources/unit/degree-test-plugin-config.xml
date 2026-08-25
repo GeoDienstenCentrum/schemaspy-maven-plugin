@@ -34,18 +34,14 @@ under the License.
                 <artifactId>schemaspy-maven-plugin</artifactId>
                 <version>@project.version@</version>
                 <configuration>
+                    <outputDirectory>target/reports/degree-test</outputDirectory>
                     <databaseType>hsqldb-file</databaseType>
                     <database>target/testdb</database>
-                    <outputDirectory>target/reports/full-test</outputDirectory>
-                    <commentsInitiallyDisplayed>true</commentsInitiallyDisplayed>
-                    <noImplied>true</noImplied>
-                    <noHtml>false</noHtml>
                     <singleSignOn>true</singleSignOn>
                     <noSchema>true</noSchema>
-                    <allowHtmlInComments>true</allowHtmlInComments>
-                    <schemaDescription>Maven Plugin SchemaSpy test</schemaDescription>
                     <catalog>%</catalog>
                     <vizjs>true</vizjs>
+                    <degree>1</degree>
                 </configuration>
             </plugin>
         </plugins>
