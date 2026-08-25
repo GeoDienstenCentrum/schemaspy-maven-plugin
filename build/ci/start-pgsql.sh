@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION=${1:-"18-3.6"}
+VERSION=${1:-"18-3.6-alpine"}
 docker pull postgis/postgis:"$VERSION"
 
 # this container can be stopped using: docker stop pgsql1

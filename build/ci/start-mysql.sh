@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION=${1:-"9"}
+VERSION=${1:-"latest"}
 docker pull mysql:"$VERSION"
 
 printf '\n\nStarting MySQL %s container, this could take a while...'"$VERSION"

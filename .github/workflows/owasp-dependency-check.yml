@@ -12,7 +12,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * MON-FRI' # every Sunday at 06:00 UTC
+    - cron: '0 6 * * MON-FRI'
 
 jobs:
   build:
