@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-08-25T15:38:29Z"
+                "timestamp": "2026-08-25T16:31:15Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-08-25T15:36:37Z"
+                "timestamp": "2026-08-25T16:30:13Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-25T15:39:02.765070039Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-25T16:31:42.605016354Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -45732,7 +45732,7 @@
 ,"versionEndExcluding":"1.13.0"                        }
                     }, {
                         "software": { 
-                            "id":"cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*"
+                            "id":"cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*"
                         }
                     }, {
                         "software": { 
@@ -46002,7 +46002,7 @@
 ,"versionEndExcluding":"1.13.0"                        }
                     }, {
                         "software": { 
-                            "id":"cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*"
+                            "id":"cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*"
                         }
                     }, {
                         "software": { 
@@ -46230,7 +46230,7 @@
 ,"versionEndExcluding":"1.13.0"                        }
                     }, {
                         "software": { 
-                            "id":"cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*"
+                            "id":"cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*"
                         }
                     }, {
                         "software": { 
@@ -46833,7 +46833,7 @@
 ,"versionEndExcluding":"1.13.0"                        }
                     }, {
                         "software": { 
-                            "id":"cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*"
+                            "id":"cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*"
                         }
                     }, {
                         "software": { 
@@ -47103,7 +47103,7 @@
 ,"versionEndExcluding":"1.13.0"                        }
                     }, {
                         "software": { 
-                            "id":"cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*"
+                            "id":"cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*"
                         }
                     }, {
                         "software": { 
@@ -47331,7 +47331,7 @@
 ,"versionEndExcluding":"1.13.0"                        }
                     }, {
                         "software": { 
-                            "id":"cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*"
+                            "id":"cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*"
                         }
                     }, {
                         "software": { 

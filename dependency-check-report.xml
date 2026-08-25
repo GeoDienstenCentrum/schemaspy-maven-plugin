@@ -7,11 +7,11 @@
         <engineVersion>13.0.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-08-25T15:38:29Z</timestamp>
+            <timestamp>2026-08-25T16:31:15Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-08-25T15:36:37Z</timestamp>
+            <timestamp>2026-08-25T16:30:13Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.1-SNAPSHOT</version>
-        <reportDate>2026-08-25T15:39:02.765070039Z</reportDate>
+        <reportDate>2026-08-25T16:31:42.605016354Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -34531,7 +34531,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <software
  versionEndExcluding="1.13.0"                        >cpe:2.3:a:jqueryui:jquery_ui:*:*:*:*:*:jquery:*:*</software>
                         <software
-                        >cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*</software>
+                        >cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*</software>
                         <software
  versionEndExcluding="22.1.1"                        >cpe:2.3:a:oracle:application_express:*:*:*:*:*:*:*:*</software>
                         <software
@@ -34758,7 +34758,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <software
  versionEndExcluding="1.13.0"                        >cpe:2.3:a:jqueryui:jquery_ui:*:*:*:*:*:jquery:*:*</software>
                         <software
-                        >cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*</software>
+                        >cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*</software>
                         <software
  versionEndExcluding="22.1.1"                        >cpe:2.3:a:oracle:application_express:*:*:*:*:*:*:*:*</software>
                         <software
@@ -34950,7 +34950,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <software
  versionEndExcluding="1.13.0"                        >cpe:2.3:a:jqueryui:jquery_ui:*:*:*:*:*:jquery:*:*</software>
                         <software
-                        >cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*</software>
+                        >cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*</software>
                         <software
  versionEndExcluding="22.1.1"                        >cpe:2.3:a:oracle:application_express:*:*:*:*:*:*:*:*</software>
                         <software
@@ -35541,7 +35541,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <software
  versionEndExcluding="1.13.0"                        >cpe:2.3:a:jqueryui:jquery_ui:*:*:*:*:*:jquery:*:*</software>
                         <software
-                        >cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*</software>
+                        >cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*</software>
                         <software
  versionEndExcluding="22.1.1"                        >cpe:2.3:a:oracle:application_express:*:*:*:*:*:*:*:*</software>
                         <software
@@ -35768,7 +35768,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <software
  versionEndExcluding="1.13.0"                        >cpe:2.3:a:jqueryui:jquery_ui:*:*:*:*:*:jquery:*:*</software>
                         <software
-                        >cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*</software>
+                        >cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*</software>
                         <software
  versionEndExcluding="22.1.1"                        >cpe:2.3:a:oracle:application_express:*:*:*:*:*:*:*:*</software>
                         <software
@@ -35960,7 +35960,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                         <software
  versionEndExcluding="1.13.0"                        >cpe:2.3:a:jqueryui:jquery_ui:*:*:*:*:*:jquery:*:*</software>
                         <software
-                        >cpe:2.3:a:oracle:agile_plm:9.3.6:*:*:*:*:*:*:*</software>
+                        >cpe:2.3:a:oracle:agile_product_lifecycle_management:9.3.6:*:*:*:*:*:*:*</software>
                         <software
  versionEndExcluding="22.1.1"                        >cpe:2.3:a:oracle:application_express:*:*:*:*:*:*:*:*</software>
                         <software
