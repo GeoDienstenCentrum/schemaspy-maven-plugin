@@ -5,7 +5,7 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-08-25T17:34:48Z"
+                "timestamp": "2026-08-25T17:39:12Z"
             }
 ,{
                 "name": "NVD API Last Modified",
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.1-SNAPSHOT",        "reportDate": "2026-08-25T17:35:14.214091116Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.2-SNAPSHOT",        "reportDate": "2026-08-25T17:39:50.153232702Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -4247,7 +4247,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -8500,7 +8500,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -19279,7 +19279,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -29646,7 +29646,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -30274,7 +30274,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -30927,7 +30927,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -31134,7 +31134,7 @@
                 "SchemaSpy Maven Plugin:provided"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -31569,7 +31569,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -34154,7 +34154,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -34451,7 +34451,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -35210,7 +35210,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -38663,7 +38663,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -39428,7 +39428,7 @@
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.1-SNAPSHOT" }
+                { "reference":"pkg:maven\/nl.geodienstencentrum.maven\/schemaspy-maven-plugin@5.4.2-SNAPSHOT" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
