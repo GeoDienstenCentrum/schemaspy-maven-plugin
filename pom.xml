@@ -139,7 +139,7 @@
             org.apache.maven.reporting:maven-reporting-impl:jar:4.0.0 due to reported vulnerabilities -->
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.20.0</version>
+            <version>3.21.0</version>
         </dependency>
         <dependency>
             <!-- upgrade transitive dependency from
