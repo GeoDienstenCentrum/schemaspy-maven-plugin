@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-08-30T15:18:17",
-                "start_time": "2026-08-30T15:18:17",
+        "end_time": "2026-10-05T05:20:35",
+                "start_time": "2026-10-05T05:20:35",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -9416,7 +9416,7 @@
                         "package": {
                             "name": "org.ow2.asm:asm"
                         },
-                        "version": "9.9.1"
+                        "version": "9.10.1"
 
                                                                                                                     }
 ,                    {
@@ -9507,7 +9507,7 @@
                         "package": {
                             "name": "org.apache.commons:commons-lang3"
                         },
-                        "version": "3.20.0"
+                        "version": "3.21.0"
 
                                                                                                                     }
 ,                    {
@@ -9599,6 +9599,13 @@
                             "name": "org.apache.maven.doxia:doxia-skin-model"
                         },
                         "version": "2.0.0"
+
+                                                                                                                    }
+,                    {
+                        "package": {
+                            "name": "com.google.errorprone:error_prone_annotations"
+                        },
+                        "version": "2.48.0"
 
                                                                                                                     }
 ,                    {
@@ -9764,9 +9771,16 @@
                                                                                                                     }
 ,                    {
                         "package": {
+                            "name": "com.google.code.gson:gson"
+                        },
+                        "version": "2.14.0"
+
+                                                                                                                    }
+,                    {
+                        "package": {
                             "name": "com.google.guava:guava"
                         },
-                        "version": "33.6.0-jre"
+                        "version": "33.7.1-jre"
 
                                                                                                                     }
 ,                    {
@@ -9788,6 +9802,20 @@
                             "name": "org.hsqldb:hsqldb"
                         },
                         "version": "2.7.4"
+
+                                                                                                                    }
+,                    {
+                        "package": {
+                            "name": "org.apache.httpcomponents:httpclient"
+                        },
+                        "version": "4.5.14"
+
+                                                                                                                    }
+,                    {
+                        "package": {
+                            "name": "org.apache.httpcomponents:httpcore"
+                        },
+                        "version": "4.4.16"
 
                                                                                                                     }
 ,                    {
@@ -10011,49 +10039,49 @@
                         "package": {
                             "name": "org.apache.maven:maven-artifact"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-builder-support"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-core"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-model"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-model-builder"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven.plugin-tools:maven-plugin-annotations"
                         },
-                        "version": "3.15.2"
+                        "version": "3.16.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-plugin-api"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
@@ -10074,63 +10102,84 @@
                         "package": {
                             "name": "org.apache.maven:maven-repository-metadata"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven.resolver:maven-resolver-api"
                         },
-                        "version": "1.9.27"
+                        "version": "2.0.24"
+
+                                                                                                                    }
+,                    {
+                        "package": {
+                            "name": "org.apache.maven.resolver:maven-resolver-connector-basic"
+                        },
+                        "version": "2.0.24"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven.resolver:maven-resolver-impl"
                         },
-                        "version": "1.9.27"
+                        "version": "2.0.24"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven.resolver:maven-resolver-named-locks"
                         },
-                        "version": "1.9.27"
+                        "version": "2.0.24"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-resolver-provider"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven.resolver:maven-resolver-spi"
                         },
-                        "version": "1.9.27"
+                        "version": "2.0.24"
+
+                                                                                                                    }
+,                    {
+                        "package": {
+                            "name": "org.apache.maven.resolver:maven-resolver-transport-apache"
+                        },
+                        "version": "2.0.24"
+
+                                                                                                                    }
+,                    {
+                        "package": {
+                            "name": "org.apache.maven.resolver:maven-resolver-transport-file"
+                        },
+                        "version": "2.0.24"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven.resolver:maven-resolver-util"
                         },
-                        "version": "1.9.27"
+                        "version": "2.0.24"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-settings"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.apache.maven:maven-settings-builder"
                         },
-                        "version": "3.9.16"
+                        "version": "3.10.0"
 
                                                                                                                     }
 ,                    {
@@ -10144,7 +10193,7 @@
                         "package": {
                             "name": "com.microsoft.sqlserver:mssql-jdbc"
                         },
-                        "version": "13.4.0.jre11"
+                        "version": "13.6.0.jre11"
 
                                                                                                                     }
 ,                    {
@@ -10179,14 +10228,14 @@
                         "package": {
                             "name": "org.eclipse.sisu:org.eclipse.sisu.inject"
                         },
-                        "version": "1.0.0"
+                        "version": "1.1.0"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "org.eclipse.sisu:org.eclipse.sisu.plexus"
                         },
-                        "version": "1.0.0"
+                        "version": "1.1.0"
 
                                                                                                                     }
 ,                    {
@@ -10207,7 +10256,7 @@
                         "package": {
                             "name": "org.codehaus.plexus:plexus-classworlds"
                         },
-                        "version": "2.11.0"
+                        "version": "2.12.1"
 
                                                                                                                     }
 ,                    {
@@ -10249,7 +10298,7 @@
                         "package": {
                             "name": "org.codehaus.plexus:plexus-utils"
                         },
-                        "version": "3.6.1"
+                        "version": "3.6.2"
 
                                                                                                                     }
 ,                    {
@@ -10340,7 +10389,7 @@
                         "package": {
                             "name": "org.slf4j:slf4j-api"
                         },
-                        "version": "1.7.36"
+                        "version": "2.0.19"
 
                                                                                                                     }
 ,                    {
