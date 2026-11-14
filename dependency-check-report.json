@@ -5,11 +5,11 @@
         "dataSource": [
 {
                 "name": "NVD API Last Checked",
-                "timestamp": "2026-10-07T09:58:46Z"
+                "timestamp": "2026-11-14T08:32:26Z"
             }
 ,{
                 "name": "NVD API Last Modified",
-                "timestamp": "2026-10-07T09:17:06Z"
+                "timestamp": "2026-11-14T08:17:19Z"
             }
         ]
 
@@ -17,7 +17,7 @@
     },
     "projectInfo": {
         "name": "SchemaSpy Maven Plugin",
-"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.2-SNAPSHOT",        "reportDate": "2026-10-07T09:59:14.049665677Z",
+"groupID":"nl.geodienstencentrum.maven","artifactID":"schemaspy-maven-plugin","version":"5.4.2-SNAPSHOT",        "reportDate": "2026-11-14T08:32:46.546359777Z",
         "credits": {
             "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
             "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -3914,7 +3914,7 @@
                 "SchemaSpy Maven Plugin:runtime"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/org.postgresql\/postgresql@42.7.13" }
+                { "reference":"pkg:maven\/org.postgresql\/postgresql@42.7.14" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -8492,11 +8492,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "commons-lang3-3.21.0.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/org\/apache\/commons\/commons-lang3\/3.21.0\/commons-lang3-3.21.0.jar"
-,"md5": "74a94a62f74cf1566767a085b3b9c758",
-            "sha1": "7bad013a5acee0a078d75fc352a906baa57acb74",
-            "sha256": "a2af247ec4db6eb8947e18e23e0433e4871a7c5d0a40e1f92e46ede54ae1defe","description": "\n  Apache Commons Lang is a package of Java utility classes for the Java lang packages,\n  classes that could be considered standard to justify their existence in java.lang.\n\n  The code is tested using the latest revision of the JDK for supported LTS releases: 8, 11, 17, 21, and 25.\n  See https:\/\/github.com\/apache\/commons-lang\/blob\/master\/.github\/workflows\/maven.yml\n\n  Please ensure your build environment is up-to-date and kindly report any build issues.\n\n  Starting with Commons Lang 3.9, we target Java 8 and use those features.\n\n  For advice on upgrading from 2.x to 3.x, see https:\/\/commons.apache.org\/lang\/article3_0.html\n  ","license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt"            ,"projectReferences": [
+            "fileName": "commons-lang3-3.22.0.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/apache\/commons\/commons-lang3\/3.22.0\/commons-lang3-3.22.0.jar"
+,"md5": "7e31774c9e2adfe616856c0be006b288",
+            "sha1": "fda38d1637719132fa12b5b96ea99958fc7150e7",
+            "sha256": "2ea88052c8662bf51874f4159467ba24b040b22dfd54d2596e11936896c76192","description": "\n  Apache Commons Lang is a package of Java utility classes for the Java lang packages,\n  classes that could be considered standard to justify their existence in java.lang.\n\n  The code is tested using the latest revision of the JDK for supported LTS releases: 8, 11, 17, 21, and 25.\n  See https:\/\/github.com\/apache\/commons-lang\/blob\/master\/.github\/workflows\/maven.yml\n\n  Please ensure your build environment is up-to-date and kindly report any build issues.\n\n  Starting with Commons Lang 3.9, we target Java 8 and use those features.\n\n  For advice on upgrading from 2.x to 3.x, see https:\/\/commons.apache.org\/lang\/article3_0.html\n  ","license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -8551,7 +8551,7 @@
                             "confidence": "LOW",
                             "source": "Manifest",
                             "name": "build-jdk-spec",
-                            "value": "25"
+                            "value": "27"
                         }
 ,{
                             "type": "vendor",
@@ -9050,7 +9050,7 @@
                             "confidence": "LOW",
                             "source": "Manifest",
                             "name": "build-jdk-spec",
-                            "value": "25"
+                            "value": "27"
                     }
 ,{
                             "type": "product",
@@ -9507,46 +9507,46 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "3.21.0"
+                        "value": "3.22.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "3.21.0"
+                        "value": "3.22.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "3.21.0"
+                        "value": "3.22.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "LOW",
                         "source": "pom",
                         "name": "parent-version",
-                        "value": "3.21.0"
+                        "value": "3.22.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "3.21.0"
+                        "value": "3.22.0"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/org.apache.commons\/commons-lang3@3.21.0"
+                        "id": "pkg:maven\/org.apache.commons\/commons-lang3@3.22.0"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:apache:commons_lang:3.21.0:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aapache%3Acommons_lang%3A3.21.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:apache:commons_lang:3.22.0:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aapache%3Acommons_lang%3A3.22.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,
@@ -36031,11 +36031,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "mssql-jdbc-13.6.0.jre11.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/com\/microsoft\/sqlserver\/mssql-jdbc\/13.6.0.jre11\/mssql-jdbc-13.6.0.jre11.jar"
-,"md5": "2a137f850e8f2689cc61e716614a4c0d",
-            "sha1": "9c438510cb1e19d2db0a152e9f719a32f11e1177",
-            "sha256": "4c566e4022c4dcf1489aeb639fe49a0f6ffae3d796fdc2f56b5b8882d4c3bf5a","description": "\n\t\tMicrosoft JDBC Driver for SQL Server.\n\t","license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php"            ,"projectReferences": [
+            "fileName": "mssql-jdbc-13.6.2.jre11.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/com\/microsoft\/sqlserver\/mssql-jdbc\/13.6.2.jre11\/mssql-jdbc-13.6.2.jre11.jar"
+,"md5": "e41c9c1d3c699acc318a7785c6b56b87",
+            "sha1": "b9762cc5034fe56075fe90336833665cfa80af3b",
+            "sha256": "5fbc0a70fe4d1d563d431a41b23f493d68807571f0bb49db0bb1737e83e9161f","description": "\n\t\tMicrosoft JDBC Driver for SQL Server.\n\t","license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -36290,49 +36290,49 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "13.6.0.jre11"
+                        "value": "13.6.2.jre11"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "13.6.0.jre11"
+                        "value": "13.6.2.jre11"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "13.6.0.jre11"
+                        "value": "13.6.2.jre11"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.0"
+                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.2"
 ,"confidence": "HIGH"                    }
 ,                    {
-                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.0.jre11"
+                        "id": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.2.jre11"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.6.0.jre11:*:*:*:*:*:*:*"
+                    "id": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.6.2.jre11:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
 ,                {
-                    "id": "cpe:2.3:a:microsoft:sql_server:13.6.0.jre11:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.6.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:microsoft:sql_server:13.6.2.jre11:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.6.2.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
 ,                {
-                    "id": "cpe:2.3:a:www-sql_project:www-sql:13.6.0.jre11:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.6.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:www-sql_project:www-sql:13.6.2.jre11:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.6.2.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,
-            "fileName": "mysql-connector-j-26.7.0.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/26.7.0\/mysql-connector-j-26.7.0.jar"
-,"md5": "e66a1e9f6465f66b3503705aee942a47",
-            "sha1": "43e30438c4c8707272ead3cd3167a1e07abb2c3c",
-            "sha256": "69084713593a4aa8d07c383619b9639276f08bccf8faf1c562178147d389b1e1","description": "JDBC Type 4 driver for MySQL.","license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0"            ,"projectReferences": [
+            "fileName": "mysql-connector-j-26.10.0.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/26.10.0\/mysql-connector-j-26.10.0.jar"
+,"md5": "c672f7a5c8dd482492d37683e40bbada",
+            "sha1": "6394cd2713b8bfb8c6692a1ca92bff5ddb939415",
+            "sha256": "cef70caf532833c9ab8f41f74773ce22c08bf503fad215c9c2ee1e9db87e759e","description": "JDBC Type 4 driver for MySQL.","license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -36685,39 +36685,39 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "26.7.0"
+                        "value": "26.10.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "26.7.0"
+                        "value": "26.10.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "26.7.0"
+                        "value": "26.10.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "26.7.0"
+                        "value": "26.10.0"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/com.mysql\/mysql-connector-j@26.7.0"
+                        "id": "pkg:maven\/com.mysql\/mysql-connector-j@26.10.0"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:oracle:mysql_connector\\\/j:26.7.0:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aoracle%3Amysql_connector%5C%2Fj%3A26.7.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:oracle:mysql_connector\\\/j:26.10.0:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aoracle%3Amysql_connector%5C%2Fj%3A26.10.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,
@@ -37087,11 +37087,11 @@
 
         },{
             "isVirtual": false,
-            "fileName": "ojdbc11-23.26.3.0.0.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.3.0.0\/ojdbc11-23.26.3.0.0.jar"
-,"md5": "105ce312fdf6dc25a3fb163594d2debd",
-            "sha1": "6936aba69cb7142aac36a53ed920af563b0e1dd1",
-            "sha256": "764cc3f88454d1be117e155d01ed617467b984c9c68f13090dd6083799d2bb8c","description": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21","license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html"            ,"projectReferences": [
+            "fileName": "ojdbc11-23.26.4.0.0.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.4.0.0\/ojdbc11-23.26.4.0.0.jar"
+,"md5": "485615fdff70701af864a828dcc2b703",
+            "sha1": "109dbf464e05f2f1770ea05df582170f069c2d29",
+            "sha256": "df977e9291499cd4ceee7d577462c285987dd2ad0216637c0865eb98956a9e6e","description": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21","license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -37153,7 +37153,7 @@
                             "confidence": "LOW",
                             "source": "Manifest",
                             "name": "repository-id",
-                            "value": "JAVAVM_23.0.0.0.0_LINUX.X64_260620"
+                            "value": "JAVAVM_23.26.4.0.0DBRU_LINUX.X64_261003"
                         }
 ,{
                             "type": "vendor",
@@ -37260,7 +37260,7 @@
                             "confidence": "LOW",
                             "source": "Manifest",
                             "name": "repository-id",
-                            "value": "JAVAVM_23.0.0.0.0_LINUX.X64_260620"
+                            "value": "JAVAVM_23.26.4.0.0DBRU_LINUX.X64_261003"
                     }
 ,{
                             "type": "product",
@@ -37318,32 +37318,32 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "23.26.3.0.0"
+                        "value": "23.26.4.0.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "23.26.3.0.0"
+                        "value": "23.26.4.0.0"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "23.26.3.0.0"
+                        "value": "23.26.4.0.0"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.3.0.0"
+                        "id": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.4.0.0"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:oracle:jdbc:23.26.3.0.0:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.3.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:oracle:jdbc:23.26.4.0.0:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.4.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,
@@ -40120,9 +40120,6 @@
                 {
                     "id": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.2:*:*:*:*:*:*:*"
 ,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.2%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
-,                {
-                    "id": "cpe:2.3:a:utils_project:utils:3.6.2:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.2%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,
@@ -40568,11 +40565,11 @@
             ]
         },{
             "isVirtual": false,
-            "fileName": "postgresql-42.7.13.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.13\/postgresql-42.7.13.jar"
-,"md5": "52ba042322b750121222bd57423003b5",
-            "sha1": "a6e1bd21b412d6ffb3df23cd13d507bc2cc9e37d",
-            "sha256": "6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
+            "fileName": "postgresql-42.7.14.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.14\/postgresql-42.7.14.jar"
+,"md5": "16f26b00415e27db94b3da7ff77c045d",
+            "sha1": "0e7c94ce80cb1dd9875ff44ffe6a40a8aaa3eefd",
+            "sha256": "73914527305a40cce504b0d3d90b23caf565136912d607ae8ae7c5895512332c","description": "PostgreSQL JDBC Driver Postgresql","license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
@@ -41093,51 +41090,51 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "42.7.13"
+                        "value": "42.7.14"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "42.7.13"
+                        "value": "42.7.14"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Implementation-Version",
-                        "value": "42.7.13"
+                        "value": "42.7.14"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "42.7.13"
+                        "value": "42.7.14"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.13"
+                        "id": "pkg:maven\/org.postgresql\/postgresql@42.7.14"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.13:*:*:*:*:*:*:*"
+                    "id": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.14:*:*:*:*:*:*:*"
 ,"confidence": "LOW"                }
             ]
         },{
             "isVirtual": false,
-            "fileName": "protobuf-java-4.31.1.jar",
-            "filePath": "\/home\/runner\/.m2\/repository\/com\/google\/protobuf\/protobuf-java\/4.31.1\/protobuf-java-4.31.1.jar"
-,"md5": "4987ffc8ba1965e5546bdcf49dcfffe2",
-            "sha1": "1828b20315b63d5f71b3c61b094494a8f1acdc5a",
-            "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae","description": "\n    Core Protocol Buffers library. Protocol Buffers are a way of encoding structured data in an\n    efficient yet extensible format.\n  ","license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause"            ,"projectReferences": [
+            "fileName": "protobuf-java-4.36.1.jar",
+            "filePath": "\/home\/runner\/.m2\/repository\/com\/google\/protobuf\/protobuf-java\/4.36.1\/protobuf-java-4.36.1.jar"
+,"md5": "80dbbda35359876810d8e2e8601c30d8",
+            "sha1": "b5db3504aebb79f4af24eb99246eabedb3859c1b",
+            "sha256": "26434a93561a1a44bf7157b2630fa73a5b4d8df20e94df167bc03fcd14abd7e4","description": "\n    Core Protocol Buffers library. Protocol Buffers are a way of encoding structured data in an\n    efficient yet extensible format.\n  ","license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause"            ,"projectReferences": [
                 "SchemaSpy Maven Plugin:compile"
             ]
             ,"includedBy": [
-                { "reference":"pkg:maven\/com.mysql\/mysql-connector-j@26.7.0" }
+                { "reference":"pkg:maven\/com.mysql\/mysql-connector-j@26.10.0" }
             ]
             ,"evidenceCollected": {
                 "vendorEvidence": [
@@ -41304,32 +41301,32 @@
                         "confidence": "HIGH",
                         "source": "file",
                         "name": "version",
-                        "value": "4.31.1"
+                        "value": "4.36.1"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGH",
                         "source": "Manifest",
                         "name": "Bundle-Version",
-                        "value": "4.31.1"
+                        "value": "4.36.1"
                     }
 ,                    {
                         "type": "version",
                         "confidence": "HIGHEST",
                         "source": "pom",
                         "name": "version",
-                        "value": "4.31.1"
+                        "value": "4.36.1"
                     }
                 ]
             }
                 ,"packages": [
                     {
-                        "id": "pkg:maven\/com.google.protobuf\/protobuf-java@4.31.1"
+                        "id": "pkg:maven\/com.google.protobuf\/protobuf-java@4.36.1"
 ,"confidence": "HIGH"                    }
             ]                ,"vulnerabilityIds": [
                 {
-                    "id": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
-,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Agoogle%3Aprotobuf-java%3A4.31.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
+                    "id": "cpe:2.3:a:google:protobuf-java:4.36.1:*:*:*:*:*:*:*"
+,"confidence": "HIGHEST","url": "https:\/\/nvd.nist.gov\/vuln\/search#\/nvd\/home?sortOrder=3&sortDirection=2&cpeFilterMode=applicability&resultType=records&cpeName=cpe%3A2.3%3Aa%3Agoogle%3Aprotobuf-java%3A4.36.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A"                }
             ]
         },{
             "isVirtual": false,

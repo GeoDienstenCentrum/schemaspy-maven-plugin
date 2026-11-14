@@ -7,11 +7,11 @@
         <engineVersion>13.0.0</engineVersion>
         <dataSource>
             <name>NVD API Last Checked</name>
-            <timestamp>2026-10-07T09:58:46Z</timestamp>
+            <timestamp>2026-11-14T08:32:26Z</timestamp>
         </dataSource>
         <dataSource>
             <name>NVD API Last Modified</name>
-            <timestamp>2026-10-07T09:17:06Z</timestamp>
+            <timestamp>2026-11-14T08:17:19Z</timestamp>
         </dataSource>
     </scanInfo>
     <projectInfo>
@@ -19,7 +19,7 @@
         <groupID>nl.geodienstencentrum.maven</groupID>
         <artifactID>schemaspy-maven-plugin</artifactID>
         <version>5.4.2-SNAPSHOT</version>
-        <reportDate>2026-10-07T09:59:14.049665677Z</reportDate>
+        <reportDate>2026-11-14T08:32:46.546359777Z</reportDate>
         <credits>This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov, Github Advisory Database (via NPM Audit API): https://github.com/advisories/, and the RetireJS community.</credits>
     </projectInfo>
     <dependencies>
@@ -2877,7 +2877,7 @@
                 <projectReference>SchemaSpy Maven Plugin:runtime</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/org.postgresql/postgresql@42.7.13</reference>
+                <reference>pkg:maven/org.postgresql/postgresql@42.7.14</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -6184,11 +6184,11 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>commons-lang3-3.21.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/apache/commons/commons-lang3/3.21.0/commons-lang3-3.21.0.jar</filePath>
-            <md5>74a94a62f74cf1566767a085b3b9c758</md5>
-            <sha1>7bad013a5acee0a078d75fc352a906baa57acb74</sha1>
-            <sha256>a2af247ec4db6eb8947e18e23e0433e4871a7c5d0a40e1f92e46ede54ae1defe</sha256>
+            <fileName>commons-lang3-3.22.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/apache/commons/commons-lang3/3.22.0/commons-lang3-3.22.0.jar</filePath>
+            <md5>7e31774c9e2adfe616856c0be006b288</md5>
+            <sha1>fda38d1637719132fa12b5b96ea99958fc7150e7</sha1>
+            <sha256>2ea88052c8662bf51874f4159467ba24b040b22dfd54d2596e11936896c76192</sha256>
             <description>
   Apache Commons Lang is a package of Java utility classes for the Java lang packages,
   classes that could be considered standard to justify their existence in java.lang.
@@ -6243,7 +6243,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>25</value>
+                    <value>27</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
@@ -6598,7 +6598,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>build-jdk-spec</name>
-                    <value>25</value>
+                    <value>27</value>
                 </evidence>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
@@ -6923,36 +6923,36 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>3.21.0</value>
+                    <value>3.22.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>3.21.0</value>
+                    <value>3.22.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>3.21.0</value>
+                    <value>3.22.0</value>
                 </evidence>
                 <evidence type="version" confidence="LOW">
                     <source>pom</source>
                     <name>parent-version</name>
-                    <value>3.21.0</value>
+                    <value>3.22.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>3.21.0</value>
+                    <value>3.22.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.apache.commons/commons-lang3@3.21.0</id>
+                    <id>pkg:maven/org.apache.commons/commons-lang3@3.22.0</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:apache:commons_lang:3.21.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Acommons_lang%3A3.21.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:apache:commons_lang:3.22.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aapache%3Acommons_lang%3A3.22.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
@@ -26392,11 +26392,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>mssql-jdbc-13.6.0.jre11.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/13.6.0.jre11/mssql-jdbc-13.6.0.jre11.jar</filePath>
-            <md5>2a137f850e8f2689cc61e716614a4c0d</md5>
-            <sha1>9c438510cb1e19d2db0a152e9f719a32f11e1177</sha1>
-            <sha256>4c566e4022c4dcf1489aeb639fe49a0f6ffae3d796fdc2f56b5b8882d4c3bf5a</sha256>
+            <fileName>mssql-jdbc-13.6.2.jre11.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/13.6.2.jre11/mssql-jdbc-13.6.2.jre11.jar</filePath>
+            <md5>e41c9c1d3c699acc318a7785c6b56b87</md5>
+            <sha1>b9762cc5034fe56075fe90336833665cfa80af3b</sha1>
+            <sha256>5fbc0a70fe4d1d563d431a41b23f493d68807571f0bb49db0bb1737e83e9161f</sha256>
             <description>
 		Microsoft JDBC Driver for SQL Server.
 	</description>
@@ -26581,45 +26581,45 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>13.6.0.jre11</value>
+                    <value>13.6.2.jre11</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>13.6.0.jre11</value>
+                    <value>13.6.2.jre11</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>13.6.0.jre11</value>
+                    <value>13.6.2.jre11</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.6.0</id>
+                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.6.2</id>
                 </package>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.6.0.jre11</id>
+                    <id>pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.6.2.jre11</id>
                 </package>
                 <vulnerabilityIds confidence="LOW">
-                    <id>cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.6.0.jre11:*:*:*:*:*:*:*</id>
+                    <id>cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.6.2.jre11:*:*:*:*:*:*:*</id>
                 </vulnerabilityIds>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:microsoft:sql_server:13.6.0.jre11:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.6.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:microsoft:sql_server:13.6.2.jre11:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Amicrosoft%3Asql_server%3A13.6.2.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:www-sql_project:www-sql:13.6.0.jre11:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.6.0.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:www-sql_project:www-sql:13.6.2.jre11:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Awww-sql_project%3Awww-sql%3A13.6.2.jre11%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>mysql-connector-j-26.7.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/mysql/mysql-connector-j/26.7.0/mysql-connector-j-26.7.0.jar</filePath>
-            <md5>e66a1e9f6465f66b3503705aee942a47</md5>
-            <sha1>43e30438c4c8707272ead3cd3167a1e07abb2c3c</sha1>
-            <sha256>69084713593a4aa8d07c383619b9639276f08bccf8faf1c562178147d389b1e1</sha256>
+            <fileName>mysql-connector-j-26.10.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/mysql/mysql-connector-j/26.10.0/mysql-connector-j-26.10.0.jar</filePath>
+            <md5>c672f7a5c8dd482492d37683e40bbada</md5>
+            <sha1>6394cd2713b8bfb8c6692a1ca92bff5ddb939415</sha1>
+            <sha256>cef70caf532833c9ab8f41f74773ce22c08bf503fad215c9c2ee1e9db87e759e</sha256>
             <description>JDBC Type 4 driver for MySQL.</description>
             <license>The GNU General Public License, v2 with Universal FOSS Exception, v1.0</license>
             <projectReferences>
@@ -26872,31 +26872,31 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>26.7.0</value>
+                    <value>26.10.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>26.7.0</value>
+                    <value>26.10.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>26.7.0</value>
+                    <value>26.10.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>26.7.0</value>
+                    <value>26.10.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.mysql/mysql-connector-j@26.7.0</id>
+                    <id>pkg:maven/com.mysql/mysql-connector-j@26.10.0</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:oracle:mysql_connector\/j:26.7.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Amysql_connector%5C%2Fj%3A26.7.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:oracle:mysql_connector\/j:26.10.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Amysql_connector%5C%2Fj%3A26.10.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
@@ -27158,11 +27158,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </evidenceCollected>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>ojdbc11-23.26.3.0.0.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.26.3.0.0/ojdbc11-23.26.3.0.0.jar</filePath>
-            <md5>105ce312fdf6dc25a3fb163594d2debd</md5>
-            <sha1>6936aba69cb7142aac36a53ed920af563b0e1dd1</sha1>
-            <sha256>764cc3f88454d1be117e155d01ed617467b984c9c68f13090dd6083799d2bb8c</sha256>
+            <fileName>ojdbc11-23.26.4.0.0.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.26.4.0.0/ojdbc11-23.26.4.0.0.jar</filePath>
+            <md5>485615fdff70701af864a828dcc2b703</md5>
+            <sha1>109dbf464e05f2f1770ea05df582170f069c2d29</sha1>
+            <sha256>df977e9291499cd4ceee7d577462c285987dd2ad0216637c0865eb98956a9e6e</sha256>
             <description> Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21</description>
             <license>Oracle Free Use Terms and Conditions (FUTC): https://www.oracle.com/downloads/licenses/oracle-free-license.html</license>
             <projectReferences>
@@ -27210,7 +27210,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
                     <name>repository-id</name>
-                    <value>JAVAVM_23.0.0.0.0_LINUX.X64_260620</value>
+                    <value>JAVAVM_23.26.4.0.0DBRU_LINUX.X64_261003</value>
                 </evidence>
                 <evidence type="vendor" confidence="LOW">
                     <source>Manifest</source>
@@ -27285,7 +27285,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="product" confidence="LOW">
                     <source>Manifest</source>
                     <name>repository-id</name>
-                    <value>JAVAVM_23.0.0.0.0_LINUX.X64_260620</value>
+                    <value>JAVAVM_23.26.4.0.0DBRU_LINUX.X64_261003</value>
                 </evidence>
                 <evidence type="product" confidence="MEDIUM">
                     <source>Manifest</source>
@@ -27325,26 +27325,26 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>23.26.3.0.0</value>
+                    <value>23.26.4.0.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>23.26.3.0.0</value>
+                    <value>23.26.4.0.0</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>23.26.3.0.0</value>
+                    <value>23.26.4.0.0</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.oracle.database.jdbc/ojdbc11@23.26.3.0.0</id>
+                    <id>pkg:maven/com.oracle.database.jdbc/ojdbc11@23.26.4.0.0</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:oracle:jdbc:23.26.3.0.0:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.3.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:oracle:jdbc:23.26.4.0.0:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Aoracle%3Ajdbc%3A23.26.4.0.0%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
@@ -29372,10 +29372,6 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                     <id>cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.2:*:*:*:*:*:*:*</id>
                     <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Acodehaus-plexus%3Aplexus-utils%3A3.6.2%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
-                <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:utils_project:utils:3.6.2:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Autils_project%3Autils%3A3.6.2%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
-                </vulnerabilityIds>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
@@ -29700,11 +29696,11 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>postgresql-42.7.13.jar</fileName>
-            <filePath>/home/runner/.m2/repository/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar</filePath>
-            <md5>52ba042322b750121222bd57423003b5</md5>
-            <sha1>a6e1bd21b412d6ffb3df23cd13d507bc2cc9e37d</sha1>
-            <sha256>6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93</sha256>
+            <fileName>postgresql-42.7.14.jar</fileName>
+            <filePath>/home/runner/.m2/repository/org/postgresql/postgresql/42.7.14/postgresql-42.7.14.jar</filePath>
+            <md5>16f26b00415e27db94b3da7ff77c045d</md5>
+            <sha1>0e7c94ce80cb1dd9875ff44ffe6a40a8aaa3eefd</sha1>
+            <sha256>73914527305a40cce504b0d3d90b23caf565136912d607ae8ae7c5895512332c</sha256>
             <description>PostgreSQL JDBC Driver Postgresql</description>
             <license>BSD-2-Clause: https://jdbc.postgresql.org/about/license.html</license>
             <projectReferences>
@@ -30077,39 +30073,39 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>42.7.13</value>
+                    <value>42.7.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>42.7.13</value>
+                    <value>42.7.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Implementation-Version</name>
-                    <value>42.7.13</value>
+                    <value>42.7.14</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>42.7.13</value>
+                    <value>42.7.14</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/org.postgresql/postgresql@42.7.13</id>
+                    <id>pkg:maven/org.postgresql/postgresql@42.7.14</id>
                 </package>
                 <vulnerabilityIds confidence="LOW">
-                    <id>cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.13:*:*:*:*:*:*:*</id>
+                    <id>cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.14:*:*:*:*:*:*:*</id>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>
         <dependency isVirtual="false">
-            <fileName>protobuf-java-4.31.1.jar</fileName>
-            <filePath>/home/runner/.m2/repository/com/google/protobuf/protobuf-java/4.31.1/protobuf-java-4.31.1.jar</filePath>
-            <md5>4987ffc8ba1965e5546bdcf49dcfffe2</md5>
-            <sha1>1828b20315b63d5f71b3c61b094494a8f1acdc5a</sha1>
-            <sha256>d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae</sha256>
+            <fileName>protobuf-java-4.36.1.jar</fileName>
+            <filePath>/home/runner/.m2/repository/com/google/protobuf/protobuf-java/4.36.1/protobuf-java-4.36.1.jar</filePath>
+            <md5>80dbbda35359876810d8e2e8601c30d8</md5>
+            <sha1>b5db3504aebb79f4af24eb99246eabedb3859c1b</sha1>
+            <sha256>26434a93561a1a44bf7157b2630fa73a5b4d8df20e94df167bc03fcd14abd7e4</sha256>
             <description>
     Core Protocol Buffers library. Protocol Buffers are a way of encoding structured data in an
     efficient yet extensible format.
@@ -30119,7 +30115,7 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <projectReference>SchemaSpy Maven Plugin:compile</projectReference>
             </projectReferences>
             <includedBy>
-                <reference>pkg:maven/com.mysql/mysql-connector-j@26.7.0</reference>
+                <reference>pkg:maven/com.mysql/mysql-connector-j@26.10.0</reference>
             </includedBy>
             <evidenceCollected>
                 <evidence type="vendor" confidence="HIGH">
@@ -30235,26 +30231,26 @@ LGPL-2.1: http://opensource.org/licenses/LGPL-2.1</license>
                 <evidence type="version" confidence="HIGH">
                     <source>file</source>
                     <name>version</name>
-                    <value>4.31.1</value>
+                    <value>4.36.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGH">
                     <source>Manifest</source>
                     <name>Bundle-Version</name>
-                    <value>4.31.1</value>
+                    <value>4.36.1</value>
                 </evidence>
                 <evidence type="version" confidence="HIGHEST">
                     <source>pom</source>
                     <name>version</name>
-                    <value>4.31.1</value>
+                    <value>4.36.1</value>
                 </evidence>
             </evidenceCollected>
             <identifiers>
                 <package confidence="HIGH">
-                    <id>pkg:maven/com.google.protobuf/protobuf-java@4.31.1</id>
+                    <id>pkg:maven/com.google.protobuf/protobuf-java@4.36.1</id>
                 </package>
                 <vulnerabilityIds confidence="HIGHEST">
-                    <id>cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*</id>
-                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Agoogle%3Aprotobuf-java%3A4.31.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
+                    <id>cpe:2.3:a:google:protobuf-java:4.36.1:*:*:*:*:*:*:*</id>
+                    <url>https://nvd.nist.gov/vuln/search#/nvd/home?sortOrder=3&amp;sortDirection=2&amp;cpeFilterMode=applicability&amp;resultType=records&amp;cpeName=cpe%3A2.3%3Aa%3Agoogle%3Aprotobuf-java%3A4.36.1%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A%3A%2A</url>
                 </vulnerabilityIds>
             </identifiers>
         </dependency>

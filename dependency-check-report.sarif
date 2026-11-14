@@ -865,8 +865,8 @@
           "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
           "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
           "ossindex": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
-            ,"NVD API Last Checked": "2026-10-07T09:58:46Z"
-            ,"NVD API Last Modified": "2026-10-07T09:17:06Z"
+            ,"NVD API Last Checked": "2026-11-14T08:32:26Z"
+            ,"NVD API Last Modified": "2026-11-14T08:17:19Z"
           }
         }
       },
@@ -1157,15 +1157,15 @@
              "text": "\n  Apache Commons Lang is a package of Java utility classes for the Java lang packages,\n  classes that could be considered standard to justify their existence in java.lang.\n\n  The code is tested using the latest revision of the JDK for supported LTS releases: 8, 11, 17, 21, and 25.\n  See https:\/\/github.com\/apache\/commons-lang\/blob\/master\/.github\/workflows\/maven.yml\n\n  Please ensure your build environment is up-to-date and kindly report any build issues.\n\n  Starting with Commons Lang 3.9, we target Java 8 and use those features.\n\n  For advice on upgrading from 2.x to 3.x, see https:\/\/commons.apache.org\/lang\/article3_0.html\n  "
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/commons\/commons-lang3\/3.21.0\/commons-lang3-3.21.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/apache\/commons\/commons-lang3\/3.22.0\/commons-lang3-3.22.0.jar"
           },
           "hashes": {
-            "md5": "74a94a62f74cf1566767a085b3b9c758",
-            "sha1": "7bad013a5acee0a078d75fc352a906baa57acb74",
-            "sha256": "a2af247ec4db6eb8947e18e23e0433e4871a7c5d0a40e1f92e46ede54ae1defe"
+            "md5": "7e31774c9e2adfe616856c0be006b288",
+            "sha1": "fda38d1637719132fa12b5b96ea99958fc7150e7",
+            "sha256": "2ea88052c8662bf51874f4159467ba24b040b22dfd54d2596e11936896c76192"
           },          "properties": {
-"license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id18": "pkg:maven\/org.apache.commons\/commons-lang3@3.21.0"
-,                    "vid8": "cpe:2.3:a:apache:commons_lang:3.21.0:*:*:*:*:*:*:*"
+"license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id18": "pkg:maven\/org.apache.commons\/commons-lang3@3.22.0"
+,                    "vid8": "cpe:2.3:a:apache:commons_lang:3.22.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2977,18 +2977,18 @@
              "text": "\n\t\tMicrosoft JDBC Driver for SQL Server.\n\t"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/microsoft\/sqlserver\/mssql-jdbc\/13.6.0.jre11\/mssql-jdbc-13.6.0.jre11.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/microsoft\/sqlserver\/mssql-jdbc\/13.6.2.jre11\/mssql-jdbc-13.6.2.jre11.jar"
           },
           "hashes": {
-            "md5": "2a137f850e8f2689cc61e716614a4c0d",
-            "sha1": "9c438510cb1e19d2db0a152e9f719a32f11e1177",
-            "sha256": "4c566e4022c4dcf1489aeb639fe49a0f6ffae3d796fdc2f56b5b8882d4c3bf5a"
+            "md5": "e41c9c1d3c699acc318a7785c6b56b87",
+            "sha1": "b9762cc5034fe56075fe90336833665cfa80af3b",
+            "sha256": "5fbc0a70fe4d1d563d431a41b23f493d68807571f0bb49db0bb1737e83e9161f"
           },          "properties": {
-"license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php",                    "id118": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.0"
-,                    "id119": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.0.jre11"
-,                    "vid32": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.6.0.jre11:*:*:*:*:*:*:*"
-,                    "vid33": "cpe:2.3:a:microsoft:sql_server:13.6.0.jre11:*:*:*:*:*:*:*"
-,                    "vid34": "cpe:2.3:a:www-sql_project:www-sql:13.6.0.jre11:*:*:*:*:*:*:*"
+"license": "MIT License: http:\/\/www.opensource.org\/licenses\/mit-license.php",                    "id118": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.2"
+,                    "id119": "pkg:maven\/com.microsoft.sqlserver\/mssql-jdbc@13.6.2.jre11"
+,                    "vid32": "cpe:2.3:a:microsoft:jdbc_driver_for_sql_server:13.6.2.jre11:*:*:*:*:*:*:*"
+,                    "vid33": "cpe:2.3:a:microsoft:sql_server:13.6.2.jre11:*:*:*:*:*:*:*"
+,                    "vid34": "cpe:2.3:a:www-sql_project:www-sql:13.6.2.jre11:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -2996,15 +2996,15 @@
              "text": "JDBC Type 4 driver for MySQL."
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/26.7.0\/mysql-connector-j-26.7.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/mysql\/mysql-connector-j\/26.10.0\/mysql-connector-j-26.10.0.jar"
           },
           "hashes": {
-            "md5": "e66a1e9f6465f66b3503705aee942a47",
-            "sha1": "43e30438c4c8707272ead3cd3167a1e07abb2c3c",
-            "sha256": "69084713593a4aa8d07c383619b9639276f08bccf8faf1c562178147d389b1e1"
+            "md5": "c672f7a5c8dd482492d37683e40bbada",
+            "sha1": "6394cd2713b8bfb8c6692a1ca92bff5ddb939415",
+            "sha256": "cef70caf532833c9ab8f41f74773ce22c08bf503fad215c9c2ee1e9db87e759e"
           },          "properties": {
-"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id120": "pkg:maven\/com.mysql\/mysql-connector-j@26.7.0"
-,                    "vid35": "cpe:2.3:a:oracle:mysql_connector\\\/j:26.7.0:*:*:*:*:*:*:*"
+"license": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",                    "id120": "pkg:maven\/com.mysql\/mysql-connector-j@26.10.0"
+,                    "vid35": "cpe:2.3:a:oracle:mysql_connector\\\/j:26.10.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3137,15 +3137,15 @@
              "text": " Oracle JDBC Driver compatible with JDK11, JDK17, JDK19, and JDK21"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.3.0.0\/ojdbc11-23.26.3.0.0.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/oracle\/database\/jdbc\/ojdbc11\/23.26.4.0.0\/ojdbc11-23.26.4.0.0.jar"
           },
           "hashes": {
-            "md5": "105ce312fdf6dc25a3fb163594d2debd",
-            "sha1": "6936aba69cb7142aac36a53ed920af563b0e1dd1",
-            "sha256": "764cc3f88454d1be117e155d01ed617467b984c9c68f13090dd6083799d2bb8c"
+            "md5": "485615fdff70701af864a828dcc2b703",
+            "sha1": "109dbf464e05f2f1770ea05df582170f069c2d29",
+            "sha256": "df977e9291499cd4ceee7d577462c285987dd2ad0216637c0865eb98956a9e6e"
           },          "properties": {
-"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id122": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.3.0.0"
-,                    "vid36": "cpe:2.3:a:oracle:jdbc:23.26.3.0.0:*:*:*:*:*:*:*"
+"license": "Oracle Free Use Terms and Conditions (FUTC): https:\/\/www.oracle.com\/downloads\/licenses\/oracle-free-license.html",                    "id122": "pkg:maven\/com.oracle.database.jdbc\/ojdbc11@23.26.4.0.0"
+,                    "vid36": "cpe:2.3:a:oracle:jdbc:23.26.4.0.0:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3311,7 +3311,6 @@
           },          "properties": {
 "license": "Apache-2.0: https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id134": "pkg:maven\/org.codehaus.plexus\/plexus-utils@3.6.2"
 ,                    "vid39": "cpe:2.3:a:codehaus-plexus:plexus-utils:3.6.2:*:*:*:*:*:*:*"
-,                    "vid40": "cpe:2.3:a:utils_project:utils:3.6.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3346,15 +3345,15 @@
              "text": "PostgreSQL JDBC Driver Postgresql"
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.13\/postgresql-42.7.13.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/org\/postgresql\/postgresql\/42.7.14\/postgresql-42.7.14.jar"
           },
           "hashes": {
-            "md5": "52ba042322b750121222bd57423003b5",
-            "sha1": "a6e1bd21b412d6ffb3df23cd13d507bc2cc9e37d",
-            "sha256": "6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93"
+            "md5": "16f26b00415e27db94b3da7ff77c045d",
+            "sha1": "0e7c94ce80cb1dd9875ff44ffe6a40a8aaa3eefd",
+            "sha256": "73914527305a40cce504b0d3d90b23caf565136912d607ae8ae7c5895512332c"
           },          "properties": {
-"license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id137": "pkg:maven\/org.postgresql\/postgresql@42.7.13"
-,                    "vid41": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.13:*:*:*:*:*:*:*"
+"license": "BSD-2-Clause: https:\/\/jdbc.postgresql.org\/about\/license.html",                    "id137": "pkg:maven\/org.postgresql\/postgresql@42.7.14"
+,                    "vid40": "cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.7.14:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3362,15 +3361,15 @@
              "text": "\n    Core Protocol Buffers library. Protocol Buffers are a way of encoding structured data in an\n    efficient yet extensible format.\n  "
           },
           "location": {
-            "uri": "file://\/home\/runner\/.m2\/repository\/com\/google\/protobuf\/protobuf-java\/4.31.1\/protobuf-java-4.31.1.jar"
+            "uri": "file://\/home\/runner\/.m2\/repository\/com\/google\/protobuf\/protobuf-java\/4.36.1\/protobuf-java-4.36.1.jar"
           },
           "hashes": {
-            "md5": "4987ffc8ba1965e5546bdcf49dcfffe2",
-            "sha1": "1828b20315b63d5f71b3c61b094494a8f1acdc5a",
-            "sha256": "d60dfe7c68a0d38a248cca96924f289dc7e1966a887ee7cae397701af08575ae"
+            "md5": "80dbbda35359876810d8e2e8601c30d8",
+            "sha1": "b5db3504aebb79f4af24eb99246eabedb3859c1b",
+            "sha256": "26434a93561a1a44bf7157b2630fa73a5b4d8df20e94df167bc03fcd14abd7e4"
           },          "properties": {
-"license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause",                    "id138": "pkg:maven\/com.google.protobuf\/protobuf-java@4.31.1"
-,                    "vid42": "cpe:2.3:a:google:protobuf-java:4.31.1:*:*:*:*:*:*:*"
+"license": "https:\/\/opensource.org\/licenses\/BSD-3-Clause",                    "id138": "pkg:maven\/com.google.protobuf\/protobuf-java@4.36.1"
+,                    "vid41": "cpe:2.3:a:google:protobuf-java:4.36.1:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3386,7 +3385,7 @@
             "sha256": "bd85a266bdb03325b09d659fced8e0820393a51ce335e8468f4c3476021ab4ad"
           },          "properties": {
 "license": "LGPL-3.0-or-later: https:\/\/www.gnu.org\/licenses\/lgpl-3.0.txt",                    "id139": "pkg:maven\/org.schemaspy\/schemaspy@7.0.2"
-,                    "vid43": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
+,                    "vid42": "cpe:2.3:a:ada:ada:7.0.2:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3976,7 +3975,7 @@
             "sha256": "1bf78c2ade46f209bf93ebe72ed2af5b989ca7a1de0a015fc1b92a62f56b6549"
           },          "properties": {
 "license": "https:\/\/www.apache.org\/licenses\/LICENSE-2.0.txt",                    "id150": "pkg:maven\/org.apache.velocity\/velocity-engine-core@2.4"
-,                    "vid44": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
+,                    "vid43": "cpe:2.3:a:apache:velocity_engine:2.4:*:*:*:*:*:*:*"
           }
         }
 ,{
@@ -3992,7 +3991,7 @@
             "sha256": "8258cfdcaa16127f35ffe610a3fa4f76b7ebe51b88922c73c4ee39ce8f378ce5"
           },          "properties": {
                     "id151": "pkg:maven\/org.apache.velocity.tools\/velocity-tools-generic@3.1"
-,                    "vid45": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
+,                    "vid44": "cpe:2.3:a:apache:velocity_tools:3.1:*:*:*:*:*:*:*"
           }
         }
 ,{

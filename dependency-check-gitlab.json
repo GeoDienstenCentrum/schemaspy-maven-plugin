@@ -22,8 +22,8 @@
                         "url": "https://github.com/dependency-check/DependencyCheck/"
         },
 
-        "end_time": "2026-10-07T09:59:14",
-                "start_time": "2026-10-07T09:59:14",
+        "end_time": "2026-11-14T08:32:46",
+                "start_time": "2026-11-14T08:32:46",
                 "status":  "success"  ,
                 "type": "dependency_scanning"
 
@@ -9507,7 +9507,7 @@
                         "package": {
                             "name": "org.apache.commons:commons-lang3"
                         },
-                        "version": "3.21.0"
+                        "version": "3.22.0"
 
                                                                                                                     }
 ,                    {
@@ -10193,14 +10193,14 @@
                         "package": {
                             "name": "com.microsoft.sqlserver:mssql-jdbc"
                         },
-                        "version": "13.6.0.jre11"
+                        "version": "13.6.2.jre11"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "com.mysql:mysql-connector-j"
                         },
-                        "version": "26.7.0"
+                        "version": "26.10.0"
 
                                                                                                                     }
 ,                    {
@@ -10214,7 +10214,7 @@
                         "package": {
                             "name": "com.oracle.database.jdbc:ojdbc11"
                         },
-                        "version": "23.26.3.0.0"
+                        "version": "23.26.4.0.0"
 
                                                                                                                     }
 ,                    {
@@ -10319,14 +10319,14 @@
                         "package": {
                             "name": "org.postgresql:postgresql"
                         },
-                        "version": "42.7.13"
+                        "version": "42.7.14"
 
                                                                                                                     }
 ,                    {
                         "package": {
                             "name": "com.google.protobuf:protobuf-java"
                         },
-                        "version": "4.31.1"
+                        "version": "4.36.1"
 
                                                                                                                     }
 ,                    {
